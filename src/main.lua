@@ -1,0 +1,133 @@
+--- STEAMODDED HEADER
+--- MOD_NAME: Balatrostuck
+--- MOD_ID: balatrostuck
+--- MOD_AUTHOR: [Akai, Yokcos]
+--- MOD_DESCRIPTION: Homestuck Jokers! Why not!
+--- BADGE_COLOUR: 4CE24E
+--- DISPLAY_NAME: Balatrostuck
+--- PREFIX: bstuck
+--- ICON_ATLAS: HomestuckLogo
+--- PRIORITY: 100
+
+G.C.SET.Zodiac = HEX("77003c")
+G.C.SET.Aspect = HEX("033476")
+G.C.SECONDARY_SET.Zodiac = HEX("77003c")
+G.C.SECONDARY_SET.Aspect = HEX("033476")
+
+G.C.BREATH = HEX('0086EB')
+G.C.BLOOD = HEX('BA1915')
+G.C.SPACE = HEX('000000')
+G.C.TIME = HEX('ff2106')
+G.C.LIGHT = HEX('f98100')
+G.C.VOID = HEX('00164F')
+G.C.MIND = HEX('50b250')
+G.C.HEART = HEX('bd1864')
+G.C.LIFE = HEX('77c350')
+G.C.DOOM = HEX('20401f')
+G.C.HOPE = HEX('FFE094')
+G.C.RAGE = HEX('9c4dad')
+
+G.C.ZODIAC = {
+    Aries = HEX('a10000'),
+    Taurus = HEX('a25203'),
+    Gemini = HEX('a1a100'),
+    Cancer = HEX('ff0000'),
+    Leo = HEX('336601'),
+    Virgo = HEX('078446'),
+    Libra = HEX('008282'),
+    Scorpio = HEX('004182'),
+    Sagittarius = HEX('0021cb'),
+    Capricorn = HEX('440a7f'),
+    Aquarius = HEX('6a006a'),
+    Pisces = HEX('99004d'),
+    Ophiuchus = HEX('4ce24e')
+}
+
+-- temporary!!!!!!!! will be changed to cooler colors
+G.C.ZODIAC_LEVELS = {
+    HEX("efefef"),
+    HEX("95acff"),
+    HEX("65efaf"),
+    HEX('fae37e'),
+    HEX('ffc052'),
+    HEX('f87d75'),
+    HEX('caa0ef')
+}
+
+G.C.SPECIBUS = HEX("008c45")
+G.C.VRISKA = HEX("005682")
+G.C.VRISKA_2 = HEX("007ebd")
+
+
+local mod = SMODS.current_mod
+
+local function batch_load(txt) 
+    local joker_files = love.filesystem.getDirectoryItems(mod.path.."data/"..txt)
+    local joker_defs = {}
+    for _, file in pairs(joker_files) do
+        if string.find(file, ".lua") then
+            local joker = love.filesystem.load(mod.path.."data/"..txt.."/"..file)()
+            table.insert(joker_defs, joker)
+        end
+    end
+    return joker_defs
+end
+
+NFS.load(mod.path.."lib.lua")()
+NFS.load(mod.path.."consumables/main.lua")()
+NFS.load(mod.path.."consumables/aspect.lua")()
+NFS.load(mod.path.."consumables/zodiac.lua")()
+NFS.load(mod.path.."game_override.lua")()
+NFS.load(mod.path.."utils.lua")()
+
+local joker_list = {
+    --[[ Artifacts     ]] "caledfwlch", "cueball", "jetpack", "ringoflife",
+    --[[ Derse Agents  ]] "draconiandignitary", "hegemonicbrute", "courtyarddroll", "sovereignslayer", "waywardvagabond",
+    --[[ Sylladex      ]] "captchacard", "strifespecibus",
+                          "betacopy", "questbed", "note_desolation",
+                          "jocker", "joker", "whoisthis",
+                          "mirthful", "batterwitch",
+                          "dead_shuffle", "dark_carnival",
+    --[[ EoA Jokers    ]] "ascend", "descend", "cascade", "collide",
+    --[[ Other S pages ]] "stress", "roundtwo",
+    --[[ Cherub Jokers ]] "magnificent", "jokermode",
+    --[[ Misc Joker    ]] "tanglebuddies", "horrorterrors",
+    --[[ Troll Jokers  ]] "frustration", "twinarmageddons", "pairing_grid",
+    --[[ Vriska Jokers ]] "fluoriteoctet", "lucky_break", "alltheirons",
+    --[[ Food Jokers   ]] "applejuice", "soporpie", "sucker", "whatpumpkin",
+    --[[ Medium Jokers ]] "lohac", "lowas", "lofaf", "lolar", "skaia",
+    --[[ Denizens      ]] "yaldabaoth", "abraxas", "hephaestus", "echidna", "typheus",
+    --[[ Post-canon    ]] "beyondcanon"
+}
+
+local aspect_list = {
+    "breath", "life", "light", "time", "heart", "rage",
+    "blood", "doom", "void", "space", "mind", "hope"
+}
+
+local zodiac_list = {
+    "gemini", "taurus", "cancer", "leo", "virgo", "libra",
+    "scorpio", "sagittarius", "capricorn", "aquarius",
+    "pisces", "ophiuchus", "aries"
+}
+
+batch_load("jokers")
+batch_load("aspects")
+batch_load("zodiacs")
+
+for _, joker in ipairs(joker_list) do
+    Balatrostuck.INIT.Jokers["j_"..joker]()
+end
+
+for _, aspect in ipairs(aspect_list) do
+    Balatrostuck.INIT.Aspects["c_aspect_"..aspect]()
+end
+
+for _, aspect in ipairs(zodiac_list) do
+    Balatrostuck.INIT.Zodiacs["c_zodiac_"..aspect]()
+end
+
+SMODS.Sprite{key = "HomestuckJokers", path = "hsjokers.png", px = 71, py = 95, atlas = "ASSET_ATLAS"}:register()
+SMODS.Sprite{key = "HomestuckZodiacs", path = "zodiac.png", px = 71, py = 95, atlas = "ASSET_ATLAS"}:register()
+SMODS.Sprite{key = "HomestuckAspects", path = "aspect.png", px = 71, py = 95, atlas = "ASSET_ATLAS"}:register()
+SMODS.Sprite{key = "HomestuckLogo", path = "bstuck_logo.png", px = 34, py = 34, atlas = "ASSET_ATLAS"}:register()

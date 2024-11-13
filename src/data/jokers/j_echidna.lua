@@ -1,0 +1,39 @@
+function Balatrostuck.INIT.Jokers.j_echidna()
+    SMODS.Joker{
+        name = "Echidna",
+        key = "echidna",
+        config = {
+            extra = {
+                levels = 1
+            }
+        },
+        loc_txt = {
+            ['name'] = 'Echidna',
+            ['text'] = {
+                [1] = 'Levels up {C:attention}final{} played',
+                [2] = 'hand by {C:attention}#1#{} level#2#',
+                [3] = '{C:inactive}Amount goes up by 1',
+                [4] = '{C:inactive}per ability trigger'
+            }
+        },
+        pos = {
+            x = 3,
+            y = 9
+        },
+        cost = 6,
+        rarity = 4,
+        blueprint_compat = true,
+        eternal_compat = true,
+        unlocked = true,
+        discovered = true,
+        atlas = 'HomestuckJokers',
+        soul_pos = {
+            x = 8,
+            y = 9
+        },
+        loc_def = function(card)
+            local s = card.ability.extra.levels > 1 and 's' or ''
+            return {card.ability.extra.levels, s}
+        end
+    }:register()
+end

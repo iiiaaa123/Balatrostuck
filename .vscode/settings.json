@@ -1,0 +1,14 @@
+{
+    "Lua.diagnostics.globals": [
+        "SMODS",
+        "bitoper",
+        "init_aspect",
+        "init_zodiac",
+        "init_joker",
+        "HEX",
+        "G",
+        "Game",
+        "factorial",
+        "context"
+    ]
+}

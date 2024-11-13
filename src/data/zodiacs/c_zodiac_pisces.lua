@@ -1,0 +1,41 @@
+function Balatrostuck.INIT.Zodiacs.c_zodiac_pisces()
+    Balatrostuck.Zodiac{
+        name = "Pisces",
+        key = "pisces",
+        config = {},
+        pos = {
+            x = 3,
+            y = 1
+        },
+        loc_txt = {
+            ['name'] = "Pisces",
+            ['text'] = {
+                "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up future",
+                '{C:attention}scoring Queens{} to add',
+                '$#2# to interest and up',
+                'interest rate by $2',
+            }
+        },
+        cost = 4,
+        discovered = true,
+        atlas = "HomestuckZodiacs",
+        use = function(self, area, copier)
+            G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.9, func = function()
+                play_sound('tarot1')
+                self:juice_up(0.8, 0.5)
+                return true end
+            }))
+            G.GAME.BALATROSTUCK.zodiac_levels[self.ability.name] = G.GAME.BALATROSTUCK.zodiac_levels[self.ability.name] + 1
+        end,
+        can_use = function() return true end,
+        loc_def = function(card)
+            local level = G.GAME.BALATROSTUCK.zodiac_levels[card.name] + 1
+            local formula = level
+            return {
+                level,
+                formula,
+                colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
+            }
+        end,
+    }:register()
+end
