@@ -1,0 +1,35 @@
+
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# # setup for Zodiac/Aspect calculations hook
+# [[patches]]
+# [patches.pattern]
+# target = 'functions/state_events.lua'
+# # not sure yet so leaving this empty
+# pattern = '' 
+# # again not sure so leaving this empty
+# payload = '''
+
+# '''
+# position = 'after'
+# match_indent = true
+# overwrite = false
+
+# Mind functionality setup
+
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = 'local hand_space = e or math.min(#G.deck.cards, G.hand.config.card_limit - #G.hand.cards)'
+payload = '''
+if G.GAME.BALATROSTUCK.current_aspect == 'Mind' and (G.GAME.current_round.hands_played > 0 or
+G.GAME.current_round.discards_used > 0) then
+    hand_space = math.min(#G.deck.cards, G.GAME.BALATROSTUCK.aspect_levels['Mind']+3) 
+end
+'''
+position = 'after'
+match_indent = true
+overwrite = false
