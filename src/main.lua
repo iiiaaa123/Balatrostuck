@@ -1,13 +1,6 @@
---- STEAMODDED HEADER
---- MOD_NAME: Balatrostuck
---- MOD_ID: balatrostuck
---- MOD_AUTHOR: [Akai, Yokcos]
---- MOD_DESCRIPTION: Homestuck Jokers! Why not!
---- BADGE_COLOUR: 4CE24E
---- DISPLAY_NAME: Balatrostuck
---- PREFIX: bstuck
+
+--- Find out how to add this to JSON!!!!!
 --- ICON_ATLAS: HomestuckLogo
---- PRIORITY: 100
 
 G.C.SET.Zodiac = HEX("77003c")
 G.C.SET.Aspect = HEX("033476")
@@ -62,16 +55,20 @@ G.C.VRISKA_2 = HEX("007ebd")
 local mod = SMODS.current_mod
 
 local function batch_load(txt) 
-    local joker_files = love.filesystem.getDirectoryItems(mod.path.."data/"..txt)
+    local joker_files = NFS.getDirectoryItems(mod.path.."data/"..txt)
+    sendInfoMessage(mod.path.."data/"..txt)
     local joker_defs = {}
     for _, file in pairs(joker_files) do
+        sendInfoMessage(file)
         if string.find(file, ".lua") then
-            local joker = love.filesystem.load(mod.path.."data/"..txt.."/"..file)()
+            local joker = NFS.load(mod.path.."data/"..txt.."/"..file)()
             table.insert(joker_defs, joker)
         end
     end
+    sendInfoMessage("FINISHED BATCH LOAD FOR "..txt)
     return joker_defs
 end
+
 
 NFS.load(mod.path.."lib.lua")()
 NFS.load(mod.path.."consumables/main.lua")()
@@ -127,7 +124,9 @@ for _, aspect in ipairs(zodiac_list) do
     Balatrostuck.INIT.Zodiacs["c_zodiac_"..aspect]()
 end
 
-SMODS.Sprite{key = "HomestuckJokers", path = "hsjokers.png", px = 71, py = 95, atlas = "ASSET_ATLAS"}:register()
-SMODS.Sprite{key = "HomestuckZodiacs", path = "zodiac.png", px = 71, py = 95, atlas = "ASSET_ATLAS"}:register()
-SMODS.Sprite{key = "HomestuckAspects", path = "aspect.png", px = 71, py = 95, atlas = "ASSET_ATLAS"}:register()
-SMODS.Sprite{key = "HomestuckLogo", path = "bstuck_logo.png", px = 34, py = 34, atlas = "ASSET_ATLAS"}:register()
+
+
+SMODS.Atlas({key = "HomestuckJokers", path = "hsjokers.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
+SMODS.Atlas({key = "HomestuckZodiacs", path = "zodiac.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
+SMODS.Atlas({key = "HomestuckAspects", path = "aspect.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
+SMODS.Atlas({key = "HomestuckLogo", path = "bstuck_logo.png", px = 34, py = 34, atlas_table = "ASSET_ATLAS"}):register()

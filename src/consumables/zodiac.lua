@@ -1,3 +1,4 @@
+
 SMODS.ConsumableType{
   key = 'Zodiac',
   collection_rows = { 6, 7 },
