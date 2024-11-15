@@ -31,7 +31,7 @@ function Balatrostuck.INIT.Jokers.j_cueball()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
-        loc_def = function(card)
+        loc_vars = function(self, info_queue, card)
             local get_card_name = function(card)
                 if card then
                     local rank = card.base.value
@@ -81,7 +81,7 @@ function Balatrostuck.INIT.Jokers.j_cueball()
                 end
     
             --card.calculate_joker({generate_ui = true})
-            return {card.ability.extra.card1, card.ability.extra.card2, card.ability.extra.card3}
+            return {vars = {card.ability.extra.card1, card.ability.extra.card2, card.ability.extra.card3}}
         end
     }:register()
 end

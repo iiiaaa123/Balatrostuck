@@ -38,8 +38,8 @@ function Balatrostuck.INIT.Jokers.j_fluoriteoctet()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
-        loc_def = function(card)
-            return {G.GAME.probabilities.normal}, {{n=G.UIT.O, config={object = DynaText({string = card.ability.extra.descs, colours = {G.C.VRISKA},pop_in_rate = 9999999, silent = true, random_element = false, pop_delay = 0.166, scale = 0.32, min_cycle_time = 0})}},}
+        loc_vars = function(self, info_queue, card)
+            return {vars = {G.GAME.probabilities.normal}, {{n=G.UIT.O, config={object = DynaText({string = card.ability.extra.descs, colours = {G.C.VRISKA},pop_in_rate = 9999999, silent = true, random_element = false, pop_delay = 0.166, scale = 0.32, min_cycle_time = 0})}},}}
         end,
         calculate = function(self, context)
             if context.joker_main and context.cardarea == G.jokers then

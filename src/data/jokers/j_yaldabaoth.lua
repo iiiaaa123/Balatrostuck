@@ -34,8 +34,8 @@ function Balatrostuck.INIT.Jokers.j_yaldabaoth()
             y = 9
         },
     
-        loc_def = function(card)
-            return {card.ability.extra.xmult_mod, card.ability.extra.xmult}
+        loc_vars = function(sef, info_queue, card)
+            return { vars = {card.ability.extra.xmult_mod, card.ability.extra.xmult}}
         end,
 
         calculate = function(self, context)

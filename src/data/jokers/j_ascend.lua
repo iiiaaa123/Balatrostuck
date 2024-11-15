@@ -32,8 +32,8 @@ function Balatrostuck.INIT.Jokers.j_ascend()
         discovered = true,
         atlas = 'HomestuckJokers',
 
-        loc_def = function(card)
-            return {card.ability.extra.mult, card.ability.extra.hand, card.ability.extra.mult_total}
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.extra.mult, card.ability.extra.hand, card.ability.extra.mult_total}}
         end,
 
         calculate = function(self, context)

@@ -28,8 +28,8 @@ function Balatrostuck.INIT.Jokers.j_soporpie()
         discovered = true,
         atlas = 'HomestuckJokers',
 
-        loc_def = function(card)
-            return {card.ability.extra.chips, card.ability.extra.chips_mod}
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.extra.chips, card.ability.extra.chips_mod}}
         end,
 
         calculate = function(self, context)

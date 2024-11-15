@@ -28,8 +28,8 @@ function Balatrostuck.INIT.Jokers.j_twinarmageddons()
         discovered = true,
         atlas = 'HomestuckJokers',
 
-        loc_def = function(card)
-            return {card.ability.extra.hand}
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.extra.hand}}
         end,
 
         calculate = function(self, context)

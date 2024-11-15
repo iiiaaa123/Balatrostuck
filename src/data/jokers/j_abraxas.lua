@@ -30,8 +30,8 @@ function Balatrostuck.INIT.Jokers.j_abraxas()
             x = 6,
             y = 9
         },
-        loc_vars = function(card)
-            return {card.ability.extra.h_plays, card.ability.extra.h_size}
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.extra.h_plays, card.ability.extra.h_size}}
         end
     }:register()
     

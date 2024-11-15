@@ -29,8 +29,8 @@ function Balatrostuck.INIT.Jokers.j_sucker()
         discovered = true,
         atlas = 'HomestuckJokers',
 
-        loc_def = function(card)
-            return { G.GAME.probabilities.normal, card.ability.extra.base }
+        loc_vars = function(self, info_queue, card)
+            return {vars = {G.GAME.probabilities.normal, card.ability.extra.base }}
         end,
 
         calculate = function(self, context)

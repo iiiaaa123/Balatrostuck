@@ -31,9 +31,9 @@ function Balatrostuck.INIT.Jokers.j_echidna()
             x = 8,
             y = 9
         },
-        loc_def = function(card)
+        loc_vars = function(self, info_queue, card)
             local s = card.ability.extra.levels > 1 and 's' or ''
-            return {card.ability.extra.levels, s}
+            return {vars = {card.ability.extra.levels, s}}
         end
     }:register()
 end

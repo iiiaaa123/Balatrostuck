@@ -25,8 +25,8 @@ function Balatrostuck.INIT.Jokers.j_caledfwlch()
         discovered = true,
         atlas = 'HomestuckJokers',
 
-        loc_def = function (card)
-            return {G.GAME.probabilities.normal, card.ability.extra.probability, card.ability.extra.mult}
+        loc_vars = function (self, info_queue, card)
+            return {vars = {G.GAME.probabilities.normal, card.ability.extra.probability, card.ability.extra.mult}}
         end,
 
         calculate = function (self, context)

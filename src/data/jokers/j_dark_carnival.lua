@@ -31,8 +31,8 @@ function Balatrostuck.INIT.Jokers.j_dark_carnival()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
-        loc_def = function(card)
-            return { card.ability.extra.chips }
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.extra.chips }}
         end,
         calculate = function(self, context)
             if context.cardarea == G.jokers and context.joker_main then

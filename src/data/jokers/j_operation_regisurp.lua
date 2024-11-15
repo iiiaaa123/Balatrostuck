@@ -28,8 +28,8 @@ function Balatrostuck.INIT.Jokers.j_operation_regisurp()
         discovered = true,
         atlas = 'HomestuckJokers',
 
-        loc_def = function(card)
-            return {card.ability.extra.suit, card.ability.extra.dollars}
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.extra.suit, card.ability.extra.dollars}}
         end,
 
         calculate = function(self, context)

@@ -30,8 +30,8 @@ function Balatrostuck.INIT.Jokers.j_jetpack()
         discovered = true,
         atlas = 'HomestuckJokers',
 
-        loc_def = function(card)
-            return {card.ability.extra.mult, G.GAME.probabilities.normal, card.ability.extra.denominator}
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.extra.mult, G.GAME.probabilities.normal, card.ability.extra.denominator}}
         end,
 
         calculate = function(self, context)

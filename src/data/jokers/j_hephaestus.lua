@@ -29,8 +29,8 @@ function Balatrostuck.INIT.Jokers.j_hephaestus()
             y = 9
         },
     
-        loc_def = function(card)
-            return {card.ability.extra}
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.extra}}
         end,
 
         calculate = function(self, context)

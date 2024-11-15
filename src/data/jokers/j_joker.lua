@@ -29,7 +29,7 @@ function Balatrostuck.INIT.Jokers.j_joker()
             x = 5,
             y = 4
         },
-        loc_def = function(card)
+        loc_vars = function(self, info_queue, card)
         end
     }:register()
 end

@@ -33,8 +33,8 @@ function Balatrostuck.INIT.Jokers.j_note_desolation()
         discovered = true,
         atlas = 'HomestuckJokers',
 
-        loc_def = function(card)
-            return { card.ability.mult, card.ability.extra.chips }
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.mult, card.ability.extra.chips }}
         end
     }:register()
 end

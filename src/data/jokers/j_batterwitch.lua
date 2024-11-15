@@ -32,8 +32,8 @@ function Balatrostuck.INIT.Jokers.j_batterwitch()
         discovered = true,
         atlas = 'HomestuckJokers',
 
-        loc_def = function(card)
-            return {card.ability.extra.poker_hand, card.ability.extra.xmult, card.ability.extra.total}
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.extra.poker_hand, card.ability.extra.xmult, card.ability.extra.total}}
         end,
 
         calculate = function(self, context)

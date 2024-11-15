@@ -27,8 +27,8 @@ function Balatrostuck.INIT.Jokers.j_cascade()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
-        loc_def = function(card)
-            return {card.ability.extra.retrigger_every}
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.extra.retrigger_every}}
         end,
         calculate = function (self, context)
             if context.repetition and context.cardarea == G.play and not (context.blueprint or context.idividual or context.after or context.before) then

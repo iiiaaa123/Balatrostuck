@@ -30,8 +30,8 @@ function Balatrostuck.INIT.Jokers.j_lohac()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
-        loc_def = function (card)
-            return {card.ability.extra.mult_gain, card.ability.extra.mult_total}
+        loc_vars = function (self, info_queue, card)
+            return {vars = {card.ability.extra.mult_gain, card.ability.extra.mult_total}}
         end,
         calculate = function (self, context)
             if context.end_of_round and not (context.individual or context.repetition) and G.GAME.current_round.hands_played == 1 then

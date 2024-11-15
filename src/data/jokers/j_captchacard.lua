@@ -27,8 +27,8 @@ function Balatrostuck.INIT.Jokers.j_captchacard()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
-        loc_def = function(card)
-            return {card.ability.extra.rank, card.ability.extra.suit}
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.extra.rank, card.ability.extra.suit}}
         end
     }:register()
 end

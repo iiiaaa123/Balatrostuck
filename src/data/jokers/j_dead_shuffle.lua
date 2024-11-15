@@ -31,8 +31,8 @@ function Balatrostuck.INIT.Jokers.j_dead_shuffle()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
-        loc_def = function(card)
-            return {card.ability.extra.xmult, card.ability.extra.suit, card.ability.extra.total}
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.extra.xmult, card.ability.extra.suit, card.ability.extra.total}}
         end,
         calculate = function(self, context)
             if context.cardarea == G.jokers and context.joker_main then
