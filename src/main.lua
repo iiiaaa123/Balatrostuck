@@ -88,7 +88,7 @@ local joker_list = {
     --[[ EoA Jokers    ]] "ascend", "descend", "cascade", "collide",
     --[[ Other S pages ]] "stress", "roundtwo",
     --[[ Cherub Jokers ]] "magnificent", "jokermode",
-    --[[ Misc Joker    ]] "tanglebuddies", "horrorterrors",
+    --[[ Misc Joker    ]] "tanglebuddies", "horrorterrors","consortconcierge","echeladder",
     --[[ Troll Jokers  ]] "frustration", "twinarmageddons", "pairing_grid",
     --[[ Vriska Jokers ]] "fluoriteoctet", "lucky_break", "alltheirons",
     --[[ Food Jokers   ]] "applejuice", "soporpie", "sucker", "whatpumpkin",
