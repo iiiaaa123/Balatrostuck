@@ -1,0 +1,25 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+
+
+# Inject one or more lines of code before, after, or at (replacing) a line which matches 
+# the provided pattern.
+#
+# USEFUL: For when you need to add / modify a small amount of code to setup initialization 
+# routines, etc.
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local nu_chip, nu_mult = G.GAME.selected_back:trigger_effect{context = 'final_scoring_step', chips = hand_chips, mult = mult}"
+position = "after"
+payload = '''
+for j = 1, #G.jokers.cards do
+    local tempTable = G.jokers.cards[j]:calculate_joker({final_scoring_step = true})
+    nu_chip = tempTable[1]
+    nu_mult = tempTable[2]
+end
+'''
+match_indent = true
+times = 1
