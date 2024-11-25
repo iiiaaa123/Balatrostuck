@@ -5,7 +5,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_blood()
         loc_txt = {
             ['name'] = "Blood",
             ['text'] = {
-                [1] = 'Up to #1# {C:red}discarded',
+                [1] = '{E:1,S:1.2}(lvl. #2#){} Up to #1# {C:red}discarded',
                 [2] = 'cards per blind',
                 [3] = 'gets a random',
                 [4] = '{C:purple}enhancement'
@@ -25,16 +25,13 @@ function Balatrostuck.INIT.Aspects.c_aspect_blood()
         loc_vars = function(self, info_queue)
             return {
                 vars = {
-                    (G.GAME.BALATROSTUCK.aspect_levels[self.name] or 0)+1
+                    self:level() + 1,
+                    self:level()
                 }
             }
         end,
         use = function(self, card, area, copier)
-            sendInfoMessage("Setting slab")
-            add_slab(Slab('slab_bstuck_blood'))
-            -- do more slab logic
-            G.GAME.BALATROSTUCK.aspect_levels[self.name] = (G.GAME.BALATROSTUCK.aspect_levels[self.name] or 0) + 1
-            sendInfoMessage(self.name..": "..G.GAME.BALATROSTUCK.aspect_levels[self.name])
+            self:switch_slab()
         end,
         can_use = function(self)
             return true
@@ -52,7 +49,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_blood()
         name = 'Aspect of Blood',
         apply = function(self, slab, context)
             if context.discard then
-                if slab.ability.discards_used < G.GAME.BALATROSTUCK.aspect_levels['Blood'] then
+                if slab.ability.discards_used < slab:level() + 1 then
                     local enhancement = pseudorandom_element(G.P_CENTER_POOLS.Enhanced, pseudoseed('slab_bstuck_blood'))
                     if enhancement.key and G.P_CENTERS[enhancement.key] then
                         sendInfoMessage("Enhancing")

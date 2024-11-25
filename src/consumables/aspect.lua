@@ -16,6 +16,15 @@ Balatrostuck.Aspect = SMODS.Consumable:extend{
   prefix = 'c_aspect'
 }
 
+function Balatrostuck.Aspect:switch_slab()
+  local aspect = string.gsub(self.key, "c_bstuck_", "")
+  add_slab(Slab('slab_bstuck_' .. aspect))
+end
+
+function Balatrostuck.Aspect:level(default)
+  return G.GAME.BALATROSTUCK.aspect_levels[self.name] or default or 0
+end
+
 Slab = Object:extend()
 function Slab:init(key)
   self.key = key
@@ -43,6 +52,24 @@ function Slab:apply_to_run(_context)
   end
 end
 
+function Slab:level(default)
+  local aspect = string.gsub(self.key, "slab_bstuck_", "")
+  aspect = string.gsub(aspect, "^%l", string.upper)
+  return G.GAME.BALATROSTUCK.aspect_levels[aspect] or default or 0
+end
+
+function Slab:increase_level()
+  local aspect = string.gsub(self.key, "slab_bstuck_", "")
+  aspect = string.gsub(aspect, "^%l", string.upper)
+  G.GAME.BALATROSTUCK.aspect_levels[aspect] = G.GAME.BALATROSTUCK.aspect_levels[aspect] + 1
+end
+
+function Slab:decrease_level()
+  local aspect = string.gsub(self.key, "slab_bstuck_", "")
+  aspect = string.gsub(aspect, "^%l", string.upper)
+  G.GAME.BALATROSTUCK.aspect_levels[aspect] = G.GAME.BALATROSTUCK.aspect_levels[aspect] - 1
+end
+
 -- TODO: actually write our own functions for executing slabs akin to tags
 
 Balatrostuck.Slabs = {}
@@ -54,7 +81,7 @@ Balatrostuck.Slab = SMODS.GameObject:extend{
   required_params = {
     'key', -- same as aspect!!!!!!!!
     'atlas',
-    'pos',
+    'pos'
   },
   omit_prefix = true,
   get_obj = function(self, key) return G.P_SLABS[key] end,
@@ -78,10 +105,25 @@ Balatrostuck.Slab = SMODS.GameObject:extend{
 
 function add_slab(_slab)
   if G.GAME.slab == nil then
+    sendInfoMessage("First slab: ".._slab.name)
     G.GAME.slab = _slab
+    _slab:increase_level()
+    _slab:apply_to_run({ activated = true, after_level_up = true, is_new = true })
     return
   end
 
-  -- code here for switching slabs
+  old_slab = G.GAME.slab
   G.GAME.slab = _slab
+
+  if old_slab.key ~= _slab.key and old_slab:level() > 0 then
+    sendInfoMessage("Changing slab from "..old_slab.name.." to ".._slab.name)
+    old_slab:apply_to_run({ deactivated = true, new_slab = _slab, before_level_down = true })
+    old_slab:decrease_level()
+    old_slab:apply_to_run({ deactivated = true, new_slab = _slab, after_level_down = true })
+  end
+
+  _slab:apply_to_run({ activated = true, old_slab = old_slab, before_level_up = true })
+  _slab:increase_level()
+  _slab:apply_to_run({ activated = true, old_slab = old_slab, after_level_up = true })
+  sendInfoMessage("LEVEL UP ".._slab.name.." to ".._slab:level())
 end

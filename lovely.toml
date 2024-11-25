@@ -157,3 +157,16 @@ if G.GAME.slab ~= nil then
 end
 '''
 times = 1
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "ease_background_colour_blind(G.STATES.DRAW_TO_HAND)"
+position = "before"
+match_indent = true
+payload = '''
+if G.GAME.slab ~= nil then
+    local slab_eval = nil
+    slab_eval = G.GAME.slab:apply_to_run({start_of_round = true})
+end
+'''
