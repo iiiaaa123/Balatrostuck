@@ -108,26 +108,6 @@ Slabs = {},
 
 [[patches]]
 [patches.regex]
-target = "tag.lua"
-pattern = "(?<indent>[\t ]*)if (?<cond>_context.type == 'eval' then)"
-position = 'at'
-line_prepend = '$indent'
-# we can't use elseif because Steamodded matches the if
-# (?<indent>[\t ]*)if (?<cond>_context.type == 'eval' then)
-payload = '''
-local obj = Balatrostuck.Slabs[self.key]
-local res
-if obj and obj.apply and type(obj.apply) == 'function' then
-	res = obj.apply(self, _context)
-end
-if res then
-	return res
-end
-
-if $cond'''
-
-[[patches]]
-[patches.regex]
 target = "game.lua"
 pattern = "(?<indent>[\t ]*)G\\.GAME\\.tags = \\{\\}\\n"
 position = "after"
@@ -135,3 +115,45 @@ line_prepend = '$indent'
 payload = '''
 G.GAME.slab = nil
 '''
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "table.insert(cards, G.hand.highlighted[i])"
+position = "before"
+match_indent = true
+payload = '''
+if G.GAME.slab ~= nil then
+    local eval = nil
+    eval = G.GAME.slab:apply_to_run({discard = true, other_card = G.hand.highlighted[i], full_hand = G.hand.highlighted})
+end
+'''
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "inc_career_stat('c_cards_discarded', highlighted_count)"
+position = "after"
+match_indent = true
+payload = '''
+if G.GAME.slab ~= nil then
+    local slab_eval = nil
+    slab_eval = G.GAME.slab:apply_to_run({pre_discard = true, full_hand = G.hand.highlighted, hook = hook})
+end
+'''
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if G.GAME.round_resets.ante == G.GAME.win_ante and G.GAME.blind:get_type() == 'Boss' then"
+position = "before"
+match_indent = true
+payload = '''
+if G.GAME.slab ~= nil then
+    local slab_eval = nil
+    slab_eval = G.GAME.slab:apply_to_run({end_of_round = true, game_over = game_over})
+end
+'''
+times = 1

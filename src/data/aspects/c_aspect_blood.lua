@@ -32,6 +32,9 @@ function Balatrostuck.INIT.Aspects.c_aspect_blood()
         use = function(self, card, area, copier)
             sendInfoMessage("Setting slab")
             add_slab(Slab('slab_bstuck_blood'))
+            -- do more slab logic
+            G.GAME.BALATROSTUCK.aspect_levels[self.name] = (G.GAME.BALATROSTUCK.aspect_levels[self.name] or 0) + 1
+            sendInfoMessage(self.name..": "..G.GAME.BALATROSTUCK.aspect_levels[self.name])
         end,
         can_use = function(self)
             return true
@@ -45,9 +48,23 @@ function Balatrostuck.INIT.Aspects.c_aspect_blood()
             x = 2,
             y = 2
         },
+        config = { discards_used = 0 },
         name = 'Aspect of Blood',
-        apply = function(self, context)
-            sendInfoMessage("Aspect of Blood applied")
+        apply = function(self, slab, context)
+            if context.pre_discard then
+                local to_discard = math.min(#context.full_hand, G.GAME.BALATROSTUCK.aspect_levels['Blood'] - slab.ability.discards_used)
+                for i = 1, to_discard do
+                    local enhancement = pseudorandom_element(G.P_CENTER_POOLS.Enhanced, pseudoseed('slab_bstuck_blood'))
+                    if enhancement.key and G.P_CENTERS[enhancement.key] then
+                        context.full_hand[i]:set_ability(G.P_CENTERS[enhancement.key])
+                        slab.ability.discards_used = slab.ability.discards_used + 1
+                    end
+                end
+            end
+
+            if context.end_of_round then
+                slab.ability.discards_used = 0
+            end
         end
     }
 

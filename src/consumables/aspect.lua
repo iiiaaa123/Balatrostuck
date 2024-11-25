@@ -24,7 +24,8 @@ function Slab:init(key)
   self.pos = proto.pos
   self.name = proto.name
   self.triggered = false
-  self.ID = 413
+
+  self.ability = copy_table(self.config)
 end
 
 function Slab:apply_to_run(_context)
@@ -32,7 +33,7 @@ function Slab:apply_to_run(_context)
     local obj = Balatrostuck.Slabs[self.key]
     local res
     if obj and obj.apply and type(obj.apply) == 'function' then
-      res = obj.apply(self, _context)
+      res = obj:apply(self, _context)
     end
 
     if res then
