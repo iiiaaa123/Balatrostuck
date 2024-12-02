@@ -70,6 +70,76 @@ function Slab:decrease_level()
   G.GAME.BALATROSTUCK.aspect_levels[aspect] = G.GAME.BALATROSTUCK.aspect_levels[aspect] - 1
 end
 
+function Slab:juice_up(_scale, _rot)
+  if self.slab_sprite then
+    self.slab_sprite:juice_up(_scale, _rot)
+  end
+end
+
+function Slab:generate_UI(_size)
+  _size = _size or 0.8
+
+  local slab_sprite_tab = nil
+
+  local slab_sprite = Sprite(0, 0, _size * 1, _size * 1, G.ASSET_ATLAS[G.P_SLABS[self.key].atlas], self.pos)
+  slab_sprite.T.scale = 1
+  slab_sprite_tab = {n= G.UIT.C, config={align = "cm", ref_table = self}, nodes={
+    {n=G.UIT.O, config={w=_size*1, h=_size*1, colour = G.C.BLUE, object = slab_sprite, focus_with_object = true}}
+  }}
+
+  slab_sprite:define_draw_steps({
+    {shader = 'dissolve', shadow_height = 0.05},
+    {shader = 'dissolve'},
+  })
+  slab_sprite.float = true
+  slab_sprite.states.hover.can = true
+  slab_sprite.states.drag.can = false
+  slab_sprite.states.collide.can = true
+  slab_sprite.config = {tag = self, force_focus = true}
+
+  slab_sprite.hover = function(_self)
+    if not G.CONTROLLER.dragging.target or G.CONTROLLER.using_touch then
+      if not _self.hovering and _self.states.visible then
+        _self.hovering = true
+        if _self == slab_sprite then
+          _self.hover_tilt = 3
+          _self:juice_up(0.05, 0.02)
+          play_sound('paper1', math.random()*0.1 + 0.55, 0.42)
+          play_sound('tarot2', math.random()*0.1 + 0.55, 0.09)
+        end
+
+        self:get_uibox_table(slab_sprite)
+        _self.config.h_popup = G.UIDEF.card_h_popup(self)
+        _self.config.h_popup_config = {align = 'cl', offset = {x=-0.1, y=0}, parent=_self}
+        Node.hover(_self)
+        if _self.children.alert then
+          _self.children.alert:remove()
+          _self.children.alert = nil
+          if self.key and G.P_SLABS[self.key] then G.P_SLABS[self.key].alerted = true end
+          G:save_progress()
+        end
+      end
+    end
+  end
+
+  slab_sprite.stop_hover = function(_self)
+    _self.hovering = false
+    Node.stop_hover(_self)
+    _self.hover_tilt = 0
+  end
+
+  slab_sprite:juice_up()
+  self.slab_sprite = slab_sprite
+
+  return slab_sprite_tab, slab_sprite
+end
+
+function Slab:get_uibox_table(slab_sprite)
+  slab_sprite = slab_sprite or self.slab_sprite
+  slab_sprite.ability_UIBox_table = generate_card_ui(G.P_SLABS[self.key], nil, {}, 'Other', nil, false)
+  return slab_sprite
+end
+
 -- TODO: actually write our own functions for executing slabs akin to tags
 
 Balatrostuck.Slabs = {}

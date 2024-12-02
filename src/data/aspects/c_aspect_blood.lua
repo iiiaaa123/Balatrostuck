@@ -69,6 +69,9 @@ function Balatrostuck.INIT.Aspects.c_aspect_blood()
             if context.end_of_round then
                 slab.ability.discards_used = 0
             end
+        end,
+        generate_ui = function(self, slab, info_queue, card, desc_nodes, specific_vars, full_UI_table)
+            
         end
     }
 
