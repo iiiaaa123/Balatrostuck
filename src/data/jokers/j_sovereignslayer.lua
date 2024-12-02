@@ -27,7 +27,7 @@ function Balatrostuck.INIT.Jokers.j_sovereignslayer()
         discovered = true,
         atlas = 'HomestuckJokers',
 
-        calculate = function(self,context)
+        calculate = function(self,card,context)
             if context.cardarea == G.jokers and context.after and (next(context.poker_hands["Flush"]) or next(context.poker_hands["Flush Five"]) or next(context.poker_hands["Flush House"]) or next(context.poker_hands["Straight Flush"])) then
                 local has_spades = false
                 for _, v in ipairs(context.scoring_hand) do
@@ -40,22 +40,22 @@ function Balatrostuck.INIT.Jokers.j_sovereignslayer()
                         delay = 0.2,
                         func = function() 
                             for i=1, #context.full_hand, 1 do
-                                local card = context.full_hand[i]
-                                table.insert(self.ability.extra.trash_list, card)
-                                if card.ability.name == 'Glass Card' then 
-                                    card:shatter()
+                                local _card = context.full_hand[i]
+                                table.insert(card.ability.extra.trash_list, _card)
+                                if _card.ability.name == 'Glass Card' then 
+                                    _card:shatter()
                                 else
-                                    card:start_dissolve(nil, i == #context.full_hand)
+                                    _card:start_dissolve(nil, i == #context.full_hand)
                                 end
                             end
                             return true end }))
                 end
             elseif context.end_of_round then
                 if not context.blueprint and not context.repetition and not context.individual then
-                    for i = 1, #self.ability.extra.trash_list do
-                        self.ability.extra.trash_list[i]:start_dissolve(nil, true, 0, true)
+                    for i = 1, #card.ability.extra.trash_list do
+                        card.ability.extra.trash_list[i]:start_dissolve(nil, true, 0, true)
                     end
-                    self.ability.extra.trash_list = {}
+                    card.ability.extra.trash_list = {}
                 end
             end
         end

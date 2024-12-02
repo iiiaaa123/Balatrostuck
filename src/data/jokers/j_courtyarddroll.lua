@@ -26,7 +26,7 @@ function Balatrostuck.INIT.Jokers.j_courtyarddroll()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
-        calculate = function(self,context)
+        calculate = function(self,card,context)
             if context.cardarea == G.jokers and context.before and (next(context.poker_hands["Flush"]) or next(context.poker_hands["Flush Five"]) or next(context.poker_hands["Flush House"]) or next(context.poker_hands["Straight Flush"])) then
                 local has_clubs = false
                 for _, v in ipairs(context.scoring_hand) do
