@@ -70,6 +70,12 @@ function Slab:decrease_level()
   G.GAME.BALATROSTUCK.aspect_levels[aspect] = G.GAME.BALATROSTUCK.aspect_levels[aspect] - 1
 end
 
+function Slab:set_level(level)
+  local aspect = string.gsub(self.key, "slab_bstuck_", "")
+  aspect = string.gsub(aspect, "^%l", string.upper)
+  G.GAME.BALATROSTUCK.aspect_levels[aspect] = level
+end
+
 function Slab:juice_up(_scale, _rot)
   if self.slab_sprite then
     self.slab_sprite:juice_up(_scale, _rot)
@@ -175,7 +181,6 @@ Balatrostuck.Slab = SMODS.GameObject:extend{
 
 function add_slab(_slab)
   if G.GAME.slab == nil then
-    sendInfoMessage("First slab: ".._slab.name)
     G.GAME.slab = _slab
     _slab:increase_level()
     _slab:apply_to_run({ activated = true, after_level_up = true, is_new = true })
@@ -193,7 +198,12 @@ function add_slab(_slab)
   end
 
   _slab:apply_to_run({ activated = true, old_slab = old_slab, before_level_up = true })
-  _slab:increase_level()
+  -- _slab:increase_level()
+  if old_slab.key == _slab.key then
+    _slab:increase_level()
+  else
+    _slab:set_level(math.max(old_slab:level(), _slab:level()))
+  end
   _slab:apply_to_run({ activated = true, old_slab = old_slab, after_level_up = true })
   sendInfoMessage("LEVEL UP ".._slab.name.." to ".._slab:level())
 end
