@@ -30,8 +30,8 @@ function Balatrostuck.INIT.Jokers.j_tanglebuddies()
         atlas = 'HomestuckJokers',
         calculate = function (self,card,context)
             if context.individual and context.cardarea == G.play and not (context.repetition) then
-                local card = context.other_card
-                local idx = card:get_id()
+                local buddycard = context.other_card
+                local idx = buddycard:get_id()
     
                 if not context.blueprint then
                     if not card.ability.extra.repetitions[idx] then
@@ -44,7 +44,7 @@ function Balatrostuck.INIT.Jokers.j_tanglebuddies()
                 local mult_fac = summation(card.ability.extra.repetitions[idx])
     
                 return {
-                    card = card,
+                    buddycard = card,
                     mult = mult_fac
                 }
     
