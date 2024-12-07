@@ -32,17 +32,17 @@ function Balatrostuck.INIT.Jokers.j_soporpie()
             return {vars = {card.ability.extra.chips, card.ability.extra.chips_mod}}
         end,
 
-        calculate = function(self, context)
+        calculate = function(self, card, context)
             if context.joker_main and context.cardarea == G.jokers then
                 return {
-                    message = localize { type = 'variable', key = 'a_chips', vars = { self.ability.extra.chips } },
-                    chip_mod = self.ability.extra.chips,
+                    message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },
+                    chip_mod = card.ability.extra.chips,
                     colour = G.C.CHIPS
                 }
             elseif context.setting_blind and not (context.repetition or context.individual or context.blueprint) then
                 G.hand:change_size(-1)
             elseif context.end_of_round and not (context.repetition or context.individual or context.blueprint) then
-                self.ability.extra.chips = self.ability.extra.chips + self.ability.extra.chips_mod
+                card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
             end
         end
     }

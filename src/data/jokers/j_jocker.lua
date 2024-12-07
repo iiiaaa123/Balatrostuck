@@ -24,7 +24,7 @@ function Balatrostuck.INIT.Jokers.j_jocker()
         discovered = true,
         atlas = 'HomestuckJokers',
 
-        calculate = function (self, context)
+        calculate = function (self,card,context)
             if context.setting_blind or context.skip_blind then
                 G.GAME.joker_buffer = G.GAME.joker_buffer + 1
 

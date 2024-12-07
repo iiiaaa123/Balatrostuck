@@ -28,7 +28,7 @@ function Balatrostuck.INIT.Jokers.j_whoisthis()
         discovered = true,
         atlas = 'HomestuckJokers',
 
-        calculate = function (self, context)
+        calculate = function (self,card,context)
             if context.setting_blind then
                 G.GAME.joker_buffer = G.GAME.joker_buffer + 1
     
@@ -60,7 +60,7 @@ function Balatrostuck.INIT.Jokers.j_whoisthis()
     
                 local my_pos = nil
                 for i = 1, #G.jokers.cards do
-                    if G.jokers.cards[i] == self then my_pos = i; break end
+                    if G.jokers.cards[i] == card then my_pos = i; break end
                 end
     
                 if my_pos and G.jokers.cards[my_pos+1] and not G.jokers.cards[my_pos+1].ability.eternal then 

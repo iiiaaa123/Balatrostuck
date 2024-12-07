@@ -28,28 +28,28 @@ function Balatrostuck.INIT.Jokers.j_tanglebuddies()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
-        calculate = function (self, context)
+        calculate = function (self,card,context)
             if context.individual and context.cardarea == G.play and not (context.repetition) then
-                local card = context.other_card
-                local idx = card:get_id()
+                local buddycard = context.other_card
+                local idx = buddycard:get_id()
     
                 if not context.blueprint then
-                    if not self.ability.extra.repetitions[idx] then
-                        self.ability.extra.repetitions[idx] = 0
+                    if not card.ability.extra.repetitions[idx] then
+                        card.ability.extra.repetitions[idx] = 0
                     else
-                        self.ability.extra.repetitions[idx] = self.ability.extra.repetitions[idx] + 1
+                        card.ability.extra.repetitions[idx] = card.ability.extra.repetitions[idx] + 1
                     end
                 end
     
-                local mult_fac = summation(self.ability.extra.repetitions[idx])
+                local mult_fac = summation(card.ability.extra.repetitions[idx])
     
                 return {
-                    card = self,
+                    buddycard = card,
                     mult = mult_fac
                 }
     
             elseif context.after and not (context.blueprint or context.before or context.repetition) then
-                self.ability.extra.repetitions = {}
+                card.ability.extra.repetitions = {}
             end
         end
     }

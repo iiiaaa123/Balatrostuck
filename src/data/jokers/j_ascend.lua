@@ -36,9 +36,9 @@ function Balatrostuck.INIT.Jokers.j_ascend()
             return {vars = {card.ability.extra.mult, card.ability.extra.hand, card.ability.extra.mult_total}}
         end,
 
-        calculate = function(self, context)
+        calculate = function(self,card,context)
             if context.cardarea == G.jokers and (context.joker_main or context.before) then
-                if next(context.poker_hands[self.ability.extra.hand]) and not context.blueprint and context.before then
+                if next(context.poker_hands[card.ability.extra.hand]) and not context.blueprint and context.before then
                     local apply_mult = false
                     local temp = {}
                     for _, v in ipairs(context.scoring_hand) do
@@ -50,8 +50,8 @@ function Balatrostuck.INIT.Jokers.j_ascend()
                         temp2[v] = k
                     end
         
-                    if #self.ability.extra.full_houses > 0 then
-                        for _,v in ipairs(self.ability.extra.full_houses) do
+                    if #card.ability.extra.full_houses > 0 then
+                        for _,v in ipairs(card.ability.extra.full_houses) do
                             if (v[2] == temp2[2] and v[3] == temp2[3]) then goto continue end
                             apply_mult = true
                             ::continue::
@@ -61,16 +61,16 @@ function Balatrostuck.INIT.Jokers.j_ascend()
                     end
         
                     if apply_mult and context.before then 
-                        table.insert(self.ability.extra.full_houses, temp2)
-                        card_eval_status_text(self, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
-                        self.ability.extra.mult_total = self.ability.extra.mult_total + self.ability.extra.mult 
+                        table.insert(card.ability.extra.full_houses, temp2)
+                        card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
+                        card.ability.extra.mult_total = card.ability.extra.mult_total + card.ability.extra.mult 
                     end
                 end
     
                 if context.joker_main then
                     return {
-                        mult_mod = self.ability.extra.mult_total,
-                        message = localize { type = 'variable', key = 'a_mult', vars = { self.ability.extra.mult_total } },
+                        mult_mod = card.ability.extra.mult_total,
+                        message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult_total } },
                         colour = G.C.MULT
                     }
                 end
