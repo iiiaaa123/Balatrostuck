@@ -5,9 +5,8 @@ function Balatrostuck.INIT.Aspects.c_aspect_mind()
         loc_txt = {
             ['name'] = "Mind",
             ['text'] = {
-                [1] = 'Always draw',
-                [2] = '{C:attention}#1# cards{} after',
-                [3] = 'a {C:red}discard{}'
+                [1] = 'When you gain a {C:attention}tag{}',
+                [2] = 'create #1# copies of it.',
             }
         },
         pos = {
@@ -24,10 +23,30 @@ function Balatrostuck.INIT.Aspects.c_aspect_mind()
         loc_vars = function(self, info_queue)
             return {
                 vars = {
-                    (G.GAME.BALATROSTUCK.aspect_levels[self.name] or 0)
+                    self:level()
                 }
             }
         end
     }
 
+end
+
+ Balatrostuck.Slab{
+    key = 'mind',
+    atlas = 'HomestuckAspectSlabs',
+    pos = {
+        x = 2,
+        y = 1
+    },
+    config = {},
+    name = 'Aspect of Mind',
+    apply = function(self, slab, context)
+        if _context.type == 'tag_add' and _context.tag.key ~= 'tag_double'then
+             for slab:level()=1,1
+                add_tag(Tag(_context.tag.key))
+
+
+        end
+    end
+}
 end
