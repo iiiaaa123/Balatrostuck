@@ -25,6 +25,28 @@ function Balatrostuck.INIT.Aspects.c_aspect_space()
                     summation(G.GAME.BALATROSTUCK.aspect_levels[self.name] or 0)
                 }
             }
+        end,
+        use = function(self, context)
+            self:switch_slab()
+        end,
+        can_use = function(self)
+            return true
+        end
+    }
+
+    Balatrostuck.Slab{
+        key = 'space',
+        atlas = 'HomestuckAspectSlabs',
+        pos = {
+            x = 3,
+            y = 0
+        },
+        config = {},
+        name = 'Aspect of Space',
+        apply = function(self, slab, context) 
+            if context.start_of_round then
+                G.hand:change_size(summation(slab:level()))
+            end
         end
     }
 end
