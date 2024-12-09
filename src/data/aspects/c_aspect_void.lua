@@ -50,13 +50,21 @@ Balatrostuck.Slab{
     apply = function(self, slab, context)
         if context.start_of_round then
             local voidcount = 0
+            local eligible_editionless_jokers = {}
+            for k, v in pairs(G.jokers.cards) do
+                if v.ability.set == 'Joker' and (not v.edition) then
+                    table.insert(eligible_editionless_jokers, v)
+                end
+            end
             for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i].edition == {negative = true} then voidcount = voidcount + 1 end
             end
-            if voidcount <=  summation(1+(G.GAME.BALATROSTUCK.aspect_levels[slab.name] or 0)) then -- Make the check for max cap negative jokers
-                local temp_pool =  (slab.eligible_editionless_jokers) or {}
-                local eligible_card = pseudorandom_element(temp_pool, pseudoseed('what pumpkin'))
-                eligible_card:set_edition(negative, true)
+            if eligible_editionless_jokers not {} then
+                if voidcount <=  summation(1+(G.GAME.BALATROSTUCK.aspect_levels[slab.name] or 0)) then -- Make the check for max cap negative jokers
+                    local temp_pool =  (eligible_editionless_jokers) or {}
+                    local eligible_card = pseudorandom_element(temp_pool, pseudoseed('what pumpkin'))
+                    eligible_card:set_edition(negative, true)
+                end
             end
         end
     end
