@@ -27,6 +27,12 @@ function Balatrostuck.INIT.Aspects.c_aspect_void()
                     summation(1+(G.GAME.BALATROSTUCK.aspect_levels[self.name] or 0)),
                 }
             }
+        end,
+        use = function(self, context)
+            self:switch_slab()
+        end,
+        can_use = function(self)
+            return true
         end
     }
 end
@@ -45,13 +51,13 @@ Balatrostuck.Slab{
         if context.start_of_round then
             local voidcount = 0
             for i = 1, #G.jokers.cards do
-                if G.jokers.cards[i].edition.type == 'negative' then local voidcount = voidcount + 1 end,
-            if voidcount =<  summation(1+(G.GAME.BALATROSTUCK.aspect_levels[self.name] or 0)) then -- Make the check for max cap negative jokers
-                local temp_pool =  (self.eligible_editionless_jokers) or {}
+                if G.jokers.cards[i].edition == {negative = true} then voidcount = voidcount + 1 end
+            end
+            if voidcount <=  summation(1+(G.GAME.BALATROSTUCK.aspect_levels[slab.name] or 0)) then -- Make the check for max cap negative jokers
+                local temp_pool =  (slab.eligible_editionless_jokers) or {}
                 local eligible_card = pseudorandom_element(temp_pool, pseudoseed('what pumpkin'))
                 eligible_card:set_edition(negative, true)
             end
         end
     end
 }
-end
