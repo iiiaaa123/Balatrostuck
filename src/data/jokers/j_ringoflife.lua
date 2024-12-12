@@ -16,7 +16,7 @@ function Balatrostuck.INIT.Jokers.j_ringoflife()
             x = 4,
             y = 6
         },
-        cost = 5,
+        cost = 6,
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,

@@ -15,7 +15,7 @@ function Balatrostuck.INIT.Jokers.j_roundtwo()
             x = 6,
             y = 7
          },
-        cost = 4,
+        cost = 99,
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,

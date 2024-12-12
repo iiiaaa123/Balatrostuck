@@ -19,7 +19,7 @@ function Balatrostuck.INIT.Jokers.j_sovereignslayer()
             x = 8,
             y = 5
         },
-        cost = 3,
+        cost = 4,
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,

@@ -17,7 +17,7 @@ function Balatrostuck.INIT.Jokers.j_redblood()
             x = 2,
             y = 10
          },
-        cost = 4,
+        cost = 2,
         rarity = 1,
         blueprint_compat = false,
         eternal_compat = true,

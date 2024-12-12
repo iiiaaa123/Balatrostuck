@@ -19,7 +19,7 @@ function Balatrostuck.INIT.Jokers.j_questbed()
             x = 1,
             y = 0
          },
-        cost = 8,
+        cost = 7,
         rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,

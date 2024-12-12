@@ -20,7 +20,7 @@ function Balatrostuck.INIT.Jokers.j_soporpie()
             x = 2,
             y = 4
          },
-        cost = 4,
+        cost = 5,
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,

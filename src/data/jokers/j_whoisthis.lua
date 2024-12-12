@@ -20,7 +20,7 @@ function Balatrostuck.INIT.Jokers.j_whoisthis()
             x = 6,
             y = 2
          },
-        cost = 4,
+        cost = 3,
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,

@@ -18,7 +18,7 @@ function Balatrostuck.INIT.Jokers.j_stress()
             x = 5,
             y = 7
          },
-        cost = 6,
+        cost = 4,
         rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,

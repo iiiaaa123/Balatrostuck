@@ -1,6 +1,6 @@
 function Balatrostuck.INIT.Jokers.j_waywardvagabond()
     SMODS.Joker{
-        name = "Wayward Vagabond",
+        name = "Wayward Vagabond", -- Must later be converted into Pawn Revolution
         key = "waywardvagabond",
         config = {
             extra = {
