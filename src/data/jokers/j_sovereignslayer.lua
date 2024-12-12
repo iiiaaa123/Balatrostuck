@@ -28,7 +28,7 @@ function Balatrostuck.INIT.Jokers.j_sovereignslayer()
         atlas = 'HomestuckJokers',
 
         calculate = function(self,card,context)
-            if context.cardarea == G.jokers and context.after and (next(context.poker_hands["Flush"]) or next(context.poker_hands["Flush Five"]) or next(context.poker_hands["Flush House"]) or next(context.poker_hands["Straight Flush"])) then
+            if context.cardarea == G.jokers and context.before and (next(context.poker_hands["Flush"]) or next(context.poker_hands["Flush Five"]) or next(context.poker_hands["Flush House"]) or next(context.poker_hands["Straight Flush"])) then
                 local has_spades = false
                 for _, v in ipairs(context.scoring_hand) do
                     if v:is_suit("Spades") then has_spades = true end
@@ -36,7 +36,7 @@ function Balatrostuck.INIT.Jokers.j_sovereignslayer()
 
                 if has_spades then
                     G.E_MANAGER:add_event(Event({
-                        trigger = 'after',
+                        trigger = 'before',
                         delay = 0.2,
                         func = function() 
                             for i=1, #context.full_hand, 1 do
