@@ -16,7 +16,7 @@ function Balatrostuck.INIT.Jokers.j_lofaf()
             x = 3,
             y = 8
          },
-        cost = 6,
+        cost = 4,
         rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,

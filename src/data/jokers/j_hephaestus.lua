@@ -17,7 +17,7 @@ function Balatrostuck.INIT.Jokers.j_hephaestus()
             x = 2,
             y = 9
         },
-        cost = 6,
+        cost = 20,
         rarity = 4,
         blueprint_compat = true,
         eternal_compat = true,

@@ -21,7 +21,7 @@ function Balatrostuck.INIT.Jokers.j_horrorterrors()
             x = 8,
             y = 6
          },
-        cost = 3,
+        cost = 4,
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,

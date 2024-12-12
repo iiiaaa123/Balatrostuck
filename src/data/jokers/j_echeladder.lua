@@ -17,7 +17,7 @@ function Balatrostuck.INIT.Jokers.j_echeladder()
             x = 1,
             y = 10
          },
-        cost = 5,
+        cost = 6,
         rarity = 1,
         blueprint_compat = false,
         eternal_compat = true,
