@@ -1,6 +1,6 @@
 function Balatrostuck.INIT.Jokers.j_redblood()
     SMODS.Joker{
-        name = "Redblood",
+        name = "Commander Vantas",
         key = "redblood",
         config = {
             extra = {
@@ -8,7 +8,7 @@ function Balatrostuck.INIT.Jokers.j_redblood()
         },
         enhancement_gate = 'm_wild',
         loc_txt = {
-            ['name'] = 'Redblood',
+            ['name'] = 'Commander Vantas',
             ['text'] = {
                 [1] = '{C:attention}Wild Cards{} can\'t be debuffed'
             }
