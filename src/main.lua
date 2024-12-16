@@ -78,23 +78,22 @@ NFS.load(mod.path.."game_override.lua")()
 NFS.load(mod.path.."utils.lua")()
 
 local joker_list = {
-    --[[ Artifacts     ]] "caledfwlch", "cueball", "jetpack", "ringoflife",
+    --[[ Artifacts     ]] "whatpumpkin","caledfwlch", "cueball", "jetpack", "ringoflife",
     --[[ Derse Agents  ]] "draconiandignitary", "hegemonicbrute", "courtyarddroll", "sovereignslayer", "waywardvagabond",
     --[[ Sylladex      ]] "captchacard", "strifespecibus", "cruxitedowel",
                           "betacopy", "questbed", "note_desolation",
                           "jocker", "joker", "whoisthis",
                           "mirthful", "batterwitch",
                           "dead_shuffle", "dark_carnival",
-                          "gristtorrent",
     --[[ EoA Jokers    ]] "ascend", "descend", "cascade", "collide",
     --[[ Other S pages ]] "stress", "roundtwo",
     --[[ Cherub Jokers ]] "magnificent", "jokermode",
-    --[[ Misc Joker    ]] "tanglebuddies", "horrorterrors","consortconcierge","echeladder",
-    --[[ Troll Jokers  ]] "frustration", "twinarmageddons", "pairing_grid","redblood",
+    --[[ Misc Joker    ]] "tanglebuddies", "horrorterrors",
+    --[[ Troll Jokers  ]] "frustration", "twinarmageddons", "pairing_grid",
     --[[ Vriska Jokers ]] "fluoriteoctet", "lucky_break", "alltheirons",
-    --[[ Food Jokers   ]] "applejuice", "soporpie", "sucker", "whatpumpkin",
+    --[[ Food Jokers   ]] "applejuice", "soporpie", "sucker",
     --[[ Medium Jokers ]] "lohac", "lowas", "lofaf", "lolar", "skaia",
-    --[[ Denizens      ]] "yaldabaoth", "abraxas", "hephaestus", "echidna", "typheus",
+    --[[ Denizens      ]] "yaldabaoth", "abraxas", "hephaestus", "echidna", "typheus", "gristtorrent","consortconcierge","echeladder","redblood",
     --[[ Post-canon    ]] "beyondcanon"
 }
 
