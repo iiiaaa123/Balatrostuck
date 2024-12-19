@@ -4,15 +4,13 @@ function Balatrostuck.INIT.Jokers.j_dark_carnival()
         key = "dark_carnival",
         config = {
             extra = {
-                poker_hand = "Straight",
-                chips = 0,
                 trash_list = {}
             }
         },
         loc_txt = {
             ['name'] = 'Dark Carnival',
             ['text'] = {
-                [1] = "Destroy all played",
+                [1] = "Destroy all scoring",
                 [2] = "ranks corresponding",
                 [3] = "to consumable slot",
                 [4] = "{C:attention}Zodiac cards{}"
@@ -24,50 +22,87 @@ function Balatrostuck.INIT.Jokers.j_dark_carnival()
         },
         cost = 7,
         rarity = 3,
-        blueprint_compat = true,
+        blueprint_compat = false,
         eternal_compat = true,
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
-            return {vars = {card.ability.extra.chips }}
+            return {vars = {}}
         end,
-        calculate = function(self, context)
-            if context.cardarea == G.jokers and context.joker_main then
-                return {
-                    message = localize { type = 'variable', key = 'a_chips', vars = { self.ability.extra.chips } },
-                    chip_mod = self.ability.extra.chips,
-                    colour = G.C.CHIPS
-                }
+        calculate = function(self, card, context)
+            
     
-            elseif context.cardarea == G.play and context.individual and not context.blueprint and (next(context.poker_hands['Straight']) or next(context.poker_hands['Straight Flush'])) then
-                if context.other_card:get_id() < 10 then
-                    table.insert(self.ability.extra.trash_list, context.other_card)
-                    self.ability.extra.chips = context.other_card.base.nominal + self.ability.extra.chips
-                    G.E_MANAGER:add_event(Event({
-                        extra = {
-                            message = localize { type = 'variable', key = 'a_chips', vars = { self.ability.extra.chips } },
-                            focus = self
-                        },
-                        trigger = 'after',
-                        delay = 0.5,
-                        func = function() 
-                            local card = context.other_card
-                            card.getting_sliced = true
-                            if card.ability.name == 'Glass Card' then 
-                                card:shatter()
-                            else
-                                card:start_dissolve()
+            if context.before and not context.blueprint then
+                card.ability.extra.trash_list = {}
+                if G.consumeables.cards[1] then
+                    for i=1, #context.scoring_hand do
+                        local thunk = context.scoring_hand[i]:get_id()
+                        for j=1, #G.consumeables.cards do
+                            if G.consumeables.cards[j].ability.name == "Aquarius" and thunk == 11 then
+                                card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.scoring_hand[i]
+                                break
                             end
-                            return true end }))
-                end
-            elseif context.end_of_round then
-                if not context.blueprint and not context.repetition then
-                    for i = 1, #self.ability.extra.trash_list do
-                        self.ability.extra.trash_list[i]:start_dissolve(nil, true, 0, true)
+                            if G.consumeables.cards[j].ability.name == "Aries" and thunk == 14 then
+                                card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.scoring_hand[i]
+                                break
+                            end
+                            if G.consumeables.cards[j].ability.name == "Cancer" and thunk == 4 then
+                                card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.scoring_hand[i]
+                                break
+                            end
+                            if G.consumeables.cards[j].ability.name == "Capricorn" and thunk == 10 then
+                                card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.scoring_hand[i]
+                                break
+                            end
+                            if G.consumeables.cards[j].ability.name == "Gemini" and thunk == 2 then
+                                card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.scoring_hand[i]
+                                break
+                            end
+                            if G.consumeables.cards[j].ability.name == "Leo" and thunk == 5 then
+                                card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.scoring_hand[i]
+                                break
+                            end
+                            if G.consumeables.cards[j].ability.name == "Libra" and thunk == 7 then
+                                card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.scoring_hand[i]
+                                break
+                            end
+                            if G.consumeables.cards[j].ability.name == "Ophiuchus" and thunk == 13 then
+                                card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.scoring_hand[i]
+                                break
+                            end
+                            if G.consumeables.cards[j].ability.name == "Pisces" and thunk == 12 then
+                                card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.scoring_hand[i]
+                                break
+                            end
+                            if G.consumeables.cards[j].ability.name == "Sagittarius" and thunk == 9 then
+                                card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.scoring_hand[i]
+                                break
+                            end
+                            if G.consumeables.cards[j].ability.name == "Scorpio" and thunk == 8 then
+                                card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.scoring_hand[i]
+                                break
+                            end
+                            if G.consumeables.cards[j].ability.name == "Taurus" and thunk == 3 then
+                                card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.scoring_hand[i]
+                                break
+                            end
+                            if G.consumeables.cards[j].ability.name == "Virgo" and thunk == 6 then
+                                card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.scoring_hand[i]
+                                break
+                            end
+                        end
                     end
-                    self.ability.extra.trash_list = {}
                 end
+
+
+            elseif context.destroying_card and not context.blueprint then
+                for _, v in pairs(card.ability.extra.trash_list) do
+                    if v == context.destroying_card then
+                        return true
+                    end
+                end
+                return nil
             end
         end
     }

@@ -32,12 +32,12 @@ function Balatrostuck.INIT.Jokers.j_waywardvagabond()
                     if context.cardarea == G.play then
                         return {
                             mult = 4,
-                            card = self
+                            card = card
                         }
                     elseif context.cardarea == G.hand then
                         return {
                             h_mult = 4,
-                            card = self
+                            card = card
                         }
                     end
                 end

@@ -21,42 +21,32 @@ function Balatrostuck.INIT.Jokers.j_sovereignslayer()
         },
         cost = 4,
         rarity = 1,
-        blueprint_compat = true,
+        blueprint_compat = false,
         eternal_compat = true,
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
 
         calculate = function(self,card,context)
-            if context.cardarea == G.jokers and context.before and (next(context.poker_hands["Flush"]) or next(context.poker_hands["Flush Five"]) or next(context.poker_hands["Flush House"]) or next(context.poker_hands["Straight Flush"])) then
+            if context.cardarea == G.jokers and context.before and not context.blueprint and (next(context.poker_hands["Flush"]) or next(context.poker_hands["Flush Five"]) or next(context.poker_hands["Flush House"]) or next(context.poker_hands["Straight Flush"])) then
+                card.ability.extra.trash_list = {}
                 local has_spades = false
                 for _, v in ipairs(context.scoring_hand) do
                     if v:is_suit("Spades") then has_spades = true end
                 end
 
                 if has_spades then
-                    G.E_MANAGER:add_event(Event({
-                        trigger = 'before',
-                        delay = 0.2,
-                        func = function() 
-                            for i=1, #context.full_hand, 1 do
-                                local _card = context.full_hand[i]
-                                table.insert(card.ability.extra.trash_list, _card)
-                                if _card.ability.name == 'Glass Card' then 
-                                    _card:shatter()
-                                else
-                                    _card:start_dissolve(nil, i == #context.full_hand)
-                                end
-                            end
-                            return true end }))
+                    for i=1, #context.full_hand do
+                        card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.full_hand[i]
+                    end                              
                 end
-            elseif context.end_of_round then
-                if not context.blueprint and not context.repetition and not context.individual then
-                    for i = 1, #card.ability.extra.trash_list do
-                        card.ability.extra.trash_list[i]:start_dissolve(nil, true, 0, true)
+            elseif context.destroying_card and not context.blueprint then
+                for _, v in pairs(card.ability.extra.trash_list) do
+                    if v == context.destroying_card then
+                        return true
                     end
-                    card.ability.extra.trash_list = {}
                 end
+                return nil
             end
         end
     }
