@@ -34,29 +34,29 @@ function Balatrostuck.INIT.Jokers.j_dead_shuffle()
         loc_vars = function(self, info_queue, card)
             return {vars = {card.ability.extra.xmult, card.ability.extra.suit, card.ability.extra.total}}
         end,
-        calculate = function(self, context)
+        calculate = function(self, card, context)
             if context.cardarea == G.jokers and context.joker_main then
                  return {
-                     message = localize { type = 'variable', key = 'a_xmult', vars = { self.ability.extra.total } },
-                     Xmult_mod = self.ability.extra.total,
+                     message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.total } },
+                     Xmult_mod = card.ability.extra.total,
                      colour = G.C.RED
                  }
             
             elseif context.cardarea == G.play and context.individual and not context.repetition then
-                if context.other_card:is_suit(self.ability.extra.suit) and context.other_card:get_id() == 14 then
-                    self.ability.extra.total = self.ability.extra.total + self.ability.extra.xmult
+                if context.other_card:is_suit(card.ability.extra.suit) and context.other_card:get_id() == 14 then
+                    card.ability.extra.total = card.ability.extra.total + card.ability.extra.xmult
                     return {
                         extra = {
-                            focus = self,
-                            message = localize { type = 'variable', key = 'a_xmult', vars = { self.ability.extra.total } },
+                            focus = card,
+                            message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.total } },
                             colour = G.C.RED
                         }
                     }
                 end
             
             elseif context.end_of_round and not context.blueprint and not context.repetition and not context.individual then
-                self.ability.extra.total = 1
-                self.ability.extra.suit = pseudorandom_element({'Spades','Hearts','Diamonds','Clubs'}, pseudoseed('deadshuffle'))
+                card.ability.extra.total = 1
+                card.ability.extra.suit = pseudorandom_element({'Spades','Hearts','Diamonds','Clubs'}, pseudoseed('deadshuffle'..G.GAME.round_resets.ante))
     
                 return {
                     message = localize('k_reset'),

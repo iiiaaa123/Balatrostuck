@@ -32,26 +32,19 @@ function Balatrostuck.INIT.Jokers.j_abraxas()
         },
         loc_vars = function(self, info_queue, card)
             return {vars = {card.ability.extra.h_plays, card.ability.extra.h_size}}
+        end,
+
+
+        add_to_deck = function(self, card, from_debuff)
+            G.hand:change_size(card.ability.extra.h_size)
+            G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.h_plays
+        end,
+    
+        remove_from_deck = function(self, card, from_debuff)
+            G.hand:change_size(-card.ability.extra.h_size)
+            G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.h_plays
         end
     }
     
-    -- local remove_from_deckref = Card.add_to_deck
-    -- function Card:remove_from_deck(from_debuff)
-    --     if self.ability.name == "Abraxas" and self.added_to_deck then
-    --         self.added_to_deck = false
-    --         G.hand:change_size(-self.ability.extra.h_size)
-    --         G.GAME.round_resets.hands = G.GAME.round_resets.hands - self.ability.extra.h_plays
-    --     end
-    --     remove_from_deckref(self, from_debuff)
-    -- end
-
-    -- local add_to_deckref = Card.add_to_deck
-    -- function Card:add_to_deck(from_debuff)
-    --     if self.ability.name == "Abraxas" and not self.added_to_deck then
-    --         self.added_to_deck = true
-    --         G.hand:change_size(self.ability.extra.h_size)
-    --         G.GAME.round_resets.hands = G.GAME.round_resets.hands + self.ability.extra.h_plays
-    --     end
-    --     add_to_deckref(self, from_debuff)
-    -- end
+    
 end

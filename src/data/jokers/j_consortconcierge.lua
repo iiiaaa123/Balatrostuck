@@ -1,4 +1,4 @@
--- TODO: reset hand size if DESTROYED midround, works correctly if sold midround
+
 function Balatrostuck.INIT.Jokers.j_consortconcierge()
     SMODS.Joker{
         name = "Consort Concierge",
@@ -33,6 +33,10 @@ function Balatrostuck.INIT.Jokers.j_consortconcierge()
             return {vars = {card.ability.extra.h_size}}
         end,
 
+        remove_from_deck = function(self, card, from_debuff)
+            G.hand:change_size(-card.ability.extra.h_size)
+        end,
+
         calculate = function(self, card, context)
             if context.joker_main and context.cardarea == G.jokers and context.scoring_hand and card.ability.extra.h_size < 4 then
                 card.ability.extra.h_size = card.ability.extra.h_size + 1,
@@ -41,13 +45,8 @@ function Balatrostuck.INIT.Jokers.j_consortconcierge()
             elseif context.end_of_round and not (context.repetition or context.individual or context.blueprint) then
                 G.hand:change_size(-card.ability.extra.h_size)
                 card.ability.extra.h_size = 0
-            
-            elseif context.selling_self then 
-                if card.ability.extra.h_size ~= 0 then
-                    G.hand:change_size(-card.ability.extra.h_size)
-                    card.ability.extra.h_size = 0    
-                end   
-        end
+        end  
+        
     end
     }
 end

@@ -33,23 +33,23 @@ function Balatrostuck.INIT.Jokers.j_sucker()
             return {vars = {G.GAME.probabilities.normal, card.ability.extra.base }}
         end,
 
-        calculate = function(self, context)
+        calculate = function(self, card, context)
 
             if context.joker_main and context.cardarea == G.jokers then
-                if pseudorandom('suckers') < G.GAME.probabilities.normal / self.ability.extra.base then
+                if pseudorandom('suckers') < G.GAME.probabilities.normal / card.ability.extra.base then
                     return {
-                        message = localize { type = 'variable', key = 'a_xmult', vars = { self.ability.extra.base } },
-                        Xmult_mod = self.ability.extra.base
+                        message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.base } },
+                        Xmult_mod = card.ability.extra.base
                     }
                 end
 
             elseif context.end_of_round and not context.individual and not context.blueprint and not context.repetition then
-                if self.ability.extra.base - self.ability.extra.decrement <= 1 then 
+                if card.ability.extra.base - card.ability.extra.decrement <= 1 then 
 
-                    self.getting_sliced = true
+                    card.getting_sliced = true
                     G.E_MANAGER:add_event(Event({
                         func = function()
-                            self:start_dissolve({G.C.RED}, nil, 1.6)
+                            card:start_dissolve({G.C.RED}, nil, 1.6)
                             return true;
                         end
                     }))
@@ -75,16 +75,16 @@ function Balatrostuck.INIT.Jokers.j_sucker()
                         colour = G.C.FILTER
                     }
                 else
-                    self.ability.extra.base = self.ability.extra.base - self.ability.extra.decrement
+                    card.ability.extra.base = card.ability.extra.base - card.ability.extra.decrement
                     G.E_MANAGER:add_event(Event({
                         delay = 0.2,
-                        message = '-'..self.ability.extra.decrement,
+                        message = '-'..card.ability.extra.decrement,
                         colour = G.C.GREEN,
                     }))
                     return {
                         trigger = 'after',
                         delay = 0.2,
-                        message = localize{type='variable',key='a_xmult_minus',vars={self.ability.extra.decrement}},
+                        message = localize{type='variable',key='a_xmult_minus',vars={card.ability.extra.decrement}},
                         colour = G.C.RED
                     }
                 end

@@ -30,15 +30,15 @@ function Balatrostuck.INIT.Jokers.j_cascade()
         loc_vars = function(self, info_queue, card)
             return {vars = {card.ability.extra.retrigger_every}}
         end,
-        calculate = function (self, context)
-            if context.repetition and context.cardarea == G.play and not (context.blueprint or context.idividual or context.after or context.before) then
+        calculate = function (self, card, context)
+            if context.repetition and context.cardarea == G.play then
                 local text,disp_text = G.FUNCS.get_poker_hand_info(context.full_hand)
-                local retrigs = math.floor(G.GAME.hands[text].level/self.ability.extra.retrigger_every)
+                local retrigs = math.floor(G.GAME.hands[text].level/card.ability.extra.retrigger_every)
     
                 return {
                     message = localize('k_again_ex'),
                     repetitions = retrigs,
-                    card = self
+                    card = card
                 }
             end
         end

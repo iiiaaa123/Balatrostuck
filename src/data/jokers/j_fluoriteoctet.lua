@@ -1,4 +1,3 @@
--- TODO: Finish payouts logic! Missing seal payout 
 function Balatrostuck.INIT.Jokers.j_fluoriteoctet() 
 
     local locs = {
@@ -107,6 +106,19 @@ function Balatrostuck.INIT.Jokers.j_fluoriteoctet()
                         end
 
                     elseif payout == 'seal' then
+                        local _cards = {}
+                        for i=1, #context.scoring_hand do
+                            if not context.scoring_hand[i].seal then
+                                _cards[#_cards+1] = context.scoring_hand[i]
+                            end
+                        end
+                        if _cards[1] then
+                            local _card = pseudorandom_element(_cards, pseudoseed("yeah!!!!!!!!"))
+                            local seal_type = SMODS.poll_seal({guaranteed = true})
+                            _card:set_seal(seal_type, true)
+                            _card:juice_up(0.5,0.5)
+                            
+                        end
 
                     elseif payout == 'spectral' then
                         if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then

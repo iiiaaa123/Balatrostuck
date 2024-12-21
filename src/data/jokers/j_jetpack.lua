@@ -34,11 +34,11 @@ function Balatrostuck.INIT.Jokers.j_jetpack()
             return {vars = {card.ability.extra.mult, G.GAME.probabilities.normal, card.ability.extra.denominator}}
         end,
 
-        calculate = function(self, context)
+        calculate = function(self, card, context)
             if context.cardarea == G.jokers and context.before then
                 local debuffs = {}
                 for _, v in ipairs(context.scoring_hand) do
-                    if pseudoseed("this_is_stupid!") < (G.GAME.probabilities.normal / self.ability.extra.denominator) then
+                    if pseudoseed("this_is_stupid!") < (G.GAME.probabilities.normal / card.ability.extra.denominator) then
                         debuffs[#debuffs + 1] = v
                     end
                 end
@@ -57,7 +57,7 @@ function Balatrostuck.INIT.Jokers.j_jetpack()
                     return {
                         message = localize('k_debuffed'),
                         colour = G.C.RED,
-                        card = self,
+                        card = card,
                     }
                 end
                 --     G.E_MANAGER:add_event(Event({
@@ -76,12 +76,12 @@ function Balatrostuck.INIT.Jokers.j_jetpack()
                     return {
                         message = localize('k_debuffed'),
                         colour = G.C.RED,
-                        card = self,
+                        card = card,
                     }
                 else
                     return {
-                        mult = self.ability.extra.mult,
-                        card = self
+                        mult = card.ability.extra.mult,
+                        card = card
                     }
                 end
             end

@@ -33,20 +33,19 @@ function Balatrostuck.INIT.Jokers.j_hephaestus()
             return {vars = {card.ability.extra}}
         end,
 
-        calculate = function(self, context)
-            if context.individual and (context.cardarea == G.play or context.cardarea == G.hand) then
-                local card = context.other_card
-                if card.config.center == G.P_CENTERS.m_steel then
+        calculate = function(self, card, context)
+            if context.individual and (context.cardarea == G.play or context.cardarea == G.hand) and not context.end_of_round then
+                if context.other_card.ability.name == 'Steel Card' then
                     if context.other_card.debuff then
                         return {
                             message = localize('k_debuffed'),
                             colour = G.C.RED,
-                            card = self,
+                            card = card,
                         }
                     else
                         return {
-                            x_mult = self.ability.extra,
-                            card = self
+                            x_mult = card.ability.extra,
+                            card = card
                         }
                     end
                 end
