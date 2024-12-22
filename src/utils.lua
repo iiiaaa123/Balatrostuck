@@ -40,3 +40,15 @@ function summation(n)
     end
     return sum
 end
+
+function sum_levels()
+    return ((G.GAME.hands['High Card'].level)+(G.GAME.hands['Pair'].level)+(G.GAME.hands['Two Pair'].level)+(G.GAME.hands['Three of a Kind'].level)+(G.GAME.hands['Straight'].level)+(G.GAME.hands['Flush'].level)+(G.GAME.hands['Full House'].level )+(G.GAME.hands['Four of a Kind'].level)+(G.GAME.hands['Straight Flush'].level)+(G.GAME.hands['Five of a Kind'].level)+(G.GAME.hands['Flush House'].level)+(G.GAME.hands['Flush Five'].level))
+end
+
+local lup = level_up_hand
+function level_up_hand(mod, x)
+    lup(mod, x)
+    for i = 1, #G.jokers.cards do
+        local effects = G.jokers.cards[i]:calculate_joker({ bstuck_level_up_hand = mod })
+    end
+end
