@@ -49,7 +49,7 @@ end
 '''
 position = "after"
 payload = '''
-if next(find_joker("Redblood")) and self.ability.name == "Wild Card" then should_debuff = false end
+if next(find_joker("Commander Vantas")) and self.ability.name == "Wild Card" then should_debuff = false end
 '''
 match_indent = true
 
