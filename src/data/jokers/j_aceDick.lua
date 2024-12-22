@@ -13,14 +13,14 @@ function Balatrostuck.INIT.Jokers.j_aceDick()
         },
         pos = {x = 7, y = 8},
         cost = 6,
-        rarity = 1,
-        blueprint_compat = true,
+        rarity = 2,
+        blueprint_compat = false,
         eternal_compat = true,
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
-            if context.ace_dick then 
+            if context.ace_dick and not context.blueprint then 
                 hand_chips = hand_chips + card.ability.extra.chips
                 mult = mult + card.ability.extra.mult
                 update_hand_text({delay = 0}, {chips = card.ability.extra.chips and hand_chips, mult = card.ability.extra.mult and mult})
