@@ -20,7 +20,7 @@ function Balatrostuck.INIT.Jokers.j_aceDick()
         discovered = true,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
-            if context.final_scoring_step then 
+            if context.ace_dick then 
                 hand_chips = hand_chips + card.ability.extra.chips
                 mult = mult + card.ability.extra.mult
                 update_hand_text({delay = 0}, {chips = card.ability.extra.chips and hand_chips, mult = card.ability.extra.mult and mult})

@@ -81,6 +81,15 @@ for j = 1, #G.jokers.cards do
         nu_mult = tempTable[2] or u_mult
     end
 end
+
+-- THIS IS STUPID
+for j = 1, #G.jokers.cards do
+    local tempTable = G.jokers.cards[j]:calculate_joker({ace_dick = true})
+    if tempTable ~= nil then
+        nu_chip = tempTable[1] or nu_chip
+        nu_mult = tempTable[2] or u_mult
+    end
+end
 '''
 match_indent = true
 times = 1
