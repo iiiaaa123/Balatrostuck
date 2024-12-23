@@ -86,7 +86,7 @@ local joker_list = {
                           "mirthful", "batterwitch",
                           "dead_shuffle", "dark_carnival","tumor",
     --[[ EoA Jokers    ]] "ascend", "descend", "cascade", "collide",
-    --[[ Other S pages ]] "stress", "roundtwo",
+    --[[ Other S pages ]] "synchronization", "roundtwo",
     --[[ Cherub Jokers ]] "magnificent", "jokermode",
     --[[ Misc Joker    ]] "tanglebuddies", "horrorterrors","purrfectwarrior","lonegunbird",
     --[[ Troll Jokers  ]] "frustration", "twinarmageddons", "pairing_grid",
