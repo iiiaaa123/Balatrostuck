@@ -91,7 +91,7 @@ local joker_list = {
     --[[ Misc Joker    ]] "tanglebuddies", "horrorterrors","purrfectwarrior","lonegunbird",
     --[[ Troll Jokers  ]] "frustration", "twinarmageddons", "pairing_grid",
     --[[ Vriska Jokers ]] "fluoriteoctet", "lucky_break", "alltheirons",
-    --[[ Food Jokers   ]] "applejuice", "soporpie", "sucker",
+    --[[ Food Jokers   ]] "applejuice", "soporpie", "sucker","faygo",
     --[[ Medium Jokers ]] "lohac", "lowas", "lofaf", "lolar", "skaia",
     --[[ Denizens      ]] "yaldabaoth", "abraxas", "hephaestus", "echidna", "typheus", "gristtorrent","consortconcierge","echeladder","redblood",
     --[[ Post-canon    ]] "beyondcanon",
@@ -134,3 +134,10 @@ SMODS.Atlas({key = "HomestuckAspects", path = "aspect.png", px = 71, py = 95, at
 SMODS.Atlas({key = "HomestuckLogo", path = "bstuck_logo.png", px = 34, py = 34, atlas_table = "ASSET_ATLAS"}):register()
 SMODS.Atlas({key = "HomestuckAspectBooster", path = "booster.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
 -- SMODS.Atlas({key = "HomestuckZodiacBooster", path = "booster_zodiac.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
+
+local UI, load_error = SMODS.load_file("bstuckui.lua")
+if load_error then
+  sendDebugMessage ("something fucked!!!! its this: "..load_error)
+else
+  UI()
+end
