@@ -84,7 +84,11 @@ local joker_list = {
 "betacopy", "echeladder","captchacard", "strifespecibus","collide",
 "applejuice", "clover", "mirthful", "synchronization", "jetpack", 
 
-    --[[ Artifacts     ]] "whatpumpkin","caledfwlch", "cueball","ringoflife",
+-- Page 3
+"caledfwlch", "nepetajoker",
+
+
+    --[[ Artifacts     ]] "whatpumpkin", "cueball","ringoflife",
     --[[ Derse Agents  ]] "draconiandignitary", "hegemonicbrute", "courtyarddroll", "sovereignslayer", "waywardvagabond","operation_regisurp",
     --[[ Sylladex      ]]  "cruxitedowel",
                         "questbed", "note_desolation","commandervantas",
