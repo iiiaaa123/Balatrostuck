@@ -1,24 +1,25 @@
-function Balatrostuck.INIT.Jokers.j_conventioncenter()
+function Balatrostuck.INIT.Jokers.j_misspaint()
     SMODS.Joker{
-        name = "Convention Center",
-        key = "conventioncenter",
+        name = "Miss Paint",
+        key = "misspaint",
         config = {
             extra = {
             }
         },
         loc_txt = {
-            ['name'] = 'Convention Center',
+            ['name'] = 'Miss Paint',
             ['text'] = {
-                [1] = "+1 shop slot"
+                [1] = "Gains +1 mult when a card changes suits",
+                [2] = "[Currently: +4 mult]"
             }
         },
         pos = {
             x = 2,
             y = 0
          },
-        cost = 3,
+        cost = 4,
         rarity = 1,
-        blueprint_compat = false,
+        blueprint_compat = true,
         eternal_compat = true,
         unlocked = true,
         discovered = true,

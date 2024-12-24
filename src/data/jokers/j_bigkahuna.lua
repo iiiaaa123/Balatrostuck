@@ -1,24 +1,25 @@
-function Balatrostuck.INIT.Jokers.j_conventioncenter()
+function Balatrostuck.INIT.Jokers.j_bigkahuna()
     SMODS.Joker{
-        name = "Convention Center",
-        key = "conventioncenter",
+        name = "Big Kahuna",
+        key = "bigkahuna",
         config = {
             extra = {
             }
         },
         loc_txt = {
-            ['name'] = 'Convention Center',
+            ['name'] = 'Big Kahuna',
             ['text'] = {
-                [1] = "+1 shop slot"
+                [1] = "After beating a blind",
+                [2] = "create a paradox lovers card"
             }
         },
         pos = {
             x = 2,
             y = 0
          },
-        cost = 3,
+        cost = 6,
         rarity = 1,
-        blueprint_compat = false,
+        blueprint_compat = true,
         eternal_compat = true,
         unlocked = true,
         discovered = true,

@@ -88,13 +88,14 @@ local joker_list = {
     --[[ EoA Jokers    ]] "ascend", "descend", "cascade", "collide",
     --[[ Other S pages ]] "synchronization", "roundtwo",
     --[[ Cherub Jokers ]] "magnificent", "jokermode", 
-    --[[ Misc Joker    ]] "tanglebuddies", "horrorterrors","purrfectwarrior","lonegunbird","biscuits", "clover", "parcelmistress", "amberfirefly", "whitequeen",
-    --[[ Troll Jokers  ]] "frustration", "twinarmageddons", "pairing_grid", "conventioncenter",
+    --[[ Misc Joker    ]] "tanglebuddies", "horrorterrors","purrfectwarrior","lonegunbird","biscuits", "clover", "parcelmistress", "amberfirefly", "whitequeen", 
+                           "conditionalimmortality", "misspaint",
+    --[[ Troll Jokers  ]] "frustration", "twinarmageddons", "pairing_grid", "conventioncenter", "hotdogjuggler", "culling",
     --[[ Vriska Jokers ]] "fluoriteoctet", "lucky_break", "alltheirons",
     --[[ Food Jokers   ]] "applejuice", "soporpie", "sucker","faygo",
     --[[ Medium Jokers ]] "lohac", "lowas", "lofaf", "lolar", "skaia",
     --[[ Denizens      ]] "yaldabaoth", "abraxas", "hephaestus", "echidna", "typheus", "gristtorrent","consortconcierge","echeladder","redblood",
-    --[[ Post-canon    ]] "beyondcanon",
+    --[[ Post-canon    ]] "beyondcanon", "bigkahuna", "smallerbutterflies",
     --[[ MSPA Jokers   ]] "stump", "aceDick"
 }
 
