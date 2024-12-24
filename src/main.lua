@@ -78,24 +78,29 @@ NFS.load(mod.path.."game_override.lua")()
 NFS.load(mod.path.."utils.lua")()
 
 local joker_list = {
-    --[[ Artifacts     ]] "whatpumpkin","caledfwlch", "cueball", "jetpack", "ringoflife",
+
+-- Page 1
+"cruxiteapple", "ascend", "enterthemedium", "descend", "cascade", 
+"betacopy", "echeladder","captchacard", "strifespecibus","collide",
+"applejuice", "clover", "mirthful", "synchronization", "jetpack", 
+
+    --[[ Artifacts     ]] "whatpumpkin","caledfwlch", "cueball","ringoflife",
     --[[ Derse Agents  ]] "draconiandignitary", "hegemonicbrute", "courtyarddroll", "sovereignslayer", "waywardvagabond","operation_regisurp",
-    --[[ Sylladex      ]] "captchacard", "strifespecibus", "cruxitedowel",
-                          "betacopy", "questbed", "note_desolation","commandervantas",
+    --[[ Sylladex      ]]  "cruxitedowel",
+                        "questbed", "note_desolation","commandervantas",
                           "jocker", "joker", "whoisthis",
-                          "mirthful", "batterwitch",
+                        "batterwitch",
                           "dead_shuffle", "dark_carnival","tumor","kernelsprite",
-    --[[ EoA Jokers    ]] "ascend", "enterthemedium", "descend", "cascade", "collide",
-    --[[ Other S pages ]] "synchronization", "roundtwo",
+    --[[ Other S pages ]] "roundtwo",
     --[[ Cherub Jokers ]] "magnificent", "jokermode", 
-    --[[ Misc Joker    ]] "tanglebuddies", "horrorterrors","purrfectwarrior","lonegunbird","biscuits", "clover", "parcelmistress", "amberfirefly", "whitequeen", 
+    --[[ Misc Joker    ]] "tanglebuddies", "horrorterrors","purrfectwarrior","lonegunbird","biscuits", "parcelmistress", "amberfirefly", "whitequeen", 
                            "conditionalimmortality", "misspaint", "cloudwatching",
     --[[ Troll Jokers  ]] "frustration", "twinarmageddons", "pairing_grid", "conventioncenter", "hotdogjuggler", "culling",
                           "trolltrain",
     --[[ Vriska Jokers ]] "fluoriteoctet", "lucky_break", "alltheirons",
-    --[[ Food Jokers   ]] "applejuice", "soporpie", "sucker","faygo",
+    --[[ Food Jokers   ]] "soporpie", "sucker","faygo",
     --[[ Medium Jokers ]] "lohac", "lowas", "lofaf", "lolar", "skaia",
-    --[[ Denizens      ]] "yaldabaoth", "abraxas", "hephaestus", "echidna", "typheus", "gristtorrent","consortconcierge","echeladder","redblood",
+    --[[ Denizens      ]] "yaldabaoth", "abraxas", "hephaestus", "echidna", "typheus", "gristtorrent","consortconcierge","redblood",
     --[[ Post-canon    ]] "beyondcanon", "bigkahuna", "smallerbutterflies",
     --[[ MSPA Jokers   ]] "stump", "aceDick"
 }
