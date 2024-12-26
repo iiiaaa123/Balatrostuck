@@ -51,9 +51,11 @@ function Balatrostuck.INIT.Jokers.j_sovereignslayer()
             elseif context.destroying_card and not context.blueprint then
                 for _, v in pairs(card.ability.extra.trash_list) do
                     if v == context.destroying_card then
+                        card_eval_status_text(context.destroying_card, 'extra', nil, nil, nil, {message = "Stab!", colour = G.C.RED})
                         return true
                     end
                 end
+                card_eval_status_text(context.destroying_card, 'extra', nil, nil, nil, {message = "Walk!", colour = G.C.SUITS.Spades})
                 return nil
             end
         end
