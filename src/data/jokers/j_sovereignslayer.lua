@@ -4,7 +4,8 @@ function Balatrostuck.INIT.Jokers.j_sovereignslayer()
         key = "sovereignslayer",
         config = {
             extra = {
-                trash_list = {}
+                trash_list = {},
+                odds = 3
             }
         },
         loc_txt = {
@@ -12,7 +13,8 @@ function Balatrostuck.INIT.Jokers.j_sovereignslayer()
             ['text'] = {
                 [1] = 'If played hand contains',
                 [2] = 'a {C:attention}Flush{} and {C:spades}Spades{},',
-                [3] = 'destroy all {C:attention}played cards',
+                [3] = 'each {C:attention}played card{} has a',
+                [4] = '{C:green}#2# in #1#{} chance to be destroyed'
             }
         },
         pos = {
@@ -27,6 +29,10 @@ function Balatrostuck.INIT.Jokers.j_sovereignslayer()
         discovered = true,
         atlas = 'HomestuckJokers',
 
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.extra.odds, G.GAME.probabilities.normal,}}
+        end,
+
         calculate = function(self,card,context)
             if context.cardarea == G.jokers and context.before and not context.blueprint and (next(context.poker_hands["Flush"]) or next(context.poker_hands["Flush Five"]) or next(context.poker_hands["Flush House"]) or next(context.poker_hands["Straight Flush"])) then
                 card.ability.extra.trash_list = {}
@@ -37,7 +43,9 @@ function Balatrostuck.INIT.Jokers.j_sovereignslayer()
 
                 if has_spades then
                     for i=1, #context.full_hand do
-                        card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.full_hand[i]
+                        if pseudorandom('black') < G.GAME.probabilities.normal / card.ability.extra.odds then
+                            card.ability.extra.trash_list[#card.ability.extra.trash_list+1] = context.full_hand[i]
+                        end
                     end                              
                 end
             elseif context.destroying_card and not context.blueprint then
