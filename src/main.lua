@@ -86,7 +86,8 @@ local joker_list = {
 
 -- Page 2
 "cruxitedowel", "operation_regisurp","cloudwatching","note_desolation", "clownincar",
-"commandervantas", "bigkahuna",
+"commandervantas", "bigkahuna", "dolorosa", "twinarmageddons", "mobiusdoublereacharound",
+"cueball", "alltheirons", "fluoriteoctet", "backseater", "lucky_break",
 
 -- Page 3
 "caledfwlch", "nepetajoker", "frogbreeding", "dead_shuffle", "jocker",
@@ -94,25 +95,29 @@ local joker_list = {
 "lohac", "lowas", "lofaf", "lolar", "skaia",
 
 -- Page 4
-"kernelsprite", "whatpumpkin",
+"kernelsprite", "whatpumpkin", "genejoker", "whoisthis", "biscuits",
+"culling", "pairing_grid", "innapropriatebucket", "frustration", "ectobiology",
+"smallerbutterflies", "misspaint", "consortconcierge", "tanglebuddies", "horrorterrors",
 
-    --[[ Artifacts     ]] "cueball","ringoflife",
-    --[[ Derse Agents  ]] "waywardvagabond",
+-- Page 5
+"waywardvagabond", "amberfirefly", "whitequeen", "parcelmistress", "aimlessrenegade",
+"balletslippers", "lonegunbird", "oldsecret","trolltrain", "hotdogjuggler",
+
+    --[[ Artifacts     ]] "ringoflife",
     --[[ Sylladex      ]]  
                         "questbed",
-                           "joker", "whoisthis",
+                           "joker",
                         "batterwitch",
                            "dark_carnival","tumor",
     --[[ Other S pages ]] "roundtwo",
     --[[ Cherub Jokers ]] "magnificent", "jokermode", 
-    --[[ Misc Joker    ]] "tanglebuddies", "horrorterrors","purrfectwarrior","lonegunbird","biscuits", "parcelmistress", "amberfirefly", "whitequeen", 
-                           "conditionalimmortality", "misspaint", 
-    --[[ Troll Jokers  ]] "frustration", "twinarmageddons", "pairing_grid", "conventioncenter", "hotdogjuggler", "culling",
-                          "trolltrain",
-    --[[ Vriska Jokers ]] "fluoriteoctet", "lucky_break", "alltheirons",
+    --[[ Misc Joker    ]] "purrfectwarrior", 
+                           "conditionalimmortality",
+    --[[ Troll Jokers  ]] "conventioncenter", 
+                          
     --[[ Food Jokers   ]] "soporpie", "sucker","faygo",
-    --[[ Denizens      ]] "yaldabaoth", "abraxas", "hephaestus", "echidna", "typheus", "gristtorrent","consortconcierge","redblood",
-    --[[ Post-canon    ]] "beyondcanon", "smallerbutterflies",
+    --[[ Denizens      ]] "yaldabaoth", "abraxas", "hephaestus", "echidna", "typheus", "gristtorrent","redblood",
+    --[[ Post-canon    ]] "beyondcanon",
     --[[ MSPA Jokers   ]] "stump", "aceDick"
 }
 
