@@ -102,22 +102,28 @@ local joker_list = {
 -- Page 5
 "waywardvagabond", "amberfirefly", "whitequeen", "parcelmistress", "aimlessrenegade",
 "balletslippers", "lonegunbird", "oldsecret","trolltrain", "hotdogjuggler",
+"vasterror", "verticlemovements", "paintseal", 'Descendascend', "conventioncenter", 
+
+-- Page 6
+"sucker", "roundtwo", "tumor", "vodkamutini", "purrfectwarrior", 
+"lordoftime", "museofspace", "problemsleuth",
+"gristtorrent", "batterwitch", "beyondcanon",
+
+-- Page 7
+
+-- Page 8
+"conditionalimmortality", "joker", "questbed",
+
+"echidna", "abraxas", "yaldabaoth", "typheus", "hephaestus",
 
     --[[ Artifacts     ]] "ringoflife",
     --[[ Sylladex      ]]  
-                        "questbed",
-                           "joker",
-                        "batterwitch",
-                           "dark_carnival","tumor",
-    --[[ Other S pages ]] "roundtwo",
+                           "dark_carnival",
     --[[ Cherub Jokers ]] "magnificent", "jokermode", 
-    --[[ Misc Joker    ]] "purrfectwarrior", 
-                           "conditionalimmortality",
-    --[[ Troll Jokers  ]] "conventioncenter", 
+                           
                           
-    --[[ Food Jokers   ]] "soporpie", "sucker","faygo",
-    --[[ Denizens      ]] "yaldabaoth", "abraxas", "hephaestus", "echidna", "typheus", "gristtorrent","redblood",
-    --[[ Post-canon    ]] "beyondcanon",
+    --[[ Food Jokers   ]] "soporpie", "faygo",
+    --[[ Denizens      ]] "redblood",
     --[[ MSPA Jokers   ]] "stump", "aceDick"
 }
 
