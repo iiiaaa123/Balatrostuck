@@ -102,7 +102,7 @@ local joker_list = {
 -- Page 5
 "waywardvagabond", "amberfirefly", "whitequeen", "parcelmistress", "aimlessrenegade",
 "balletslippers", "lonegunbird", "oldsecret","trolltrain", "hotdogjuggler",
-"vasterror", "verticlemovements", "paintseal", 'Descendascend', "conventioncenter", 
+"vasterror", "verticlemovements", "paintseal", "descendascend", "conventioncenter", 
 
 -- Page 6
 "sucker", "roundtwo", "tumor", "vodkamutini", "purrfectwarrior", 
