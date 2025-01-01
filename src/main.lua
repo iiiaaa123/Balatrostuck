@@ -115,8 +115,8 @@ local joker_list = {
 "impetuscombcharging", "sepulcritude", "dadswallet", "gamebro", "complacencyofthelearned",
 
 -- Page 8
-"conditionalimmortality", "joker", "questbed",
-"magnificent", "jokermode", 
+"conditionalimmortality", "theplotpoint", "objectduality","joker", "questbed",
+"yourlordandmaster", "magnificent", "jokermode", "crowbarsfelt", "signofthesignless",
 "echidna", "abraxas", "yaldabaoth", "typheus", "hephaestus",
 }
 
