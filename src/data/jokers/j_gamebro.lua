@@ -1,24 +1,24 @@
-function Balatrostuck.INIT.Jokers.j_wake()
+function Balatrostuck.INIT.Jokers.j_gamebro()
     SMODS.Joker{
-        name = "Wake",
-        key = "wake",
+        name = "Game Bro",
+        key = "gamebro",
         config = {
             extra = {
             }
         },
         loc_txt = {
-            ['name'] = 'Dark Scholar',
+            ['name'] = 'Game Bro',
             ['text'] = {
-                [1] = "Played Jacks give +1 hand when scored and are destroyed",
-                [2] = "If this card is sold during a blind create paradox copies of jacks destroyed by it"
+                [1] = "N in 5 chance to give +N*10 mult,",
+                [2] = "where N is equal to the amount of scoring bonus cards in played hand"
             }
         },
         pos = {
             x = 2,
             y = 0
          },
-        cost = 9,
-        rarity = 3,
+        cost = 6,
+        rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,
         unlocked = true,

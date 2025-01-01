@@ -1,23 +1,23 @@
-function Balatrostuck.INIT.Jokers.j_wake()
+function Balatrostuck.INIT.Jokers.j_impetuscombcharging()
     SMODS.Joker{
-        name = "Wake",
-        key = "wake",
+        name = "Impetus Comb Charging",
+        key = "impetuscombcharging",
         config = {
             extra = {
             }
         },
         loc_txt = {
-            ['name'] = 'Dark Scholar',
+            ['name'] = 'Impetus Comb Charging',
             ['text'] = {
-                [1] = "Played Jacks give +1 hand when scored and are destroyed",
-                [2] = "If this card is sold during a blind create paradox copies of jacks destroyed by it"
+                [1] = "First played Three of a Kind gives a D6 tag. Resets every ante.",
+                [2] = "Unleash sepulcritude after 20 rerolls. [Currently: 0/20]"
             }
         },
         pos = {
             x = 2,
             y = 0
          },
-        cost = 9,
+        cost = 7,
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,

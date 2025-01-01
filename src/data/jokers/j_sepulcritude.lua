@@ -1,23 +1,23 @@
-function Balatrostuck.INIT.Jokers.j_wake()
+function Balatrostuck.INIT.Jokers.j_sepulcritude()
     SMODS.Joker{
-        name = "Wake",
-        key = "wake",
+        name = "Sepulchritude",
+        key = "sepulcritude",
         config = {
             extra = {
             }
         },
         loc_txt = {
-            ['name'] = 'Dark Scholar',
+            ['name'] = 'Sepulchritude',
             ['text'] = {
-                [1] = "Played Jacks give +1 hand when scored and are destroyed",
-                [2] = "If this card is sold during a blind create paradox copies of jacks destroyed by it"
+                [1] = "4x mult if played hand",
+                [2] = "is a three-of-a-kind with faces"
             }
         },
         pos = {
             x = 2,
             y = 0
          },
-        cost = 9,
+        cost = 20,
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,

@@ -111,7 +111,8 @@ local joker_list = {
 
 -- Page 7
 "faygo", "stump", "porkhollow", "ringoflife", "ringofvoid",
-"pawnrevolution", "dark_carnival", "soporpie", "darkscholar",
+"pawnrevolution", "dark_carnival", "soporpie", "darkscholar","wake",
+"impetuscombcharging", "sepulcritude", "dadswallet", "gamebro", "complacencyofthelearned",
 
 -- Page 8
 "conditionalimmortality", "joker", "questbed",
