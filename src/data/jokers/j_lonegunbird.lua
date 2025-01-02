@@ -17,8 +17,8 @@ function Balatrostuck.INIT.Jokers.j_lonegunbird()
             }
         },
         pos = {
-            x = 6,
-            y = 4
+            x = 8,
+            y = 7
         },
         cost = 2,
         rarity = 1,
