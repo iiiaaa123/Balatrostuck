@@ -4,14 +4,13 @@ function Balatrostuck.INIT.Jokers.j_whoisthis()
         key = "whoisthis",
         config = {
             extra = {
-                -- current_joker = nil
             }
         },
         loc_txt = {
             ['name'] = 'Who Even Is This?',
             ['text'] = {
                 [1] = 'Creates a random',
-                [2] = '{C:dark_edition}Paradox{} joker when',
+                [2] = '{C:green}Paradox{} joker when',
                 [3] = 'blind is selected'
             }
         },
@@ -35,8 +34,8 @@ function Balatrostuck.INIT.Jokers.j_whoisthis()
                     trigger = 'before',
                     delay = 0.0,
                     func = function()
-                    local card = create_card('Joker', G.jokers, nil, nil, nil, nil, nil, 'sou')
-                    card:set_edition({negative = true}, nil, true)
+                    local card = create_card('Joker', G.jokers, nil, nil, nil, nil, nil, 'who')
+                    card:set_edition("e_bstuck_paradox", nil)
                     card:add_to_deck()
                     G.jokers:emplace(card)
                     card:start_materialize()
@@ -44,41 +43,6 @@ function Balatrostuck.INIT.Jokers.j_whoisthis()
                     return true
                     end
                 }))
-            end
-    
-            if context.end_of_round then
-                -- Ideally I'd like to have it destroy the exact joker it created, which works well
-                -- Unless the game is saved and loaded, in which case it seems the reference to the created joker is mucked up
-    
-                -- if self.ability.extra.current_joker ~= nil then
-                --     local card = self.ability.extra.current_joker
-                --     card:start_dissolve()
-    
-                --     self.ability.extra.current_joker = nil
-                -- end
-    
-                local my_pos = nil
-                for i = 1, #G.jokers.cards do
-                    if G.jokers.cards[i] == card then my_pos = i; break end
-                end
-    
-                if my_pos and G.jokers.cards[my_pos+1] and not G.jokers.cards[my_pos+1].ability.eternal then 
-                    local card = G.jokers.cards[my_pos+1]
-                    G.GAME.joker_buffer = G.GAME.joker_buffer - 1
-                    G.E_MANAGER:add_event(Event({func = function()
-                        G.GAME.joker_buffer = 0
-                        card:start_dissolve()
-                    return true end }))
-                end
-    
-                if my_pos and G.jokers.cards[my_pos+1] and not G.jokers.cards[my_pos+1].ability.eternal then 
-                    local card = G.jokers.cards[my_pos+1]
-                    G.GAME.joker_buffer = G.GAME.joker_buffer - 1
-                    G.E_MANAGER:add_event(Event({func = function()
-                        G.GAME.joker_buffer = 0
-                        card:start_dissolve()
-                    return true end }))
-                end
             end
         end
     }
