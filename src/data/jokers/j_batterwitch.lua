@@ -10,9 +10,10 @@ function Balatrostuck.INIT.Jokers.j_batterwitch()
         loc_txt = {
             ['name'] = 'Batterwitch',
             ['text'] = {
-                [1] = 'If played {C:attention}Poker Hand{} is your',
-                [2] = '{C:attention}highest level{} hand, it loses',
-                [3] = '{C:attention}all{} levels and gives {C:money}$#1#{} for each level lost'
+                [1] = 'If played {C:attention}poker hand{} is',
+                [2] = 'your {C:attention}highest level{} hand, it',
+                [3] = 'loses {C:attention}all{} levels and earn',
+                [4] = '{C:money}$#1#{} for each level lost'
             }
         },
         pos = {

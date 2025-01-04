@@ -9,8 +9,10 @@ function Balatrostuck.INIT.Jokers.j_ahabscrosshairs()
         loc_txt = {
             ['name'] = 'Ahabs Crosshairs',
             ['text'] = {
-                [1] = "Gives X0.25 mult per 16$ of sell value",
-                [2] = "on all jokers. [Currently: 1x mult]."
+                [1] = "Gives {X:red,C:white}X#1#{} Mult per {C:money}$#2#",
+                [2] = "of total {C:attention}sell value",
+                [3] = "on all current {C:attention}Jokers",
+                [4] = "{C:inactive}(Currently {X:red,C:white}X#2#{C:inactive} Mult)."
             }
         },
         pos = {

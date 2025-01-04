@@ -8,8 +8,8 @@ function Balatrostuck.INIT.Jokers.j_aceDick()
         end,   
         loc_txt = {
             name = 'Ace Dick',
-            text = {'{C:mult}+#1#{} mult and {C:chips}+#2#{} chips.',
-                    'Always triggers last.'}
+            text = {'{C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips,',
+                    'always goes last'}
         },
         pos = {x = 7, y = 8},
         cost = 6,

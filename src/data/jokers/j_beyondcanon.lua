@@ -1,18 +1,19 @@
+--TODO: not allowed hands thang
 function Balatrostuck.INIT.Jokers.j_beyondcanon()
     SMODS.Joker{
         name = "Beyond Canon",
         key = "beyondcanon",
         config = { extra = {
-
+            Xmult = 2
         }},
         loc_txt = {
             ['name'] = 'Beyond Canon',
             ['text'] = {
-                [1] = 'Gives {X:mult,C:white}X1.5{} Mult',
-                [2] = 'raised to power',
-                [3] = 'of current ante,',
-                [4] = 'forces 1 card to',
-                [5] = 'always be {C:attention}selected'
+                [1] = '{X:mult,C:white}X#1#{} to the power of',
+                [2] = 'current {C:attention}ante{} Mult,',
+                [3] = '{C:attention}poker hands{} played previously',
+                [4] = 'this ante are {C:red}not allowed',
+                [5] = '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)'
             }
         },
         pos = {
@@ -26,12 +27,16 @@ function Balatrostuck.INIT.Jokers.j_beyondcanon()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
-        calculate = function (self, context)
-            if context.cardarea == G.jokers and not (context.individual or context.repetition or context.before or context.after) then
-                local mult = math.ceil((1.5^G.GAME.round_resets.ante)*100)/100
+
+        loc_vars = function(self, info_queue, card)
+            return { vars = { card.ability.extra.Xmult, card.ability.extra.Xmult^G.GAME.round_resets.ante} }
+        end, 
+
+        calculate = function (self, card, context)
+            if context.cardarea == G.jokers and context.joker_main then
                 return {
-                    message = localize { type = 'variable', key = 'a_xmult', vars = { mult } },
-                    Xmult_mod = mult,
+                    message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult^G.GAME.round_resets.ante } },
+                    Xmult_mod = card.ability.extra.Xmult^G.GAME.round_resets.ante,
                     colour = G.C.RED
                 }
             end

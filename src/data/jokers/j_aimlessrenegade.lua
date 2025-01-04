@@ -9,9 +9,10 @@ function Balatrostuck.INIT.Jokers.j_aimlessrenegade()
         loc_txt = {
             ['name'] = 'Aimless Renegade',
             ['text'] = {
-                [1] = "this effect",
-                [2] = "will likely be reworded in the",
-                [3] = "future"
+                [1] = "When {C:attention}Blind{} is selected, this Joker",
+                [2] = "gains {C:mult}+#1#{} Mult, {C:attention}destroys{} a random Joker,",
+                [3] = "and creates a {C:green}Paradox {C:attention}Judgement card",
+                [4] = "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
             }
         },
         pos = {

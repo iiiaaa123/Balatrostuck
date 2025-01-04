@@ -9,10 +9,10 @@ function Balatrostuck.INIT.Jokers.j_amberfirefly()
         loc_txt = {
             ['name'] = 'Amber Firefly',
             ['text'] = {
-                [1] = "Place a paradox gold card",
-                [2] = "with a blue seal on the",
-                [3] = "bottom of the deck at",
-                [4] = "start of every round"
+                [1] = "Shuffle a random {C:green}Paradox",
+                [2] = "card with a {C:purple}Purple Seal{} into",
+                [3] = "deck when {C:attention}Blind{} is selected",
+                [4] = "{C:attention}-1{} hand size"
             }
         },
         pos = {

@@ -14,10 +14,9 @@ function Balatrostuck.INIT.Jokers.j_ascend()
         loc_txt = {
             ['name'] = 'Ascend',
             ['text'] = {
-                [1] = "Gains {C:mult}+#1# Mult{} per",
-                [2] = "unique {C:inactive}(rank-wise){}",
-                [3] = "{C:attention}#2#{} played",
-                [4] = "{C:inactive}(Currently: {}{C:mult}+#3# Mult{}{C:inactive}){}"
+                [1] = "This Joker gains {C:mult}+#1#{} Mult for each",
+                [2] = "unique {C:inactive}(rank-wise) {C:attention}#2#{} played",
+                [3] = "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)"
             }
         },
         pos = {

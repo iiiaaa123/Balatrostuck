@@ -9,8 +9,8 @@ function Balatrostuck.INIT.Jokers.j_bigkahuna()
         loc_txt = {
             ['name'] = 'Big Kahuna',
             ['text'] = {
-                [1] = "After beating a blind",
-                [2] = "create a paradox lovers card"
+                [1] = "Create a {C:green}Paradox {C:attention}Lovers",
+                [2] = "card at end of round"
             }
         },
         pos = {
@@ -19,7 +19,7 @@ function Balatrostuck.INIT.Jokers.j_bigkahuna()
          },
         cost = 6,
         rarity = 1,
-        blueprint_compat = true,
+        blueprint_compat = false,
         eternal_compat = true,
         unlocked = true,
         discovered = true,

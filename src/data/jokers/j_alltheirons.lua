@@ -9,6 +9,9 @@ function Balatrostuck.INIT.Jokers.j_alltheirons()
         loc_txt = {
             ['name'] = 'All the Irons',
             ['text'] = {
+                [1] = "Earn {C:money}$#1#{} if a Joker triggers",
+                [2] = "{C:attention}thrice{} in a single round",
+                [3] = "{C:inactive}(Once per Joker each round)"
             }
         },
         pos = {
@@ -23,7 +26,7 @@ function Balatrostuck.INIT.Jokers.j_alltheirons()
         discovered = true,
         atlas = 'HomestuckJokers',
 
-        calculate = function(self, context)
+        calculate = function(self, card, context)
         end
     }
 end

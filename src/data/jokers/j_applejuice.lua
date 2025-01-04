@@ -8,9 +8,9 @@ function Balatrostuck.INIT.Jokers.j_applejuice()
         loc_txt = {
             ['name'] = 'Apple Juice',
             ['text'] = {
-                [1] = 'If no {C:red}discards{} remain',
-                [2] = 'add 1 extra {C:red}discard',
-                [3] = '{C:inactive}(#1# discards left)'
+                [1] = 'Gain {C:red}+1{} discard when',
+                [2] = '{C:attention}0{} discards remaining',
+                [3] = '{C:inactive}({C:attention}#1#{C:inactive} uses left)'
             }
         },
         pos = {
@@ -41,7 +41,7 @@ function Balatrostuck.INIT.Jokers.j_applejuice()
                         end
                     }))
                     return {
-                        message = localize('k_eaten_ex'),
+                        message = localize('k_drank_ex'),
                         colour = G.C.FILTER
                     }
                 else

@@ -9,8 +9,11 @@ function Balatrostuck.INIT.Jokers.j_balletslippers()
         loc_txt = {
             ['name'] = 'Ballet Slippers',
             ['text'] = {
-                [1] = "Gains +5 Mult if played hand is [played hand]",
-                [2] = "hand changes every hand. Resets if a different hand is played."
+                [1] = "This Joker gains {C:mult}+#1#{} Mult",
+                [2] = "if {C:attention}poker hand{} is a {C:attention}#2#{},",
+                [3] = "poker hand changes each hand,",
+                [4] = "{C:attention}resets{} if a different hand is played",
+                [5] = "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)"
             }
         },
         pos = {
