@@ -9,7 +9,8 @@ function Balatrostuck.INIT.Jokers.j_conventioncenter()
         loc_txt = {
             ['name'] = 'Convention Center',
             ['text'] = {
-                [1] = "+1 shop slot"
+                [1] = "{C:attention}+1{} card slot",
+                [2] = "available in shop"
             }
         },
         pos = {

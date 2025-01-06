@@ -9,8 +9,8 @@ function Balatrostuck.INIT.Jokers.j_caledfwlch()
         loc_txt = {
             ['name'] = 'Caledfwlch',
             ['text'] = {
-                [1] = '{C:green}#1# in #2#{} chance for {C:white,X:mult}X#3#{}',
-                [2] = 'otherwise {C:mult}+#3# Mult{}'
+                [1] = '{C:green}#1# in #2#{} chance for {C:white,X:mult}X#3#{} Mult',
+                [2] = 'otherwise {C:mult}+#3#{} Mult'
             }
         },
         pos = {

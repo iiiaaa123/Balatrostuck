@@ -9,8 +9,8 @@ function Balatrostuck.INIT.Jokers.j_commandervantas()
         loc_txt = {
             ['name'] = 'Commander Vantas',
             ['text'] = {
-                [1] = '{C:attention}Wild Cards{} can\'t',
-                [2] = 'be debuffed'
+                [1] = '{C:attention}Playing cards{} can\'t be debuffed',
+                [2] = 'if full deck contains a {C:attention}Wild card'
             }
         },
         pos = {

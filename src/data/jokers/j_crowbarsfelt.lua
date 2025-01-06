@@ -9,8 +9,10 @@ function Balatrostuck.INIT.Jokers.j_crowbarsfelt()
         loc_txt = {
             ['name'] = 'Crowbars Felt',
             ['text'] = {
-                [1] = "Gains +7 mult when",
-                [2] = "you score a straight"
+                [1] = "Gains {C:mult}+#2#{} Mult",
+                [2] = "if played hand",
+                [3] = "contains a {C:attention}Straight{}",
+                [4] = "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
             }
         },
         pos = {

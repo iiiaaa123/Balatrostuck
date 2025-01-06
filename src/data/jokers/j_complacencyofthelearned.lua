@@ -9,8 +9,11 @@ function Balatrostuck.INIT.Jokers.j_complacencyofthelearned()
         loc_txt = {
             ['name'] = 'Complacency of the Learned',
             ['text'] = {
-                [1] = "If a Lucky Card succeeds, gives xmult",
-                [2] = "equal to 6 times the number of successes divided by how many cards scored"
+                [1] = "If a {C:attention}Lucky Card {C:green}succeeds{},",
+                [2] = "{X:red,C:white}XMult{} equal to {C:attention}6{} multiplied",
+                [3] = "by the number of times Lucky",
+                [4] = "cards {C:attention}succeeded{}, divided by how",
+                [5] = "many times cards were {C:attention}scored"
             }
         },
         pos = {

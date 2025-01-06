@@ -9,8 +9,8 @@ function Balatrostuck.INIT.Jokers.j_clover()
         loc_txt = {
             ['name'] = 'Clover',
             ['text'] = {
-                [1] = "texty text",
-                [2] = "texty text"
+                [1] = "When round begins, create {C:green}#1#",
+                [2] = "{C:attention}Lucky {C:green}Paradox {C:clubs}4 of Clubs{} in hand"
             }
         },
         pos = {
@@ -23,6 +23,10 @@ function Balatrostuck.INIT.Jokers.j_clover()
         eternal_compat = true,
         unlocked = true,
         discovered = true,
-        atlas = 'HomestuckJokers'
+        atlas = 'HomestuckJokers',
+
+        loc_vars = function (self, info_queue, card)
+            return {vars = {G.GAME.probabilities.normal}}
+        end,
     }
 end 
