@@ -14,7 +14,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_ophiuchus()
             }
         },
         cost = 4,
-        discovered = true,
+        discovered = false,
         atlas = "HomestuckZodiacs"
     }
 end

@@ -17,7 +17,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_gemini()
             }
         },
         cost = 4,
-        discovered = false,
+        discovered = true,
         atlas = "HomestuckZodiacs",
         use = function(self, area, copier)
             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.9, func = function()
