@@ -9,8 +9,9 @@ function Balatrostuck.INIT.Jokers.j_clownincar()
         loc_txt = {
             ['name'] = 'Clown In Car',
             ['text'] = {
-                [1] = "Cards in standard packs can only",
-                [2] = "be the ranks of held Zodiac Cards (if any)"
+                [1] = "{C:attention}Playing cards{} in {C:attention}Standard Packs{} can",
+                [2] = "only be the ranks corresponding",
+                [3] = "to held {C:attention}Zodiac Cards{} (if any)"
             }
         },
         pos = {

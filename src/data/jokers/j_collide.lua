@@ -8,7 +8,7 @@ function Balatrostuck.INIT.Jokers.j_collide()
         loc_txt = {
             ['name'] = 'Collide',
             ['text'] = {
-                [1] = 'When round begins',
+                [1] = 'When round begins,',
                 [2] = 'add four {C:attention}steel{}',
                 [3] = '{C:spades}Jack of Spades{}',
                 [4] = 'to your hand'

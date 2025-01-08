@@ -11,9 +11,9 @@ function Balatrostuck.INIT.Jokers.j_cascade()
         loc_txt = {
             ['name'] = 'Cascade',
             ['text'] = {
-                [1] = '{C:attention}Retriggers{} each hand once',
-                [2] = 'for every {C:attention}#1#{} levels that',
-                [3] = 'the played {C:attention}poker hand{} has'
+                [1] = '{C:attention}Retrigger{} all played cards an',
+                [2] = 'additional time for every {C:attention}#1#',
+                [3] = 'levels in the played {C:attention}poker hand'
             }
         },
         pos = {

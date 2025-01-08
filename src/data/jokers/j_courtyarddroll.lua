@@ -9,10 +9,9 @@ function Balatrostuck.INIT.Jokers.j_courtyarddroll()
         loc_txt = {
             ['name'] = 'Courtyard Droll',
             ['text'] = {
-                [1] = 'If played hand contains',
-                [2] = 'a {C:attention}Flush{} and {C:clubs}Clubs{},',
-                [3] = 'convert all {C:attention}played cards{}',
-                [4] = 'to {C:attention}Stone{} cards',
+                [1] = 'If played hand contains a {C:attention}Flush{}',
+                [2] = 'and a scoring {C:clubs}Clubs{} card, all',
+                [3] = '{C:attention}played cards{} become {C:attention}Stone{} cards'
             }
         },
         pos = {

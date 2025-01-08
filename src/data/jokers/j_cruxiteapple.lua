@@ -9,8 +9,9 @@ function Balatrostuck.INIT.Jokers.j_cruxiteapple()
         loc_txt = {
             ['name'] = 'Cruxite Apple',
             ['text'] = {
-                [1] = "If you win the blind with 0 hands",
-                [2] = "remaining your first reroll next shop is free then destroy this"
+                [1] = "After {C:attention}final hand{} of round,",
+                [2] = "gain {C:attention}1{} free {C:green}Reroll{} in the shop",
+                [3] = "and {C:attention}destroy{} this card"
             }
         },
         pos = {
@@ -24,5 +25,7 @@ function Balatrostuck.INIT.Jokers.j_cruxiteapple()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers'
+
+        --needs a tooltip in the info queue that says "Unlocks Acend this run"
     }
 end 
