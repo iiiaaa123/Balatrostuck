@@ -9,8 +9,8 @@ function Balatrostuck.INIT.Jokers.j_ectobiology()
         loc_txt = {
             ['name'] = 'Ectobiology',
             ['text'] = {
-                [1] = "Start of blind create a paradox",
-                [2] = "copy of joker to the right of this."
+                [1] = "When {C:attention}Blind{} is selected, create a",
+                [2] = "{C:green}Paradox{} copy of {C:attention}Joker{} to the right"
             }
         },
         pos = {

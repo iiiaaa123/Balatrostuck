@@ -10,10 +10,9 @@ function Balatrostuck.INIT.Jokers.j_echidna()
         loc_txt = {
             ['name'] = 'Echidna',
             ['text'] = {
-                [1] = 'Levels up {C:attention}final{} played',
-                [2] = 'hand by {C:attention}#1#{} level#2#',
-                [3] = '{C:inactive}Amount goes up by 1',
-                [4] = '{C:inactive}per ability trigger'
+                [1] = "{C:attention}Scratch Tags{} don't affect",
+                [2] = "{C:attention}Jokers{}, second {C:attention}Skip Tag{} of",
+                [3] = "ante is always a {C:attention}Scratch Tag"
             }
         },
         pos = {

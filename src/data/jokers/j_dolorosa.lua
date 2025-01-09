@@ -1,16 +1,16 @@
 function Balatrostuck.INIT.Jokers.j_dolorosa()
     SMODS.Joker{
-        name = "The Dolorosa",
+        name = "Wardrobifier",
         key = "dolorosa",
         config = {
             extra = {
             }
         },
         loc_txt = {
-            ['name'] = 'The Dolorosa',
+            ['name'] = 'Wardrobifier',
             ['text'] = {
-                [1] = "Wild Cards also count as [enhancement]",
-                [2] = "Enhancement changes each round"
+                [1] = "{C:attention}Wild{} cards also count as {C:attention}#1#,",
+                [2] = "enhancement changes each round"
             }
         },
         pos = {

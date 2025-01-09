@@ -1,3 +1,4 @@
+--effect will be awkward with pack timings; needs lovely patch for pack tags (and also consider aquarius)
 function Balatrostuck.INIT.Jokers.j_descendascend()
     SMODS.Joker{
         name = "Descendascend",
@@ -7,10 +8,10 @@ function Balatrostuck.INIT.Jokers.j_descendascend()
             }
         },
         loc_txt = {
-            ['name'] = 'Descendascend',
+            ['name'] = 'Descendascend', 
             ['text'] = {
-                [1] = "After beating a blind gain a Buffoon Tag.",
-                [2] = "Jokers in buffoon packs are paradox."
+                [1] = "Gain a {C:attention}Buffoon Tag{} at end of round,",
+                [2] = "{C:attention}Jokers{} in {C:attention}Buffoon Packs{} are {C:green}Paradox"
             }
         },
         pos = {

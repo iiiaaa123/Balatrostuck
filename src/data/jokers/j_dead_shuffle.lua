@@ -13,11 +13,11 @@ function Balatrostuck.INIT.Jokers.j_dead_shuffle()
         loc_txt = {
             ['name'] = 'Dead Shuffle',
             ['text'] = {
-                [1] = 'Gains {X:mult,C:white}X#1#{} Mult per',
-                [2] = 'scoring {C:attention}Ace of #2#{}',
-                [3] = '{C:inactive}Suit changes every round{}',
-                [4] = '{C:inactive}Resets every round{}',
-                [5] = '{C:inactive}(Currently: {X:mult,C:white}X#3#{} Mult{C:inactive}){}{}'
+                [1] = 'This Joker gains {X:mult,C:white}X#1#{} Mult',
+                [2] = 'when each played {C:attention}Ace of #2#{}',
+                [3] = 'is scored this round,',
+                [4] = 'suit changes every round',
+                [5] = '{C:inactive}(Currently: {X:mult,C:white}X#3#{C:inactive} Mult)'
             }
         },
         pos = {

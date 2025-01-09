@@ -11,9 +11,9 @@ function Balatrostuck.INIT.Jokers.j_captchacard()
         loc_txt = {
             ['name'] = 'Captchalogue Card',
             ['text'] = {
-                [1] = "Gives a random consumable",
-                [2] = "when a {C:attention}#1# of #2#{} is played",
-                [3] = "{C:inactive}Card changes every round{}"
+                [1] = "Create a random {C:attention}consumable",
+                [2] = "for each scoring {C:attention}#1# of #2#",
+                [3] = "in played hand"
             }
         },
         pos = {

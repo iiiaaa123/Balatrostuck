@@ -27,9 +27,10 @@ function Balatrostuck.INIT.Jokers.j_echeladder()
         loc_txt = {
             ['name'] = 'Echeladder',
             ['text'] = {
-                [1] = 'Earn {C:money}$#1#{} at the end of each {C:attention}ante{}',
-                [2] = 'Current echeladder tier:',
-                [3] = '{C:attention}#2#'
+                [1] = '{}E{}a{}r{}n{} {}{C:money}${C:money}#1#{} {}a{}t{} {}t{}h{}e{} {}e{}n{}d{} {}o{}f{} {}e{}a{}c{}h{} {}{C:attention}a{C:attention}n{C:attention}t{C:attention}e{}',
+                [2] = "{C:white}w{C:white}o{C:white}o{C:white} {C:white}w{C:white}h{C:white}i{C:white}t{C:white}e{C:white}s{C:white}p{C:white}a{C:white}c{C:white}e{}",
+                [3] = '{C:inactive}C{C:inactive}u{C:inactive}r{C:inactive}r{C:inactive}e{C:inactive}n{C:inactive}t{C:inactive} {C:inactive}e{C:inactive}c{C:inactive}h{C:inactive}e{C:inactive}l{C:inactive}a{C:inactive}d{C:inactive}d{C:inactive}e{C:inactive}r{C:inactive} {C:inactive}t{C:inactive}i{C:inactive}e{C:inactive}r{C:inactive}:{}',
+                [4] = '{C:attention}#2#{}'
             }
         },
         pos = {

@@ -9,10 +9,10 @@ function Balatrostuck.INIT.Jokers.j_draconiandignitary()
         loc_txt = {
             ['name'] = 'Draconian Dignitary',
             ['text'] = {
-                [1] = 'If played hand contains',
-                [2] = 'a {C:attention}Flush{} and {C:diamonds}Diamonds{}',
-                [3] = 'give money equal to',
-                [4] = '{C:attention}sell value{} of adjacent jokers',
+                [1] = 'If played hand contains a {C:attention}Flush{}',
+                [2] = 'and a scoring {C:diamonds}Diamonds{} card,',
+                [3] = 'earn {C:money}money{} equal to total',
+                [4] = '{C:attention}sell value{} of adjacent jokers'
             }
         },
         pos = {

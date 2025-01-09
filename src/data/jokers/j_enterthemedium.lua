@@ -9,8 +9,8 @@ function Balatrostuck.INIT.Jokers.j_enterthemedium()
         loc_txt = {
             ['name'] = 'Enter The Medium',
             ['text'] = {
-                [1] = "On ante end: This transforms",
-                [2] = "into a random balatrostuck joker"
+                [1] = "This Joker becomes a random",
+                [2] = "{C:attention}Balatrostuck{} Joker at end of {C:attention}ante"
             }
         },
         pos = {
