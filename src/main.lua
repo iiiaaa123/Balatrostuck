@@ -79,42 +79,42 @@ NFS.load(mod.path.."utils.lua")()
 
 local joker_list = {
 
--- Page 1
+-- Page 11
 "cruxiteapple", "ascend", "enterthemedium", "descend", "cascade", 
 "betacopy", "echeladder","captchacard", "strifespecibus","collide",
 "applejuice", "clover", "mirthful", "synchronization", "jetpack", 
 
--- Page 2
-"cruxitedowel", "operation_regisurp","cloudwatching","note_desolation", "clownincar",
+-- Page 12
+"jocker", "frogbreeding", "cloudwatching","note_desolation", "clownincar",
 "commandervantas", "bigkahuna", "dolorosa", "twinarmageddons", "mobiusdoublereacharound",
 "cueball", "alltheirons", "fluoriteoctet", "backseater", "lucky_break",
 
--- Page 3
-"caledfwlch", "nepetajoker", "frogbreeding", "dead_shuffle", "jocker",
+-- Page 13
+"caledfwlch", "nepetajoker", "cruxitedowel", "dead_shuffle", "operation_regisurp",
 "courtyarddroll", "hegemonicbrute", "draconiandignitary", "sovereignslayer", "snowman",
-"lohac", "lowas", "lofaf", "lolar", "skaia",
+"lowas", "lolar", "lohac", "lofaf", "skaia",
 
--- Page 4
+-- Page 14
 "kernelsprite", "whatpumpkin", "genejoker", "whoisthis", "biscuits",
 "culling", "pairing_grid", "innapropriatebucket", "frustration", "ectobiology",
 "smallerbutterflies", "misspaint", "consortconcierge", "tanglebuddies", "horrorterrors",
 
--- Page 5
+-- Page 15
 "waywardvagabond", "amberfirefly", "whitequeen", "parcelmistress", "aimlessrenegade",
 "balletslippers", "lonegunbird", "oldsecret","trolltrain", "hotdogjuggler",
 "vasterror", "verticlemovements", "paintseal", "descendascend", "conventioncenter", 
 
--- Page 6
+-- Page 16
 "sucker", "roundtwo", "tumor", "vodkamutini", "purrfectwarrior", 
 "lordoftime", "museofspace", "problemsleuth", "pickleinspector", "aceDick",
 "gristtorrent", "batterwitch", "beyondcanon", "therapture", "ahabscrosshairs",
 
--- Page 7
+-- Page 17
 "faygo", "stump", "porkhollow", "ringoflife", "ringofvoid",
 "pawnrevolution", "dark_carnival", "soporpie", "darkscholar","wake",
 "impetuscombcharging", "sepulcritude", "dadswallet", "gamebro", "complacencyofthelearned",
 
--- Page 8
+-- Page 18
 "conditionalimmortality", "theplotpoint", "objectduality","joker", "questbed",
 "yourlordandmaster", "magnificent", "jokermode", "crowbarsfelt", "signofthesignless",
 "echidna", "abraxas", "yaldabaoth", "typheus", "hephaestus",
