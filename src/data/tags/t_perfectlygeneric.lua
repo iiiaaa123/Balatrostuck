@@ -6,8 +6,9 @@ function Balatrostuck.INIT.Tags.t_perfectlygeneric()
         loc_txt = {
             ['name'] = 'Perfectly Generic Tag',
             ['text'] = {
-                [1] = 'Fills consumable slots with Fool',
-                [2] = 'cards'            
+                [1] = 'Fill empty consumable slots',
+                [2] = 'with {C:tarot}The Fool{} cards',
+                [3] = '{C:inactive} (Must have room)'         
             }
         },
         pos = {

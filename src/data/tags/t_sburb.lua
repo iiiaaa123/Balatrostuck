@@ -6,8 +6,8 @@ function Balatrostuck.INIT.Tags.t_sburb()
         loc_txt = {
             ['name'] = 'Sburb',
             ['text'] = {
-                [1] = 'Fills consumable slots with Fool',
-                [2] = 'cards'            
+                [1] = 'Gives a free',
+                [2] = '{C:aspect}Sburb Pack'            
             }
         },
         pos = {

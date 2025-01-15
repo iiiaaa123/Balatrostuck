@@ -6,8 +6,8 @@ function Balatrostuck.INIT.Tags.t_matriorb()
         loc_txt = {
             ['name'] = 'Matriorb',
             ['text'] = {
-                [1] = 'Fills consumable slots with Fool',
-                [2] = 'cards'            
+                [1] = 'Gives a free',
+                [2] = '{C:zodiac}Mega Zodiac Pack'                  
             }
         },
         pos = {
