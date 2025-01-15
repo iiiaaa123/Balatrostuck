@@ -136,7 +136,12 @@ local edition_list = {
 }
 
 local tag_list = {
-    "perfectlygeneric"
+    "perfectlygeneric",
+    "parcelpyxis",
+    "scratch",
+    "spirograph",
+    "matriorb",
+    "sburb"
 }
 
 batch_load("jokers")
