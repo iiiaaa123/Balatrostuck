@@ -6,8 +6,10 @@ function Balatrostuck.INIT.Tags.t_scratch()
         loc_txt = {
             ['name'] = 'Scratch Tag',
             ['text'] = {
-                [1] = 'Fills consumable slots with Fool',
-                [2] = 'cards'            
+                [1] = 'Restart current Ante,',
+                [2] = 'convert all your {C:attention}Jokers{} ',
+                [3] = 'into {C:attention}random Jokers{} with',
+                [4] = 'the same rarity'            
             }
         },
         pos = {
