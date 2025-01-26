@@ -8,9 +8,10 @@ function Balatrostuck.INIT.Jokers.j_hephaestus()
         loc_txt = {
             ['name'] = 'Hephaestus',
             ['text'] = {
-                [1] = 'Played and held',
-                [2] = '{C:attention}Steel{} cards give',
-                [3] = '{C:white,X:mult}X#1#{} Mult' 
+                [1] = 'Retrigger held {C:attention}Steel{}',
+                [2] = 'cards {C:attention}2{} additional times,',
+                [3] = 'played {C:attention}Steel{} cards give',
+                [4] = '{X:mult,C:white}X2{} Mult when scored' 
             }
         },
         pos = {
@@ -30,6 +31,7 @@ function Balatrostuck.INIT.Jokers.j_hephaestus()
         },
     
         loc_vars = function(self, info_queue, card)
+            info_queue[#info_queue+1] = G.P_CENTERS.m_steel
             return {vars = {card.ability.extra}}
         end,
 

@@ -4,13 +4,16 @@ function Balatrostuck.INIT.Jokers.j_hotdogjuggler()
         key = "hotdogjuggler",
         config = {
             extra = {
+                discards = 25,
+                hotdog_discards = 25
             }
         },
         loc_txt = {
             ['name'] = 'Hotdog Juggler',
             ['text'] = {
-                [1] = "Every 25 cards discarded",
-                [2] = "create a Zodiac card"
+                [1] = "Create a {C:zodiac}Zodiac{} card every",
+                [2] = "{C:attention}#2# {C:inactive}[#1#]{} cards discarded",
+                [3] = "{C:inactive}(Must have room)"
             }
         },
         pos = {
@@ -23,6 +26,10 @@ function Balatrostuck.INIT.Jokers.j_hotdogjuggler()
         eternal_compat = true,
         unlocked = true,
         discovered = true,
-        atlas = 'HomestuckJokers'
+        atlas = 'HomestuckJokers',
+
+        loc_vars = function(self, info_queue, card)
+            return {vars = {card.ability.extra.discards, card.ability.extra.hotdog_discards}}
+        end,
     }
 end 

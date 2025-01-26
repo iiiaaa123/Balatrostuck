@@ -6,17 +6,17 @@ function Balatrostuck.INIT.Jokers.j_gristtorrent()
             extra = {
                 uses = 5,
                 money = 1,
-                tor = 2
+                tor = 1
             }
         },
         loc_txt = {
             ['name'] = 'GristTorrent',
             ['text'] = {
-                [1] = 'Played cards lose {C:chips}#3# chips{} when scored (min. 0)',
-                [2] = 'Gain {C:money}$#2#{} the first 5 times this happens each round',
-                [3] = 'This joker gains {C:money}$#2#{} sell value afterward',
-                [4] = 'bluh this wording sucks lets redo it later',
-                [5] = '{C:inactive}(Remaining:{} {C:attention}#1#{} {C:inactive}uses)'
+                [1] = 'Every played {C:attention}card{} permanently loses {C:blue}-2{} Chips',
+                [2] = 'when scored. The first {C:attention}5{} times this happens',
+                [3] = 'each round, earn {C:money}$1{}. The {C:attention}6th+{} time this happens',
+                [4] = 'each round, this Joker gains {C:money}$1{} of sell value',
+                [5] = '{C:inactive}({C:attention}5{C:inactive} remaining)'
             }
         },
         pos = {

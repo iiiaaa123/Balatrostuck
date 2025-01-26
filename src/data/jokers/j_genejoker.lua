@@ -4,14 +4,16 @@ function Balatrostuck.INIT.Jokers.j_genejoker()
         key = "genejoker",
         config = {
             extra = {
+                chips = 0,
+                chip_mod = 4
             }
         },
         loc_txt = {
             ['name'] = 'Gene Joker',
             ['text'] = {
-                [1] = "Gains +4 chips when a",
-                [2] = "paradox card is created",
-                [3] = "[Currently: +4 chips]"
+                [1] = "This Joker gains {C:blue}+#2#{} Chips every",
+                [2] = "time a {C:green}Paradox{} card is {C:attention}created",
+                [3] = "{C:inactive}(Currently {C:blue}+#1# {C:inactive}Chips)"
             }
         },
         pos = {
@@ -24,6 +26,10 @@ function Balatrostuck.INIT.Jokers.j_genejoker()
         eternal_compat = true,
         unlocked = true,
         discovered = true,
-        atlas = 'HomestuckJokers'
+        atlas = 'HomestuckJokers',
+
+        loc_vars = function (self, info_queue, card)
+            return {vars = {card.ability.extra.chips, card.ability.extra.chip_mod}}
+        end,
     }
 end 

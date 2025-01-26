@@ -9,10 +9,10 @@ function Balatrostuck.INIT.Jokers.j_hegemonicbrute()
         loc_txt = {
             ['name'] = 'Hegemonic Brute',
             ['text'] = {
-                [1] = 'If played hand contains',
-                [2] = 'a {C:attention}Flush{} and {C:hearts}Hearts{},',
-                [3] = 'increase rank of all',
-                [4] = '{C:attention}played cards{} by {C:attention}1',
+                [1] = 'If played hand contains a {C:attention}Flush{}',
+                [2] = 'and a scoring {C:hearts}Hearts{} card, increase',
+                [3] = 'rank of {C:attention}first{} and {C:attention}second{} played',
+                [4] = 'cards used in scoring by {C:attention}1',
             }
         },
         pos = {
