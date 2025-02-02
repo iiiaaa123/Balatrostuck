@@ -10,7 +10,11 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_leo()
         loc_txt = {
             ['name'] = "Leo",
             ['text'] = {
-                [1] = 'test'
+                [1] = '{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up',
+                [2] = '{C:attention}Held 5s{} have a {C:green}1 in 4{} chance',
+                [3] = 'to give {C:money}$1{} when any', --next level value
+                [4] = 'played card is scored',
+                [5] = '{C:inactive}(Currently {C:money}$0{C:inactive})' --current level value
             }
         },
         cost = 4,

@@ -15,10 +15,10 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
             ['name'] = "Aries",
             ['text'] = {
                 '{{S:0.8}({S:0.8, V:1}lvl.#1#{}{S:0.8}){} Level up',
-                'future {C:attention}scoring Aces',
-                'to give {C:mult}+#2# Mult{} per',
-                'Ace {C:attention}discarded{} or',
-                '{C:attention}left in deck'
+                '{C:attention}Aces{} gain {X:mult,C:white}X0.5{} Mult for', --next level value
+                'each {C:attention}Ace discarded{} this round',
+                'or currently in your {C:attention}deck',
+                '{C:inactive}(Currently gains {X:mult,C:white}X0{C:inactive})', --current level value
             }
         },
         use = function(self, card, area, copier)
