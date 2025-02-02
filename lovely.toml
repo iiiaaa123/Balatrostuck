@@ -194,6 +194,13 @@ pattern = "local effects = {eval_card(scoring_hand[i], {cardarea = G.play, full_
 position = "after"
 match_indent = true
 payload = '''
+if G.GAME.slab ~= nil then
+    local slab_eval = G.GAME.slab:apply_to_run({cardarea = G.play, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, other_card = scoring_hand[i], individual = true},true)
+    if slab_eval then
+        table.insert(effects, slab_eval)
+    end
+end
+
 if #G.GAME.BALATROSTUCK.active_castes > 0 then
     for c = 1, #G.GAME.BALATROSTUCK.active_castes do
         local caste_eval = G.GAME.BALATROSTUCK.active_castes[c]:apply_to_run({cardarea = G.play, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, other_card = scoring_hand[i], individual = true})
