@@ -29,7 +29,7 @@ function Balatrostuck.INIT.Jokers.j_trolltrain()
                     if context.other_card:get_id() == v.ability.rank then
                         return {
                             mult = v:level() * card.ability.extra.mult,
-                            card = context.other_card
+                            card = card
                         }
                     end
                 end

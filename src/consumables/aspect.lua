@@ -122,8 +122,9 @@ function add_slab(_slab)
     old_slab:apply_to_run({ deactivated = true, new_slab = _slab, after_level_down = true })
   end
 
-  _slab:apply_to_run({ activated = true, old_slab = old_slab, before_level_up = true })
+  local prevLevel = _slab:level() >= 1 and old_slab.key ~= _slab.key
+  _slab:apply_to_run({ activated = true, old_slab = old_slab, before_level_up = true, returning = prevLevel})
   _slab:increase_level()
-  _slab:apply_to_run({ activated = true, old_slab = old_slab, after_level_up = true })
+  _slab:apply_to_run({ activated = true, old_slab = old_slab, after_level_up = true, returning = prevLevel})
   sendInfoMessage("LEVEL UP ".._slab.name.." to ".._slab:level())
 end

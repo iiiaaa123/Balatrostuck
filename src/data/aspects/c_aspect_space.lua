@@ -44,8 +44,18 @@ function Balatrostuck.INIT.Aspects.c_aspect_space()
         config = {},
         name = 'Aspect of Space',
         apply = function(self, slab, context) 
-            if context.start_of_round then
-                G.hand:change_size(summation(slab:level()))
+            local peepee = summation(slab:level())
+            local poopoo = summation(slab:level() - 1)
+
+            if context.activated and context.after_level_up then
+                if context.returning then
+                    G.hand:change_size(peepee)
+                else
+                    G.hand:change_size(peepee-poopoo)
+                end
+            end
+            if context.deactivated and context.before_level_down then
+                G.hand:change_size(-peepee)
             end
         end
     }
