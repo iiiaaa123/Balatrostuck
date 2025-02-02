@@ -19,13 +19,13 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_gemini()
         cost = 4,
         discovered = true,
         atlas = "HomestuckZodiacs",
-        use = function(self, area, copier)
+        use = function(self, card, area, copier)
             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.9, func = function()
                 play_sound('tarot1')
-                self:juice_up(0.8, 0.5)
+                card:juice_up(0.8, 0.5)
                 return true end
             }))
-            G.GAME.BALATROSTUCK.zodiac_levels[self.ability.name] = G.GAME.BALATROSTUCK.zodiac_levels[self.ability.name] + 1
+            self:add_caste('Gemini')
         end,
         can_use = function() return true end,
         loc_vars = function(card)
@@ -41,4 +41,26 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_gemini()
             }
         end,
     }
+
+    Balatrostuck.Caste{
+        key = 'Gemini',
+        config = {},
+        name = 'Gemini',
+        rank = 2,
+        apply = function(self,context)
+            if context.cardarea == G.play and context.repetition and not context.repetition_only and context.other_card:get_id() == self.ability.rank then
+				return {
+					message = 'agaiin!',
+					repetitions = self:level(),
+					card = context.other_card
+				}
+            end
+        end
+    }
+
+
+
+
+
+
 end 

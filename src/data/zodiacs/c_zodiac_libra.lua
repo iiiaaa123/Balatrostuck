@@ -18,13 +18,13 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_libra()
         cost = 4,
         discovered = true,
         atlas = "HomestuckZodiacs",
-        use = function(self, area, copier)
+        use = function(self, card, area, copier)
             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.9, func = function()
                 play_sound('tarot1')
-                self:juice_up(0.8, 0.5)
+                card:juice_up(0.8, 0.5)
                 return true end
             }))
-            G.GAME.BALATROSTUCK.zodiac_levels[self.ability.name] = G.GAME.BALATROSTUCK.zodiac_levels[self.ability.name] + 1
+            self:add_caste('Libra')
         end,
         can_use = function() return true end,
         loc_vars = function(card)
@@ -39,6 +39,26 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_libra()
             }
         end,
     }
+    Balatrostuck.Caste{
+        key = 'Libra',
+        config = {base_xmult = 1},
+        name = 'Libra',
+        rank = 7,
+        apply = function(self,context)
+            if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
+                local scottthewoz = discard_aces
+                for k,v in pairs(G.deck.cards) do
+                    if k:get_id() == self.ability.rank then scottthewoz = scottthewoz + 1 end
+                end
+
+                return {
+                    x_mult = (self:level() / 2) * scottthewoz,
+                    card = context.other_card
+                }
+            end
+        end
+    }
+
 end
 
 --[1] = 'All scoring 7s',

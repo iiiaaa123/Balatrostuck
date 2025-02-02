@@ -94,7 +94,7 @@ end
 match_indent = true
 times = 1
 
-# Slabs
+# Slabs and Castes
 [[patches]]
 [patches.regex]
 target = "game.lua"
@@ -103,6 +103,7 @@ position = "before"
 line_prepend = '$indent'
 payload = '''
 self.P_SLABS = {}
+self.P_CASTES = {}
 '''
 
 [[patches]]
@@ -113,6 +114,7 @@ position = "after"
 line_prepend = '$indent$indent'
 payload = '''
 Slabs = {},
+Castes = {},
 '''
 
 [[patches]]
@@ -166,6 +168,102 @@ if G.GAME.slab ~= nil then
 end
 '''
 times = 1
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local effects = {eval_card(G.hand.cards[i], {cardarea = G.hand, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands})}"
+position = "after"
+match_indent = true
+payload = '''
+if #G.GAME.BALATROSTUCK.active_castes > 0 then
+    for c = 1, #G.GAME.BALATROSTUCK.active_castes do
+        local caste_eval = G.GAME.BALATROSTUCK.active_castes[c]:apply_to_run({cardarea = G.hand, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, other_card = G.hand.cards[i], individual = true})
+        if caste_eval then
+            table.insert(effects, caste_eval)
+        end
+    end
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local effects = {eval_card(scoring_hand[i], {cardarea = G.play, full_hand = G.play.cards, scoring_hand = scoring_hand, poker_hand = text})}"
+position = "after"
+match_indent = true
+payload = '''
+if #G.GAME.BALATROSTUCK.active_castes > 0 then
+    for c = 1, #G.GAME.BALATROSTUCK.active_castes do
+        local caste_eval = G.GAME.BALATROSTUCK.active_castes[c]:apply_to_run({cardarea = G.play, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, other_card = scoring_hand[i], individual = true})
+        if caste_eval then
+            table.insert(effects, caste_eval)
+        end
+    end
+end
+'''
+
+
+[[patches]]
+[patches.regex]
+target = "functions/state_events.lua"
+pattern = '''(?<indent>[\t ]*)                --From jokers'''
+position = "before"
+line_prepend = '$indent'
+payload = '''
+if #G.GAME.BALATROSTUCK.active_castes > 0 then
+    for c = 1, #G.GAME.BALATROSTUCK.active_castes do
+        local eval = G.GAME.BALATROSTUCK.active_castes[c]:apply_to_run({cardarea = G.play, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, other_card = scoring_hand[i], repetition = true})
+        if eval then
+            reps[#reps+1] = eval
+        end
+    end
+end
+'''
+times = 1
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.GAME.blind:set_blind(G.GAME.round_resets.blind)"
+position = "after"
+match_indent = true
+payload = '''
+if #G.GAME.BALATROSTUCK.active_castes > 0 then
+    for c = 1, #G.GAME.BALATROSTUCK.active_castes do
+        local caste_eval = G.GAME.BALATROSTUCK.active_castes[c]:apply_to_run({setting_blind = true, blind = G.GAME.round_resets.blind})
+    end
+end'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local removed = false"
+position = "after"
+match_indent = true
+payload = '''
+if #G.GAME.BALATROSTUCK.active_castes > 0 then
+    for c = 1, #G.GAME.BALATROSTUCK.active_castes do
+        local caste_eval = G.GAME.BALATROSTUCK.active_castes[c]:apply_to_run({discard = true, other_card =  G.hand.highlighted[i], full_hand = G.hand.highlighted})
+        if caste_eval then
+            if caste_eval.remove then remove = true end
+        end
+    end
+end'''
+
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "card_eval_status_text((reps[j].jokers or reps[j].seals).card, 'jokers', nil, nil, nil, (reps[j].jokers or reps[j].seals))"
+position = "at"
+match_indent = true
+payload = '''
+card_eval_status_text((reps[j].jokers or reps[j].seals or reps[j]).card, 'jokers', nil, nil, nil, (reps[j].jokers or reps[j].seals or reps[j]))
+'''
 
 [[patches]]
 [patches.pattern]

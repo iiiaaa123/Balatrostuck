@@ -104,6 +104,7 @@ function Game:init_game_object()
         Pisces = 0,
         Ophiuchus = 0
     }
+    ret.BALATROSTUCK.active_castes = {}
     ret.BALATROSTUCK.strife_assignment = 'Unassigned'
     ret.BALATROSTUCK.current_aspect = ''
     return ret

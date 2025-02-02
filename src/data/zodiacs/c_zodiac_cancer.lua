@@ -15,13 +15,13 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
                 'to give {C:mult}+#2# Mult{}'
             }
         },
-        use = function(self, area, copier)
+        use = function(self, card, area, copier)
             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.9, func = function()
                 play_sound('tarot1')
-                self:juice_up(0.8, 0.5)
+                card:juice_up(0.8, 0.5)
                 return true end
             }))
-            G.GAME.BALATROSTUCK.zodiac_levels[self.ability.name] = G.GAME.BALATROSTUCK.zodiac_levels[self.ability.name] + 1
+            self:add_caste('Cancer')
         end,
         can_use = function() return true end,
         loc_vars = function(card)
@@ -38,5 +38,31 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
         cost = 4,
         discovered = true,
         atlas = "HomestuckZodiacs"
+    }
+
+
+
+    Balatrostuck.Caste{
+        key = 'Cancer',
+        config = {base_mult = 4},
+        name = 'Cancer',
+        rank = 4,
+        apply = function(self,context)
+            if context.individual and context.cardarea == G.hand and context.other_card:get_id() == self.ability.rank then
+                if context.other_card.debuff then
+                    return {
+                        message = localize('k_debuffed'),
+                        colour = G.C.RED,
+                        card = context.other_card,
+                    }
+                else
+                    return {
+                        h_mult = self.ability.config.base_mult + self:level(),
+                        card = context.other_card
+                    }
+                end
+            end
+        end
+
     }
 end
