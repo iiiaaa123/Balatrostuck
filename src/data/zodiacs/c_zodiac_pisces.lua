@@ -10,10 +10,10 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_pisces()
         loc_txt = {
             ['name'] = "Pisces",
             ['text'] = {
-                "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up future",
-                '{C:attention}scoring Queens{} to add',
-                '$#2# to interest and up',
-                'interest rate by $2',
+                "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                'Played{C:attention} Queens{} give {C:money}$2 {C:red,E:2}minus{} the', --next level value
+                'amount of {C:attention}remaining hands{} when scored', 
+                '{C:inactive}(Currently {C:money}$0{C:inactive})'    --current level value
             }
         },
         cost = 4,

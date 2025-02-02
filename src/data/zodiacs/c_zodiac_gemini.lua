@@ -10,10 +10,10 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_gemini()
         loc_txt = {
             ['name'] = "Gemini",
             ['text'] = {
-                "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
-                '{C:attention}all{} future {C:attention}2s{} to',
-                'be {C:attention}retriggered',
-                '#2# time#3#'
+                '{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up',
+                '{C:attention}Retrigger{} played {C:attention}2s',
+                '{C:attention}1{} additional times', --1 should be next level value + times should be dynamically plural
+                '{C:inactive}(Currently {C:attention}0 {C:inactive}times)' --current level amount + dynamic plural
             }
         },
         cost = 4,

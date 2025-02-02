@@ -15,12 +15,9 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_virgo()
             ['name'] = "Virgo",
             ['text'] = {
                 "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
-                'future scoring {C:attention}6{}s',
-                'to {C:attention}distribute{}',
-                'a total bonus of' ,
-                '{C:chips}+#2# Chips{} among',
-                'all cards {C:attention}scored{}',
-                '{C:attention}permamently',
+                'Played {C:attentions}6s{} give {C:chips}+#2# {C:attention}permanent{} Chips', --next level value
+                'to all {C:attention}other{} scoring cards when scored',
+                '{C:inactive}(Currently {C:chips}+#3#{C:inactive} permanent chips)' --current level value
             }
         },
         use = function(self, card, area, copier)

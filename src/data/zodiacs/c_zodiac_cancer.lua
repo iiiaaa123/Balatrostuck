@@ -11,8 +11,8 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
             ['name'] = "Cancer",
             ['text'] = {
                 "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
-                'future {C:attention}held 4s',
-                'to give {C:mult}+#2# Mult{}'
+                '{C:attention}Held 4s{} give {C:mult}+#2#{} Mult', --next level value
+                '{C:inactive}(Currently {C:mult}+N{C:inactive} Mult)' --current level value
             }
         },
         use = function(self, card, area, copier)
