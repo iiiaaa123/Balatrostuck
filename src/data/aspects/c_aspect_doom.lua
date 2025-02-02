@@ -20,6 +20,40 @@ function Balatrostuck.INIT.Aspects.c_aspect_doom()
         },
         cost = 4,
         discovered = true,
-        atlas = "HomestuckAspects"
-    }   
+        atlas = "HomestuckAspects",
+        use = function(self, context)
+            self:switch_slab()
+        end,
+        can_use = function(self)
+            return true
+        end
+    }
+
+
+    Balatrostuck.Slab{
+        key = 'doom',
+        atlas = 'HomestuckAspectSlabs',
+        pos = {
+            x = 3,
+            y = 0
+        },
+        config = {},
+        name = 'Aspect of Doom',
+        apply = function(self,slab,context)
+            if context.start_of_round then
+                for _, v in ipairs(G.playing_cards) do
+                    if pseudorandom('doom') < G.GAME.probabilities.normal/(slab:level() + 1) then
+                        v:set_debuff(true)
+                    end
+                end
+            end
+
+            if context.individual and context.cardarea == G.play then
+                return {
+                        x_mult = 1 + (slab:level() / 10),
+                        card = context.other_card
+                }
+            end
+        end
+    }
 end
