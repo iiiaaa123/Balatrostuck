@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
             ['text'] = {
                 "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
                 '{C:attention}Held 4s{} give {C:mult}+#2#{} Mult', --next level value
-                '{C:inactive}(Currently {C:mult}+N{C:inactive} Mult)' --current level value
+                '{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)' --current level value
             }
         },
         use = function(self, card, area, copier)
@@ -27,11 +27,14 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
         loc_vars = function(card)
             local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
             local formula = 3 + level
+            local current = 0
+            if level - 1 < 0 then current = 3 + (level - 1) end
             return {
                 vars = {
                     level,
                     formula,
-                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
+                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])},
+                    current
                 }
             }
         end,
