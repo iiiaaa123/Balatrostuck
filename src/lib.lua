@@ -4,7 +4,8 @@ Balatrostuck.INIT = {
     Zodiacs = {},
     Jokers = {},
     Editions = {},
-    Tags = {}
+    Tags = {},
+    Spectrals = {}
 }
 
 

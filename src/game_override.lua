@@ -87,7 +87,8 @@ function Game:init_game_object()
         Doom = 0,
         Life = 0,
         Blood = 0,
-        Breath = 0
+        Breath = 0,
+        Piss = 0
     }
     ret.BALATROSTUCK.zodiac_levels = {
         Aries = 0,
