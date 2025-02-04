@@ -145,7 +145,8 @@ local tag_list = {
 }
 
 local spectral_list = {
-    "thetreasure"
+    "thetreasure",
+    "scratchconstruct"
 }
 
 batch_load("jokers")
