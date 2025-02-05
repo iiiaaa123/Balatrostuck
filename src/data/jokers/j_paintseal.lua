@@ -32,7 +32,7 @@ function Balatrostuck.INIT.Jokers.j_paintseal()
                 juice_card_until(card, eval, true)
             end
 
-            if context.before and #context.full_hand == 1 and context.full_hand[1].config.center ~= G.P_CENTERS.m_stone and G.GAME.current_round.hands_played == 0 and
+            if context.before and #context.full_hand == 1 and not SMODS.has_no_rank(context.full_hand[1]) and G.GAME.current_round.hands_played == 0 and
             #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
                 G.E_MANAGER:add_event(Event({
                     trigger = 'before',
