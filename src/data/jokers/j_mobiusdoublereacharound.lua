@@ -3,26 +3,52 @@ function Balatrostuck.INIT.Jokers.j_mobiusdoublereacharound()
         name = "Mobius Double Reacharound",
         key = "mobiusdoublereacharound",
         config = {
-            extra = {
-            }
+            extra = {odds = 8}
         },
         loc_txt = {
             ['name'] = 'Mobius Double Reacharound',
             ['text'] = {
-                [1] = "Scored cards have a 1 in 8 chance to",
+                [1] = "Scored cards have a {C:green}#1# in #2#{} chance to",
                 [2] = "create a zodiac card if played hand contains a straight"
             }
         },
         pos = {
-            x = 2,
-            y = 0
+            x = 6,
+            y = 3
          },
+        loc_vars = function(self,info_queue,card)
+            return{ vars = {G.GAME.probabilities.normal,card.ability.extra.odds}}
+        end,
         cost = 6,
         rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,
         unlocked = true,
         discovered = true,
-        atlas = 'HomestuckJokers'
+        atlas = 'HomestuckJokers',
+        calculate = function(self,card,context)
+            if context.individual and context.cardarea == G.play and next(context.poker_hands['Straight']) then
+                if pseudorandom('Mobius') < G.GAME.probabilities.normal/card.ability.extra.odds and
+                #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                    return {
+                        extra = {focus = card, message = '+ Zodiac!', func = function()
+                            G.E_MANAGER:add_event(Event({
+                                trigger = 'before',
+                                delay = 0.0,
+                                func = (function()
+                                        local zodiac = SMODS.create_card({set = 'Zodiac'})
+                                        zodiac:add_to_deck()
+                                        G.consumeables:emplace(zodiac)
+                                        G.GAME.consumeable_buffer = 0
+                                    return true
+                                end)}))
+                        end},
+                        colour = G.C.SECONDARY_SET.Tarot,
+                        card = card
+                    }
+                end
+            end
+        end
     }
 end 
