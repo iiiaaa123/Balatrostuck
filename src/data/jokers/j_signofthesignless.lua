@@ -51,7 +51,9 @@ function Balatrostuck.INIT.Jokers.j_signofthesignless()
 
             if context.joker_main then
                 if pseudorandom('Signless') < G.GAME.probabilities.normal/card.ability.extra.odds then
-                G.E_MANAGER:add_event(Event({
+                    G.GAME.BALATROSTUCK.zodiac_levels = { Aries = 0, Taurus = 0, Gemini = 0, Cancer = 0,Leo = 0,Virgo = 0,Libra = 0,Scorpio = 0,Sagittarius = 0,Capricorn = 0,Aquarius = 0,Pisces = 0,Ophiuchus = 0}
+                    G.GAME.BALATROSTUCK.active_castes = {}
+                    G.E_MANAGER:add_event(Event({
                         func = function()
                             play_sound('tarot1')
                             card.T.r = -0.2

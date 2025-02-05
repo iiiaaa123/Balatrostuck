@@ -109,5 +109,6 @@ function Game:init_game_object()
     ret.BALATROSTUCK.strife_assignment = 'Unassigned'
     ret.BALATROSTUCK.current_aspect = ''
     ret.BALATROSTUCK.pack_size_bonus = 0
+    ret.BALATROSTUCK.bucket_suits = {'Diamonds','Clubs'}
     return ret
 end
