@@ -24,8 +24,36 @@ function Balatrostuck.INIT.Jokers.j_cruxiteapple()
         eternal_compat = true,
         unlocked = true,
         discovered = true,
-        atlas = 'HomestuckJokers'
+        atlas = 'HomestuckJokers',
+        calculate = function(self,card,context)
+            if context.end_of_round and context.cardarea == G.jokers and G.GAME.current_round.hands_left == 0 then
+                add_tag(Tag('tag_d_six'))
+                delay(0.1)
 
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    delay = 0.0,
+                    func = function()
+                        play_sound('tarot1')
+                        card.T.r = -0.2
+                        card:juice_up(0.3, 0.4)
+                        card.states.drag.is = true
+                        card.children.center.pinch.x = true
+                        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
+                            func = function()
+                                    G.jokers:remove_card(card)
+                                    card:remove()
+                                    card = nil
+                                return true; end})) 
+                        return true
+                    end
+                }))
+                return {
+                    message = 'Bitten!',
+                    colour = G.C.FILTER
+                }
+            end
+        end
         --needs a tooltip in the info queue that says "Unlocks Acend this run"
     }
 end 

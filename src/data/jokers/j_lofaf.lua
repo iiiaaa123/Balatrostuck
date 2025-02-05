@@ -4,8 +4,7 @@ function Balatrostuck.INIT.Jokers.j_lofaf()
         name = "Frost and Frogs",
         key = "lofaf",
         config = {
-            extra = {
-            }
+            extra = {pack_bonus = 0, max = 3}
         },
         loc_txt = {
             ['name'] = 'Frost and Frogs',
@@ -13,10 +12,13 @@ function Balatrostuck.INIT.Jokers.j_lofaf()
                 [1] = "{C:attention}Booster packs{} have",
                 [2] = "+1 card in them",
                 [3] = "per blind beaten",
-                [4] = "{C:inactive}[Currently: 0]{}",
+                [4] = "{C:inactive}[Currently: #1#]{}",
                 [5] = "{C:inactive}(Max +3){}"
             }
         },
+        loc_vars = function(self,info_queue,card)
+            return {vars = {card.ability.extra.pack_bonus}}
+        end,
         pos = {
             x = 3,
             y = 8
@@ -27,7 +29,29 @@ function Balatrostuck.INIT.Jokers.j_lofaf()
         eternal_compat = true,
         unlocked = true,
         discovered = true,
-        atlas = 'HomestuckJokers'
-    
+        atlas = 'HomestuckJokers',
+        calculate = function(self,card,context)
+            if context.end_of_round and context.cardarea == G.jokers and card.ability.extra.pack_bonus < card.ability.extra.max then
+                if card.ability.extra.pack_bonus == 0 then
+                    card.ability.extra.pack_bonus = card.ability.extra.pack_bonus + 1
+                    G.GAME.BALATROSTUCK.pack_size_bonus = G.GAME.BALATROSTUCK.pack_size_bonus + card.ability.extra.pack_bonus
+                else
+                    card.ability.extra.pack_bonus = card.ability.extra.pack_bonus + 1
+                    G.GAME.BALATROSTUCK.pack_size_bonus = G.GAME.BALATROSTUCK.pack_size_bonus + (card.ability.extra.pack_bonus - card.ability.extra.pack_bonus+1)
+                end
+                return {
+                    message = '+1 Booster Card!',
+                    card = card
+                }
+            end
+        end,
+        remove_from_deck = function(self,card,from_debuff)
+            G.GAME.BALATROSTUCK.pack_size_bonus = G.GAME.BALATROSTUCK.pack_size_bonus - card.ability.extra.pack_bonus
+        end,
+        add_to_deck = function(self,card,from_debuff)
+            if from_debuff then
+                G.GAME.BALATROSTUCK.pack_size_bonus = G.GAME.BALATROSTUCK.pack_size_bonus + card.ability.extra.pack_bonus
+            end
+        end
     }
 end 

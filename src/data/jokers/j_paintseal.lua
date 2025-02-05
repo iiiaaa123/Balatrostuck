@@ -32,13 +32,13 @@ function Balatrostuck.INIT.Jokers.j_paintseal()
                 juice_card_until(card, eval, true)
             end
 
-            if context.before and #context.full_hand == 1 and 
+            if context.before and #context.full_hand == 1 and context.full_hand[1].config.center ~= G.P_CENTERS.m_stone and G.GAME.current_round.hands_played == 0 and
             #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
                 G.E_MANAGER:add_event(Event({
                     trigger = 'before',
                     delay = 0.0,
                     func = (function()
-                            local zodiac = SMODS.create_card({set = 'Zodiac', key = 'c_bstuck_' .. zodiacs[context.full_hand[1].base.id -1]})
+                            local zodiac = SMODS.create_card({set = 'Zodiac', key = 'c_bstuck_' .. zodiacs[context.full_hand[1]:get_id() - 1 or 2]})
                             zodiac:add_to_deck()
                             G.consumeables:emplace(zodiac)
                             G.GAME.consumeable_buffer = 0
