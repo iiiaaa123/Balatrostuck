@@ -31,5 +31,30 @@ function Balatrostuck.INIT.Jokers.j_hotdogjuggler()
         loc_vars = function(self, info_queue, card)
             return {vars = {card.ability.extra.discards, card.ability.extra.hotdog_discards}}
         end,
+        calculate = function(self,card,context)
+            if context.discard then
+                card.ability.extra.discards = card.ability.extra.discards - 1
+                if card.ability.extra.discards <= 0 and
+                #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                    card.ability.extra.discards = card.ability.extra.hotdog_discards 
+                    return {
+                        extra = {focus = card, message = '+ Zodiac!', func = function()
+                            G.E_MANAGER:add_event(Event({
+                                trigger = 'before',
+                                delay = 0.0,
+                                func = (function()
+                                        local zodiac = SMODS.create_card({set = 'Zodiac'})
+                                        zodiac:add_to_deck()
+                                        G.consumeables:emplace(zodiac)
+                                        G.GAME.consumeable_buffer = 0
+                                    return true
+                                end)}))
+                        end},
+                        colour = G.C.SECONDARY_SET.Tarot,
+                        card = card
+                    }
+                end
+            end
+        end
     }
 end 
