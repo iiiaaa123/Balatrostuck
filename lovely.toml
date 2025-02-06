@@ -408,3 +408,34 @@ for i = 1, G.GAME.shop.booster_max - #G.shop_booster.cards do
 '''
 match_indent = true
 times = 1
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = 'function Card:change_suit(new_suit)'
+position = "after"
+payload = '''
+SMODS.calculate_context({changing_suit = true, other_card = self, new_suit = new_suit})
+play_sound('gong', 1.4, 0.15)
+'''
+match_indent = true
+times = 1
+
+
+# WHY DOESN'T SIGIL USE CHANGE_SUIT? WHY MUST YOU CURSE ME LOCALTHUNK
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "function Card:set_base(card, initial)"
+position = "after"
+payload = '''
+if not initial then
+    if card.suit ~= self.base.suit then
+        SMODS.calculate_context({changing_suit = true, other_card = self, new_suit = card.suit})
+    end
+end
+       
+'''
+match_indent = true
+times = 1
+
