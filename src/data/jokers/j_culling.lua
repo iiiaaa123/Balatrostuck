@@ -3,8 +3,7 @@ function Balatrostuck.INIT.Jokers.j_culling()
         name = "Culling",
         key = "culling",
         config = {
-            extra = {
-            }
+            extra = {mult = 20, odds = 4, give_mult = false}
         },
         loc_txt = {
             ['name'] = 'Culling',
@@ -24,6 +23,29 @@ function Balatrostuck.INIT.Jokers.j_culling()
         eternal_compat = true,
         unlocked = true,
         discovered = true,
-        atlas = 'HomestuckJokers'
+        atlas = 'HomestuckJokers',
+        calculate = function(self,card,context)
+            if context.setting_blind then
+                card.ability.extra.give_mult = false
+            end
+
+            if context.destroying_card then
+                if context.destroying_card:is_suit('Diamonds') or context.destroying_card:is_suit('Clubs') then
+                    return (pseudorandom('Culling') < G.GAME.probabilities.normal/card.ability.extra.odds)
+                end
+            end
+
+            if context.remove_playing_cards then
+                card.ability.extra.give_mult = true
+            end
+
+            if context.joker_main and card.ability.extra.give_mult then
+                return {
+                    mult = card.ability.extra.mult,
+                    card = card
+                }
+            end
+
+        end
     }
 end 
