@@ -23,6 +23,21 @@ function Balatrostuck.INIT.Jokers.j_ringofvoid()
         eternal_compat = true,
         unlocked = true,
         discovered = true,
-        atlas = 'HomestuckJokers'
+        atlas = 'HomestuckJokers',
+        calculate = function(self,card,context)
+            if context.end_of_round and context.cardarea == G.jokers and G.GAME.blind.boss then
+                add_tag(Tag('tag_negative'))
+                return {
+                    message = '+1 Negative Tag!'
+                }
+            end
+        end,
+        in_pool = function(self,args)
+            if G.GAME.pool_flags.lost_rol then
+                return true
+            else
+                return false
+            end
+        end
     }
 end 
