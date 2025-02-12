@@ -27,6 +27,9 @@ function Balatrostuck.INIT.Jokers.j_ringoflife()
                 for i=1, #context.removed do
                     if context.removed[i]:is_face() then
                         local _card = copy_card(context.removed[i], nil, nil, G.playing_card)
+                        if _card.edition and _card.edition.key == 'e_bstuck_paradox' then
+                            _card:set_edition({})
+                        end
                         _card:add_to_deck()
                         G.deck:emplace(_card)
                         playing_card_joker_effects({_card})
