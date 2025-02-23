@@ -160,6 +160,8 @@ batch_load("editions")
 batch_load("tags")
 batch_load("spectrals")
 
+bstuck_joker_keys = {}
+
 for _, joker in ipairs(joker_list) do
     Balatrostuck.INIT.Jokers["j_"..joker]()
 end
