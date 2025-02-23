@@ -9,10 +9,10 @@ function Balatrostuck.INIT.Jokers.j_jocker()
         loc_txt = {
             ['name'] = 'Jocker',
             ['text'] = {
-                [1] = 'Creates a {C:dark_edition}Negative',
-                [2] = '{C:attention}duplicate{} of itself',
-                [3] = 'when a blind is',
-                [4] = '{C:attention}selected{} or {C:attention}skipped'
+                [1] = 'Create a {C:dark_edition}Negative{}',
+                [2] = 'copy of this Joker',
+                [3] = 'after {C:attention}beating{} or',
+                [4] = '{C:attention}skipping{} a blind',
             }
         },
         pos = { x = 5, y = 2},

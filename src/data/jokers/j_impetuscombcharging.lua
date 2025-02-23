@@ -9,8 +9,10 @@ function Balatrostuck.INIT.Jokers.j_impetuscombcharging()
         loc_txt = {
             ['name'] = 'Impetus Comb Charging',
             ['text'] = {
-                [1] = "First played Three of a Kind gives a D6 tag. Resets every ante.",
-                [2] = "Unleash sepulcritude after 20 rerolls. [Currently: 0/20]"
+                [1] = "First played {C:attention}Three of a Kind{}",
+                [2] = "each ante gives a {C:attention}D6 tag{}.",
+                [3] = "{C:green}Unleash sepulcritude{} after {C:attention}20{} rerolls",
+                [4] = "{C:inactive}(Currently {C:attention}0{C:inactive}/20 rerolls)"
             }
         },
         pos = {

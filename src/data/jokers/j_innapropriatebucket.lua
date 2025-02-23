@@ -9,8 +9,8 @@ function Balatrostuck.INIT.Jokers.j_innapropriatebucket()
         loc_txt = {
             ['name'] = 'Innapropriate Bucket',
             ['text'] = {
-                [1] = "{V:1}#1#{} also acts as {V:2}#2#{}",
-                [2] = "Both suits change every round"
+                [1] = "{V:1}#1#{} also count as {V:2}#2#{},",
+                [2] = "suits change at end of round"
             }
         },
         pos = {

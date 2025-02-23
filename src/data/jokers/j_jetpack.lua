@@ -12,10 +12,9 @@ function Balatrostuck.INIT.Jokers.j_jetpack()
         loc_txt = {
             ['name'] = 'Jetpack',
             ['text'] = {
-                [1] = "Each scored card gives",
-                [2] = "{C:mult}+#1# Mult{} and has a",
-                [3] = "{C:green}#2# in #3#{} chance to be",
-                [4] = "{C:attention}permanently{} debuffed"
+                [1] = "Played cards give {C:mult}+#1#{} Mult and",
+                [2] = "have a {C:green}#2# in #3#{} chance to be",
+                [3] = "{C:attention}permanently debuffed{} when scored"
             }
         },
         pos = {
