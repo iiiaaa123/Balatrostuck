@@ -27,7 +27,7 @@ function Balatrostuck.INIT.Seals.seal_felt()
                             table.insert(G.playing_cards, _card)
                             G.hand:emplace(_card)
                             _card:start_materialize(nil, false)
-                            playing_card_joker_effects(new_cards)
+                            playing_card_joker_effects({_card})
                             return true
                         end
                     }))

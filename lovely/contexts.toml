@@ -99,3 +99,22 @@ end
 match_indent = true
 times = 1
 
+
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = "if type(edition) == 'string' then"
+position = "before"
+payload = '''
+if edition == 'e_bstuck_paradox' then
+    SMODS.calculate_context({paradox_created = true, card = self})
+end
+'''
+match_indent = true
+times = 1
+
+
+
+
+

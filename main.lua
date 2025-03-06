@@ -20,6 +20,10 @@ G.C.DOOM = HEX('20401f')
 G.C.HOPE = HEX('FFE094')
 G.C.RAGE = HEX('9c4dad')
 
+
+G.C.PARADOX = HEX('4EA752')
+
+
 G.C.ZODIAC = {
     Aries = HEX('a10000'),
     Taurus = HEX('a25203'),

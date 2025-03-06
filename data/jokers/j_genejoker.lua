@@ -27,7 +27,19 @@ function Balatrostuck.INIT.Jokers.j_genejoker()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
+        calculate = function(self,card,context)
+            if context.paradox_created then
+                card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize{type = 'variable', key = 'a_chips', vars = {card.ability.extra.chips}}})
+            end
 
+            if context.joker_main then
+                return {
+                    chips = card.ability.extra.chips,
+                    card = card
+                }
+            end
+        end,
         loc_vars = function (self, info_queue, card)
             return {vars = {card.ability.extra.chips, card.ability.extra.chip_mod}}
         end,
