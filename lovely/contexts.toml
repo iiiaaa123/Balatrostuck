@@ -48,7 +48,6 @@ end
 match_indent = true
 times = 1
 
-
 # Store Joker Modify 
 # NOTE: ONLY COMPATIABLE WITH JOKERS RIGHT NOW, WILL NEED TO BE UPDATED TO NEW CALC IF WE NEED IT FOR ANYTHING ELSE
 [[patches]]
@@ -99,6 +98,24 @@ end
 match_indent = true
 times = 1
 
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "local card = create_card(v.type, area, nil, nil, nil, nil, nil, 'sho')"
+position = "after"
+payload = '''
+for j = 1, #G.jokers.cards do
+    _center = G.jokers.cards[j]:calculate_joker({store_joker_replace = true, shop_card = card, debugstring = 'Gumdrop'}) or _center
+end
+'''
+match_indent = true
+times = 1
+
+
+
+
+
+
 
 
 [[patches]]
@@ -118,3 +135,15 @@ times = 1
 
 
 
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "function Card:remove_from_deck(from_debuff)"
+position = "after"
+payload = '''
+if self.ability.set == 'Joker' and not from_debuff and self.added_to_deck then
+    SMODS.calculate_context({other_card = self, BSTUCK_joker_destroyed = true})
+end
+'''
+match_indent = true
+times = 1

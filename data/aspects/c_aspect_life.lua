@@ -20,4 +20,22 @@ function Balatrostuck.INIT.Aspects.c_aspect_life()
         discovered = true,
         atlas = "HomestuckAspects"
     }
+
+
+
+    Balatrostuck.Slab{
+        key = 'life',
+        atlas = 'HomestuckAspectSlabs',
+        pos = {
+            x = 0,
+            y = 0
+        },
+        config = {payout = 0},
+        name = 'Aspect of Life',
+        apply = function(self, slab, context) 
+            if context.end_of_round then
+
+            end
+        end
+    }
 end

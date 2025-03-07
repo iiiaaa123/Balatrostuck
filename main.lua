@@ -211,7 +211,8 @@ for _, spectral in ipairs(spectral_list) do
     Balatrostuck.INIT.Spectrals["c_spectral_"..spectral]()
 end
 
-
+SMODS.Sound({key = "HomestuckHeroicDeath", path = 'johnfuckingdies.ogg'})
+SMODS.Sound({key = "HomestuckJustDeath", path = 'shhh.ogg'})
 
 SMODS.Atlas({key = "HomestuckJokers", path = "hsjokers.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
 SMODS.Atlas({key = "HomestuckZodiacs", path = "zodiac.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
