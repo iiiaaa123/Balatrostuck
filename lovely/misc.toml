@@ -148,3 +148,20 @@ times = 1
 
 
 
+# Info Queue Fix for Todo List
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''elseif self.ability.name == 'To Do List' then loc_vars = {self.ability.extra.dollars, localize(self.ability.to_do_poker_hand, 'poker_hands')}'''
+position = "at"
+payload = '''
+elseif self.ability.name == 'To Do List' then loc_vars = {self.ability.extra.dollars, localize(self.ability.to_do_poker_hand or 'High Card', 'poker_hands')}
+'''
+match_indent = true
+times = 1
+
+        
+
+
+
+

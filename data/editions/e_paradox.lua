@@ -12,6 +12,7 @@ function Balatrostuck.INIT.Editions.e_paradox()
             text = { '{C:red}Destroyed{} at the end of blind', 'occupies {C:dark_edition}no space{}' },
         },
         config = {card_limit = 1},
+        sound = { sound = "negative", per = 1.5, vol = 0.4 },
         badge_colour = HEX('6ABE30'),
         unlocked = true,
         discovered = true,

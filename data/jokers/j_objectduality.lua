@@ -23,6 +23,23 @@ function Balatrostuck.INIT.Jokers.j_objectduality()
         eternal_compat = true,
         unlocked = true,
         discovered = true,
-        atlas = 'HomestuckJokers'
+        atlas = 'HomestuckJokers',
+        calculate = function(self,card,context)
+            if context.first_hand_drawn then
+                local eval = function() return G.GAME.current_round.hands_played == 0 end
+                juice_card_until(card, eval, true)
+            end
+            
+            if context.individual and context.cardarea == G.play and context.scoring_name == 'High Card' and G.GAME.current_round.hands_played == 0 then
+                local othercard = context.other_card
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        play_sound('timpani')
+                        SMODS.add_card({set = 'Joker',edition = 'e_bstuck_paradox', key = get_innocuous(othercard,false)})
+                        return true
+                    end
+                }))
+            end
+        end
     }
 end 
