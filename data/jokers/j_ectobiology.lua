@@ -40,7 +40,7 @@ function Balatrostuck.INIT.Jokers.j_ectobiology()
                         trigger = 'before',
                         delay = 0.0,
                         func = function()
-                            local _card = copy_card(other_joker, nil, nil, nil, card.edition)
+                            local _card = copy_card(other_joker, nil, nil, nil)
                             _card:start_materialize()
                             _card:set_edition('e_bstuck_paradox')
                             _card:add_to_deck()

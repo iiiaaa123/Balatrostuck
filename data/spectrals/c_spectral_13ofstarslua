@@ -16,8 +16,8 @@ function Balatrostuck.INIT.Spectrals.c_spectral_13ofstars()
         },
         atlas = 'HomestuckSpectrals',
         hidden = true,
-        soul_set = 'Base',
-        soul_rate = 999,
+        soul_set = 'Enhanced',
+        soul_rate = 0.003,
         can_repeat_soul = false,
         can_use = function(self,card)
             return #G.jokers.cards < G.jokers.config.card_limit

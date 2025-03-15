@@ -11,6 +11,7 @@ function Balatrostuck.INIT.Editions.e_paradox()
             label = 'Paradox',
             text = { '{C:red}Destroyed{} at the end of blind', 'occupies {C:dark_edition}no space{}' },
         },
+        extra_cost = -3,
         config = {card_limit = 1},
         sound = { sound = "bstuck_HomestuckParadox", per = 0.7, vol = 0.4 },
         badge_colour = HEX('6ABE30'),

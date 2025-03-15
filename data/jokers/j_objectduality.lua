@@ -30,15 +30,24 @@ function Balatrostuck.INIT.Jokers.j_objectduality()
                 juice_card_until(card, eval, true)
             end
             
-            if context.individual and context.cardarea == G.play and context.scoring_name == 'High Card' and G.GAME.current_round.hands_played == 0 then
-                local othercard = context.other_card
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        play_sound('timpani')
-                        SMODS.add_card({set = 'Joker',edition = 'e_bstuck_paradox', key = get_innocuous(othercard,false)})
-                        return true
+            if context.before and context.scoring_name == 'High Card' and G.GAME.current_round.hands_played == 0 then
+                for i=1, #context.scoring_hand do
+                    if #G.jokers.cards >= G.jokers.config.card_limit then
+                        break
                     end
-                }))
+                    local othercard = context.scoring_hand[i]
+                
+                
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            play_sound('timpani')
+                            othercard:juice_up(0.5, 0.5)
+                            SMODS.add_card({set = 'Joker',edition = 'e_bstuck_paradox', key = get_innocuous(othercard,false)})
+                            return true
+                        end
+                    }))
+                    delay(0.4)
+                end
             end
         end
     }
