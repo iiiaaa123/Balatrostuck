@@ -1,6 +1,6 @@
 function Balatrostuck.INIT.Jokers.j_lucky_break()
     SMODS.Joker{
-        name = "Lucky Break",
+        name = "FL1P",
         key = "lucky_break",
         config = {
             extra = {
@@ -9,10 +9,10 @@ function Balatrostuck.INIT.Jokers.j_lucky_break()
             }
         },
         loc_txt = {
-            ['name'] = 'Lucky Break',
+            ['name'] = 'FL1P',
             ['text'] = {
-                [1] = 'All chance-based effects succeed',
-                [2] = 'in {C:attention}final hand{} of round',
+                [1] = 'All {C:green}chance-based{} effects succeed',
+                [2] = 'in the {C:attention}final hand{} of round',
             }
         },
         pos = {

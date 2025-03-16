@@ -8,8 +8,9 @@ function Balatrostuck.INIT.Jokers.j_mobiusdoublereacharound()
         loc_txt = {
             ['name'] = 'Mobius Double Reacharound',
             ['text'] = {
-                [1] = "Scored cards have a {C:green}#1# in #2#{} chance to",
-                [2] = "create a zodiac card if played hand contains a straight"
+                [1] = "If played hand contains a {C:attention}Straight,",
+                [2] = "played cards have a {C:green}#1# in #2#{} chance",
+                [3] = "to create a {C:zodiac}Zodiac{} card when scored"
             }
         },
         pos = {

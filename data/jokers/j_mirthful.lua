@@ -10,7 +10,7 @@ function Balatrostuck.INIT.Jokers.j_mirthful()
             ['name'] = 'Mirthful Joker',
             ['text'] = {
                 [1] = "{C:green}#1# in #2#{} chance to",
-                [2] = "create a {C:attention}Zodiac card{}",
+                [2] = "create a {C:zodiac}Zodiac{} card",
                 [3] = "at end of round"
             }
         },

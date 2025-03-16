@@ -14,7 +14,7 @@ function Balatrostuck.INIT.Jokers.j_lolar()
                 [1] = "This Joker gains {C:chips}+#2#{} Chips",
                 [2] = "for each empty {C:attention}Joker{} slot",
                 [3] = "when a hand is played",
-                [4] = "{C:inactive}[Currently: {C:chips}+#1#{} {C:inactive}Chips]{}"
+                [4] = "{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}"
             }
         },
         pos = {

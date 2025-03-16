@@ -9,8 +9,11 @@ function Balatrostuck.INIT.Jokers.j_kernelsprite()
         loc_txt = {
             ['name'] = 'Kernelsprite',
             ['text'] = {
-                [1] = "oh the wording",
-                [2] = "oh the wording"
+                [1] = "The next {C:attention}two discards{} that have only",
+                [2] = "{C:attention}one card{}, {C:red}destroy{} it and {C:attention}store{} them.",
+                [3] = "At start of round, create two {C:green}Paradox",
+                [4] = "cards with the {C:attention}stored{} rank and suits",
+                [5] = "{C:inactive}(Unassigned) (Unassigned)"
             }
         },
         pos = {

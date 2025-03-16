@@ -11,8 +11,8 @@ function Balatrostuck.INIT.Jokers.j_lonegunbird()
         loc_txt = {
             ['name'] = 'Lone Gunbird',
             ['text'] = {
-                [1] = 'Gain a random {C:attention}Tag',
-                [2] = 'every {C:attention}#1#{} rerolls in the shop',
+                [1] = 'Gain a random {C:attention}Tag{} every',
+                [2] = '{C:attention}#1#{} rerolls in the shop',
                 [3] = '{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)'
             }
         },

@@ -10,10 +10,9 @@ function Balatrostuck.INIT.Jokers.j_lowas()
         loc_txt = {
             ['name'] = 'Wind and Shade',
             ['text'] = {
-                [1] = "When round begins",
-                [2] = "shuffle 3 random",
-                [3] = "{C:green}paradox{} {C:attention}gold{} cards",
-                [4] = "into your deck"
+                [1] = "When {C:attention}Blind{} is selected,",
+                [2] = "shuffle {C:attention}3 {C:green}Paradox{} {C:attention}Gold{}",
+                [3] = "cards into deck"
             }
         },
         pos = {

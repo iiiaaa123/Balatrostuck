@@ -9,11 +9,10 @@ function Balatrostuck.INIT.Jokers.j_lofaf()
         loc_txt = {
             ['name'] = 'Frost and Frogs',
             ['text'] = {
-                [1] = "{C:attention}Booster packs{} have",
-                [2] = "+1 card in them",
-                [3] = "per blind beaten",
-                [4] = "{C:inactive}[Currently: #1#]{}",
-                [5] = "{C:inactive}(Max +3){}"
+                [1] = "{C:attention}Booster packs{} have {C:attention}+0 ",
+                [2] = "cards to choose from,",
+                [3] = "{C:attention}+1{} at end of round",
+                [4] = "{C:inactive}(Up to +3){}"
             }
         },
         loc_vars = function(self,info_queue,card)

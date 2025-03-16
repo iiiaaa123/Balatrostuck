@@ -8,8 +8,9 @@ function Balatrostuck.INIT.Jokers.j_misspaint()
         loc_txt = {
             ['name'] = 'Miss Paint',
             ['text'] = {
-                [1] = "Gains {C:mult}+#1#{} Mult when a card changes suits",
-                [2] = "(Currently {C:mult}+#2#{C:inactive} Mult)"
+                [1] = "Gains {C:mult}+#1#{} Mult for every",
+                [2] = "card that {C:attention}changes suit",
+                [3] = "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
             }
         },
         loc_vars = function(self,info_queue,card)

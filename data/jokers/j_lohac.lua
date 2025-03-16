@@ -12,10 +12,9 @@ function Balatrostuck.INIT.Jokers.j_lohac()
         loc_txt = {
             ['name'] = 'Heat and Clockwork',
             ['text'] = {
-                [1] = "Gains {C:white,X:mult}X#1#{} Mult per blind",
-                [2] = "won in a {C:attention}single{} hand",
-                [3] = "{C:inactive}resets on {C:attention}second{} {C:inactive}hand",
-                [4] = "{C:inactive}(Currently: {C:white,X:mult}X#2#{} Mult{C:inactive})"
+                [1] = "Gain {C:blue}+2{} Hands when {C:attention}Blind{} is",
+                [2] = "selected if previous round's",
+                [3] = "score was {C:attention,E:2,S:1.1}set on fire"
 
             }
         },

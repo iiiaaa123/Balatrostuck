@@ -8,9 +8,10 @@ function Balatrostuck.INIT.Jokers.j_nepetajoker()
         loc_txt = {
             ['name'] = 'nepetajoker',
             ['text'] = {
-                [1] = "Permanently gains {C:mult}+#1#{} Mult when played hand has a scoring card of",
-                [2] = "{V:1}#3#{} and {V:2}#4#{} (changes each round)",
-                [3] = "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
+                [1] = "This Joker gains {C:mult}+#1#{} Mult if played hand",
+                [2] = "contains a scoring {V:1}#3#{} and {V:2}#4#{}",
+                [3] = "card, suits change every round",
+                [4] = "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
             }
         },
         pos = {
