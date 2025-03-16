@@ -25,14 +25,26 @@ function Balatrostuck.INIT.Jokers.j_jocker()
         atlas = 'HomestuckJokers',
 
         calculate = function (self,card,context)
-            if context.setting_blind or context.skip_blind then
+            if context.setting_blind then
                 G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+
+                if #G.jokers.cards >= 256 then
+                    love.graphics.present()
+                    card.ability.extra = ITOLDYOUABOUTTHEJOKERSBRO
+                    return
+                end
+
 
                 G.E_MANAGER:add_event(Event({
                     trigger = 'before',
                     delay = 0.0,
                     func = function()
-                    local _card = copy_card(card, nil, nil, nil, card.edition)
+                    
+                    local _card = SMODS.add_card({set = "Joker", key = 'j_bstuck_jocker'})
+
+
+
+
                     _card:set_edition({negative = true}, nil, true)
                     _card:add_to_deck()
                     G.jokers:emplace(_card)

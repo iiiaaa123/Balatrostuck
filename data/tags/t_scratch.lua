@@ -25,12 +25,9 @@ function Balatrostuck.INIT.Tags.t_scratch()
             if #G.consumeables.cards < G.consumeables.config.card_limit then
                 tag:yep("Ify!",G.C.Green,
                 function()
-                    while #G.consumeables.cards < G.consumeables.config.card_limit do
-                        local _card = SMODS.create_card({set = 'Tarot',area = G.consumeables, no_edition = true, key = 'c_fool'})
-                        _card:add_to_deck()
-                        G.consumeables:emplace(_card)
-                        G.GAME.consumeable_buffer = 0
-                    end
+                    G.GAME.round_resets.blind_states.Small = 'Current'
+                    G.GAME.round_resets.blind_states.Big = 'Upcoming'
+                    G.GAME.round_resets.blind_states.Boss = 'Upcoming'
                     return true
                 end)
                 tag.triggered = true
