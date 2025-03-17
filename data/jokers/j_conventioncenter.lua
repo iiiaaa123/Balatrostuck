@@ -24,10 +24,10 @@ function Balatrostuck.INIT.Jokers.j_conventioncenter()
         discovered = true,
         atlas = 'HomestuckJokers',
         add_to_deck = function(self,card,from_debuff)
-            G.GAME.shop.booster_max = G.GAME.shop.booster_max + card.ability.extra.shop_size
+            SMODS.change_booster_limit(card.ability.extra.shop_size)
         end,
         remove_from_deck = function(self,card,from_debuff)
-            G.GAME.shop.booster_max = G.GAME.shop.booster_max - card.ability.extra.shop_size
+            SMODS.change_booster_limit(-card.ability.extra.shop_size)
         end
     }
 end 

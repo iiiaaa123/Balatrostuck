@@ -113,40 +113,6 @@ end
 match_indent = true
 times = 1
 
-[[patches]]
-[patches.pattern]
-target = "game.lua"
-pattern = 'joker_max = 2,'
-position = "after"
-payload = '''
-booster_max = 2,
-'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = "functions/UI_definitions.lua"
-pattern = '''{card_limit = 2, type = 'shop', highlight_limit = 1, card_w = 1.27*G.CARD_W})'''
-position = "at"
-payload = '''
-{card_limit = G.GAME.shop.booster_max, type = 'shop', highlight_limit = 1, card_w = 1.27*G.CARD_W})
-'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = "game.lua"
-pattern = '''for i = 1, 2 do'''
-position = "at"
-payload = '''
-for i = 1, G.GAME.shop.booster_max - #G.shop_booster.cards do
-'''
-match_indent = true
-times = 1
-
-
 
 # Info Queue Fix for Todo List
 [[patches]]

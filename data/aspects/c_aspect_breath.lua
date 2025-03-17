@@ -50,15 +50,13 @@ function Balatrostuck.INIT.Aspects.c_aspect_breath()
 
             if context.activated and context.after_level_up then
                 if context.returning then
-                    G.GAME.current_round.free_rerolls = G.GAME.current_round.free_rerolls + peepee
+                    SMODS.change_free_rerolls(peepee)
                 else
-                    G.GAME.current_round.free_rerolls = G.GAME.current_round.free_rerolls + peepee-poopoo
+                    SMODS.change_free_rerolls(peepee-poopoo)
                 end
-                calculate_reroll_cost(true)
             end
             if context.deactivated and context.before_level_down then
-                G.GAME.current_round.free_rerolls = G.GAME.current_round.free_rerolls  - peepee
-                calculate_reroll_cost(true)
+                SMODS.change_free_rerolls(-peepee)
             end
         end
     }

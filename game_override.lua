@@ -115,3 +115,25 @@ function Game:init_game_object()
     ret.BALATROSTUCK.joker_keys = {}
     return ret
 end
+
+
+
+local game_loadref = Game.start_run
+function Game:start_run(args)
+    game_loadref(self,args)
+    self.GAME.BALATROSTUCK.active_castes = {}
+    
+    for k,v in pairs(self.GAME.BALATROSTUCK.zodiac_levels) do
+        if v > 0 then
+            local newCaste = Caste('caste_bstuck_' .. string.lower(k),self.P_CASTES['caste_bstuck_' .. k])
+            table.insert(G.GAME.BALATROSTUCK.active_castes, newCaste)
+        end
+    end
+
+    if self.GAME.BALATROSTUCK.current_aspect ~= '' or nil then
+        local _slab = Slab('slab_bstuck_' .. self.GAME.BALATROSTUCK.current_aspect)
+        self.GAME.slab = _slab    
+    end
+end
+    
+

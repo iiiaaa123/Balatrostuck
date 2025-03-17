@@ -3,9 +3,6 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
         name = "Aries",
         key = "aries",
         config = {
-            extra = {
-                mult_mod = 2
-            }
         },
         pos = {
             x = 4,
@@ -31,8 +28,9 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
         end,
         can_use = function() return true end,
         loc_vars = function(card)
-            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
-            local formula = card.config.extra.mult_mod * level
+            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1           
+            local formula = 0.5 * level
+
             return {
                 vars = {
                     level,
@@ -53,19 +51,24 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
         rank = 14,
         apply = function(self,context)
             if context.setting_blind then
-                self.ability.config.discared_aces = 0
+                for i=1, #G.playing_cards do
+                    G.playing_cards[i].ignore_aries = false
+                end
             end
-
-            if context.discard and context.other_card:get_id() == self.ability.rank then
-                self.ability.config.discared_aces = self.ability.config.discared_aces + 1
-            end
-
+            
             if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
-                local scottthewoz = self.ability.config.discared_aces or 0
+                context.other_card.ignore_aries = true
+                local scottthewoz = 0
+                
+                
                 for k,v in pairs(G.deck.cards) do
                     if v:get_id() == self.ability.rank then scottthewoz = scottthewoz + 1 end
                 end
 
+                for k,v in pairs(G.discard.cards) do
+                    if v:get_id() == self.ability.rank and not v.ignore_aries then scottthewoz = scottthewoz + 1 end
+                end
+                
                 return {
                     x_mult = (self:level() / 2) * scottthewoz,
                     card = context.other_card

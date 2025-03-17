@@ -227,3 +227,39 @@ if G.GAME.slab ~= nil then
 end
 '''
 times = 1
+
+
+# ARIES BODGE
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.added_to_deck = nil"
+position = "after"
+match_indent = true
+payload = '''
+self.ignore_aries = false
+'''
+times = 1
+
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.seal = cardTable.seal"
+position = "after"
+match_indent = true
+payload = '''
+self.ignore_aries = cardTable.ignore_aries
+'''
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "seal = self.seal,"
+position = "after"
+match_indent = true
+payload = '''
+ignore_aries = self.ignore_aries,
+'''
+times = 1

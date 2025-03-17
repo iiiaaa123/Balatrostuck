@@ -18,6 +18,7 @@ Balatrostuck.Aspect = SMODS.Consumable:extend{
 
 function Balatrostuck.Aspect:switch_slab()
   local aspect = string.gsub(self.key, "c_bstuck_", "")
+  G.GAME.BALATROSTUCK.current_aspect = aspect
   add_slab(Slab('slab_bstuck_' .. aspect))
 end
 
