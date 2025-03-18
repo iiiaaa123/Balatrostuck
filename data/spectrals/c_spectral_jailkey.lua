@@ -21,7 +21,7 @@ function Balatrostuck.INIT.Spectrals.c_spectral_jailkey()
             local doublekey = nil
             local doublename = nil
             local colour = G.C.GREY
-            if #G.hand.highlighted == 1 then
+            if G.hand and #G.hand.highlighted == 1 then
                 doublename = get_innocuous(G.hand.highlighted[1],true)
                 doublekey = get_innocuous(G.hand.highlighted[1],false)
                 local hehe = G.hand.highlighted[1]
