@@ -37,7 +37,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_taurus()
         apply = function(self,context)
             
 
-            if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
+            if context.discard and context.other_card:get_id() == self.ability.rank then
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({

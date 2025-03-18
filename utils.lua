@@ -134,3 +134,98 @@ function get_innocuous(card,get_only_name)
         return keyprefix .. innocuous_double[1]
     end
 end
+
+
+function shuffle(t,seed)
+    local tbl = {}
+    for i = 1, #t do
+        tbl[i] = t[i]
+    end
+    for i = #tbl, 2, -1 do
+        local j = pseudorandom(seed,1,i)
+        tbl[i], tbl[j] = tbl[j], tbl[i]
+    end
+    return tbl
+end
+
+
+function tableContains(table, value)
+    for i = 1,#table do
+        if (table[i] == value) then
+            return true
+        end
+    end
+    return false
+end
+
+
+
+function get_aspect_for_pack(normalize_weights)
+    local pool = {
+        {key = 'blood',weight = 0,onestar = false},
+        {key = 'breath',weight = 0,onestar = false},
+        {key = 'hope',weight = 0.2,onestar = false},
+        {key = 'life',weight = 0.2,onestar = false},
+        {key = 'doom',weight = 0.2,onestar = false},
+        {key = 'rage',weight = 0.2,onestar = false},
+        {key = 'mind',weight = 0.4,onestar = false},
+        {key = 'void',weight = 0.6,onestar = false},
+        {key = 'light',weight = 0.6,onestar = false},
+        {key = 'heart',weight = 0.6,onestar = false},
+        {key = 'time',weight = 0.8,onestar = false},
+        {key = 'space',weight = 0.8,onestar = false},
+        {key = 'piss',weight = 0.9,onestar = false}
+    }
+
+    if normalize_weights then
+        for i=1, #pool do
+            pool[i].weight = 0
+        end
+    end
+
+    if not next(find_joker("Showman")) then
+        for i = #pool, 1, -1 do 
+            local entry = pool[i]
+            if tableContains(G.GAME.gamer_choices,'c_bstuck_' .. pool[i].key) then
+                table.remove(pool, i)
+            else
+                local conKeys = {}
+                for j=1, #G.consumeables.cards do
+                    table.insert(conKeys,G.consumeables.cards[j].config.center.key)
+                end
+                if tableContains(conKeys,'c_bstuck_' .. pool[i].key) then
+                    table.remove(pool, i)
+                end
+            end
+        end
+    end
+
+
+
+
+    local poolLuck = pseudorandom('gamerPack')
+    local lowestWeight = 1
+
+
+    for i=1, #pool do
+        if pool[i].weight < lowestWeight then
+            lowestWeight = pool[i].weight
+        end
+    end
+    poolLuck = math.max(poolLuck,lowestWeight + pseudorandom('gamerPack',0.01,0.1))
+
+
+
+
+    local shuffledPool = shuffle(pool,'gamerPack')
+
+    for i=1, #shuffledPool do
+        if shuffledPool[i].weight < poolLuck then
+            table.insert(G.GAME.gamer_choices,'c_bstuck_' .. shuffledPool[i].key)
+            return 'c_bstuck_' .. shuffledPool[i].key
+        end
+    end
+
+    return 'c_bstuck_breath'
+end
+            
