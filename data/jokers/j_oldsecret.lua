@@ -9,8 +9,9 @@ function Balatrostuck.INIT.Jokers.j_oldsecret()
         loc_txt = {
             ['name'] = 'Old Secret',
             ['text'] = {
-                [1] = "Turn a random consumable paradox at end of round.",
-                [2] = "Paradox consumables cannot be destroyed."
+                [1] = "A random held {C:attention}consumeable{} becomes",
+                [2] = "{C:green}Paradox{} at end of round, {C:green}Paradox",
+                [3] = "consumeables cannot be destroyed"
             }
         },
         pos = {

@@ -4,13 +4,18 @@ function Balatrostuck.INIT.Jokers.j_pickleinspector()
         key = "pickleinspector",
         config = {
             extra = {
+                xmult_gain = 0.02,
+                xmult = 1
             }
         },
         loc_txt = {
             ['name'] = 'Pickle Inspector',
             ['text'] = {
-                [1] = "When another joker triggers this gets",
-                [2] = "+0.025x mult. Resets at end of blind. [Currently: 1x]"
+                [1] = "This Joker gains {X:red,C:white}X#1#{} Mult",
+                [2] = "whenever {C:attention}another Joker triggers,",
+                [3] = "resets at end of round",
+                [4] = "{S:0.8}Pickle Inspector excluded",
+                [5] = "{C:inactive}(Currently {X:red,C:white}X#2#{C:inactive} Mult)"
             }
         },
         pos = {
@@ -23,6 +28,9 @@ function Balatrostuck.INIT.Jokers.j_pickleinspector()
         eternal_compat = true,
         unlocked = true,
         discovered = true,
-        atlas = 'HomestuckJokers'
+        atlas = 'HomestuckJokers',
+        loc_vars = function(self,info_queue,card)
+            return {vars = {card.ability.extra.xmult_gain, card.ability.extra.xmult}}
+        end,
     }
 end 

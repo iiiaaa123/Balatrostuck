@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Jokers.j_pairing_grid()
             ['name'] = "Pairing Grid",
             ['text'] = {
                 [1] = '{C:mult}+#1#{} Mult for each {C:attention}unique',
-                [2] = '{C:attention}suit{} in scoring hand, or',
+                [2] = '{C:attention}suit{} scored this hand, or',
                 [3] = '{C:mult}+#2#{} Mult if {C:attention}all four suits'
             }
         },

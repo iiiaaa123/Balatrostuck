@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Jokers.j_operation_regisurp()
         loc_txt = {
             ['name'] = 'Operation Regisurp',
             ['text'] = {
-                [1] = "Played {C:attention}Queen of #1#{} give",
+                [1] = "Played {C:attention}Queens of #1#{} give",
                 [2] = "{C:money}$#2#{} when scored and are destroyed "
             }
         },
