@@ -29,7 +29,20 @@ function Balatrostuck.INIT.Jokers.j_dadswallet()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
-
+        add_to_deck = function(self,card,from_debuff)
+            card.ability.extra.slots_gain = math.min(card.ability.extra.slots_max,math.floor(G.GAME.dollars / card.ability.extra.money))
+            G.consumeables:change_size(card.ability.extra.slots_gain)
+        end,
+        remove_from_deck = function(self,card,from_debuff)
+            G.consumeables:change_size(-card.ability.extra.slots_gain)
+        end,
+        calculate = function(self,card,context)
+            if context.bstuck_money_increased then
+                G.consumeables:change_size(-card.ability.extra.slots_gain)
+                card.ability.extra.slots_gain = math.min(card.ability.extra.slots_max,math.floor(context.total_dollars / card.ability.extra.money))
+                G.consumeables:change_size(card.ability.extra.slots_gain)
+            end
+        end,
         loc_vars = function(self, info_queue, card)
             return {vars = {card.ability.extra.money, card.ability.extra.slots_gain, card.ability.extra.slots_current, card.ability.extra.slots_max}}
         end

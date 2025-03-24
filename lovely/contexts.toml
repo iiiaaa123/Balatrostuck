@@ -104,9 +104,7 @@ target = "functions/UI_definitions.lua"
 pattern = "local card = create_card(v.type, area, nil, nil, nil, nil, nil, 'sho')"
 position = "after"
 payload = '''
-for j = 1, #G.jokers.cards do
-    _center = G.jokers.cards[j]:calculate_joker({store_joker_replace = true, shop_card = card, debugstring = 'Gumdrop'}) or _center
-end
+SMODS.calculate_context({store_joker_replace = true, shop_card = card})
 '''
 match_indent = true
 times = 1
