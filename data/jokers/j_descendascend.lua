@@ -15,8 +15,8 @@ function Balatrostuck.INIT.Jokers.j_descendascend()
             }
         },
         pos = {
-            x = 2,
-            y = 0
+            x = 8,
+            y = 8
          },
         cost = 8,
         rarity = 3,

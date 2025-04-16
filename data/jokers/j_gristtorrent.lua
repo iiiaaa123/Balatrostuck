@@ -20,8 +20,8 @@ function Balatrostuck.INIT.Jokers.j_gristtorrent()
             }
         },
         pos = {
-            x = 3,
-            y = 10
+            x = 7,
+            y = 0
          },
         cost = 7,
         rarity = 2,

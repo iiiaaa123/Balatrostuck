@@ -18,8 +18,8 @@ function Balatrostuck.INIT.Jokers.j_consortconcierge()
             }
         },
         pos = {
-            x = 0,
-            y = 10
+            x = 9,
+            y = 1
          },
         cost = 4,
         rarity = 1,

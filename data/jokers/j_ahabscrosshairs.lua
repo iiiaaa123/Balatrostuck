@@ -16,7 +16,7 @@ function Balatrostuck.INIT.Jokers.j_ahabscrosshairs()
             }
         },
         pos = {
-            x = 2,
+            x = 9,
             y = 0
          },
         cost = 20,
