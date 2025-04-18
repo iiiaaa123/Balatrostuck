@@ -205,3 +205,14 @@ end
 --     end,
 --    true
 -- )
+
+
+
+set_cost_ref = Card.set_cost
+function Card:set_cost()
+    set_cost_ref(self)
+    if self.config.center.key == 'j_bstuck_jocker' then
+        self.cost = math.floor(-4*(100-G.GAME.discount_percent)/100)
+        self.sell_cost = math.floor(-2*(100-G.GAME.discount_percent)/100)
+    end
+end

@@ -48,7 +48,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_hope()
                 end
             end
             if context.deactivated and context.before_level_down then
-                G.GAME.BALATROSTUCK.pack_size_bonus = G.GAME.BALATROSTUCK.pack_size_bonus - poopoo
+                G.GAME.BALATROSTUCK.pack_size_bonus = G.GAME.BALATROSTUCK.pack_size_bonus - peepee
             end
         end
     }

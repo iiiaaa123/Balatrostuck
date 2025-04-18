@@ -16,7 +16,7 @@ function Balatrostuck.INIT.Jokers.j_jocker()
             }
         },
         pos = { x = 5, y = 2},
-        cost = 3,
+        cost = -3,
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
@@ -28,9 +28,8 @@ function Balatrostuck.INIT.Jokers.j_jocker()
             if context.setting_blind then
 
                 if #G.jokers.cards >= 256 then
-                    love.graphics.present()
-                    card.ability.extra = ITOLDYOUABOUTTHEJOKERSBRO
-                    return
+                    G.E_MANAGER:clear_queue()
+                    I_WARNED_YOU_ABOUT_THE_JOCKERS_BRO()
                 end
 
                 G.GAME.joker_buffer = G.GAME.joker_buffer + 1
@@ -39,11 +38,9 @@ function Balatrostuck.INIT.Jokers.j_jocker()
                     trigger = 'before',
                     delay = 0.0,
                     func = function()
-                    
                         local _card = SMODS.add_card({set = "Joker", key = 'j_bstuck_jocker'})
                         _card:set_edition({negative = true}, nil, true)
                         _card:add_to_deck()
-                        G.jokers:emplace(_card)
                         _card:start_materialize()
                         G.GAME.joker_buffer = 0
                     return true
