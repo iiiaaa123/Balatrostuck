@@ -14,8 +14,8 @@ function Balatrostuck.INIT.Jokers.j_enterthemedium()
             }
         },
         pos = {
-            x = 2,
-            y = 0
+            x = 0,
+            y = 10
          },
         cost = 3,
         rarity = 1,

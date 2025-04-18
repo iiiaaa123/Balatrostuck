@@ -15,9 +15,13 @@ function Balatrostuck.INIT.Jokers.j_biscuits()
             }
         },
         pos = {
-            x = 4,
-            y = 5
+            x = 0,
+            y = 11
          },
+        soul_pos = {
+            x = 1,
+            y = 11
+        },
         cost = 13,
         rarity = 3,
         blueprint_compat = false,
