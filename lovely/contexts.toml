@@ -31,22 +31,7 @@ match_indent = true
 times = 1
 
 
-# WHY DOESN'T SIGIL USE CHANGE_SUIT? WHY MUST YOU CURSE ME LOCALTHUNK
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = "function Card:set_base(card, initial)"
-position = "after"
-payload = '''
-if not initial then
-    if card.suit ~= self.base.suit then
-        SMODS.calculate_context({changing_suit = true, other_card = self, new_suit = card.suit})
-    end
-end
-       
-'''
-match_indent = true
-times = 1
+
 
 # Store Joker Modify 
 # NOTE: ONLY COMPATIABLE WITH JOKERS RIGHT NOW, WILL NEED TO BE UPDATED TO NEW CALC IF WE NEED IT FOR ANYTHING ELSE

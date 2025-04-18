@@ -216,3 +216,13 @@ function Card:set_cost()
         self.sell_cost = math.floor(-2*(100-G.GAME.discount_percent)/100)
     end
 end
+
+setbase_ref = Card.set_base
+function Card:set_base(card, initial)
+    if not initial and card then
+        if self.suit ~= self.base.suit then
+            SMODS.calculate_context({changing_suit = true, other_card = self, new_suit = card.suit})
+        end
+    end
+    setbase_ref(self,card,initial)
+end

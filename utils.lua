@@ -160,6 +160,8 @@ end
 
 
 
+
+
 function get_aspect_for_pack(normalize_weights)
     local pool = {
         {key = 'blood',weight = 0,onestar = false},
@@ -227,6 +229,86 @@ function get_aspect_for_pack(normalize_weights)
     end
 
     return 'c_bstuck_breath'
+end
+
+
+
+
+
+
+
+
+
+
+
+function get_zodiac(normalize_weights)
+    G.GAME.gamer_choices = G.GAME.gamer_choices or {}
+    local pool = {
+        {key = 'aries',weight = 0.9,onestar = false},
+        {key = 'gemini',weight = 0.8,onestar = false},
+        {key = 'taurus',weight = 0.7,onestar = false},
+        {key = 'cancer',weight = 0.6,onestar = false},
+        {key = 'leo',weight = 0.6,onestar = false},    
+        {key = 'virgo',weight = 0.4,onestar = false},
+        {key = 'libra',weight = 0.4,onestar = false},
+        {key = 'scorpio',weight = 0.4,onestar = false},
+        {key = 'sagittarius',weight = 0.6,onestar = false},
+        {key = 'capricorn',weight = 0.6,onestar = false},
+        {key = 'aquarius',weight = 0.7,onestar = false},
+        {key = 'pisces',weight = 0.8,onestar = false},
+        {key = 'ophiuchus',weight = 0.9,onestar = false}
+    }
+
+    if normalize_weights then
+        for i=1, #pool do
+            pool[i].weight = 0
+        end
+    end
+
+    if not next(find_joker("Showman")) then
+        for i = #pool, 1, -1 do 
+            local entry = pool[i]
+            if tableContains(G.GAME.gamer_choices,'c_bstuck_' .. pool[i].key) then
+                table.remove(pool, i)
+            else
+                local conKeys = {}
+                for j=1, #G.consumeables.cards do
+                    table.insert(conKeys,G.consumeables.cards[j].config.center.key)
+                end
+                if tableContains(conKeys,'c_bstuck_' .. pool[i].key) then
+                    table.remove(pool, i)
+                end
+            end
+        end
+    end
+
+
+
+
+    local poolLuck = pseudorandom('gamerPack')
+    local lowestWeight = 1
+
+
+    for i=1, #pool do
+        if pool[i].weight < lowestWeight then
+            lowestWeight = pool[i].weight
+        end
+    end
+    poolLuck = math.max(poolLuck,lowestWeight + pseudorandom('gamerPack',0.01,0.1))
+
+
+
+
+    local shuffledPool = shuffle(pool,'gamerPack')
+
+    for i=1, #shuffledPool do
+        if shuffledPool[i].weight < poolLuck then
+            table.insert(G.GAME.gamer_choices,'c_bstuck_' .. shuffledPool[i].key)
+            return 'c_bstuck_' .. shuffledPool[i].key
+        end
+    end
+
+    return 'c_bstuck_libra'
 end
 
 
