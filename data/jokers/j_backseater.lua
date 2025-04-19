@@ -14,8 +14,8 @@ function Balatrostuck.INIT.Jokers.j_backseater()
             }
         },
         pos = {
-            x = 2,
-            y = 0
+            x = 1,
+            y = 10
          },
         cost = 8,
         rarity = 2,
