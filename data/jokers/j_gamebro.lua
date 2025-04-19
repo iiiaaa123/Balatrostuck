@@ -21,7 +21,7 @@ function Balatrostuck.INIT.Jokers.j_gamebro()
         },
         pos = {
             x = 2,
-            y = 0
+            y = 10
          },
         cost = 6,
         rarity = 2,
