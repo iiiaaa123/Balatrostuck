@@ -23,27 +23,24 @@ function Balatrostuck.INIT.Jokers.j_jocker()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
-
-        calculate = function (self,card,context)
-            if context.setting_blind then
-
-                if #G.jokers.cards >= 256 then
-                    G.E_MANAGER:clear_queue()
-                    I_WARNED_YOU_ABOUT_THE_JOCKERS_BRO()
-                end
-
+        calculate = function(self,card,context)
+            if context.setting_blind and context.cardarea == G.jokers then 
                 G.GAME.joker_buffer = G.GAME.joker_buffer + 1
-
                 G.E_MANAGER:add_event(Event({
                     trigger = 'before',
                     delay = 0.0,
                     func = function()
-                        local _card = SMODS.add_card({set = "Joker", key = 'j_bstuck_jocker'})
-                        _card:set_edition({negative = true}, nil, true)
-                        _card:add_to_deck()
+                        if #G.jokers.cards >= 666 then
+                            G.E_MANAGER:clear_queue()
+                            I_WARNED_YOU_ABOUT_THE_JOCKERS_BRO()
+                        end
+                        local _card = copy_card(card, nil, nil, nil, card.edition)
                         _card:start_materialize()
+                        _card:add_to_deck()
+                        _card:set_edition({negative = true}, true)
+                        G.jokers:emplace(_card)
                         G.GAME.joker_buffer = 0
-                    return true
+                        return true
                     end
                 }))
             end
