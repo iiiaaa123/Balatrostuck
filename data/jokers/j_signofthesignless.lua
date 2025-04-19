@@ -68,7 +68,7 @@ function Balatrostuck.INIT.Jokers.j_signofthesignless()
                                     return true; end})) 
                             return true
                         end
-                    })) 
+                    }))
                     return {
                         message = 'Culled!',
                         card = card

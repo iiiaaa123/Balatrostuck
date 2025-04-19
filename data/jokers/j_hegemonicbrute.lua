@@ -35,8 +35,12 @@ function Balatrostuck.INIT.Jokers.j_hegemonicbrute()
                 end
 
                 if has_hearts then
-                    for _, v in ipairs(context.full_hand) do
+                    local asdf = {context.scoring_hand[1], context.scoring_hand[2]}
+                    
+                    for i=1, 2 do
                         G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
+                            v = asdf[i]
+                            if not v then return true end
                             local suit_prefix = string.sub(v.base.suit, 1, 1)..'_'
                             local rank_suffix = v.base.id == 14 and 2 or math.min(v.base.id+1, 14)
                             if rank_suffix < 10 then rank_suffix = tostring(rank_suffix)
@@ -51,11 +55,17 @@ function Balatrostuck.INIT.Jokers.j_hegemonicbrute()
 
                         G.E_MANAGER:add_event(Event({
                             func = function()
+                                v = asdf[i]
+                                if not v then return true end
                                 v:juice_up()
                                 return true
                             end
-                        })) 
+                        }))
                     end
+                    return {
+                        message = 'Rank up!',
+                        card = card
+                    }
                 end
             end
         end
