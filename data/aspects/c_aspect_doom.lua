@@ -5,12 +5,13 @@ function Balatrostuck.INIT.Aspects.c_aspect_doom()
         loc_txt = {
             ['name'] = "Doom",
             ['text'] = {
-                [1] = 'Played cards give {X:mult,C:white}X#1#{} Mult',
-                [2] = 'when scored, each card in {C:attention}full',
-                [3] = '{C:attention}deck{} has a {C:green}#2# in #3#{} chance',
-                [4] = 'to be {C:red}debuffed{} this round',
-                [5] = 'when blind is selected',
-                [6] = '{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} and {C:green}#2# in #5#{C:inactive})'
+                [1] = "", --"{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+                [2] = 'Played cards give {X:mult,C:white}X#1#{} Mult',
+                [3] = 'when scored, each card in {C:attention}full',
+                [4] = '{C:attention}deck{} has a {C:green}#2# in #3#{} chance',
+                [5] = 'to be {C:red}debuffed{} this round',
+                [6] = 'when blind is selected',
+                [7] = '{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} and {C:green}#2# in #5#{C:inactive})'
             }
         },
         pos = {
