@@ -2,7 +2,11 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
     Balatrostuck.Zodiac{
         name = "Sagittarius",
         key = "sagittarius",
-        config = {},
+        config = {
+            extra = {
+                chips = 25
+            }
+        },
         pos = {
             x = 0,
             y = 1
@@ -10,11 +14,11 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
         loc_txt = {
             ['name'] = "Sagittarius",
             ['text'] = {
-                '{S:0.8}({S:0.8}lvl.#1#{S:0.8}){} Level up', --needs color var
+                '{S:0.8}({S:0.8, V:1}lvl.#1#{S:0.8}){} Level up', --needs color var
                 'Played cards give',
-                '{C:chips}+25{} Chips if played hand ', --next level value
+                '{C:chips}+#2#{} Chips if played hand', --next level value
                 'contains a {C:attention}non-scoring 9',
-                '{C:inactive}(Currently {C:chips}+0{C:inactive} Chips)' --current level value
+                '{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)' --current level value
             }
         },
         cost = 4,
@@ -28,7 +32,22 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
             }))
             self:add_caste('Sagittarius')
         end,
-        can_use = function() return true end
+        can_use = function() return true end,
+        loc_vars = function(card)
+            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
+            local formula = level*card.config.extra.chips
+            local current = 0
+            if level-1 > 0 then current = (level-1)*card.config.extra.chips end
+            return {
+                vars = {
+                    level,
+                    formula,
+                    current,
+                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
+                }
+            }
+        end,
+        
     }
 
     Balatrostuck.Caste{

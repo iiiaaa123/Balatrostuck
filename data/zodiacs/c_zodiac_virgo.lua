@@ -32,10 +32,13 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_virgo()
         loc_vars = function(card)
             local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
             local formula = card.config.extra.chips * level
+            local current = 0
+            if level-1 > 0 then current = card.config.extra.chips * (level-1) end
             return {
                 vars = {
                     level,
                     formula,
+                    current,
                     colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
                 }
             }
