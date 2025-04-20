@@ -15,7 +15,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_scorpio()
                 'when scored, up to ',
                 '{C:attention}1{} time#3# per hand, and',
                 'resets when next hand is played', --next level amount
-                '{C:inactive}(Currently up to {C:attention}#2# {C:inactive}times)', --current level amount
+                '{C:inactive}(Currently up to {C:attention}#2# {C:inactive}time#4#)', --current level amount
             }
         },
         cost = 4,
@@ -38,6 +38,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_scorpio()
                     level,
                     formula,
                     (level~=1 and 's' or ''),
+                    ((level-1)~=1 and 's' or ''),
                     colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
                 }
             }

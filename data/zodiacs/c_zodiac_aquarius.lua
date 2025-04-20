@@ -13,7 +13,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aquarius()
                 '{S:0.8}({S:0.8, V:1}lvl.#1#{S:0.8}){} Level up', --needs color var
                 '{C:attention}Jacks{} create {C:attention}#2#{} random',
                 '{C:attention}Tag#4#{} when {C:attention}destroyed', --next level value + dynamic plural
-                '{C:inactive}(Currently {C:attention}#3#{C:inactive} Tag#4#)' --current level value + dynamic plural
+                '{C:inactive}(Currently {C:attention}#3#{C:inactive} Tag#5#)' --current level value + dynamic plural
             }
         },
         cost = 4,
@@ -39,6 +39,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aquarius()
                     formula,
                     current,
                     (level~=1 and 's' or ''),
+                    ((level-1)~=1 and 's' or ''),
                     colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
                 }
             }
