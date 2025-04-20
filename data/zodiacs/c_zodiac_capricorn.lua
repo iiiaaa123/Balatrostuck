@@ -15,10 +15,10 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_capricorn()
             ['name'] = "Capricorn",
             ['text'] = {
                 [1] = "{S:0.8}({S:0.8, V:1}lvl.#1#{S:0.8}){} Level up",
-                [2] = "Played {C:attention}10s{} give {X:mult,C:white}X2{} Mult", --X2 should be the next level's value
+                [2] = "Played {C:attention}10s{} give {X:mult,C:white}X#2#{} Mult", --X2 should be the next level's value
                 [3] = "when scored, held {C:attention}10s",
-                [4] = "give {X:mult,C:white}X0.5{} Mult",          --X0.5 should be the next level's value
-                [5] = "{C:inactive}(Currently {X:mult,C:white}X1{C:inactive} and {X:mult,C:white}X1{C:inactive})"    --should be the current level values respectively
+                [4] = "give {X:mult,C:white}X#3#{} Mult",          --X0.5 should be the next level's value
+                [5] = "{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} and {X:mult,C:white}X#5#{C:inactive})"    --should be the current level values respectively
             }                                   
         },
         cost = 4,
@@ -32,7 +32,24 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_capricorn()
             }))
             self:add_caste('Capricorn')
         end,
-        can_use = function() return true end
+        can_use = function() return true end,
+        loc_vars = function(card)
+            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
+            local formula_up = level+1
+            local formula_down = 1/(level+1)
+            local current_up = 1
+            local current_down = 1
+            if level - 1 > 0 then current_up = level end
+            if level - 1 > 0 then current_down = 1/(level) end
+            return {
+                vars = {
+                    level,
+                    formula_up, formula_down,
+                    current_up, current_down,
+                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
+                }
+            }
+        end,
     }
 
 
