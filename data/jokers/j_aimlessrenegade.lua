@@ -46,7 +46,7 @@ function Balatrostuck.INIT.Jokers.j_aimlessrenegade()
                     G.E_MANAGER:add_event(Event{
                         func = function()
                             card:juice_up()
-                            thechosen:start_dissolve()
+                            thechosen:splatter()
                             return true 
                         end
                     })

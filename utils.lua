@@ -345,3 +345,71 @@ function reset_hand(card, hand, instant)
     }))
     return decrease
 end
+
+
+
+
+
+function Card:splatter()
+    if self.edition and self.edition.key == 'e_bstuck_paradox' and next(SMODS.find_card('j_bstuck_biscuits')) and self.config.center.key ~= 'j_bstuck_questbed' then
+        self.getting_sliced = nil
+        play_sound('bstuck_HomestuckParadoxSaved',0.7,0.7)
+        card_eval_status_text(self, 'extra', nil, nil, nil, {message = localize('k_safe_ex')})
+        for j=1, #G.jokers.cards do
+            local card = G.jokers.cards[j]
+            if card.config.center.key == 'j_bstuck_biscuits' then
+                card:juice_up()
+            end
+        end
+        return false
+    end
+
+    local dissolve_time = 2
+    self.shattered = true
+    self.dissolve = 0
+    self.dissolve_colours = {G.C.RED}
+    self:juice_up()
+    local childParts = Particles(0, 0, 0,0, {
+        timer_type = 'TOTAL',
+        timer = 0.007*dissolve_time,
+        scale = 0.3,
+        speed = 4,
+        lifespan = 0.5*dissolve_time,
+        attach = self,
+        colours = self.dissolve_colours,
+        fill = true
+    })
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        blockable = false,
+        delay =  0.5*dissolve_time,
+        func = (function() childParts:fade(0.15*dissolve_time) return true end)
+    }))
+    G.E_MANAGER:add_event(Event({
+        blockable = false,
+        func = (function()
+                play_sound('bstuck_HomestuckGunshot', math.random()*0.2 + 0.9,0.5)
+                play_sound('generic1', math.random()*0.2 + 0.9,0.5)
+            return true end)
+    }))
+    G.E_MANAGER:add_event(Event({
+        trigger = 'ease',
+        blockable = false,
+        ref_table = self,
+        ref_value = 'dissolve',
+        ease_to = 1,
+        delay =  0.5*dissolve_time,
+        func = (function(t) return t end)
+    }))
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        blockable = false,
+        delay =  0.55*dissolve_time,
+        func = (function() self:remove() return true end)
+    }))
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        blockable = false,
+        delay =  0.51*dissolve_time,
+    }))
+end

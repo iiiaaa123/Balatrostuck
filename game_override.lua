@@ -195,6 +195,15 @@ function Card:shatter()
     shatter_ref(self)
 end
 
+
+
+
+
+
+
+
+
+
 function check_for_piss()
     -- sendInfoMessage(G.P_CENTERS['c_bstuck_piss'].discovered and 'True' or 'False')
     if G.P_CENTERS['c_bstuck_piss'].discovered then
