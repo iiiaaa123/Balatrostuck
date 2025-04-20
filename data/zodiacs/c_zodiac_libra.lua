@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_libra()
             ['text'] = {
                 "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
                 'Played {C:attention}7s{} give {X:mult,C:white}X#2#{} Mult', --next level value
-                '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)' --current level value
+                '{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)' --current level value
             }
         },
         cost = 4,
@@ -31,7 +31,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_libra()
             local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
             local formula = 1 + level/10
             local current = 1
-            if level - 1 > 0 then current = 1 + (level-1)/10 end
+            if (level-1) > 0 then current = 1 + (level-1)/10 end
             return {
                 vars = {
                     level,

@@ -33,7 +33,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_ophiuchus()
             local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
             local formula = level * 2
             local current = 1
-            if level - 1 > 0 then current = (level - 1) * 2 end
+            if (level-1) > 0 then current = (level - 1) * 2 end
             return {
                 vars = {
                     level,
