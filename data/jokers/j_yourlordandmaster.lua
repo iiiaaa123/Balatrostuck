@@ -14,7 +14,7 @@ function Balatrostuck.INIT.Jokers.j_yourlordandmaster()
             }
         },
         pos = {
-            x = 2,
+            x = 0,
             y = 0
          },
         cost = 1,
@@ -23,6 +23,10 @@ function Balatrostuck.INIT.Jokers.j_yourlordandmaster()
         eternal_compat = true,
         unlocked = true,
         discovered = true,
-        atlas = 'HomestuckJokers'
+        atlas = 'TheCalibornJoker',
+        animated = true,
+        frames = 250,
+        animation_speed = 20,
+        photosensitive = false
     }
 end 
