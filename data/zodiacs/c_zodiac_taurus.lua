@@ -10,10 +10,10 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_taurus()
         loc_txt = {
             ['name'] = "Taurus", --value is 0.95^lvl
             ['text'] = {
-                "{S:0.8}({S:0.8}lvl.#1#{S:0.8}){} Level up", --needs color var
+                "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up", --needs color var
                 "Discarded {C:attention}3s{} multiply the current",
-                "{C:attention}Blind requirement{} by {C:white,X:mult}X0.95{}", --next level value 
-                "{C:inactive}(Currently {C:white,X:mult}X0.95{C:inactive})" --current level value
+                "{C:attention}Blind requirement{} by {C:white,X:mult}X#2#{}", --next level value 
+                "{C:inactive}(Currently {C:white,X:mult}X#3#{C:inactive})" --current level value
             }
         },
         cost = 4,
@@ -27,7 +27,21 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_taurus()
             }))
             self:add_caste('Taurus')
         end,
-        can_use = function() return true end
+        can_use = function() return true end,
+        loc_vars = function(card)
+            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
+            local formula = 0.95 ^ level
+            local current = 1
+            if level - 1 > 0 then current = 0.95 ^ (level - 1) end
+            return {
+                vars = {
+                    level,
+                    formula,
+                    current,
+                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
+                }
+            }
+        end,
     }
     
     Balatrostuck.Caste{
