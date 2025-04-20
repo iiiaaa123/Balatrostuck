@@ -154,11 +154,22 @@ function Card:draw(layer)
         self.animTime = self.animTime or G.TIMERS.REAL
         self.animPos = self.animPos or copy_table(self.config.center.pos)
 
-
+        -- per frame
         if self.animTime + (1/self.config.center.animation_speed) <= G.TIMERS.REAL then
-            self.animPos.x = self.animPos.x + 1
-            if self.animPos.x >= self.config.center.frames then
-                self.animPos.x = 0
+            if self.config.center.dimensions then
+                self.animPos.x = self.animPos.x + 1
+                if self.animPos.x >= self.config.center.dimensions.x then
+                    self.animPos.y = self.animPos.y + 1
+                    self.animPos.x = 0
+                    if self.animPos.y >= self.config.center.dimensions.y then
+                        self.animPos.y = 0
+                    end
+                end
+            else
+                self.animPos.x = self.animPos.x + 1
+                if self.animPos.x >= self.config.center.frames then
+                    self.animPos.x = 0
+                end
             end
             self.animTime = G.TIMERS.REAL
             self.children.center:set_sprite_pos(self.animPos)
