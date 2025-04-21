@@ -218,16 +218,23 @@ function check_for_piss()
 end
 
 
--- SMODS.Booster:take_ownership_by_kind('Standard', {
---     create_card = function(self, card, i)
---         if SMODS.find_card('j_bstuck_clown')
+SMODS.Booster:take_ownership_by_kind('Standard', {
+    create_card = function(self, card, i)
+        if SMODS.find_card('j_bstuck_clown') then
+            -- code this later!
+        end
         
---         local _edition = poll_edition('standard_edition'..G.GAME.round_resets.ante, 2, true)
---         local _seal = SMODS.poll_seal({mod = 10})
---         return {set = (pseudorandom(pseudoseed('stdset'..G.GAME.round_resets.ante)) > 0.6) and "Enhanced" or "Base", edition = _edition, seal = _seal, area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sta"}
---     end,
---    true
--- )
+        local _edition = poll_edition('standard_edition'..G.GAME.round_resets.ante, 2, true)
+        if G.GAME.selected_back.effect.center.key == 'b_bstuck_prospitan' then
+            _edition = 'e_bstuck_paradox'
+        end
+        
+        
+        local _seal = SMODS.poll_seal({mod = 10})
+        return {set = (pseudorandom(pseudoseed('stdset'..G.GAME.round_resets.ante)) > 0.6) and "Enhanced" or "Base", edition = _edition, seal = _seal, area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sta"}
+    end,
+   true
+})
 
 
 
@@ -265,7 +272,7 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
             _card:set_edition(_edition)
         end
     end
-    
+
     return _card
 end
 
