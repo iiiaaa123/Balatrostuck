@@ -3,8 +3,7 @@ function Balatrostuck.INIT.Jokers.j_typheus()
         name = "Typheus",
         key = "typheus",
         config = {
-            extra = {
-            }
+            extra = 4
         },
         loc_txt = {
             ['name'] = 'Typheus',
@@ -29,6 +28,14 @@ function Balatrostuck.INIT.Jokers.j_typheus()
         soul_pos = {
             x = 9,
             y = 9
-        }
+        },
+        add_to_deck = function(self,card,from_debuff)
+            G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost + card.ability.extra
+            G.GAME.current_round.reroll_cost = math.max(0, G.GAME.current_round.reroll_cost + card.ability.extra)
+        end,
+        remove_from_deck = function(self,card,from_debuff)
+            G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost - card.ability.extra
+            G.GAME.current_round.reroll_cost = math.max(0, G.GAME.current_round.reroll_cost - card.ability.extra)
+        end
     }
 end

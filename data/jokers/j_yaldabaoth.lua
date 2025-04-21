@@ -4,8 +4,7 @@ function Balatrostuck.INIT.Jokers.j_yaldabaoth()
         key = "yaldabaoth",
         config = {
             extra = {
-                xmult = 1,
-                xmult_mod = 0.5
+                ante_scaling = 2            
             }
         },
         loc_txt = {
@@ -33,31 +32,34 @@ function Balatrostuck.INIT.Jokers.j_yaldabaoth()
             x = 5,
             y = 9
         },
-    
+        add_to_deck = function(self,card,from_debuff)
+            G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * card.ability.extra.ante_scaling
+        end,
+        remove_from_deck = function(self,card,from_debuff)
+            G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling / card.ability.extra.ante_scaling
+        end,
         loc_vars = function(self, info_queue, card)
             return { vars = {card.ability.extra.xmult_mod, card.ability.extra.xmult}}
         end,
-
         calculate = function(self, card, context)
-            if context.cardarea == G.jokers and not (context.repetition or context.individual or context.after or context.before) then
+            if context.end_of_round and G.GAME.blind.boss and G.GAME.slab and context.cardarea == G.jokers then
+                local color = G.C.WHITE
+                if G.GAME.slab then
+                    G.GAME.slab:increase_level(1)
+                    local aspect = string.gsub(G.GAME.slab.key, "slab_bstuck_", "")
+                    aspect = string.upper(aspect)
+                    color = G.C[aspect]
+                end
+                
                 return {
-                    message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
-                    Xmult_mod = card.ability.extra.xmult,
-                    colour = G.C.MULT
+                    card = card,
+                    message = '+1 Aspect Level!',
+                    colour = color,
+                    func = function()
+                        play_sound('bstuck_HomestuckAscend',0.7,0.1)
+                        return true
+                    end
                 }
-
-            elseif context.end_of_round and not (context.repetition or context.individual or context.blueprint) then
-                local xmod = card.ability.extra.xmult_mod
-                local discards_left = G.GAME.current_round.discards_left
-                card.ability.extra.xmult = card.ability.extra.xmult + (discards_left * xmod)
-                return {
-                    message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
-                    colour = G.C.FILTER
-                }
-
-            elseif context.pre_discard and not (context.repetition or context.individual or context.blueprint) and card.ability.extra.xmult > 1 then
-                card.ability.extra.xmult = 1
-                card_eval_status_text( card, 'extra', nil, nil, nil, {message = localize('k_reset'), colour = G.C.FILTER})
             end
         end
     }

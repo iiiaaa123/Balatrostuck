@@ -226,7 +226,7 @@ function get_aspect_for_pack(normalize_weights,pack)
     local shuffledPool = shuffle(pool,'gamerPack')
 
     for i=1, #shuffledPool do
-        if shuffledPool[i].weight < poolLuck then
+        if shuffledPool[i].weight < poolLuck and not (G.GAME.used_jokers['c_bstuck_' .. shuffledPool[i].key] and not next(find_joker("Showman"))) then
             table.insert(G.GAME.gamer_choices,'c_bstuck_' .. shuffledPool[i].key)
             return 'c_bstuck_' .. shuffledPool[i].key
         end
@@ -271,17 +271,8 @@ function get_zodiac(normalize_weights,pack)
 
     if not next(find_joker("Showman")) then
         for i = #pool, 1, -1 do 
-            local entry = pool[i]
-            if tableContains(G.GAME.gamer_choices,'c_bstuck_' .. pool[i].key) and pack then
+            if G.GAME.used_jokers['c_bstuck_' .. pool[i].key] then
                 table.remove(pool, i)
-            else
-                local conKeys = {}
-                for j=1, #G.consumeables.cards do
-                    table.insert(conKeys,G.consumeables.cards[j].config.center.key)
-                end
-                if tableContains(conKeys,'c_bstuck_' .. pool[i].key) then
-                    table.remove(pool, i)
-                end
             end
         end
     end
@@ -306,7 +297,7 @@ function get_zodiac(normalize_weights,pack)
     local shuffledPool = shuffle(pool,'gamerPack')
 
     for i=1, #shuffledPool do
-        if shuffledPool[i].weight < poolLuck then
+        if shuffledPool[i].weight < poolLuck and not (G.GAME.used_jokers['c_bstuck_' .. shuffledPool[i].key] and not next(find_joker("Showman"))) then
             table.insert(G.GAME.gamer_choices,'c_bstuck_' .. shuffledPool[i].key)
             return 'c_bstuck_' .. shuffledPool[i].key
         end

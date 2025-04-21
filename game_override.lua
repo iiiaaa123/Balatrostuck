@@ -258,7 +258,14 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
     if _type == 'zodiac' or _type == 'Zodiac' and forced_key == nil then
         forced_key = get_zodiac()
     end
-
-    return create_card_ref(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
+    local _card = create_card_ref(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
+    if next(SMODS.find_card('j_bstuck_typheus')) then
+        if _type == 'joker' or _type == 'Joker' and _card.edition == nil then
+            local _edition = poll_edition('Typheus', nil, nil, true)
+            _card:set_edition(_edition)
+        end
+    end
+    
+    return _card
 end
 
