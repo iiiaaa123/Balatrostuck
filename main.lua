@@ -160,7 +160,7 @@ local blind_list = {
 }
 
 local voucher_list = {
-    "riseup","giftofgab"
+    "riseup","giftofgab","aspect_mastery","godtier"
 }
 
 local tag_list = {
