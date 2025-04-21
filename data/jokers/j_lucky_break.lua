@@ -26,7 +26,12 @@ function Balatrostuck.INIT.Jokers.j_lucky_break()
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
-
+        remove_from_deck = function(self,card,from_debuff)
+            if card.ability.extra.broken then
+                card.ability.extra.broken = false
+                G.GAME.probabilities.normal = G.GAME.probabilities.normal / card.ability.extra.probability
+            end
+        end
         calculate = function(self,card, context)
             if context.before and context.cardarea == G.jokers and not (context.after or context.repetition or context.individual or context.blueprint) then
                 if G.GAME.current_round.hands_left == 0 then

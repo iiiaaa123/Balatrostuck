@@ -16,7 +16,7 @@ function Balatrostuck.INIT.Jokers.j_cueball()
                 [2] = '{C:attention}#1#{},',
                 [3] = '{C:attention}#2#{}, and',
                 [4] = '{C:attention}#3#{}',
-                [5] = '{C:white}(suckers.){C:green}1 in 1000{}{C:white}chance to',
+                [5] = '{C:white}(suckers.){C:green}#4# in 1000{}{C:white}chance to',
                 [6] = '{C:white}destroy all jokers'
             }
         },
@@ -27,10 +27,41 @@ function Balatrostuck.INIT.Jokers.j_cueball()
         cost = 3,
         rarity = 1,
         blueprint_compat = true,
-        eternal_compat = true,
+        eternal_compat = false,
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
+        calculate = function(self,card,context)
+            if context.after and pseudorandom('cueball') < G.GAME.probabilities.normal/100 then
+                
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        play_sound('tarot1')
+                        card.T.r = -0.2
+                        card:juice_up(0.3, 0.4)
+                        card.states.drag.is = true
+                        card.children.center.pinch.x = true
+                        card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'SUCKER', colour = G.C.WHITE})
+                        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
+                            func = function()
+                                    G.jokers:remove_card(card)
+                                    card:remove()
+                                    card = nil
+                        return true; end})) 
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                            for i=1, #G.jokers.cards do
+                                if not G.jokers.cards[i].ability.eternal then
+                                    G.jokers.cards[i]:start_dissolve()
+                                end
+                            end
+                            return true
+                        end}))
+                        return true
+                    end
+                }))
+            end
+        end,
         loc_vars = function(self, info_queue, card)
             local get_card_name = function(card)
                 if card then
@@ -81,7 +112,7 @@ function Balatrostuck.INIT.Jokers.j_cueball()
                 end
     
             --card.calculate_joker({generate_ui = true})
-            return {vars = {card.ability.extra.card1, card.ability.extra.card2, card.ability.extra.card3}}
+            return {vars = {card.ability.extra.card1, card.ability.extra.card2, card.ability.extra.card3,G.GAME.probabilities.normal}}
         end
     }
 end

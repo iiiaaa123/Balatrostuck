@@ -408,3 +408,8 @@ function Card:splatter()
         delay =  0.51*dissolve_time,
     }))
 end
+
+
+function log2(x)
+    return math.log(x) / math.log(2)
+end
