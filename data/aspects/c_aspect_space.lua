@@ -5,7 +5,8 @@ function Balatrostuck.INIT.Aspects.c_aspect_space()
         loc_txt = {
             ['name'] = "Space",
             ['text'] = {
-                [1] = '{C:attention}+#1# hand size{}'
+                [1] = "", -- "{S:0.8}({S:0.8,V:1}lvl.#2#{S:0.8}){} Level up",
+                [2] = '{C:attention}+#1# hand size{}'
             }
         },
         pos = {
