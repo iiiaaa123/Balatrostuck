@@ -1,6 +1,6 @@
 SMODS.ConsumableType{
   key = 'Aspect',
-  collection_rows = { 6, 7 },
+  collection_rows = { 6, 6 },
   primary_colour = G.C.SET.Aspect,
   secondary_colour = G.C.SECONDARY_SET.Aspect,
   loc_txt = {
