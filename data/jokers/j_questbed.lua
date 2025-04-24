@@ -26,7 +26,7 @@ function Balatrostuck.INIT.Jokers.j_questbed()
         cost = 7,
         rarity = 2,
         blueprint_compat = true,
-        eternal_compat = true,
+        eternal_compat = false,
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',

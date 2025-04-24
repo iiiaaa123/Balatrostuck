@@ -23,7 +23,7 @@ function Balatrostuck.INIT.Jokers.j_cruxitedowel()
             },
         cost = 5,
         rarity = 1,
-        blueprint_compat = true,
+        blueprint_compat = false,
         eternal_compat = true,
         unlocked = true,
         discovered = true,

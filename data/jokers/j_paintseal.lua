@@ -23,7 +23,7 @@ function Balatrostuck.INIT.Jokers.j_paintseal()
         cost = 6,
         rarity = 1,
         blueprint_compat = true,
-        eternal_compat = true,
+        eternal_compat = false,
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',

@@ -24,7 +24,7 @@ function Balatrostuck.INIT.Jokers.j_frogbreeding()
         cost = 1,
         rarity = 3,
         blueprint_compat = true,
-        eternal_compat = true,
+        eternal_compat = false,
         unlocked = true,
         discovered = true,
         atlas = 'HomestuckJokers',
