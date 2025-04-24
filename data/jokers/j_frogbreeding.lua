@@ -18,8 +18,8 @@ function Balatrostuck.INIT.Jokers.j_frogbreeding()
             }
         },
         pos = {
-            x = 2,
-            y = 0
+            x = 5,
+            y = 10
          },
         cost = 1,
         rarity = 3,
