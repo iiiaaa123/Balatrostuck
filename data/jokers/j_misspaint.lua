@@ -17,8 +17,8 @@ function Balatrostuck.INIT.Jokers.j_misspaint()
             return {vars = {card.ability.extra.mult, card.ability.extra.mult_gain}}
         end,
         pos = {
-            x = 2,
-            y = 0
+            x = 4,
+            y = 10
          },
         cost = 4,
         rarity = 1,
