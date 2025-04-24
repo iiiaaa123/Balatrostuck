@@ -5,9 +5,12 @@ function Balatrostuck.INIT.Aspects.c_aspect_void()
         loc_txt = {
             ['name'] = "Void",
             ['text'] = {
-                [1] = 'Applies {C:dark_edition}Negative{} to',
-                [2] = 'random consumable',
-                [3] = 'each round {C:inactive}(max of #1#){}'
+                [1] = "", -- "{S:0.8}({S:0.8,V:1}lvl.#2#{S:0.8}){} Level up",
+                [2] = 'Add {C:dark_edition}Negative{} to a random',
+                [3] = '{C:attention}Joker{} at start of round',
+                [4] = 'if there are {C:attention}#2# or fewer',
+                [5] = '{C:dark_edition}Negative{} Jokers',
+                [6] = '{C:inactive}(Currently {C:attention}#3#{C:inactive} or fewer)'
             }
         },
         pos = {

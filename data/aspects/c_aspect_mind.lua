@@ -5,9 +5,10 @@ function Balatrostuck.INIT.Aspects.c_aspect_mind()
         loc_txt = {
             ['name'] = "Mind",
             ['text'] = {
-                [1] = 'Always draw',
-                [2] = '{C:attention}#1# cards{} after',
-                [3] = 'a {C:red}discard{}'
+                [1] = "", -- "{S:0.8}({S:0.8,V:1}lvl.#2#{S:0.8}){} Level up",
+                [2] = 'When a {C:attention}Tag{} is created,',
+                [3] = 'create {C:attention}#2#{} copies of it',
+                [4] = '{C:inactive}(Currently {C:attention}#3#{C:inactive} copies)'
             }
         },
         pos = {
