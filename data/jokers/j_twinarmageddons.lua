@@ -21,7 +21,7 @@ function Balatrostuck.INIT.Jokers.j_twinarmageddons()
             y = 3
          },
         cost = 8,
-        rarity = 2,
+        rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,
         unlocked = true,
