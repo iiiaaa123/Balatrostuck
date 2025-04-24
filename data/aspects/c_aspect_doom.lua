@@ -44,12 +44,10 @@ function Balatrostuck.INIT.Aspects.c_aspect_doom()
         config = {},
         name = 'Aspect of Doom',
         apply = function(self,slab,context)
-            if context.setting_blind then
-                for _, v in ipairs(G.playing_cards) do
-                    if pseudorandom('doom') < G.GAME.probabilities.normal/(slab:level() + 1) then
-                        v:set_debuff(true)
-                    end
-                end
+            if context.debuff_card and pseudorandom('doom') < G.GAME.probabilities.normal/(slab:level() + 1) then
+                return {
+                    debuff = true
+                }
             end
 
             if context.individual and context.cardarea == G.play then

@@ -28,12 +28,10 @@ function Balatrostuck.INIT.Jokers.j_waywardvagabond()
         discovered = true,
         atlas = 'HomestuckJokers',
         calculate = function(self, card, context)
-            if context.setting_blind then
-                for _, v in ipairs(G.playing_cards) do
-                    if v:get_id() == 13 then
-                        v:set_debuff(true)
-                    end
-                end
+            if context.debuff_card and context.debuff_card:get_id() == 13 then
+                return {
+                    debuff = true
+                }
             end
             if context.individual and not context.end_of_round then
                 if context.cardarea == G.play then
