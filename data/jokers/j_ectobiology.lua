@@ -18,7 +18,7 @@ function Balatrostuck.INIT.Jokers.j_ectobiology()
             y = 3
          },
         cost = 10,
-        rarity = 2,
+        rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,
         unlocked = true,
