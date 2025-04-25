@@ -40,20 +40,24 @@ function Balatrostuck.INIT.Tags.t_scratch()
                     end
                 }))
                 
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'immediate',
+                    func = function()
+                        G.GAME.round_resets.blind_states.Small = 'Current'
+                        G.GAME.round_resets.blind_states.Big = 'Upcoming'
+                        G.GAME.round_resets.blind_states.Boss = 'Upcoming'
+                        G.GAME.round_resets.blind_tags.Small = get_next_tag_key()
+                        G.GAME.round_resets.blind_tags.Big = get_next_tag_key(nil,true)
+                        return true
+                    end
+                }))         
+
                 
-                G.GAME.round_resets.blind_states.Small = 'Current'
-                G.GAME.round_resets.blind_states.Big = 'Upcoming'
-                G.GAME.round_resets.blind_states.Boss = 'Upcoming'
-                G.GAME.round_resets.blind_tags.Small = get_next_tag_key()
-                G.GAME.round_resets.blind_tags.Big = get_next_tag_key(nil,true)
-                
-                local percent = 0.8
                 local dumb = {0,0.9,1,1}
 
                 for j=1, #G.jokers.cards do 
                     G.E_MANAGER:add_event(Event({
                         func = function()
-                            percent = percent + 0.1
                             if type(card.config.center.rarity) ~= 'number' then
                                 card.config.center.rarity = 3
                             end

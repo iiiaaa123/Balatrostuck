@@ -53,19 +53,18 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_leo()
         name = 'Leo',
         rank = 5,
         apply = function(self,context)
-            if context.individual and context.cardarea == G.hand and context.other_card:get_id() == self.ability.rank and 
-            pseudorandom('leo') < G.GAME.probabilities.normal/self.ability.config.odds then
-                if context.other_card.debuff then
-                    return {
-                        message = localize('k_debuffed'),
-                        colour = G.C.RED,
-                        card = context.other_card,
-                    }
-                else
-                    return {
-                        dollars = self:level(),
-                        card = context.other_card
-                    }
+            if context.individual and context.cardarea == G.play then
+                for i=1, #G.hand.cards do
+                    _card = G.hand.cards[i]
+
+                    if _card:get_id() == self.rank and pseudorandom('leo') < G.GAME.probabilities.normal/self.ability.config.odds then
+                        if _card.debuff then
+                            card_eval_status_text(_card, 'debuff')
+                        else
+                            card_eval_status_text(_card, 'dollars', self:level())
+                            ease_dollars(self:level())
+                        end
+                    end
                 end
             end
         end
