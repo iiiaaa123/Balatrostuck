@@ -48,6 +48,7 @@ function Balatrostuck.INIT.Editions.e_paradox()
                                             card:remove()
                                             card = nil
                                     return true; end}))
+                                SMODS.calculate_context({ remove_playing_cards = true, removed = {card}})
                             return true
                         end}))
 
