@@ -422,6 +422,10 @@ function create_UIBox_zodiacs(simple)
         create_zodiac_row('Cancer', simple),
         create_zodiac_row('Leo', simple),
         create_zodiac_row('Virgo', simple),
+<<<<<<< HEAD
+=======
+        create_zodiac_row('Libra', simple),
+>>>>>>> 78a57a35925b3698cb5b23433d5bafa09d84b157
         create_zodiac_row('Libra', simple),
         create_zodiac_row('Scorpio', simple),
         create_zodiac_row('Sagittarius', simple),
