@@ -99,7 +99,7 @@ target = "card.lua"
 pattern = 'function Card:is_suit(suit, bypass_debuff, flush_calc)'
 position = "after"
 payload = '''
-if next(find_joker("Innapropriate Bucket")) then
+if next(SMODS.find_card("j_bstuck_innapropriatebucket")) then
     if (self.base.suit == G.GAME.BALATROSTUCK.bucket_suits[1] and suit == G.GAME.BALATROSTUCK.bucket_suits[2]) or (suit == G.GAME.BALATROSTUCK.bucket_suits[1] and self.base.suit == G.GAME.BALATROSTUCK.bucket_suits[2]) then
         return true
     end
