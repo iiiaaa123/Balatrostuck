@@ -14,6 +14,11 @@ function Balatrostuck.INIT.Tags.t_spirograph()
             x = 1,
             y = 1
         },
+        
+        in_pool = function(self)
+            return (G.GAME.round_resets.ante > 1)
+        end,
+
         atlas = 'HomestuckTags',
         loc_vars = function(self, info_queue, card)
             -- PUT RELEVENT LOC VARS HERE WHEN YOU GET TO REWORDING THIS!!!!!!! - Delirium

@@ -17,16 +17,20 @@ function Balatrostuck.INIT.Tags.t_scratch()
             y = 0
         },
         atlas = 'HomestuckTags',
+
+        in_pool = function(self)
+            return (G.GAME.round_resets.ante > 3)
+        end,
+
         loc_vars = function(self, info_queue, card)
             -- PUT RELEVENT LOC VARS HERE WHEN YOU GET TO REWORDING THIS!!!!!!! - Delirium
             return {true}
         end,
+        
         apply = function(self, tag, context)
             tag:yep("Ify!",G.C.Green,
             function()
 
-                
-                
                 G.E_MANAGER:add_event(Event({
                     trigger = 'immediate',
                     func = function()
