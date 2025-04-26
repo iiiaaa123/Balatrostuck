@@ -10,7 +10,7 @@ function Balatrostuck.INIT.Jokers.j_descendascend()
         loc_txt = {
             ['name'] = 'Descendascend', 
             ['text'] = {
-                [1] = "Gain a {C:attention}Buffoon Tag{} at end of round,",
+                [1] = "Gain a {C:attention}Buffoon Tag{} at end of shop,",
                 [2] = "{C:attention}Jokers{} in {C:attention}Buffoon Packs{} are {C:green}Paradox"
             }
         },
@@ -24,6 +24,16 @@ function Balatrostuck.INIT.Jokers.j_descendascend()
         eternal_compat = true,
         unlocked = true,
         discovered = true,
-        atlas = 'HomestuckJokers'
+        atlas = 'HomestuckJokers',
+
+        calculate = function(self, card, context)
+            if context.ending_shop then
+                add_tag(Tag('tag_buffoon'))
+                return {
+                    card = card,
+                    message = "Egbert!"
+                }    
+            end
+        end
     }
 end 

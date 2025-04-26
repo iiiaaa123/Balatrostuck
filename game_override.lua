@@ -217,6 +217,17 @@ function check_for_piss()
 
 end
 
+SMODS.Booster:take_ownership_by_kind('Buffoon', {
+    create_card = function(self, card, i)
+        local _edition = nil
+        if next(SMODS.find_card('j_bstuck_descendascend')) then
+            _edition = 'e_bstuck_paradox'
+        end
+
+        return {set = "Joker", edition = _edition, area = G.pack_cards, skip_materialize = true}
+    end,
+   true
+})
 
 SMODS.Booster:take_ownership_by_kind('Standard', {
     create_card = function(self, card, i)
