@@ -26,7 +26,6 @@ function Balatrostuck.INIT.Jokers.j_vodkamutini()
         atlas = 'HomestuckJokers',
 
         calculate = function(self,card,context)
-            -- not finished until meow sound is added
             if context.paradox_created then
                 local _card = G.GAME.BALATROSTUCK.last_paradox_created
                 local pCard = {}
