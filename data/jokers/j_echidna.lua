@@ -30,19 +30,9 @@ function Balatrostuck.INIT.Jokers.j_echidna()
             x = 8,
             y = 9
         },
-        loc_vars = function(self, info_queue, card)
-            local s = card.ability.extra.levels > 1 and 's' or ''
-            return {vars = {card.ability.extra.levels, s}}
-        end,
 
-        calculate = function(self, card, context)
-            if context.cardarea == G.jokers and context.before and G.GAME.current_round.hands_left == 0 then
-                local text,disp_text = context.scoring_name
-                card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_level_up_ex')})
-                update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {handname=localize(text, 'poker_hands'),chips = G.GAME.hands[text].chips, mult = G.GAME.hands[text].mult, level=G.GAME.hands[text].level})
-                level_up_hand(context.blueprint_card or card, text, nil, card.ability.extra.levels)
-                card.ability.extra.levels = card.ability.extra.levels + 1
-            end
+        add_to_deck = function(self,card,from_debuff)
+            G.GAME.round_resets.blind_tags.Big = 'tag_bstuck_scratch'
         end
     }
 end

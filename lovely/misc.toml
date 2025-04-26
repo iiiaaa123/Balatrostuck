@@ -4,6 +4,31 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
+#Echidna Tags
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.GAME.round_resets.blind_tags.Big = get_next_tag_key()"
+position = "at"
+payload = '''
+G.GAME.round_resets.blind_tags.Big = next(SMODS.find_card("j_bstuck_echidna")) and 'tag_bstuck_scratch' or get_next_tag_key() 
+'''
+match_indent = true
+times = 1
+overwrite = true
+
+#Scratch tags shall not be doubled
+[[patches]]
+[patches.pattern]
+target = "tag.lua"
+pattern = "if self.name == 'Double Tag' and _context.tag.key ~= 'tag_double' then"
+position = "at"
+payload = '''
+if self.name == 'Double Tag' and _context.tag.key ~= 'tag_double' and _context.tag.key ~= 'tag_bstuck_scratch' then'''
+match_indent = true
+times = 1
+overwrite = true
+
 #Scratch colors
 [[patches]]
 [patches.pattern]

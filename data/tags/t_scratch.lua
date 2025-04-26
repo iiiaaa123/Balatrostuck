@@ -33,7 +33,7 @@ function Balatrostuck.INIT.Tags.t_scratch()
             if G.GAME.BALATROSTUCK.scratched > #G.GAME.BALATROSTUCK.scratchcolors then G.GAME.BALATROSTUCK.scratched = 1 end
             play_sound('bstuck_HomestuckScratch')
             ease_background_colour_blind(G.GAME.BALATROSTUCK.scratchcolors[G.GAME.BALATROSTUCK.scratched])
-            tag:yep("?",G.C.Green,
+            tag:yep("+",G.C.Green,
             function()
             
                 G.E_MANAGER:add_event(Event({
@@ -61,9 +61,7 @@ function Balatrostuck.INIT.Tags.t_scratch()
                     end
                 }))         
 
-                
-                local dumb = {0,0.9,1,1}
-
+                if not next(SMODS.find_card("j_bstuck_echidna")) then
                 for j=1, #G.jokers.cards do 
                     local rarity = G.jokers.cards[j].config.center.rarity
                     local legendary = nil
@@ -88,6 +86,7 @@ function Balatrostuck.INIT.Tags.t_scratch()
                         return true
                       end,
                     }))
+                end
                 end
 
 
