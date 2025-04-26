@@ -49,7 +49,6 @@ function Balatrostuck.INIT.Jokers.j_cruxitedowel()
                     for i = 1, table_length(_pool) do
                         if _pool[i].key == _card.config.center.key then 
                             card.ability.extra.index[#card.ability.extra.index+1] = i
-                            print(i)
                             break
                         end
                     end

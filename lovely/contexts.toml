@@ -108,7 +108,8 @@ pattern = "if type(edition) == 'string' then"
 position = "before"
 payload = '''
 if edition == 'e_bstuck_paradox' and G.jokers then
-    SMODS.calculate_context({paradox_created = true, card = self})
+    G.GAME.BALATROSTUCK.last_paradox_created = self
+    SMODS.calculate_context({paradox_created = true, cards = self})
 end
 '''
 match_indent = true
