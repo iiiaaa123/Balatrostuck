@@ -247,6 +247,8 @@ SMODS.Sound({key = "HomestuckParadox", path = 'paradoxTest.ogg'})
 SMODS.Sound({key = "HomestuckAscend", path = 'homestuckAscend.ogg'})
 SMODS.Sound({key = "HomestuckGunshot", path = 'gun.ogg'})
 SMODS.Sound({key = "HomestuckScratch", path = 'scratch.ogg'})
+SMODS.Sound({key = "HomestuckMeow", path = 'meow.ogg'})
+
 
 
 SMODS.Atlas({key = "HomestuckJokers", path = "hsjokers.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
