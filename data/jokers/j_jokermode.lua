@@ -26,6 +26,10 @@ function Balatrostuck.INIT.Jokers.j_jokermode()
         discovered = true,
         atlas = 'HomestuckJokers',
 
+        loc_vars = function(self, infoqueue, card)
+            return{ vars = {card.ability.extra.chips, card.ability.extra.chip_gain}}
+        end,
+
         in_pool = function(self)
             return false
         end,
