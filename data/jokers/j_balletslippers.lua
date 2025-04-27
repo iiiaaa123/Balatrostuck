@@ -20,8 +20,8 @@ function Balatrostuck.INIT.Jokers.j_balletslippers()
             }
         },
         pos = {
-            x = 2,
-            y = 0
+            x = 6, -- 6 for abated, 7 for active
+            y = 10
          },
         cost = 4,
         rarity = 1,
