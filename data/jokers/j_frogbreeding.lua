@@ -32,9 +32,10 @@ function Balatrostuck.INIT.Jokers.j_frogbreeding()
             return {vars = {card.ability.extra.rounds}}
         end,
         calculate = function(self,card,context)
-            if context.end_of_round and G.GAME.blind.boss and context.cardarea == G.jokers then
+            if context.end_of_round and context.main_eval then
                 card.ability.extra.active = true
                 card.ability.extra.rounds = card.ability.extra.rounds - 1
+                if card.ability.extra.rounds == 0 then card:start_dissolve() end
                 return {
                     message = card.ability.extra.rounds .. ' Rounds left!',
                     card = card
@@ -45,7 +46,7 @@ function Balatrostuck.INIT.Jokers.j_frogbreeding()
                 card.ability.extra.active = false
                 SMODS.add_card({key = context.consumeable.config.center.key,edition = 'e_bstuck_paradox'})
                 return {
-                    message = '+1 Paradox Consumable',
+                    message = 'Cloned!',
                     card = card
                 }
             end
