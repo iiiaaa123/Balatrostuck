@@ -36,11 +36,11 @@ return {
                 text = {'Discarded {C:attention}3s{} multiply the current' ,
                         '{C:attention}Blind requirement{} by {C:white,X:mult}X#1#{}'}
             },
-            Cancer = {
-                text = {'{C:attention}Held 4s{} give {C:mult}+#1#{} Mult'}
-            },
             Virgo = {
-                text = {'Played {C:attentions}6s{} give {C:chips}+#1# {C:attention}permanent{} Chips',
+                text = {'{C:attention}Held 6s{} give {C:mult}+#1#{} Mult'}
+            },
+            Cancer = {
+                text = {'Played {C:attentions}4s{} give {C:chips}+#1# {C:attention}permanent{} Chips',
                         'to all {C:attention}other{} scoring cards when scored'}
             },
             Leo = {

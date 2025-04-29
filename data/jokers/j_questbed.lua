@@ -61,6 +61,15 @@ function Balatrostuck.INIT.Jokers.j_questbed()
                         return true
                     end
                 }))
+
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        for i=1, #G.jokers.cards do
+                            G.jokers.cards[i]:start_dissolve()
+                        end
+                        return true
+                    end
+                }))
                 
                 return {
                     message = 'Ascended!',
