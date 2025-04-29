@@ -2,7 +2,11 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
     Balatrostuck.Zodiac{
         name = "Cancer",
         key = "cancer",
-        config = {},
+        config = {
+            extra = {
+                chips = 12
+            }
+        },
         pos = {
             x = 2,
             y = 0
@@ -11,8 +15,9 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
             ['name'] = "Cancer",
             ['text'] = {
                 "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
-                '{C:attention}Held 4s{} give {C:mult}+#2#{} Mult', --next level value
-                '{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)' --current level value
+                'Played {C:attentions}4s{} give {C:chips}+#2# {C:attention}permanent{} Chips', --next level value
+                'to all {C:attention}other{} scoring cards when scored',
+                '{C:inactive}(Currently {C:chips}+#3#{C:inactive} permanent chips)' --current level value
             }
         },
         use = function(self, card, area, copier)
@@ -26,15 +31,15 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
         can_use = function() return true end,
         loc_vars = function(card)
             local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
-            local formula = 3 + level
+            local formula = card.config.extra.chips * level
             local current = 0
-            if level - 1 > 0 then current = 3 + (level - 1) end
+            if level-1 > 0 then current = card.config.extra.chips * (level-1) end
             return {
                 vars = {
                     level,
                     formula,
                     current,
-                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])},
+                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
                 }
             }
         end,
@@ -47,23 +52,27 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
 
     Balatrostuck.Caste{
         key = 'Cancer',
-        config = {base_mult = 4},
+        config = {},
         name = 'Cancer',
         rank = 4,
         apply = function(self,context)
-            if context.individual and context.cardarea == G.hand and not context.end_of_round and context.other_card:get_id() == self.ability.rank then
-                if context.other_card.debuff then
-                    return {
-                        message = localize('k_debuffed'),
-                        colour = G.C.RED,
-                        card = context.other_card,
-                    }
-                else
-                    return {
-                        h_mult = self.ability.config.base_mult + self:level(),
-                        card = context.other_card
-                    }
-                end
+        
+            if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
+                local card = context.other_card
+                local scoring_hand = context.scoring_hand
+
+                return {
+                    func = function()
+                        local delay = 0.5
+                        for i=1, #scoring_hand do
+                            local _card = scoring_hand[i]
+                            _card.ability.perma_bonus = _card.ability.perma_bonus or 0
+                            _card.ability.perma_bonus = _card.ability.perma_bonus + self:level() * 3
+                            card_eval_status_text(_card, 'extra', nil, nil, nil, {message = 'Upgraded!', delay = delay})
+                            delay = delay - 0.05
+                        end
+                    end
+                }
             end
         end
 
