@@ -445,6 +445,25 @@ function create_UIBox_zodiacs(simple)
 
   function create_zodiac_row(zodiac, simple)
     local count = 0
+    local altColors = {
+        Aries = HEX('9E3131'),
+        Gemini = HEX('C9A100'),
+        Taurus = HEX('A05D1E'),
+        Cancer = HEX('F42525'),
+        Leo = HEX('548200'),
+        Virgo = HEX('078446'),
+        Libra = HEX('008282'),
+        Scorpio = HEX('4673A0'),
+        Sagittarius = HEX('3552E0'),
+        Capricorn = HEX('8D53CC'),
+        Aquarius = HEX('823482'),
+        Pisces = HEX('991E5D'),
+        Ophiuchus = G.C.ZODIAC['Ophiuchus']
+    }
+
+    local textColour = (zodiac == 'Ophiuchus' and G.GAME.BALATROSTUCK.zodiac_levels[zodiac] == 1) and G.C.WHITE or G.C.UI.TEXT_DARK
+
+
     if G.deck then
         local ranks = {
             Gemini = 2,
@@ -478,8 +497,8 @@ function create_UIBox_zodiacs(simple)
     return (not simple and
       {n=G.UIT.R, config={align = "cm", padding = 0.05, r = 0.1, colour = darken(G.C.JOKER_GREY, 0.1), emboss = 0.05, hover = true, force_focus = true, on_demand_tooltip = {text = nil, filler = {func = create_UIBox_zodiac_tip, args = zodiac}}}, nodes={
         {n=G.UIT.C, config={align = "cl", padding = 0, minw = 5}, nodes={
-          {n=G.UIT.C, config={align = "cm", padding = 0.01, r = 0.1, colour = G.C.HAND_LEVELS[math.min(7, math.max(1,G.GAME.BALATROSTUCK.zodiac_levels[zodiac]))], minw = 1.5, outline = 0.8, outline_colour = G.C.WHITE}, nodes={
-            {n=G.UIT.T, config={text = localize('k_level_prefix')..G.GAME.BALATROSTUCK.zodiac_levels[zodiac], scale = 0.5, colour = G.C.UI.TEXT_DARK}}
+          {n=G.UIT.C, config={align = "cm", padding = 0.01, r = 0.1, colour = G.GAME.BALATROSTUCK.zodiac_levels[zodiac] == 1 and altColors[zodiac] or G.C.HAND_LEVELS[math.min(7, math.max(1,G.GAME.BALATROSTUCK.zodiac_levels[zodiac]))], minw = 1.5, outline = 0.8, outline_colour = G.C.WHITE}, nodes={
+            {n=G.UIT.T, config={text = localize('k_level_prefix')..G.GAME.BALATROSTUCK.zodiac_levels[zodiac], scale = 0.5, colour = textColour}}
           }},
           {n=G.UIT.C, config={align = "cm", minw = 4.5, maxw = 4.5}, nodes={
             {n=G.UIT.T, config={text = ' '..localize(zodiac,'zodiac_names'), scale = 0.45, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
@@ -540,5 +559,5 @@ function create_UIBox_zodiac_tip(zodiac)
         table.insert(_returnnodes,{n=G.UIT.R, config={align = "cm"}, nodes=_nodes[i]})
     end
     
-    return{n=G.UIT.C, config={align = "cm"}, nodes=_returnnodes}     -- 0    
+    return{n=G.UIT.C, colour = G.C.ZODIAC[zodiac], config={align = "cm"}, nodes=_returnnodes}     -- 0    
 end
