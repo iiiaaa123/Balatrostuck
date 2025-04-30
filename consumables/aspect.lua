@@ -55,7 +55,11 @@ end
 
 
 
+SlabIcon = Moveable:extend()
 
+function SlabIcon:init()
+  
+end
 
 
 
