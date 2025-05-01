@@ -17,7 +17,9 @@ function Balatrostuck.INIT.Jokers.j_complacencyofthelearned()
                 [3] = "by the number of times Lucky",
                 [4] = "cards {C:attention}succeeded{}, divided by how",
                 [5] = "many times cards were {C:attention}scored"
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 4'}
         },
         pos = {
             x = 2,
@@ -27,7 +29,7 @@ function Balatrostuck.INIT.Jokers.j_complacencyofthelearned()
         rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         loc_vars = function(self,info_queue,card)
             return {
@@ -51,6 +53,11 @@ function Balatrostuck.INIT.Jokers.j_complacencyofthelearned()
                     x_mult = card.ability.extra.x_mult * (card.ability.extra.triggers / card.ability.extra.scored),
                     card = card
                 }
+            end
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_descend' then
+                unlock_card(self)
             end
         end
     }

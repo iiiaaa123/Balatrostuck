@@ -19,7 +19,7 @@ function Balatrostuck.INIT.Jokers.j_gamebro()
                 [3] = "for each scoring {C:attention}Bonus Card{} in played hand"
             },
             unlock = {'Unlocked by',
-            'obtaining Descend'}
+            'finishing Act 4'}
         },
         pos = {
             x = 2,

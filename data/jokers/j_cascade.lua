@@ -14,7 +14,9 @@ function Balatrostuck.INIT.Jokers.j_cascade()
                 [1] = '{C:attention}Retrigger{} all played cards an',
                 [2] = 'additional time for every {C:attention}#1#',
                 [3] = 'levels in the played {C:attention}poker hand'
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 4'}
         },
         pos = {
             x = 3,
@@ -24,7 +26,7 @@ function Balatrostuck.INIT.Jokers.j_cascade()
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
             return {vars = {card.ability.extra.retrigger_every}}
@@ -49,6 +51,11 @@ function Balatrostuck.INIT.Jokers.j_cascade()
         end,
         in_pool = function(self,args)
             return G.GAME.pool_flags.bstuck_actprogress >= 4
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_descend' then
+                unlock_card(self)
+            end
         end
     }
 end

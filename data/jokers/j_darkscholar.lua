@@ -23,7 +23,7 @@ function Balatrostuck.INIT.Jokers.j_darkscholar()
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
 
         loc_vars = function(self, info_queue, card)
