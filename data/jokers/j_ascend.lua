@@ -76,6 +76,7 @@ function Balatrostuck.INIT.Jokers.j_ascend()
             end
         end,
         add_to_deck = function(self,card,from_debuff)
+            check_for_unlock({type = 'bstuck_ascend'})
             if G.GAME.pool_flags.bstuck_actprogress <= 1 then
                 G.GAME.pool_flags.bstuck_actprogress = 2
             end

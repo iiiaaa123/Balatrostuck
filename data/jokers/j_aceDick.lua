@@ -18,6 +18,7 @@ function Balatrostuck.INIT.Jokers.j_aceDick()
         rarity = 2,
         blueprint_compat = false,
         eternal_compat = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
             if context.ace_dick and not context.blueprint then 
@@ -30,8 +31,9 @@ function Balatrostuck.INIT.Jokers.j_aceDick()
             end
         end,
         check_for_unlock = function(self,args)
-            
-
+            if args.type == 'bstuck_apple_eaten' then
+                unlock_card(self)
+            end
         end
     }
 end

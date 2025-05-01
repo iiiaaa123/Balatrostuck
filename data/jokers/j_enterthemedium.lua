@@ -51,6 +51,7 @@ function Balatrostuck.INIT.Jokers.j_enterthemedium()
         end,
 
         add_to_deck = function(self,card,from_debuff)
+            check_for_unlock({type = 'bstuck_medium'})
             if G.GAME.pool_flags.bstuck_actprogress <= 2 then
                 G.GAME.pool_flags.bstuck_actprogress = 3
             end

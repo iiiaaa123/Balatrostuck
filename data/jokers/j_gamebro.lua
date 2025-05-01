@@ -17,7 +17,9 @@ function Balatrostuck.INIT.Jokers.j_gamebro()
                 [1] = "{C:green}#1# in #2#{} chance to give {C:mult}+#3#{} Mult,",
                 [2] = "{C:mult}+#4#{} Mult and increase {C:green}probability{} by {C:attention}#5#",
                 [3] = "for each scoring {C:attention}Bonus Card{} in played hand"
-            }
+            },
+            unlock = {'Unlocked by',
+            'obtaining Descend'}
         },
         pos = {
             x = 2,
@@ -27,8 +29,7 @@ function Balatrostuck.INIT.Jokers.j_gamebro()
         rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
-        discovered = true,
+        unlocked = false,
         enhancement_gate = 'm_bonus',
         atlas = 'HomestuckJokers',
 
@@ -56,6 +57,11 @@ function Balatrostuck.INIT.Jokers.j_gamebro()
             elseif context.after then 
                 card.ability.extra.odds = 0
                 card.ability.extra.mult = 0
+            end
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_descend' then
+                unlock_card(self)
             end
         end
     }

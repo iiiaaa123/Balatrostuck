@@ -9,15 +9,16 @@ function Balatrostuck.INIT.Jokers.j_stump()
         loc_txt = {
             name = 'The Stump',
             text = {'{C:green} 1 in #1#{} chance to prevent death.',
-                    'Odds cannot be changed'}
+                    'Odds cannot be changed'},
+            unlock = {'Unlocked by',
+            'obtaining Enter The Medium'}
         },
         pos = {x = 6, y = 8},
         cost = 6,
         rarity = 1,
         blueprint_compat = false,
         eternal_compat = true,
-        unlocked = true,
-        discovered = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
             card.ability.extra.chance = 1
@@ -33,6 +34,11 @@ function Balatrostuck.INIT.Jokers.j_stump()
                     saved = true,
                     colour = G.C.RED                    
                 }
+            end
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_medium' then
+                unlock_card(self)
             end
         end
     }

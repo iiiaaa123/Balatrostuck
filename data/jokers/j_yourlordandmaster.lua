@@ -12,7 +12,9 @@ function Balatrostuck.INIT.Jokers.j_yourlordandmaster()
                 "{C:caliborn}YOU DO NOT NEED TO KNOW MY WAYS.",
                 "{C:caliborn}MY PUTRID SOUL WILL MAKE A MOCKERY",
                 "{C:caliborn}OF THIS GLORIFIED GAME OF SOLITAIRE."
-            }
+            },
+            unlock = {'Unlocked by',
+            'obtaining Collide'}
         },
         pos = {
             x = 0,
@@ -22,8 +24,7 @@ function Balatrostuck.INIT.Jokers.j_yourlordandmaster()
         rarity = 1,
         blueprint_compat = false,
         eternal_compat = true,
-        unlocked = true,
-        discovered = true,
+        unlocked = false,
         atlas = 'TheCalibornJoker',
         animated = true,
         frames = 250,
@@ -32,6 +33,11 @@ function Balatrostuck.INIT.Jokers.j_yourlordandmaster()
         photosensitive = false,
         in_pool = function(self)
             return Balatrostuck.peanut_gallery
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_collide' then
+                unlock_card(self)
+            end
         end
     }
 end 

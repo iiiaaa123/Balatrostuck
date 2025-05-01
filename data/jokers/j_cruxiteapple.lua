@@ -48,7 +48,8 @@ function Balatrostuck.INIT.Jokers.j_cruxiteapple()
                         return true
                     end
                 }))
-                if not G.GAME.pool_flags.bstuck_actprogress <= 1 then
+                check_for_unlock({type = 'bstuck_apple_eaten'})
+                if not (G.GAME.pool_flags.bstuck_actprogress and G.GAME.pool_flags.bstuck_actprogress <= 1) then
                     G.GAME.pool_flags.bstuck_actprogress = 1
                 end
                 return {

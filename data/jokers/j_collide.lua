@@ -12,7 +12,9 @@ function Balatrostuck.INIT.Jokers.j_collide()
                 [2] = 'add four {C:attention}steel{}',
                 [3] = '{C:spades}Jack of Spades{}',
                 [4] = 'to your hand'
-            }
+            },
+            unlock = {'Unlocked by',
+            'obtaining Cascade'}
         },
         pos = {
             x = 4,
@@ -22,8 +24,7 @@ function Balatrostuck.INIT.Jokers.j_collide()
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
-        discovered = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
         end,
@@ -48,12 +49,18 @@ function Balatrostuck.INIT.Jokers.j_collide()
             end
         end,
         add_to_deck = function(self,card,from_debuff)
+            check_for_unlock({type = 'bstuck_collide'})
             if G.GAME.pool_flags.bstuck_actprogress <= 5 then
                 G.GAME.pool_flags.bstuck_actprogress = 6
             end
         end,
         in_pool = function(self,args)
             return G.GAME.pool_flags.bstuck_actprogress >= 5
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_cascade' then
+                unlock_card(self)
+            end
         end
     }
 end

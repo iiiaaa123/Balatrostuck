@@ -17,7 +17,9 @@ function Balatrostuck.INIT.Jokers.j_ahabscrosshairs()
                 [2] = "of total {C:attention}sell value",
                 [3] = "on all current {C:attention}Jokers",
                 [4] = "{C:inactive}(Currently {X:red,C:white}X#3#{C:inactive} Mult)."
-            }
+            },
+            unlock = {'Unlocked by',
+            'obtaining Ascend'}
         },
         pos = {
             x = 9,
@@ -27,8 +29,7 @@ function Balatrostuck.INIT.Jokers.j_ahabscrosshairs()
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
-        discovered = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
             if context.joker_main then
@@ -50,6 +51,11 @@ function Balatrostuck.INIT.Jokers.j_ahabscrosshairs()
         end,
         set_card_type_badge = function(self, card, badges)
             badges[1] = create_badge(localize('k_legendary'), HEX("791a79"), nil, 1.2)
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_ascend' then
+                unlock_card(self)
+            end
         end
     }
 end 

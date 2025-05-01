@@ -43,6 +43,7 @@ function Balatrostuck.INIT.Jokers.j_cascade()
             end
         end,
         add_to_deck = function(self,card,from_debuff)
+            check_for_unlock({type = 'bstuck_cascade'})
             if G.GAME.pool_flags.bstuck_actprogress <= 4 then
                 G.GAME.pool_flags.bstuck_actprogress = 5
             end
