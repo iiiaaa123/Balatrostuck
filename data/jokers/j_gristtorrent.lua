@@ -18,7 +18,9 @@ function Balatrostuck.INIT.Jokers.j_gristtorrent()
                 [3] = 'each round, earn {C:money}$#2#{}. The {C:attention}#5#th+{} time this happens',
                 [4] = 'each round, this Joker gains {C:money}$#2#{} of sell value',
                 [5] = '{C:inactive}({C:attention}#1#{C:inactive} remaining)'
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 2'}
         },
         pos = {
             x = 7,
@@ -28,7 +30,7 @@ function Balatrostuck.INIT.Jokers.j_gristtorrent()
         rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
 
         loc_vars = function(self, info_queue, card)
@@ -67,6 +69,11 @@ function Balatrostuck.INIT.Jokers.j_gristtorrent()
                     message = localize('k_reset'),
                     colour = G.C.FILTER
                 }
+            end
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_ascend' then
+                unlock_card(self)
             end
         end
     }

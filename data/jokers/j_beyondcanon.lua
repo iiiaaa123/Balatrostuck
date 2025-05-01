@@ -14,7 +14,9 @@ function Balatrostuck.INIT.Jokers.j_beyondcanon()
                 [3] = '{C:attention}poker hands{} played previously',
                 [4] = 'this ante are {C:red}not allowed',
                 [5] = '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)'
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 2'}
         },
         pos = {
             x = 5,
@@ -24,7 +26,7 @@ function Balatrostuck.INIT.Jokers.j_beyondcanon()
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
 
         loc_vars = function(self, info_queue, card)
@@ -38,6 +40,11 @@ function Balatrostuck.INIT.Jokers.j_beyondcanon()
                     Xmult_mod = card.ability.extra.Xmult^G.GAME.round_resets.ante,
                     colour = G.C.RED
                 }
+            end
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_ascend' then
+                unlock_card(self)
             end
         end
     }

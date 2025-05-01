@@ -26,7 +26,7 @@ function Balatrostuck.INIT.Jokers.j_batterwitch()
         rarity = 3,
         blueprint_compat = false,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
 
         loc_vars = function(self, info_queue, card)

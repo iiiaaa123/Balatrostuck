@@ -13,7 +13,9 @@ function Balatrostuck.INIT.Jokers.j_therapture()
                 [1] = "Destroys played cards after scoring. Each destroyed",
                 [2] = "scoring card adds {C:white,X:mult}X#1#{}. If you sell this Joker you lose.",
                 [3] = "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)"
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 2'}
         },
         loc_vars = function (self, info_queue, card)
             return {vars = {card.ability.extra.x_mult, card.ability.extra.gained_xmult}}
@@ -26,7 +28,7 @@ function Balatrostuck.INIT.Jokers.j_therapture()
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
             if context.selling_self then
@@ -43,6 +45,11 @@ function Balatrostuck.INIT.Jokers.j_therapture()
                     x_mult = card.ability.extra.gained_xmult,
                     card = card
                 }
+            end
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_ascend' then
+                unlock_card(self)
             end
         end
     }

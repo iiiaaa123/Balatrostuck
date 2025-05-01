@@ -12,7 +12,9 @@ function Balatrostuck.INIT.Jokers.j_whoisthis()
                 [1] = 'Creates a random',
                 [2] = '{C:green}Paradox{} joker when',
                 [3] = 'blind is selected'
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 2'}
         },
         pos = {
             x = 6,
@@ -22,7 +24,7 @@ function Balatrostuck.INIT.Jokers.j_whoisthis()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
 
         calculate = function (self,card,context)
@@ -42,6 +44,11 @@ function Balatrostuck.INIT.Jokers.j_whoisthis()
                     return true
                     end
                 }))
+            end
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_ascend' then
+                unlock_card(self)
             end
         end
     }

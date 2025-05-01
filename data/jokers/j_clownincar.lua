@@ -12,7 +12,9 @@ function Balatrostuck.INIT.Jokers.j_clownincar()
                 [1] = "{C:attention}Playing cards{} in {C:attention}Standard Packs{} can",
                 [2] = "only be the ranks corresponding",
                 [3] = "to held {C:attention}Zodiac Cards{} (if any)"
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 2'}
         },
         pos = {
             x = 2,
@@ -22,7 +24,12 @@ function Balatrostuck.INIT.Jokers.j_clownincar()
         rarity = 2,
         blueprint_compat = false,
         eternal_compat = true,
-        unlocked = true,
-        atlas = 'HomestuckJokers'
+        unlocked = false,
+        atlas = 'HomestuckJokers',
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_ascend' then
+                unlock_card(self)
+            end
+        end
     }
 end 

@@ -11,7 +11,9 @@ function Balatrostuck.INIT.Jokers.j_enterthemedium()
             ['text'] = {
                 [1] = "This Joker becomes a random",
                 [2] = "{C:attention}Balatrostuck{} Joker at end of {C:attention}ante"
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 2'}
         },
         pos = {
             x = 0,
@@ -21,7 +23,7 @@ function Balatrostuck.INIT.Jokers.j_enterthemedium()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = false,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
             if context.end_of_round and G.GAME.blind.boss and context.main_eval then
@@ -48,6 +50,7 @@ function Balatrostuck.INIT.Jokers.j_enterthemedium()
                 G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() card:flip();play_sound('tarot2', percent);card:juice_up(0.3, 0.3);return true end }))
             end
         end,
+        
 
         add_to_deck = function(self,card,from_debuff)
             check_for_unlock({type = 'bstuck_medium'})
@@ -58,6 +61,11 @@ function Balatrostuck.INIT.Jokers.j_enterthemedium()
 
         in_pool = function(self,args)
             return G.GAME.pool_flags.bstuck_actprogress >= 2
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_ascend' then
+                unlock_card(self)
+            end
         end
     }
 end 
