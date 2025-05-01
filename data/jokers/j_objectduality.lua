@@ -13,7 +13,12 @@ function Balatrostuck.INIT.Jokers.j_objectduality()
                 [2] = "round is a {C:attention}High Card{}, create",
                 [3] = "the {C:green}Paradox{} Joker corresponding ",
                 [4] = "to each scoring card"
-            }
+            },
+            check_for_unlock = function(self,args)
+                if args.type == 'bstuck_collide' then
+                    unlock_card(self)
+                end
+            end
         },
         pos = {
             x = 0,
@@ -23,7 +28,7 @@ function Balatrostuck.INIT.Jokers.j_objectduality()
         rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
             if context.first_hand_drawn then
@@ -49,6 +54,11 @@ function Balatrostuck.INIT.Jokers.j_objectduality()
                     }))
                     delay(0.4)
                 end
+            end
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_collide' then
+                unlock_card(self)
             end
         end
     }

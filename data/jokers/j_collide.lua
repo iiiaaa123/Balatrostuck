@@ -14,7 +14,7 @@ function Balatrostuck.INIT.Jokers.j_collide()
                 [4] = 'to your hand'
             },
             unlock = {'Unlocked by',
-            'obtaining Cascade'}
+            'finishing Act 5'}
         },
         pos = {
             x = 4,

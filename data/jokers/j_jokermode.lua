@@ -12,7 +12,9 @@ function Balatrostuck.INIT.Jokers.j_jokermode()
         loc_txt = {
             ['name'] = 'Joker Mode.',
             ['text'] = {
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 6'}
         },
         pos = {
             x = 6,
@@ -22,7 +24,7 @@ function Balatrostuck.INIT.Jokers.j_jokermode()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
 
         loc_vars = function(self, infoqueue, card)
@@ -49,6 +51,11 @@ function Balatrostuck.INIT.Jokers.j_jokermode()
                   card = card
                 }
             end          
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_collide' then
+                unlock_card(self)
+            end
         end
     }
 end

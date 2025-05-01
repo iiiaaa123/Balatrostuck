@@ -15,7 +15,9 @@ function Balatrostuck.INIT.Jokers.j_crowbarsfelt()
                 [2] = "if played hand",
                 [3] = "contains a {C:attention}Straight{}",
                 [4] = "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 6'}
         },
         pos = {
             x = 9,
@@ -25,7 +27,7 @@ function Balatrostuck.INIT.Jokers.j_crowbarsfelt()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
 
         loc_vars = function(self, infoqueue, card)
@@ -52,7 +54,11 @@ function Balatrostuck.INIT.Jokers.j_crowbarsfelt()
                   card = card
                 }
             end          
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_collide' then
+                unlock_card(self)
+            end
         end
-
     }
 end 

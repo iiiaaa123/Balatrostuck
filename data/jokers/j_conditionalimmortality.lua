@@ -17,7 +17,9 @@ function Balatrostuck.INIT.Jokers.j_conditionalimmortality()
                 [3] = "Jimbo appears {C:attention}10X{} more",
                 [4] = "frequently in the shop",
                 [5] = "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 6'}
         },
         pos = {
             x = 1,
@@ -27,7 +29,7 @@ function Balatrostuck.INIT.Jokers.j_conditionalimmortality()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
             if context.BSTUCK_joker_destroyed then
@@ -114,5 +116,10 @@ function Balatrostuck.INIT.Jokers.j_conditionalimmortality()
             info_queue[#info_queue+1] = G.P_CENTERS['j_joker'] or nil
             return {vars = {card.ability.extra.mult_mod, card.ability.extra.mult}}
         end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_collide' then
+                unlock_card(self)
+            end
+        end
     }
 end 

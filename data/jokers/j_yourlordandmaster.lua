@@ -14,7 +14,7 @@ function Balatrostuck.INIT.Jokers.j_yourlordandmaster()
                 "{C:caliborn}OF THIS GLORIFIED GAME OF SOLITAIRE."
             },
             unlock = {'Unlocked by',
-            'obtaining Collide'}
+            'finishing Act 6'}
         },
         pos = {
             x = 0,

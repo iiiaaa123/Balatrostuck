@@ -10,7 +10,9 @@ function Balatrostuck.INIT.Jokers.j_magnificent()
         loc_txt = {
             ['name'] = 'MAGNIFICENT JOKER.',
             ['text'] = {
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 6'}
         },
         pos = {
             x = 5,
@@ -20,10 +22,15 @@ function Balatrostuck.INIT.Jokers.j_magnificent()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
 
         calculate = function (self, context)
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_collide' then
+                unlock_card(self)
+            end
         end
     }
 end

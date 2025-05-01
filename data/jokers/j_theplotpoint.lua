@@ -11,7 +11,9 @@ function Balatrostuck.INIT.Jokers.j_theplotpoint()
             ['text'] = {
                 [1] = "Sell this joker: Destroy all jokers except leftmost",
                 [2] = "Gain a Black Hole and -1 ante. Once per game."
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 6'}
         },
         pos = {
             x = 0,
@@ -21,7 +23,7 @@ function Balatrostuck.INIT.Jokers.j_theplotpoint()
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = false,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokersAnimated',
         animated = true,
         frames = 8,
@@ -41,6 +43,11 @@ function Balatrostuck.INIT.Jokers.j_theplotpoint()
                     G.consumeables:emplace(blackhole)
                     G.GAME.consumeable_buffer = 0
                 end
+            end
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_collide' then
+                unlock_card(self)
             end
         end
     }
