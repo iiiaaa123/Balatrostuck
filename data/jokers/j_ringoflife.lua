@@ -9,7 +9,9 @@ function Balatrostuck.INIT.Jokers.j_ringoflife()
             ['text'] = {
                 [1] = "Adjacent {C:attention}Jokers{}",
                 [2] = "count as {C:tarot}Eternal{}",
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 3'}
         },
         pos = {
             x = 4,
@@ -19,7 +21,7 @@ function Balatrostuck.INIT.Jokers.j_ringoflife()
         rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self, card, context)
             if context.remove_playing_cards then
@@ -51,6 +53,11 @@ function Balatrostuck.INIT.Jokers.j_ringoflife()
         remove_from_deck = function(self,card,from_debuff)
             if not from_debuff and not card.ability.extra.do_not_update_pool then
                 G.GAME.pool_flags.lost_rol = true
+            end
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_medium' then
+                unlock_card(self)
             end
         end
     }

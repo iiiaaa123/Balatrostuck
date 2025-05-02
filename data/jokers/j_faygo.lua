@@ -15,7 +15,9 @@ function Balatrostuck.INIT.Jokers.j_faygo()
                 [1] = 'Played cards give {C:mult}#3##1#{} Mult',
                 [2] = 'when scored, reduces by {C:red}#2#{}',
                 [3] = 'when a card is scored',
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 3'}
         },
         pos = {
             x = 8,
@@ -25,7 +27,7 @@ function Balatrostuck.INIT.Jokers.j_faygo()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
 
         loc_vars = function(self, info_queue, card)
@@ -45,6 +47,11 @@ function Balatrostuck.INIT.Jokers.j_faygo()
                     mult = thunk,
                     card = card
                 }
+            end
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_medium' then
+                unlock_card(self)
             end
         end
     }

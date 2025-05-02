@@ -19,7 +19,9 @@ function Balatrostuck.INIT.Jokers.j_descend()
                 [3] = 'this Joker gains {C:white,X:mult}X0.5{} Mult',
                 [4] = 'per level removed',
                 [5] = '(Currently 0/3)'
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 3'}
         },
         pos = {
             x = 2,
@@ -29,7 +31,7 @@ function Balatrostuck.INIT.Jokers.j_descend()
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(Self,card,context)
             if context.joker_main then
@@ -75,6 +77,11 @@ function Balatrostuck.INIT.Jokers.j_descend()
         end,
         in_pool = function(self,args)
             return G.GAME.pool_flags.bstuck_actprogress >= 3
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_medium' then
+                unlock_card(self)
+            end
         end
     }
 end

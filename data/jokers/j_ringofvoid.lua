@@ -11,7 +11,9 @@ function Balatrostuck.INIT.Jokers.j_ringofvoid()
             ['text'] = {
                 [1] = "Gain a Negative Tag",
                 [2] = "at end of ante"
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 3'}
         },
         pos = {
             x = 3,
@@ -21,7 +23,7 @@ function Balatrostuck.INIT.Jokers.j_ringofvoid()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
             if context.end_of_round and context.cardarea == G.jokers and G.GAME.blind.boss then
@@ -36,6 +38,11 @@ function Balatrostuck.INIT.Jokers.j_ringofvoid()
                 return true
             else
                 return false
+            end
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_medium' then
+                unlock_card(self)
             end
         end
     }

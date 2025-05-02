@@ -11,7 +11,7 @@ function Balatrostuck.INIT.Jokers.j_stump()
             text = {'{C:green} 1 in #1#{} chance to prevent death.',
                     'Odds cannot be changed'},
             unlock = {'Unlocked by',
-            'obtaining Enter The Medium'}
+            'finishing Act 3'}
         },
         pos = {x = 6, y = 8},
         cost = 6,

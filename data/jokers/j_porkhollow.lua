@@ -16,7 +16,9 @@ function Balatrostuck.INIT.Jokers.j_porkhollow()
                 [2] = "Instead, that money goes to this joker's sell value.",
                 [3] = "{C:chips}+#2#{} chips for each {C:money}${} in sell value.", 
                 [4] = "{C:inactive}(Currently: {C:chips}+#1#{}{C:inactive} Chips)"
-            }
+            },
+            unlock = {'Unlocked by',
+            'finishing Act 3'}
         },
         pos = {
             x = 4,
@@ -26,7 +28,7 @@ function Balatrostuck.INIT.Jokers.j_porkhollow()
         rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
 
         loc_vars = function(self, info_queue, card)
@@ -68,6 +70,11 @@ function Balatrostuck.INIT.Jokers.j_porkhollow()
                   message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } }
                 }
               end          
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_medium' then
+                unlock_card(self)
+            end
         end
     }
 end 
