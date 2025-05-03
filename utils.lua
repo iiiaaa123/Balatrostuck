@@ -135,6 +135,25 @@ function get_innocuous(card,get_only_name)
     end
 end
 
+function rank_to_zodiac(card)
+    local id = card:get_id()
+    if id == 2 then return "Gemini"
+    elseif id == 3 then return "Taurus"
+    elseif id == 4 then return "Cancer"
+    elseif id == 5 then return "Leo"
+    elseif id == 6 then return "Virgo"
+    elseif id == 7 then return "Libra"
+    elseif id == 8 then return "Scorpio"
+    elseif id == 9 then return "Sagittarius"
+    elseif id == 10 then return "Capricorn"
+    elseif id == 11 then return "Aquarius"
+    elseif id == 12 then return "Pisces"
+    elseif id == 13 then return "Ophiuchus"
+    elseif id == 14 then return "Aries"
+    else return nil
+    end
+end
+
 
 function shuffle(t,seed)
     local tbl = {}

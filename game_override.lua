@@ -14,6 +14,20 @@ function Card:calculate_joker(context)
 end
 
 
+local generate_UIbox_ability_tableref = Card.generate_UIbox_ability_table
+function Card:generate_UIbox_ability_table()
+    local full_UI_table = generate_UIbox_ability_tableref(self)
+
+    if self.playing_card then
+        local zodiac = rank_to_zodiac(self)
+        if zodiac and G.GAME.BALATROSTUCK.zodiac_levels[zodiac] > 0 then
+            generate_card_ui({key = zodiac, set = "zodiacui"}, full_UI_table)
+        end
+    end
+
+    return full_UI_table
+end
+
 local game_updateref = Game.update
 function Game:update(dt)
     game_updateref(self, dt)
