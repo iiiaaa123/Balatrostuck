@@ -18,6 +18,7 @@ function Balatrostuck.INIT.Decks.b_prospitan()
                     v = G.deck.cards[i]
                     if v.edition and v.edition.key == 'e_bstuck_paradox' then
                         v:flip()
+                        SMODS.recalc_debuff(v)
                         sendInfoMessage(i)
                         table.remove(G.deck.cards,i)
                         table.insert(G.deck.cards,v)

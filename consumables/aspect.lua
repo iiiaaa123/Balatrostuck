@@ -118,7 +118,6 @@ function SlabIcon:hover()
   if not G.CONTROLLER.dragging.target or G.CONTROLLER.using_touch then 
     if not self.hovering and self.states.visible then
       self.hovering = true
-      self:juice_up(0.05, 0.03)
       play_sound('paper1', math.random()*0.1 + 0.55, 0.42)
       play_sound('tarot2', math.random()*0.1 + 0.55, 0.09)
     end

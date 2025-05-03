@@ -250,6 +250,7 @@ SMODS.Sound({key = "HomestuckScratch", path = 'scratch.ogg'})
 SMODS.Sound({key = "HomestuckMeow", path = 'meow.ogg'})
 SMODS.Sound({key = "HomestuckSword", path = 'sepulchritude.ogg'})
 SMODS.Sound({key = "HomestuckGrimdark", path = 'grimdark.ogg'})
+SMODS.Sound({key = "HomestuckBloodDrop", path = 'blood.ogg'})
 
 
 

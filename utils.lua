@@ -561,3 +561,6 @@ function create_UIBox_zodiac_tip(zodiac)
     
     return{n=G.UIT.C, colour = G.C.ZODIAC[zodiac], config={align = "cm"}, nodes=_returnnodes}     -- 0    
 end
+
+
+

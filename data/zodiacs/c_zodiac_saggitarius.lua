@@ -26,7 +26,8 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
         atlas = "HomestuckZodiacs",
         use = function(self, card, area, copier)
             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.9, func = function()
-                play_sound('tarot1')
+                play_sound('timpani', 0.7)
+                play_sound('bstuck_HomestuckBloodDrop', 1)
                 card:juice_up(0.8, 0.5)
                 return true end
             }))
