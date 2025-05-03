@@ -20,6 +20,9 @@ function Balatrostuck.INIT.Jokers.j_jocker()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
+        loc_vars = function(self, info_queue, card)
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_negative']
+         end,
         unlocked = true,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)

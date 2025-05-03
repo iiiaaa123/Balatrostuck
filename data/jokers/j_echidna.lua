@@ -29,7 +29,9 @@ function Balatrostuck.INIT.Jokers.j_echidna()
             x = 8,
             y = 9
         },
-
+        loc_vars = function (self, info_queue, card) 
+            info_queue[#info_queue + 1 ] = {key="tag_bstuck_scratch", set="Tag"}
+        end,
         add_to_deck = function(self,card,from_debuff)
             G.GAME.round_resets.blind_tags.Big = 'tag_bstuck_scratch'
         end

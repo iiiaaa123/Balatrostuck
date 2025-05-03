@@ -25,6 +25,9 @@ function Balatrostuck.INIT.Jokers.j_ringofvoid()
         eternal_compat = true,
         unlocked = false,
         atlas = 'HomestuckJokers',
+        loc_vars = function(self, info_queue, card) 
+            info_queue[#info_queue + 1] = {key = "tag_negative", set = "Tag"}
+        end,
         calculate = function(self,card,context)
             if context.end_of_round and context.cardarea == G.jokers and G.GAME.blind.boss then
                 add_tag(Tag('tag_negative'))

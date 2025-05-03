@@ -24,6 +24,9 @@ function Balatrostuck.INIT.Jokers.j_pawnrevolution()
         eternal_compat = true,
         unlocked = true,
         atlas = 'HomestuckJokers',
+        loc_vars = function (self, info_queue, card) 
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
+        end,
         calculate = function(self,card,context)
             if context.setting_blind then
                 local eval = function() return G.GAME.current_round.hands_played == 0 end

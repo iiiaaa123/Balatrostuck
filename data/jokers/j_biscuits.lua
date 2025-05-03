@@ -14,6 +14,9 @@ function Balatrostuck.INIT.Jokers.j_biscuits()
                 [2] = "be destroyed"
             }
         },
+        loc_vars = function(self, info_queue, card) 
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
+        end,
         pos = {
             x = 0,
             y = 11

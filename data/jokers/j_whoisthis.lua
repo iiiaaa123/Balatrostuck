@@ -26,7 +26,9 @@ function Balatrostuck.INIT.Jokers.j_whoisthis()
         eternal_compat = true,
         unlocked = false,
         atlas = 'HomestuckJokers',
-
+        loc_vars = function(self, info_queue, card) 
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
+        end,
         calculate = function (self,card,context)
             if context.setting_blind then
                 G.GAME.joker_buffer = G.GAME.joker_buffer + 1

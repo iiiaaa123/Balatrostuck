@@ -23,6 +23,7 @@ function Balatrostuck.INIT.Jokers.j_kernelsprite()
         },
 
         loc_vars = function(self, info_queue, card)
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
             local get_card_name = function(_card)
                 if _card then
                     local rank = _card.base.value

@@ -17,6 +17,10 @@ function Balatrostuck.INIT.Jokers.j_amberfirefly()
         unlock = {'Unlocked by',
                 'finishing Act 1'}
         },
+        loc_vars = function(self, info_queue, card)
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
+            info_queue[#info_queue + 1] = {key = 'purple_seal', set = 'Other'}
+        end,
         pos = {
             x = 8,
             y = 1
@@ -33,7 +37,7 @@ function Balatrostuck.INIT.Jokers.j_amberfirefly()
         end,
         remove_from_deck = function(self,card,from_debuff)
             G.hand:change_size(1)
-        end,        
+        end,
         calculate = function (self, card, context)
             if context.setting_blind then
                 local firstmat = nil

@@ -36,6 +36,10 @@ function Balatrostuck.INIT.Jokers.j_bigkahuna()
                     message = '+1 Lovers!'
                 }
             end
+        end,
+        loc_vars = function (self, info_queue, card) 
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
+            info_queue[#info_queue + 1] = G.P_CENTERS['c_lovers']
         end
     }
 end 

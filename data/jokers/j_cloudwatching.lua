@@ -46,6 +46,9 @@ function Balatrostuck.INIT.Jokers.j_cloudwatching()
                     playing_card_joker_effects({_card})
                 end
             end
-        end,            
+        end,           
+        loc_vars = function(self, info_queue, card)
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
+        end
     }
 end 

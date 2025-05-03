@@ -24,7 +24,10 @@ function Balatrostuck.INIT.Jokers.j_descendascend()
         eternal_compat = true,
         unlocked = true,
         atlas = 'HomestuckJokers',
-
+        loc_vars = function (self, info_queue, card) 
+            info_queue[#info_queue + 1] = {key = "tag_buffoon", set = "Tag"}
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
+        end,
         calculate = function(self, card, context)
             if context.ending_shop then
                 add_tag(Tag('tag_buffoon'))

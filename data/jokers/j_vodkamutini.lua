@@ -29,7 +29,9 @@ function Balatrostuck.INIT.Jokers.j_vodkamutini()
         eternal_compat = true,
         unlocked = false,
         atlas = 'HomestuckJokers',
-
+        loc_vars = function (self, info_queue, card) 
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
+        end,
         calculate = function(self,card,context)
             if context.paradox_created then
                 local _card = G.GAME.BALATROSTUCK.last_paradox_created

@@ -25,6 +25,9 @@ function Balatrostuck.INIT.Jokers.j_museofspace()
         eternal_compat = true,
         unlocked = false,
         atlas = 'HomestuckJokers',
+        loc_vars = function (self, info_queue, card) 
+            info_queue[#info_queue + 1] = {key="j_bstuck_lordoftime", set = "Joker", config = {extra = {h_size = 3}}}
+        end,
         calculate = function(self,card,context)
             if context.end_of_round and context.cardarea == G.jokers and not context.blueprint then
                 G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() card:flip();play_sound('card1', percent);card:juice_up(0.3, 0.3);return true end }))

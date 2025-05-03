@@ -4,7 +4,7 @@ function Balatrostuck.INIT.Tags.t_sburb()
         key = "sburb",
         config = {type = "eval"},
         loc_txt = {
-            ['name'] = 'Sburb',
+            ['name'] = 'Sburb Tag',
             ['text'] = {
                 [1] = 'Gives a free',
                 [2] = '{C:aspect}Sburb Pack'            
@@ -16,6 +16,7 @@ function Balatrostuck.INIT.Tags.t_sburb()
         },
         atlas = 'HomestuckTags',
         loc_vars = function(self, info_queue, card)
+            info_queue[#info_queue + 1] = G.P_CENTERS['p_bstuck_sburb_booster']
             -- PUT RELEVENT LOC VARS HERE WHEN YOU GET TO REWORDING THIS!!!!!!! - Delirium
             return {true}
         end,

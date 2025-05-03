@@ -28,6 +28,9 @@ function Balatrostuck.INIT.Jokers.j_theplotpoint()
         animated = true,
         frames = 8,
         animation_speed = 20,
+        loc_vars = function (self, info_queue, card) 
+            info_queue[#info_queue + 1 ] = G.P_CENTERS['c_black_hole']
+        end,
         calculate = function(self,card,context)
             if context.selling_self then
                 ease_ante(-1)

@@ -32,6 +32,7 @@ function Balatrostuck.INIT.Jokers.j_complacencyofthelearned()
         unlocked = false,
         atlas = 'HomestuckJokers',
         loc_vars = function(self,info_queue,card)
+            info_queue[#info_queue + 1 ] = G.P_CENTERS['m_lucky'] 
             return {
                 vars = {card.ability.extra.x_mult}
             }

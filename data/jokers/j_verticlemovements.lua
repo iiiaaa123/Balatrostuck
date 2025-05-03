@@ -14,6 +14,9 @@ function Balatrostuck.INIT.Jokers.j_verticlemovements()
             x = 9,
             y = 2
          },
+        loc_vars = function (self, info_queue, card) 
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
+        end,
         cost = 8,
         rarity = 3,
         blueprint_compat = true,

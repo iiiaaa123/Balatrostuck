@@ -16,6 +16,9 @@ function Balatrostuck.INIT.Jokers.j_wake()
                     'finishing Act 4'}
             
         },
+        loc_vars = function (self, info_queue, card) 
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
+        end,
         pos = {
             x = 8,
             y = 10

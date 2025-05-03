@@ -30,6 +30,8 @@ function Balatrostuck.INIT.Jokers.j_vasterror()
         atlas = 'HomestuckJokers',
 
         loc_vars = function(self, info_queue, card)
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
+            info_queue[#info_queue + 1] = {key = 'blue_seal', set = 'Other'}
             return {vars = {card.ability.extra.rolls_needed, card.ability.extra.rolls}}
         end,
 

@@ -31,6 +31,7 @@ function Balatrostuck.INIT.Jokers.j_whatpumpkin()
         atlas = 'HomestuckJokers',
 
         loc_vars = function(self, info_queue, card)
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
             return {vars = {G.GAME.probabilities.normal, card.ability.extra.odds, card.ability.extra.remaining}}
         end,
     

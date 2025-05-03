@@ -34,7 +34,7 @@ function Balatrostuck.INIT.Jokers.j_gamebro()
         atlas = 'HomestuckJokers',
 
         loc_vars = function (self, info_queue, card)
-            info_queue[#info_queue+1] = G.P_CENTERS.m_bonus 
+            info_queue[#info_queue + 1 ] = G.P_CENTERS['m_bonus'] 
             return {vars = {card.ability.extra.odds, card.ability.extra.odds_divisor, card.ability.extra.mult, card.ability.extra.mult_increase, card.ability.extra.odds_increase}}
         end,
 

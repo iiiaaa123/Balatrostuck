@@ -80,6 +80,10 @@ function Balatrostuck.INIT.Jokers.j_aimlessrenegade()
             if args.type == 'bstuck_apple_eaten' then
                 unlock_card(self)
             end
-        end
+        end,
+        loc_vars = function(self, info_queue, card) 
+            info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
+            info_queue[#info_queue + 1] = G.P_CENTERS['c_judgement']
+        end,
     }
 end 
