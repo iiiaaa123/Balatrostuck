@@ -29,7 +29,7 @@ function Balatrostuck.INIT.Jokers.j_impetuscombcharging()
         atlas = 'HomestuckJokers',
 
         loc_vars = function(self, info_queue, card)
-            info_queue[#info_queue + 1] = {key = 'tag_d_six', set = "Tag"}
+            info_queue[#info_queue + 1] = G.P_TAGS['tag_d_six']
             return{ vars = {card.ability.extra.rerolls}}
         end,
 

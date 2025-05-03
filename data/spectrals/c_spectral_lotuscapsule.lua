@@ -18,6 +18,9 @@ function Balatrostuck.INIT.Spectrals.c_spectral_lotuscapsule()
         can_use = function(self,card)
             return #G.hand.highlighted == 1
         end,
+        loc_vars = function(self, info_queue, card) 
+            info_queue[#info_queue + 1] = G.P_SEALS['bstuck_felt']
+        end,
         use = function(self, card, area, copier)
             local conv_card = G.hand.highlighted[1]
             G.E_MANAGER:add_event(Event({func = function()

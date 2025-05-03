@@ -21,6 +21,7 @@ function Balatrostuck.INIT.Tags.t_matriorb()
         end,
 
         loc_vars = function(self, info_queue, card)
+            info_queue[#info_queue + 1] = G.P_CENTERS['p_bstuck_zodiac_mega_booster']
             -- PUT RELEVENT LOC VARS HERE WHEN YOU GET TO REWORDING THIS!!!!!!! - Delirium
             return {true}
         end,

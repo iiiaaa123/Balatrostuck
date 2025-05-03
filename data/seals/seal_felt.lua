@@ -10,6 +10,9 @@ function Balatrostuck.INIT.Seals.seal_felt()
                 'copy of this card without this seal'
             }
         },
+        loc_vars = function (self, info_queue, card)
+            info_queue[#info_queue+1] = G.P_CENTERS['e_bstuck_paradox']
+        end,
         badge_colour = HEX('70E05F'),
         atlas = 'HomestuckSeals',
         pos = {x=0,y=0},

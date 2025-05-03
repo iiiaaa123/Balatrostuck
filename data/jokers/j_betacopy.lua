@@ -26,8 +26,7 @@ function Balatrostuck.INIT.Jokers.j_betacopy()
         unlocked = true,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card) 
-            info_queue[#info_queue + 1] = {key = "tag_bstuck_sburb", set = "Tag"}
-            info_queue[#info_queue + 1] = G.P_CENTERS['p_bstuck_sburb_booster']
+            info_queue[#info_queue + 1] = G.P_TAGS['tag_bstuck_sburb']
         end,
         in_pool = function(self,args)
             if G.GAME.pool_flags.beta_destroyed then
