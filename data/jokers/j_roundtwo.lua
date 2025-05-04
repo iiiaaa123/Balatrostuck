@@ -4,13 +4,16 @@ function Balatrostuck.INIT.Jokers.j_roundtwo()
         key = "roundtwo",
         config = {
             extra = { 
-                ante_scaling = 2
+                ante_scaling = 3
             }
         },
         loc_txt = {
             ['name'] = 'Umbral Ultimatum',
             ['text'] = {
-                'bluh bluh X2 ante scaling + a rare joker after each boss'
+                '{C:red}X#1#{} base Blind size',
+                'Create a {C:red}Rare Joker{} when',
+                '{C:attention}Boss Blind{} is defeated',
+                '{C:inactive}(Must have room)'
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
@@ -27,7 +30,7 @@ function Balatrostuck.INIT.Jokers.j_roundtwo()
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
             art_credit('akai', info_queue)
-            return {vars = {}}
+            return {vars = {card.ability.extra.ante_scaling}}
         end,
         add_to_deck = function(self,card,from_debuff)
             G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * card.ability.extra.ante_scaling
