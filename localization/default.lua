@@ -14,6 +14,24 @@ return {
             }
         },
         Joker = {
+            j_bstuck_descend = {
+                name = 'Descend', --would like to replace entire description with just "X1 Mult" for however much mult it has after the removal thangs
+                text = {
+                    'After {C:attention}#1#{} rounds, set level',
+                    'of all {C:attention}poker hands{} to 1 and',
+                    'this Joker gains {C:white,X:mult}X#2#{} Mult',
+                    'per {C:attention}level removed{}',
+                    '{C:inactive}(Currently #3#/#1#)'
+                },
+                unlock = {'Unlocked by',
+                'finishing Act 3'}
+            },
+            j_bstuck_descend_alt = {
+                name = 'Descend',
+                text = {
+                    '{C:white,X:mult}X#1#{} Mult'
+                }
+            },
             j_bstuck_darkscholar = {
                 name = 'Dark Scholar', 
                 text = {

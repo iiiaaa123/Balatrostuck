@@ -11,20 +11,32 @@ function Balatrostuck.INIT.Jokers.j_descend()
                 mult_total = 1
             }
         },
-        loc_txt = {
-            ['name'] = 'Descend', --would like to replace entire description with just "X1 Mult" for however much mult it has after the removal thangs
-            ['text'] = {
-                [1] = 'After 3 rounds, set level',
-                [2] = 'of all poker hands to 1 and',
-                [3] = 'this Joker gains {C:white,X:mult}X0.5{} Mult',
-                [4] = 'per level removed',
-                [5] = '(Currently 0/3)'
-            },
-            unlock = {'Unlocked by',
-            'finishing Act 3'}
-        },
+        -- loc_txt = {
+        --     name = 'Descend', --would like to replace entire description with just "X1 Mult" for however much mult it has after the removal thangs
+        --     text = {
+        --         'After {C:attention}#1#{} rounds, set level',
+        --         'of all {C:attention}poker hands{} to 1 and',
+        --         'this Joker gains {C:white,X:mult}X#2#{} Mult',
+        --         'per {C:attention}level removed{}',
+        --         '{C:inactive}(Currently #3#/#1#)'
+        --     },
+        --     unlock = {'Unlocked by',
+        --     'finishing Act 3'}
+        -- },
         loc_vars = function (self, info_queue, card) 
             art_credit('lyman', info_queue)
+
+            local key = self.key
+            local table = {
+                card.ability.extra.rounds_loc,
+                card.ability.extra.mult_gain,
+                3-card.ability.extra.rounds_left
+            }
+            if card.ability.extra.rounds_left == 0 then 
+                key = key .. "_alt"
+                table = {card.ability.extra.mult_total}
+            end
+            return {key = key, vars = table}
         end,
         pos = {
             x = 2,
