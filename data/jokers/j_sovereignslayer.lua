@@ -11,8 +11,8 @@ function Balatrostuck.INIT.Jokers.j_sovereignslayer()
         loc_txt = {
             ['name'] = 'Sovereign Slayer',
             ['text'] = {
-                [1] = 'If played hand contains',
-                [2] = 'a {C:attention}Flush{} and {C:spades}Spades{},',
+                [1] = 'If played hand contains a {C:attention}Flush{}',
+                [2] = 'and a scoring {C:spades}Spades{} card,',
                 [3] = 'each {C:attention}played card{} has a',
                 [4] = '{C:green}#2# in #1#{} chance to be destroyed'
             }
