@@ -9,8 +9,8 @@ function Balatrostuck.INIT.Jokers.j_smallerbutterflies()
         loc_txt = {
             ['name'] = 'Smaller Butterflies',
             ['text'] = {
-                [1] = "1 in 3 chance for +3$",
-                [2] = "+33 chips"
+                [1] = "{C:green}1 in 3{} chance to give {C:money}+$3{}",
+                [2] = "{C:blue}+33 chips{}"
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
