@@ -7,8 +7,9 @@ function Balatrostuck.INIT.Jokers.j_ringoflife()
         loc_txt = {
             ['name'] = 'Ring of Life',
             ['text'] = {
-                [1] = "Adjacent {C:attention}Jokers{}",
-                [2] = "count as {C:tarot}Eternal{}",
+                'Whenever a {C:attention}face{} card is {C:red}destroyed{},',
+                'add a copy of it into deck',
+                '{C:inactive}(Removes {C:paradox}Paradox{C:inactive} from copy)'
             },
             unlock = {'Unlocked by',
             'finishing Act 3'}
@@ -25,6 +26,7 @@ function Balatrostuck.INIT.Jokers.j_ringoflife()
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
             art_credit('akai', info_queue)
+            info_queue[#info_queue+1] = G.P_CENTERS['e_bstuck_paradox']
             return {vars = {}}
         end,
         calculate = function(self, card, context)
