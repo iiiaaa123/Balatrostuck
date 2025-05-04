@@ -15,7 +15,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
             ['name'] = "Cancer",
             ['text'] = {
                 "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
-                'Played {C:attentions}4s{} give {C:chips}+#2# {C:attention}permanent{} Chips', --next level value
+                'Each played {C:attention}4{} gives {C:chips}+#2# {C:attention}permanent{} Chips', --next level value
                 'to all {C:attention}other{} scoring cards when scored',
                 '{C:inactive}(Currently {C:chips}+#3#{C:inactive} permanent chips)' --current level value
             }

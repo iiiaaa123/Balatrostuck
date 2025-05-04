@@ -8,10 +8,11 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_taurus()
             y = 0
         }, 
         loc_txt = {
-            ['name'] = "Taurus", --value is 0.95^lvl
-            ['text'] = {
+            name = "Taurus", --value is 0.95^lvl
+            text = {
                 "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up", --needs color var
-                "Discarded {C:attention}3s{} multiply the current",
+                "Each discarded {C:attention}3{}", 
+                "multiplies the current",
                 "{C:attention}Blind requirement{} by {C:white,X:mult}X#2#{}", --next level value 
                 "{C:inactive}(Currently {C:white,X:mult}X#3#{C:inactive})" --current level value
             }

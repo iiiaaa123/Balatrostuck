@@ -8,13 +8,13 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_scorpio()
             y = 0
         },
         loc_txt = {
-            ['name'] = "Scorpio",
-            ['text'] = {
+            name = "Scorpio",
+            text = {
                 '{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up',
-                'Played {C:attention}8s{} double all {C:green,E:1,S:1.1}probabilities{}',
-                'when scored, up to ',
-                '{C:attention}#2#{} time#4# per hand, and',
-                'resets when next hand is played', --next level amount
+                'Each played {C:attention}8{} doubles all',
+                '{C:green,E:1,S:1.1}probabilities{} when scored',
+                'up to {C:attention}#2#{} time#4# per hand',
+                '{s:0.8}Resets when next hand is played', --next level amount
                 '{C:inactive}(Currently up to {C:attention}#3# {C:inactive}time#5#)', --current level amount
             }
         },
