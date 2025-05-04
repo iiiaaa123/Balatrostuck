@@ -1,17 +1,17 @@
 function Balatrostuck.INIT.Jokers.j_lordoftime()
     SMODS.Joker{
-        name = "Lord Of Time",
+        name = "Lord of Time",
         key = "lordoftime",
         config = {
             extra = {hands = 3}
         },
         loc_txt = {
-            ['name'] = 'Lord Of Time',
+            ['name'] = 'Lord of Time',
             ['text'] = {
                 "{C:blue}+3{} hands each round",
                 "Transforms into",
                 "{C:attention}Muse of Space",
-                "at end of round",
+                "at end of round"
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
