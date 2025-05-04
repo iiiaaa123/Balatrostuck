@@ -53,7 +53,7 @@ G.ARGS.LOC_COLOURS['delirium'] = HEX('FF7F7F')
 G.ARGS.LOC_COLOURS['lyman'] = HEX('27ca01')
 G.ARGS.LOC_COLOURS['miser'] = HEX('416600')
 G.ARGS.LOC_COLOURS['garb'] = HEX('8c5c90')
-
+G.ARGS.LOC_COLOURS['bea'] = HEX('1bd4d0')
 
 
 -- temporary!!!!!!!! will be changed to cooler colors
