@@ -6,7 +6,7 @@ function Balatrostuck.INIT.Jokers.j_balletslippers()
             extra = {
                 to_do_poker_hand = {"High Card", "Pair", "Three of a Kind"},
                 counter = 1, -- 1 : inactive | 2: high card played | 3: pair played
-                mult_gain = 6,
+                mult_gain = 4,
                 mult = 0
             }
         },

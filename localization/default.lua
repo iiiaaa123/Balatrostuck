@@ -1,33 +1,16 @@
 return {
     descriptions = {
         Other = {
-            art_bstuck_akai = {
+            art_bstuck_1 = {
                 name = 'Artist',
-                text = {'{E:1,C:akai}Akai{}'}
+                text = {'{E:1,V:1}#1#{}'}
             },
-            art_bstuck_baqly = {
-                name = 'Artist',
-                text = {'{E:1,C:baqly}Baqly{}'}
-            },
-            art_bstuck_lyman = {
-                name = 'Artist',
-                text = {'{E:1,C:lyman}Lyman{}'}
-            },
-            art_bstuck_yokcos = {
-                name = 'Artist',
-                text = {'{E:1,C:yokcos}Yokcos{}'}
-            },
-            art_bstuck_miser = {
-                name = 'Artist',
-                text = {'{E:1,C:miser}Miser{}'}
-            },
-            art_bstuck_delirium = {
-                name = 'Artist',
-                text = {'{E:1,C:delirium}Delirium{}'}
-            },
-            art_bstuck_garb = {
-                name = 'Artist',
-                text = {'{E:1,C:garb}Garb{}'}
+            art_bstuck_2 = {
+                name = 'Artists',
+                text = {
+                    '{E:1,V:1}#1#{}',
+                    '{E:1,V:2}#2#{}'
+                }
             }
         },
         Joker = {

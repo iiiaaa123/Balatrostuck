@@ -179,10 +179,27 @@ end
 
 
 function art_credit(artist_name, info) 
-    info[#info+1] = { key = "art_bstuck_"..artist_name, set = 'Other'}
+    local artist = G.bstuck_team[artist_name]
+    info[#info+1] = { key = 'art_bstuck_1', set = 'Other', vars = {artist.name, colours={artist.color}}}
 end
 
 
+function art_credit2(artist_name1, artist_name2, info) 
+    local artist1 = G.bstuck_team[artist_name1]
+    local artist2 = G.bstuck_team[artist_name2]
+    info[#info+1] = { 
+        key = 'art_bstuck_2',
+        set = 'Other', 
+        vars = {
+            artist1.name,
+            artist2.name,
+            colours = {
+                artist1.color,
+                artist2.color
+            }
+        }
+    }
+end
 
 function get_aspect_for_pack(normalize_weights,pack)
     G.GAME.gamer_choices = G.GAME.gamer_choices or {}

@@ -40,6 +40,8 @@ G.C.ZODIAC = {
     Ophiuchus = HEX('4ce24e')
 }
 
+
+
 -- DON'T REMOVE, THIS ALLOWS US TO ADD LOC_COLOURS!!!!
 loc_colour('red')
 -- Change later maybe!!!!!!
