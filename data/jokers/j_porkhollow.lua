@@ -12,10 +12,12 @@ function Balatrostuck.INIT.Jokers.j_porkhollow()
         loc_txt = {
             ['name'] = 'Porkhollow',
             ['text'] = {
-                [1] = "Gain no interest", 
-                [2] = "Instead, that money goes to this joker's sell value.",
-                [3] = "{C:chips}+#2#{} chips for each {C:money}${} in sell value.", 
-                [4] = "{C:inactive}(Currently: {C:chips}+#1#{}{C:inactive} Chips)"
+                "Gain no interest", 
+                "Instead, that money goes", 
+                "to this joker's sell value.",
+                "{C:chips}+#2#{} chips for each",
+                "{C:money}${} in sell value.",
+                "{C:inactive}(Currently: {C:chips}+#1#{}{C:inactive} Chips)"
             },
             unlock = {'Unlocked by',
             'finishing Act 3'}
