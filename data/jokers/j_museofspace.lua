@@ -8,9 +8,10 @@ function Balatrostuck.INIT.Jokers.j_museofspace()
         loc_txt = {
             ['name'] = 'Muse of Space',
             ['text'] = {
-                [1] = "{C:attention}+3{} hand size",
-                [2] = "At end of round,",
-                [3] = "transforms into {C:attention}Lord of Time"
+                "{C:attention}+3{} hand size",
+                "Transforms into",
+                "{C:attention}Lord of Time",
+                "at end of round"
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}

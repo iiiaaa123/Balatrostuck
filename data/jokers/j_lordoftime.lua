@@ -8,9 +8,10 @@ function Balatrostuck.INIT.Jokers.j_lordoftime()
         loc_txt = {
             ['name'] = 'Lord Of Time',
             ['text'] = {
-                [1] = "{C:blue}+3{} Hands",
-                [2] = "At end of round,",
-                [3] = "transforms into {C:attention}Muse of Space"
+                "{C:blue}+3{} hands each round",
+                "Transforms into",
+                "{C:attention}Muse of Space",
+                "at end of round",
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
