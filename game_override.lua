@@ -66,6 +66,12 @@ function Game:update(dt)
         G.C.PARADOX2,
     }
 
+    local suckers_list = {
+        G.C.RED,
+        G.C.GREEN,
+    }
+
+
     local anim_timer = self.TIMERS.REAL*1.5
     local anim_timer_pdox = self.TIMERS.REAL*2
     local progress = anim_timer % 1
@@ -73,6 +79,13 @@ function Game:update(dt)
     local chosen_zodiac_pair = (anim_timer - progress) % #zodiac_list + 1
     local chosen_aspect_pair = (anim_timer - progress) % #aspect_list + 1
     local chosen_paradox_pair = (anim_timer_pdox - pdox_progress) % #paradox_list + 1
+    local suckers_pair = (anim_timer - progress) % #suckers_list + 1
+    local suck_left = suckers_list[suckers_pair]
+    local suck_right = suckers_list[suckers_pair % #suckers_list + 1]
+
+    self.C.SUCKERS[1] = suck_left[1] * (1 - progress) + suck_right[1] * progress
+    self.C.SUCKERS[2] = suck_left[2] * (1 - progress) + suck_right[2] * progress
+    self.C.SUCKERS[3] = suck_left[3] * (1 - progress) + suck_right[3] * progress
 
     local left_colour = zodiac_list[chosen_zodiac_pair]
     local right_colour = zodiac_list[chosen_zodiac_pair % #zodiac_list + 1] -- this works?
@@ -98,6 +111,9 @@ function Game:update(dt)
     self.C.PARADOX[3] = left_colour_paradox[3] * (1 - pdox_progress) + right_colour_paradox[3] * pdox_progress
     -- G.ARGS.LOC_COLOURS["aspect"] = G.C.SECONDARY_SET.Aspect
     -- G.ARGS.LOC_COLOURS["zodiac"] = G.C.SECONDARY_SET.Zodiac
+
+
+
 end
 
 local init_game_objectref = Game.init_game_object

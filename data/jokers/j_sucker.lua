@@ -12,9 +12,10 @@ function Balatrostuck.INIT.Jokers.j_sucker()
         loc_txt = {
             ['name'] = 'Sucker',
             ['text'] = {
-                [1] = 'Every round {C:green}probability{} denominator',
-                [2] = 'and {C:mult}Mult{} value decrease by 1',
-                [3] = '{C:inactive}(Currently: {}{C:green}#1# in #2#{} {C:inactive}chance of {}{C:white,X:mult}X#2#{} Mult{C:inactive}){}'
+                '{C:green}#1# in #2#{} chance', 
+                'for {}{C:white,X:mult}X#2#{} Mult,',
+                'decreases by {C:suckers,E:2}1{}',
+                'every round'
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}

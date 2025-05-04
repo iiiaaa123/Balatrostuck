@@ -24,6 +24,7 @@ G.C.PARADOX = HEX('4EA752')
 G.C.PARADOX1 = HEX('4EA752')
 G.C.PARADOX2 = HEX('9dd54d')
 G.C.CALIBORN = HEX("009c68")
+G.C.SUCKERS = HEX('000666')
 
 G.C.ZODIAC = {
     Aries = HEX('a10000'),
@@ -47,6 +48,7 @@ G.C.ZODIAC = {
 loc_colour('red')
 -- Change later maybe!!!!!!
 G.ARGS.LOC_COLOURS['paradox'] = G.C.PARADOX
+G.ARGS.LOC_COLOURS['suckers'] = G.C.SUCKERS
 G.ARGS.LOC_COLOURS['caliborn'] = HEX("009c68")
 -- artist colors
 G.ARGS.LOC_COLOURS['baqly'] = HEX("c10c1c")
