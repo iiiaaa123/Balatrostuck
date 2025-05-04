@@ -10,8 +10,10 @@ function Balatrostuck.INIT.Jokers.j_sepulcritude()
         loc_txt = {
             ['name'] = 'Sepulchritude',
             ['text'] = {
-                [1] = "{X:mult,C:white} X#1# {} mult if played hand",
-                [2] = "is a three-of-a-kind with faces"
+                "{X:mult,C:white}X#1#{} Mult if played hand",
+                "contains a {C:attention}Three of a Kind",
+                "and a scoring {C:attention}face{} card"
+
             }
         },
         pos = {
