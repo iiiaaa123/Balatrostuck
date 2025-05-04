@@ -8,8 +8,10 @@ function Balatrostuck.INIT.Jokers.j_signofthesignless()
         loc_txt = {
             ['name'] = 'Sign of the Signless',
             ['text'] = {
-                [1] = "1 in 60 to be destroyed and reset all Zodiac levels. ",
-                [2] = "If a played card is just a wild card destroy it and level up the Zodiac of the same rank"
+                "If played hand is a single {C:attention}Wild Card{}",
+                "level up the {C:zodiac}Zodiac{} of that rank,",
+                "{C:green}1 in #1#{} chance to {C:red,E:2}self destruct{}",
+                "and reset all {C:zodiac}Zodiac{} levels to {C:attention}0"
             }
         },
         pos = {
@@ -24,7 +26,8 @@ function Balatrostuck.INIT.Jokers.j_signofthesignless()
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
             art_credit('akai', info_queue)
-            return {vars = {}}
+            info_queue[#info_queue+1] = G.P_CENTERS['m_wild']
+            return {vars = {card.ability.extra.odds}}
         end,
         calculate = function(self,card,context)
             local zodiacs = {'Gemini','Taurus','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces','Ophiuchus','Aries'}
