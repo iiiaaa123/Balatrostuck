@@ -4,19 +4,21 @@ function Balatrostuck.INIT.Jokers.j_balletslippers()
         key = "balletslippers",
         config = {
             extra = {
-                to_do_poker_hand = "High Card",
-                mult_gain = 5,
+                to_do_poker_hand = {"High Card", "Pair", "Three of a Kind"},
+                counter = 1, -- 1 : inactive | 2: high card played | 3: pair played
+                mult_gain = 6,
                 mult = 0
             }
         },
         loc_txt = {
             ['name'] = 'Ballet Slippers',
             ['text'] = {
-                [1] = "This Joker gains {C:mult}+#1#{} Mult",
-                [2] = "if {C:attention}poker hand{} is a {C:attention}#2#{},",
-                [3] = "poker hand changes each hand,",
-                [4] = "{C:attention}resets{} if a different hand is played",
-                [5] = "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)"
+                "This Joker gains {C:mult}+#1#{} Mult",
+                'if next 3 {C:attention}poker hands{}',
+                'are {C:attention}#2#{}, {C:attention}#3#{} and',
+                '{C:attention}#4#{}',
+                '{C:inactive}(Next {C:attention}#5#{C:inactive})',
+                "{C:inactive}(Currently {C:mult}+#6#{C:inactive} Mult)"
             },
         unlock = {'Unlocked by',
                 'finishing Act 1'}
@@ -32,23 +34,22 @@ function Balatrostuck.INIT.Jokers.j_balletslippers()
         unlocked = false,
         atlas = 'HomestuckJokers',
 
-        set_ability = function(self, card, initial, delay_sprites)
-            local _poker_hands = {}
-            for k, v in pairs(G.GAME.hands) do
-                if v.visible then _poker_hands[#_poker_hands+1] = k end
-            end
-            local old_hand = card.ability.extra.to_do_poker_hand
-            card.ability.extra.to_do_poker_hand = nil    
-
-            while not card.ability.extra.to_do_poker_hand do
-                card.ability.extra.to_do_poker_hand = pseudorandom_element(_poker_hands, pseudoseed((self.area and self.area.config.type == 'title') and 'false_to_do' or 'to_do'))
-                if card.ability.extra.to_do_poker_hand == old_hand then card.ability.extra.to_do_poker_hand = nil end
-            end    
-        end,
-
         loc_vars = function(self,info_queue,card)
             art_credit('akai', info_queue)
-            return {vars = {card.ability.extra.mult_gain, card.ability.extra.to_do_poker_hand, card.ability.extra.mult}}
+            return {vars = {
+                card.ability.extra.mult_gain, 
+                card.ability.extra.to_do_poker_hand[1],
+                card.ability.extra.to_do_poker_hand[2],
+                card.ability.extra.to_do_poker_hand[3],
+                card.ability.extra.to_do_poker_hand[card.ability.extra.counter],
+                card.ability.extra.mult,
+                colours = {
+                    (card.ability.extra.counter == 0 and G.C.ATTENTION or G.C.INACTIVE),
+                    (card.ability.extra.counter == 1 and G.C.ATTENTION or G.C.INACTIVE),
+                    (card.ability.extra.counter == 2 and G.C.ATTENTION or G.C.INACTIVE),
+                }
+            }
+            }
         end,
 
         calculate = function(self,card,context)
