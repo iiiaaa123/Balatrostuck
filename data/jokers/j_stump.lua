@@ -9,8 +9,12 @@ function Balatrostuck.INIT.Jokers.j_stump()
         end,   
         loc_txt = {
             name = 'The Stump',
-            text = {'{C:green} 1 in #1#{} chance to prevent death.',
-                    'Odds cannot be changed'},
+            text = {
+                '{C:green}1 in #1#{} chance to', 
+                'prevent Death,',
+                'odds {C:red}cannot{}',
+                'be changed'
+                },
             unlock = {'Unlocked by',
             'finishing Act 3'}
         },
