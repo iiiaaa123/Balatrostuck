@@ -28,12 +28,13 @@ function Balatrostuck.INIT.Jokers.j_jokermode()
         atlas = 'HomestuckJokers',
 
         loc_vars = function(self, info_queue, card)
+            info_queue[#info_queue+1] = {key='warn_bstuck_wip', set='Other'}
             art_credit('akai', info_queue)
             return{ vars = {card.ability.extra.chips, card.ability.extra.chip_gain}}
         end,
 
         in_pool = function(self)
-            return false
+            return Balatrostuck.peanut_gallery
         end,
 
         calculate = function (self, card, context)

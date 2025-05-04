@@ -25,10 +25,14 @@ function Balatrostuck.INIT.Jokers.j_magnificent()
         unlocked = false,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
+            info_queue[#info_queue+1] = {key='warn_bstuck_wip', set='Other'}
             art_credit('akai', info_queue)
             return {vars = {}}
         end,
         calculate = function (self, context)
+        end,
+        in_pool = function(self)
+            return Balatrostuck.peanut_gallery
         end,
         check_for_unlock = function(self,args)
             if args.type == 'bstuck_collide' then

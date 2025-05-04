@@ -11,6 +11,13 @@ return {
                     '{E:1,V:1}#1#{}',
                     '{E:1,V:2}#2#{}'
                 }
+            },
+            warn_bstuck_wip = {
+                name = 'WIP Content',
+                text = {
+                    'Will {C:red}not{} appear',
+                    'in {C:attention}regular play{}'
+                }
             }
         },
         Joker = {
