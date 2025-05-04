@@ -14,6 +14,10 @@ Balatrostuck.INIT = {
 }
 Balatrostuck.peanut_gallery = false
 
+G.mod_settings = {
+    per_card_credits = true
+}
+
 G.bstuck_team = {
     akai = {
         name = "Akai",
