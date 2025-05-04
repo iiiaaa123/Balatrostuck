@@ -8,12 +8,18 @@ function Balatrostuck.INIT.Jokers.j_trolltrain()
         loc_txt = {
             ['name'] = 'Troll Train',
             ['text'] = {
-                [1] = "Scored cards give +4 mult",
-                [2] = "per zodiac level of their rank"
+                '{C:attention}Played cards{} give',
+                '{C:mult}+#1#{} Mult per {C:zodiac}Zodiac{}',
+                '{C:zodiac}level{} of their rank',
+                'when scored'
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
         },
+        loc_vars = function (self, info_queue, card)
+            art_credit('akai', info_queue)
+            return { vars = {card.ability.extra.mult}}
+        end,
         pos = {
             x = 9,
             y = 7
