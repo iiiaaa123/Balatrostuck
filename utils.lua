@@ -475,11 +475,16 @@ function create_UIBox_zodiacs(simple)
         create_zodiac_row('Aries', simple),
     }
   
-    local t = {n=G.UIT.ROOT, config={align = "cm", minw = 3, padding = 0.1, r = 0.1, colour = G.C.CLEAR}, nodes={
-      {n=G.UIT.R, config={align = "cm", padding = 0.04}, nodes=
-        hands
-      },
-    }}
+    -- local t = {n=G.UIT.ROOT, config={align = "cm", minw = 3, padding = 0.1, r = 0.1, colour = G.C.CLEAR}, nodes={
+    --   {n=G.UIT.R, config={align = "cm", padding = 0.04}, nodes=
+    --     hands
+    --   },
+    -- }}
+
+    local t = BSUI.Root({align = "cm", minw = 3, padding = 0.1, r = 0.1, colour = G.C.CLEAR}, {
+        BSUI.Row({align = "cm", padding = 0.04}, {hands})
+    })
+
     return t
   end
   
