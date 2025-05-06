@@ -13,7 +13,7 @@ BSUI.Modules.GameText.Format = function (text, colour, background)
 
     local padding = 0.0125
     return BSUI.Col({align='m', padding=padding, colour=bg, r=0, outline = 0.75, outline_colour=bg}, {
-        BSUI.Row(BSUI.Config.Basic, {BSUI.Text(text, col, 0.33, false)}),
+        BSUI.Row(BSUI.Config.Basic, {BSUI.Text(text, col, 0.315, false)}),
     })
 end
 
