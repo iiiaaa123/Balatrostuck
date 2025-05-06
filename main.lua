@@ -2,82 +2,6 @@
 --- Find out how to add this to JSON!!!!!
 --- ICON_ATLAS: HomestuckLogo
 
-G.C.SET.Zodiac = HEX("77003c")
-G.C.SET.Aspect = HEX("033476")
-G.C.SECONDARY_SET.Zodiac = HEX("77003c")
-G.C.SECONDARY_SET.Aspect = HEX("033476")
-
-G.C.BREATH = HEX('0086EB')
-G.C.BLOOD = HEX('BA1915')
-G.C.SPACE = HEX('000000')
-G.C.TIME = HEX('ff2106')
-G.C.LIGHT = HEX('f98100')
-G.C.VOID = HEX('00164F')
-G.C.MIND = HEX('50b250')
-G.C.HEART = HEX('bd1864')
-G.C.LIFE = HEX('77c350')
-G.C.DOOM = HEX('20401f')
-G.C.HOPE = HEX('FFE094')
-G.C.RAGE = HEX('9c4dad')
-
-G.C.PARADOX = HEX('4EA752')
-G.C.PARADOX1 = HEX('4EA752')
-G.C.PARADOX2 = HEX('9dd54d')
-G.C.CALIBORN = HEX("009c68")
-G.C.SUCKERS = HEX('000666')
-
-G.C.ZODIAC = {
-    Aries = HEX('a10000'),
-    Taurus = HEX('a25203'),
-    Gemini = HEX('a1a100'),
-    Cancer = HEX('ff0000'),
-    Leo = HEX('336601'),
-    Virgo = HEX('078446'),
-    Libra = HEX('008282'),
-    Scorpio = HEX('004182'),
-    Sagittarius = HEX('0021cb'),
-    Capricorn = HEX('440a7f'),
-    Aquarius = HEX('6a006a'),
-    Pisces = HEX('99004d'),
-    Ophiuchus = HEX('4ce24e')
-}
-
-
-
--- DON'T REMOVE, THIS ALLOWS US TO ADD LOC_COLOURS!!!!
-loc_colour('red')
--- Change later maybe!!!!!!
-G.ARGS.LOC_COLOURS['paradox'] = G.C.PARADOX
-G.ARGS.LOC_COLOURS['suckers'] = G.C.SUCKERS
-G.ARGS.LOC_COLOURS['caliborn'] = HEX("009c68")
--- artist colors
-G.ARGS.LOC_COLOURS['baqly'] = HEX("c10c1c")
-G.ARGS.LOC_COLOURS['akai'] = HEX("1793D1")
-G.ARGS.LOC_COLOURS['yokcos'] = HEX('7a417d')
-G.ARGS.LOC_COLOURS['delirium'] = HEX('FF7F7F')
-G.ARGS.LOC_COLOURS['lyman'] = HEX('27ca01')
-G.ARGS.LOC_COLOURS['miser'] = HEX('416600')
-G.ARGS.LOC_COLOURS['garb'] = HEX('8c5c90')
-G.ARGS.LOC_COLOURS['bea'] = HEX('1bd4d0')
-
-
--- temporary!!!!!!!! will be changed to cooler colors
-G.C.ZODIAC_LEVELS = {
-    HEX("efefef"),
-    HEX("95acff"),
-    HEX("65efaf"),
-    HEX('fae37e'),
-    HEX('ffc052'),
-    HEX('f87d75'),
-    HEX('caa0ef')
-}
-
-G.C.SPECIBUS = HEX("008c45")
-G.C.VRISKA = HEX("005682")
-G.C.VRISKA_2 = HEX("007ebd")
-
-
-
 local mod = SMODS.current_mod
 
 local function batch_load(txt) 
@@ -97,12 +21,15 @@ end
 
 
 NFS.load(mod.path.."lib.lua")()
+NFS.load(mod.path.."utils.lua")()
+NFS.load(mod.path.."utils/color_defs.lua")()
+NFS.load(mod.path.."bsui/core.lua")()
+NFS.load(mod.path.."bsui/modules/credits.lua")()
 NFS.load(mod.path.."consumables/main.lua")()
 NFS.load(mod.path.."consumables/aspect.lua")()
 NFS.load(mod.path.."consumables/zodiac.lua")()
 NFS.load(mod.path.."game_override.lua")()
-NFS.load(mod.path.."utils.lua")()
-NFS.load(mod.path.."ui_helper.lua")()
+
 
 local joker_list = {
 
@@ -251,6 +178,7 @@ for _, deck in ipairs(deck_list) do
     Balatrostuck.INIT.Decks["b_"..deck]()
 end
 
+
 SMODS.Sound({key = "HomestuckHeroicDeath", path = 'johnfuckingdies.ogg'})
 SMODS.Sound({key = "HomestuckJustDeath", path = 'shhh.ogg'})
 SMODS.Sound({key = "HomestuckParadoxSaved", path = 'paradoxSaved.ogg'})
@@ -262,10 +190,6 @@ SMODS.Sound({key = "HomestuckMeow", path = 'meow.ogg'})
 SMODS.Sound({key = "HomestuckSword", path = 'sepulchritude.ogg'})
 SMODS.Sound({key = "HomestuckGrimdark", path = 'grimdark.ogg'})
 SMODS.Sound({key = "HomestuckBloodDrop", path = 'blood.ogg'})
-
-
-
-
 
 SMODS.Atlas({key = "HomestuckJokers", path = "hsjokers.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
 SMODS.Atlas({key = "HomestuckZodiacs", path = "zodiac.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
@@ -284,7 +208,6 @@ SMODS.Atlas({key = "HomestuckDecks", path = "decks.png", px = 71, py = 95, atlas
 SMODS.Atlas({key = "HomestuckSlabs", path = "aspect_icons.png", px = 34, py = 34, atlas_table = "ASSET_ATLAS"}):register()
 SMODS.Atlas({key = "bstuck_logo", path="balatrostuck.png", px=469, py=98, atlas_table="ASSET_ATLAS"}):register()
 
--- SMODS.Atlas({key = "HomestuckZodiacBooster", path = "booster_zodiac.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
 
 local UI, load_error = SMODS.load_file("bstuckui.lua")
 if load_error then
