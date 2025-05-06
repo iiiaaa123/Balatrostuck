@@ -111,7 +111,7 @@ BSUI.Text = function(text, colour, scale, shadow)
             text = text,
             colour = colour,
             scale = scale,
-            shadow = shadow
+            shadow = shadow,
         }
     }
 end
