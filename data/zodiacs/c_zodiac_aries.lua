@@ -8,16 +8,6 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
             x = 4,
             y = 1
         },
-        loc_txt = {
-            ['name'] = "Aries",
-            ['text'] = {
-                '{{S:0.8}({S:0.8, V:1}lvl.#1#{}{S:0.8}){} Level up',
-                '{C:attention}Aces{} gain {X:mult,C:white}X#2#{} Mult for', --next level value
-                'each {C:attention}Ace discarded{} this round',
-                'or currently in your {C:attention}deck',
-                '{C:inactive}(Currently gains {X:mult,C:white}X#3#{C:inactive})', --current level value
-            }
-        },
         use = function(self, card, area, copier)
             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.9, func = function()
                 play_sound('timpani', 0.7)
@@ -28,19 +18,23 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
             self:add_caste('Aries')
         end,
         can_use = function() return true end,
-        loc_vars = function(card)
-            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1           
+        loc_vars = function(self, info_queue, card)
+            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1       
             local formula = 0.5 * level
             local current = 0
             if level-1 > 0 then current = 0.5 * (level-1) end
 
             return {
+                key = self.key,
+                
                 vars = {
-                    level,
                     formula,
-                    current,
-                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
-                }
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp((level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)]), level)},
+                main_end = {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format('gains ', G.C.UI.TEXT_INACTIVE),
+                    BSUI.Modules.GameText.Format('X'..current, G.C.WHITE, G.C.RED)
+                })}
             }
         end,
         cost = 4,

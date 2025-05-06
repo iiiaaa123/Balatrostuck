@@ -25,6 +25,7 @@ NFS.load(mod.path.."utils.lua")()
 NFS.load(mod.path.."utils/color_defs.lua")()
 NFS.load(mod.path.."bsui/core.lua")()
 NFS.load(mod.path.."bsui/modules/credits.lua")()
+NFS.load(mod.path.."bsui/modules/gametext.lua")()
 NFS.load(mod.path.."consumables/main.lua")()
 NFS.load(mod.path.."consumables/aspect.lua")()
 NFS.load(mod.path.."consumables/zodiac.lua")()
@@ -208,6 +209,8 @@ SMODS.Atlas({key = "HomestuckDecks", path = "decks.png", px = 71, py = 95, atlas
 SMODS.Atlas({key = "HomestuckSlabs", path = "aspect_icons.png", px = 34, py = 34, atlas_table = "ASSET_ATLAS"}):register()
 SMODS.Atlas({key = "bstuck_logo", path="balatrostuck.png", px=469, py=98, atlas_table="ASSET_ATLAS"}):register()
 
+
+sendDebugMessage(G.localization.descriptions.Zodiac)
 
 local UI, load_error = SMODS.load_file("bstuckui.lua")
 if load_error then
