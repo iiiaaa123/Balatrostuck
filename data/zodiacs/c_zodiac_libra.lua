@@ -50,9 +50,11 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_libra()
         name = 'Libra',
         rank = 7,
         apply = function(self,context)
+            if context.individual and self:level(context.other_card) < 1 then return end
+
             if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
                 return {
-                    x_mult = 1 + (self:level() / 10),
+                    x_mult = 1 + (self:level(context.other_card) / 10),
                     card = context.other_card
                 }
             end

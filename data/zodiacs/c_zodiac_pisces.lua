@@ -44,16 +44,18 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_pisces()
             }
         end,
     }
-
+    
 
     Balatrostuck.Caste{
         key = 'Pisces',
         name = 'Pisces',
         rank = 12,
         apply = function(self,context)
+            if context.individual and self:level(context.other_card) < 1 then return end
+            
             if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
                 return {
-                    dollars = (2 * self:level()) - G.GAME.current_round.hands_left,
+                    dollars = (2 * self:level(context.other_card)) - G.GAME.current_round.hands_left,
                     card = context.other_card
                 }
             end

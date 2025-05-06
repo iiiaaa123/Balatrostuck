@@ -54,6 +54,8 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
         name = 'Aries',
         rank = 14,
         apply = function(self,context)
+            if context.individual and self:level(context.other_card) < 1 then return end
+
             if context.setting_blind then
                 for i=1, #G.playing_cards do
                     G.playing_cards[i].ignore_aries = false
@@ -74,7 +76,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
                 end
                 
                 return {
-                    x_mult = (self:level() / 2) * scottthewoz,
+                    x_mult = (self:level(context.other_card) / 2) * scottthewoz,
                     card = context.other_card
                 }
             end

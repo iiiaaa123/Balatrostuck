@@ -55,6 +55,8 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_scorpio()
         name = 'Scorpio',
         rank = 8,
         apply = function(self,context)
+            if context.individual and self:level(context.other_card) < 1 then return end
+
             if context.before and not context.individual then
                 G.GAME.probabilities.normal = G.GAME.probabilities.normal / G.GAME.BALATROSTUCK.vriska_luck
                 G.GAME.BALATROSTUCK.vriska_luck = 1
@@ -62,7 +64,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_scorpio()
             end         
             
             if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
-                if G.GAME.BALATROSTUCK.vriska_luck-1 < self:level() then
+                if G.GAME.BALATROSTUCK.vriska_luck-1 < self:level(context.other_card) then
                     G.GAME.probabilities.normal = G.GAME.probabilities.normal / G.GAME.BALATROSTUCK.vriska_luck
                     G.GAME.BALATROSTUCK.vriska_luck = G.GAME.BALATROSTUCK.vriska_luck * 2
                     G.GAME.probabilities.normal = G.GAME.probabilities.normal * G.GAME.BALATROSTUCK.vriska_luck

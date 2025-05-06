@@ -51,6 +51,9 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_virgo()
         name = 'Virgo',
         rank = 6,
         apply = function(self,context)
+            if context.individual and self:level(context.other_card) < 1 then return end
+
+            
             if context.individual and context.cardarea == G.hand and not context.end_of_round and context.other_card:get_id() == self.ability.rank then
                 if context.other_card.debuff then
                     return {
@@ -60,7 +63,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_virgo()
                     }
                 else
                     return {
-                        h_mult = summation(2 + self:level()),
+                        h_mult = summation(2 + self:level(context.other_card)),
                         card = context.other_card
                     }
                 end

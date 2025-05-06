@@ -54,6 +54,8 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_leo()
         name = 'Leo',
         rank = 5,
         apply = function(self,context)
+            if context.individual and self:level(context.other_card) < 1 then return end
+
             if context.individual and context.cardarea == G.play then
                 for i=1, #G.hand.cards do
                     _card = G.hand.cards[i]
@@ -62,8 +64,8 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_leo()
                         if _card.debuff then
                             card_eval_status_text(_card, 'debuff')
                         else
-                            card_eval_status_text(_card, 'dollars', self:level())
-                            ease_dollars(self:level())
+                            card_eval_status_text(_card, 'dollars', self:level(context.other_card))
+                            ease_dollars(self:level(context.other_card))
                         end
                     end
                 end

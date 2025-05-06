@@ -60,6 +60,8 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_capricorn()
         name = 'Capricorn',
         rank = 10,
         apply = function(self,context)
+            if context.individual and self:level(context.other_card) < 1 then return end
+
             if context.individual and context.cardarea == G.hand and context.other_card:get_id() == self.ability.rank and not context.end_of_round then
                 if context.other_card.debuff then
                     return {
@@ -69,7 +71,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_capricorn()
                     }
                 else
                     return {
-                        x_mult = 1 / (self:level() + 1),
+                        x_mult = 1 / (self:level(context.other_card) + 1),
                         card = context.other_card
                     }
                 end
@@ -78,7 +80,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_capricorn()
 
             if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
                 return {
-                    x_mult = self:level() + 1,
+                    x_mult = self:level(context.other_card) + 1,
                     card = context.other_card
                 }
             end

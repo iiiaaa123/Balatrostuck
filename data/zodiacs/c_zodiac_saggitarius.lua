@@ -56,6 +56,8 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
         name = 'Sagittarius',
         rank = 9,
         apply = function(self,context)
+            if context.individual and self:level(context.other_card) < 1 then return end
+
             if context.individual and context.cardarea == G.play then
                 local milk = false
                 for i=1, #G.play.cards do
@@ -72,7 +74,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
                 
                 if milk then
                     return {
-                        chips = 25 * self:level(),
+                        chips = 25 * self:level(context.other_card),
                         card = context.other_card
                     }
                 end

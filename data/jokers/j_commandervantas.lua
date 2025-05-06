@@ -23,6 +23,14 @@ function Balatrostuck.INIT.Jokers.j_commandervantas()
         eternal_compat = true,
         unlocked = true,
         atlas = 'HomestuckJokers',
+        add_to_deck = function(self,card,from_debuff)
+            for k,v in pairs(G.GAME.BALATROSTUCK.zodiac_levels) do 
+                if v < 1 then
+                    local newCaste = Caste('caste_bstuck_' .. k,G.P_CASTES['caste_bstuck_' .. k])
+                    table.insert(G.GAME.BALATROSTUCK.active_castes, newCaste)
+                end
+            end
+        end,
         loc_vars = function(self, info_queue, card)
             art_credit('akai', info_queue)
             info_queue[#info_queue + 1] = G.P_CENTERS['m_wild']

@@ -56,7 +56,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aquarius()
             if context.remove_playing_cards or context.paradox_ify then
                 for i=1, #context.removed do
                     if context.removed[i]:get_id() == self.ability.rank then
-                        for i=1, self:level() do
+                        for i=1, self:level(context.removed[i]) do
                             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
                                 local tagkey = get_next_tag_key()
                                 local tag = Tag(tagkey)

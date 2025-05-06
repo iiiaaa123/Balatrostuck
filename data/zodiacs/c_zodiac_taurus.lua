@@ -51,11 +51,13 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_taurus()
         name = 'Taurus',
         rank = 3,
         apply = function(self,context)
+            if context.discard and self:level(context.other_card) < 1 then return end
+
             if context.discard and context.other_card:get_id() == self.ability.rank then
                 return {
                     func = function()
                         play_sound('xchips',0.8,0.4)
-                        local peepee = math.floor(G.GAME.blind.chips * (0.95^self:level()))
+                        local peepee = math.floor(G.GAME.blind.chips * (0.95^self:level(context.other_card)))
                         local amount = G.GAME.blind.chips - peepee
 
                         for i=1, 5 do

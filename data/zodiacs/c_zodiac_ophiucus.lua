@@ -52,6 +52,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_ophiuchus()
         name = 'Ophiuchus',
         rank = 13,
         apply = function(self,context)
+            if context.individual and self:level(context.other_card) < 1 then return end
         
             if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
                 local possible_choices = {}
@@ -73,7 +74,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_ophiuchus()
                         return true end
                     }))
                     return {
-                        x_mult = 1.25 ^ self:level(),
+                        x_mult = 1.25 ^ self:level(context.other_card),
                         card = context.other_card
                     }
                 end

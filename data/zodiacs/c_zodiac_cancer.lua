@@ -57,7 +57,8 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
         name = 'Cancer',
         rank = 4,
         apply = function(self,context)
-        
+            if context.individual and self:level(context.other_card) < 1 then return end
+
             if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
                 local card = context.other_card
                 local scoring_hand = context.scoring_hand
@@ -68,7 +69,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
                         for i=1, #scoring_hand do
                             local _card = scoring_hand[i]
                             _card.ability.perma_bonus = _card.ability.perma_bonus or 0
-                            _card.ability.perma_bonus = _card.ability.perma_bonus + self:level() * 3
+                            _card.ability.perma_bonus = _card.ability.perma_bonus + self:level(card) * 3
                             card_eval_status_text(_card, 'extra', nil, nil, nil, {message = 'Upgraded!', delay = delay})
                             delay = delay - 0.05
                         end
