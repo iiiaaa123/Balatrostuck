@@ -3,6 +3,19 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
         name = "Aries",
         key = "aries",
         config = {
+            extra = {
+                formula = function (level)
+                    return level * 0.5
+                end
+            }
+        },
+        loc_txt = {
+            name = 'Aries',
+            text = {
+                '{C:attention}Aces{} gain {X:mult,C:white}X#1#{} Mult for',
+                'each {C:attention}Ace discarded{} this round',
+                'or currently in your {C:attention}deck'
+            }
         },
         pos = {
             x = 4,
@@ -19,22 +32,18 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
         end,
         can_use = function() return true end,
         loc_vars = function(self, info_queue, card)
-            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1       
-            local formula = 0.5 * level
-            local current = 0
-            if level-1 > 0 then current = 0.5 * (level-1) end
-
+            art_credit('akai', info_queue)
             return {
-                key = self.key,
-                
                 vars = {
-                    formula,
+                    card.ability.extra.formula(self:next_level())
                 },
-                main_start = {BSUI.Modules.GameText.LevelUp((level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)]), level)},
-                main_end = {BSUI.Modules.GameText.CurrentValue({
+
+                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level() )},
+
+                main_end =  self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
                     BSUI.Modules.GameText.Format('gains ', G.C.UI.TEXT_INACTIVE),
-                    BSUI.Modules.GameText.Format('X'..current, G.C.WHITE, G.C.RED)
-                })}
+                    BSUI.Modules.GameText.XMult(card.ability.extra.formula(self:level()))
+                })} or {}
             }
         end,
         cost = 4,

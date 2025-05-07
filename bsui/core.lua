@@ -17,6 +17,8 @@ BSUI.Config = {}
 BSUI.Modules = {}
 BSUI.Theme = {}
 
+BSUI.TextScale = 0.32
+
 BSUI.Config.Basic = {
     align = 'cm',
     padding = G.UIT.padding,

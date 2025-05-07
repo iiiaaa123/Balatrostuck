@@ -57,16 +57,7 @@ return {
                     }        
             }
         },
-        Zodiac = {
-            c_bstuck_aries = {
-                name = 'Aries',
-                text = {
-                    '{C:attention}Aces{} gain {X:mult,C:white}X#1#{} Mult for', --next level value
-                    'each {C:attention}Ace discarded{} this round',
-                    'or currently in your {C:attention}deck'
-                }
-            }
-        },
+
         zodiacui = {
             Inactive = {
                 text = {'{C:inactive}(Currently inactive){}'}

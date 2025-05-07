@@ -2,19 +2,23 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_ophiuchus()
     Balatrostuck.Zodiac{
         name = "Ophiuchus",
         key = "ophiuchus",
-        config = {},
+        config = {
+            extra = {
+                formula = function (level)
+                    return 1.25 ^ level
+                end
+            }
+        },
         pos = {
             x = 5,
             y = 1
         },
         loc_txt = {
-            ['name'] = "Ophiuchus",
-            ['text'] = {
-                "{S:0.8}({S:0.8, V:1}lvl.#1#{S:0.8}){} Level up", --needs color var
+            name = "Ophiuchus",
+            text = {
                 "When played {C:attention}Kings{} are scored, a",
                 "random card held in hand becomes",
-                "{C:paradox}Paradox{} and gives {X:mult,C:white}X#2#{} Mult", --next level value
-                "{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive})" --current level value
+                "{C:paradox}Paradox{} and gives {X:mult,C:white}X#1#{} Mult", --next level value
             }
         },
         cost = 4,
@@ -30,18 +34,17 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_ophiuchus()
             self:add_caste('Ophiuchus')
         end,
         can_use = function() return true end,
-        loc_vars = function(card)
-            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
-            local formula = 1.25 ^ level
-            local current = 1
-            if (level-1) > 0 then current = 1.25 ^ (level - 1) end
+        loc_vars = function(self, info_queue, card)
+            art_credit('akai', info_queue)
             return {
                 vars = {
-                    level,
-                    formula,
-                    current,
-                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
-                }
+                    card.ability.extra.formula(self:next_level()),
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level())},
+                main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.XMult(card.ability.extra.formula(self:level())),
+                    BSUI.Modules.GameText.Format(' Mult', G.C.UI.TEXT_INACTIVE),
+                })} or {}
             }
         end,
     }

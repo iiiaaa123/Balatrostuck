@@ -4,7 +4,9 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
         key = "sagittarius",
         config = {
             extra = {
-                chips = 25
+                formula = function (level)
+                    return level * 25
+                end
             }
         },
         pos = {
@@ -14,11 +16,9 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
         loc_txt = {
             ['name'] = "Sagittarius",
             ['text'] = {
-                '{S:0.8}({S:0.8, V:1}lvl.#1#{S:0.8}){} Level up', --needs color var
                 'Played cards give',
-                '{C:chips}+#2#{} Chips if played hand', --next level value
+                '{C:chips}+#1#{} Chips if played hand', --next level value
                 'contains a {C:attention}non-scoring 9',
-                '{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)' --current level value
             }
         },
         cost = 4,
@@ -34,18 +34,16 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
             self:add_caste('Sagittarius')
         end,
         can_use = function() return true end,
-        loc_vars = function(card)
-            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
-            local formula = level*card.config.extra.chips
-            local current = 0
-            if level-1 > 0 then current = (level-1)*card.config.extra.chips end
+        loc_vars = function(self, info_queue, card)
             return {
                 vars = {
-                    level,
-                    formula,
-                    current,
-                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
-                }
+                    card.ability.extra.formula(self:next_level()),
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level() )},
+                main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format('+'..card.ability.extra.formula(self:level()), G.C.CHIPS),
+                    BSUI.Modules.GameText.Format(' Chips', G.C.UI.TEXT_INACTIVE)
+                })} or {}
             }
         end,
         

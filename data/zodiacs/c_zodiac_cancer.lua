@@ -4,7 +4,9 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
         key = "cancer",
         config = {
             extra = {
-                chips = 12
+                formula = function (level)
+                    return level * 12
+                end,
             }
         },
         pos = {
@@ -12,12 +14,12 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
             y = 0
         },
         loc_txt = {
-            ['name'] = "Cancer",
-            ['text'] = {
-                "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
-                'Each played {C:attention}4{} gives {C:chips}+#2# {C:attention}permanent{} Chips', --next level value
-                'to all {C:attention}other{} scoring cards when scored',
-                '{C:inactive}(Currently {C:chips}+#3#{C:inactive} permanent chips)' --current level value
+            name = "Cancer",
+            text = {
+                'Each played {C:attention}4{} gives', 
+                '{C:chips}+#1# {C:attention}permanent{} Chips', --next level value
+                'to all {C:attention}other{} scoring cards',
+                'when scored'
             }
         },
         use = function(self, card, area, copier)
@@ -30,18 +32,17 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
             self:add_caste('Cancer')
         end,
         can_use = function() return true end,
-        loc_vars = function(card)
-            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
-            local formula = card.config.extra.chips * level
-            local current = 0
-            if level-1 > 0 then current = card.config.extra.chips * (level-1) end
+        loc_vars = function(self, info_queue, card)
+            art_credit('akai', info_queue)
             return {
                 vars = {
-                    level,
-                    formula,
-                    current,
-                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
-                }
+                    card.ability.extra.formula(self:next_level()),
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level() )},
+                main_end =  self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format('+'..card.ability.extra.formula(self:level()), G.C.CHIPS),
+                    BSUI.Modules.GameText.Format(' permament chips', G.C.UI.TEXT_INACTIVE)
+                })} or {}
             }
         end,
         cost = 4,

@@ -2,7 +2,13 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_virgo()
     Balatrostuck.Zodiac{
         name = "Virgo",
         key = "virgo",
-        config = {},
+        config = {
+            extra = {
+                formula = function (level)
+                    return level > 0 and summation(level+2) or 0
+                end
+            }
+        },
         pos = {
             x = 4,
             y = 0
@@ -10,10 +16,8 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_virgo()
         loc_txt = {
             name = "Virgo",
             text = {
-                "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
                 'Each {C:attention}held 6{}',
-                'gives {C:mult}+#2#{} Mult', --next level value
-                '{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)' --current level value
+                'gives {C:mult}+#1#{} Mult', --next level value
             }
         },
         use = function(self, card, area, copier)
@@ -26,18 +30,17 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_virgo()
             self:add_caste('Virgo')
         end,
         can_use = function() return true end,
-        loc_vars = function(card)
-            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
-            local formula = summation(2 + level)
-            local current = 0
-            if level - 1 > 0 then current = summation(2 + (level - 1)) end
+        loc_vars = function(self, info_queue, card)
+            art_credit('akai', info_queue)
             return {
                 vars = {
-                    level,
-                    formula,
-                    current,
-                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])},
-                }
+                    card.ability.extra.formula(self:next_level()),
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level() )},
+                main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format('+'..card.ability.extra.formula(self:level()), G.C.MULT),
+                    BSUI.Modules.GameText.Format(' Mult', G.C.UI.TEXT_INACTIVE)
+                })} or {}
             }
         end,
         cost = 4,

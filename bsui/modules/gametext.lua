@@ -2,8 +2,12 @@ BSUI.Modules.GameText = {}
 
 BSUI.Modules.GameText.LevelUp = function (level_color, num)
     return BSUI.Row(BSUI.Config.Basic, {
-        BSUI.Col(BSUI.Config.Basic, {BSUI.Text('(lvl. '..num..') ', level_color, 0.33, false)}),
-        BSUI.Col(BSUI.Config.Basic, {BSUI.Text('Level up', G.C.UI.TEXT_DARK, 0.33, false)})
+        BSUI.Col({align='bm', padding=0, colour=G.C.CLEAR}, {
+            BSUI.Text('(lvl.'..num..') ', level_color, BSUI.TextScale*1.1, false)
+        }),
+        BSUI.Col({align='bm', padding=0, colour=G.C.CLEAR}, {
+            BSUI.Text('Level up', G.C.UI.TEXT_DARK, BSUI.TextScale, false)
+        })
     })
 end
 
@@ -13,8 +17,12 @@ BSUI.Modules.GameText.Format = function (text, colour, background)
 
     local padding = 0.0125
     return BSUI.Col({align='m', padding=padding, colour=bg, r=0, outline = 0.75, outline_colour=bg}, {
-        BSUI.Row(BSUI.Config.Basic, {BSUI.Text(text, col, 0.32, false)}),
+        BSUI.Row({align='bm', padding=0, colour=G.C.CLEAR}, {BSUI.Text(text, col, BSUI.TextScale, false)}),
     })
+end
+
+BSUI.Modules.GameText.XMult = function (num)
+    return BSUI.Modules.GameText.Format('X'..num, G.C.WHITE, G.C.RED)
 end
 
 BSUI.Modules.GameText.CurrentValue = function (table)

@@ -2,18 +2,22 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_pisces()
     Balatrostuck.Zodiac{
         name = "Pisces",
         key = "pisces",
-        config = {},
+        config = {
+            extra = {
+                formula = function (level)
+                    return level * 2
+                end
+            }
+        },
         pos = {
             x = 3,
             y = 1
         },
         loc_txt = {
-            ['name'] = "Pisces",
-            ['text'] = {
-                "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
-                'Played{C:attention} Queens{} give {C:money}$#2# {C:red,E:2}minus{} the', --next level value
+            name = "Pisces",
+            text = {
+                'Played{C:attention} Queens{} give {C:money}$#1# {C:red,E:2}minus{} the', --next level value
                 'amount of {C:attention}remaining hands{} when scored', 
-                '{C:inactive}(Currently {C:money}$#3#{C:inactive})'    --current level value
             }
         },
         cost = 4,
@@ -29,18 +33,17 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_pisces()
             self:add_caste('Pisces')
         end,
         can_use = function() return true end,
-        loc_vars = function(card)
-            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
-            local formula = level*2
-            local current = 0
-            if level-1 > 0 then current = (level-1)*2 end
+        loc_vars = function(self, info_queue, card)
+            art_credit('akai', info_queue)
             return {
                 vars = {
-                    level,
-                    formula,
-                    current,
-                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
-                }
+                    card.ability.extra.formula(self:next_level()),
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level())},
+                main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format('$'..card.ability.extra.formula(self:level()), G.C.MONEY),
+                })} or {}
+
             }
         end,
     }

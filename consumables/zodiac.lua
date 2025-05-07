@@ -43,6 +43,19 @@ function Balatrostuck.Zodiac:add_caste(key)
   end
 end
 
+function Balatrostuck.Zodiac:level()
+  return G.GAME.BALATROSTUCK.zodiac_levels[self.name] or 0 
+end
+
+
+function Balatrostuck.Zodiac:next_level()
+  return self:level()+1
+end
+
+function Balatrostuck.Zodiac:get_level_color()
+  return self:next_level()==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, self:next_level())]
+end
+
 SMODS.UndiscoveredSprite {
   key = 'Zodiac',
   atlas = 'HomestuckZodiacs',

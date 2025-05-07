@@ -2,7 +2,13 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_gemini()
     Balatrostuck.Zodiac{
         name = "Gemini",
         key = "gemini",
-        config = {},
+        config = {
+            extra = {
+                formula = function (level)
+                    return level
+                end
+            }
+        },
         pos = {
             x = 1,
             y = 0
@@ -10,10 +16,8 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_gemini()
         loc_txt = {
             ['name'] = "Gemini",
             ['text'] = {
-                '{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up',
                 '{C:attention}Retrigger{} each played {C:attention}2',
-                '{C:attention}#2#{} additional time#3#', --1 should be next level value + times should be dynamically plural
-                '{C:inactive}(Currently {C:attention}#4# {C:inactive}time#5#)' --current level amount + dynamic plural
+                '{C:attention}#1#{} additional time#2#', --1 should be next level value + times should be dynamically plural
             }
         },
         cost = 4,
@@ -29,19 +33,18 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_gemini()
             self:add_caste('Gemini')
         end,
         can_use = function() return true end,
-        loc_vars = function(card)
-            local curr_level = G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0
-            local level = curr_level + 1
-            local formula = level
+        loc_vars = function(self, info_queue, card)
+            art_credit('akai', info_queue)
             return {
                 vars = {
-                    level,
-                    formula,
-                    (level~=1 and 's' or ''),
-                    curr_level,
-                    (curr_level~=1 and 's' or ''),
-                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
-                }
+                    card.ability.extra.formula(self:next_level()),
+                    (self:next_level()~=1 and 's' or ''),
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level())},
+                main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format(card.ability.extra.formula(self:level()), G.C.IMPORTANT),
+                    BSUI.Modules.GameText.Format(' time'..(self:level()~=1 and 's' or ''), G.C.UI.TEXT_INACTIVE)
+                })} or {}
             }
         end,
     }

@@ -2,19 +2,23 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_leo()
     Balatrostuck.Zodiac{
         name = "Leo",
         key = "leo",
-        config = {},
+        config = {
+            extra = {
+                formula = function (level)
+                    return level
+                end
+            }
+        },
         pos = {
             x = 3,
             y = 0
         },
         loc_txt = {
-            ['name'] = "Leo",
-            ['text'] = {
-                '{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up',
-                'Each {C:attention}held 5{} has a {C:green}#4# in 4{} chance',
-                'to give {C:money}$#2#{} when any', --next level value
+            name = "Leo",
+            text = {
+                'Each {C:attention}held 5{} has a {C:green}#1# in 4{} chance',
+                'to give {C:money}$#2#{} when any',
                 'played card is scored',
-                '{C:inactive}(Currently {C:money}$#3#{C:inactive})' --current level value
             }
         },
         cost = 4,
@@ -30,23 +34,21 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_leo()
             self:add_caste('Leo')
         end,
         can_use = function() return true end,
-        loc_vars = function(card)
-            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
-            local formula = level
-            local current = 0
-            if level-1 > 0 then current = level-1 end
+        loc_vars = function(self, info_queue, card)
+            art_credit('akai', info_queue)
             return {
                 vars = {
-                    level,
-                    formula,
-                    current,
                     G.GAME.probabilities.normal,
-                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
-                }
+                    card.ability.extra.formula(self:next_level()),
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level())},
+                main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format('$'..card.ability.extra.formula(self:level()), G.C.MONEY),
+                })} or {}
+
             }
         end,
     }
-
 
     Balatrostuck.Caste{
         key = 'Leo',

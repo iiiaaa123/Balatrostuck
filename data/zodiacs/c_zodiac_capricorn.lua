@@ -4,7 +4,12 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_capricorn()
         key = "capricorn",
         config = {
             extra = {
-
+                formula = function (level) 
+                    return {
+                        up = level+1,
+                        down = 1/(level+1)
+                    }
+                end
             }
         },
         pos = {
@@ -12,13 +17,13 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_capricorn()
             y = 1
         },
         loc_txt = {
-            ['name'] = "Capricorn",
-            ['text'] = {
-                "{S:0.8}({S:0.8, V:1}lvl.#1#{S:0.8}){} Level up",
-                "Each played {C:attention}10{} gives {X:mult,C:white}X#2#{} Mult", --X2 should be the next level's value
-                "when scored, held {C:attention}10s",
-                "give {X:mult,C:white}X#3#{} Mult",          --X0.5 should be the next level's value
-                "{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} and {X:mult,C:white}X#5#{C:inactive})"    --should be the current level values respectively
+            name = "Capricorn",
+            text = {
+                --"{S:0.8}({S:0.8, V:1}lvl.#1#{S:0.8}){} Level up",
+                "Each played {C:attention}10{} gives {X:mult,C:white}X#1#{} Mult", --X2 should be the next level's value
+                "when scored, each held {C:attention}10{}",
+                "gives {X:mult,C:white}X#2#{} Mult",          --X0.5 should be the next level's value
+                --"{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} and {X:mult,C:white}X#5#{C:inactive})"    --should be the current level values respectively
             }                                   
         },
         cost = 4,
@@ -34,21 +39,20 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_capricorn()
             self:add_caste('Capricorn')
         end,
         can_use = function() return true end,
-        loc_vars = function(card)
-            local level = (G.GAME.BALATROSTUCK.zodiac_levels[card.name] or 0) + 1
-            local formula_up = level+1
-            local formula_down = 1/(level+1)
-            local current_up = 1
-            local current_down = 1
-            if level - 1 > 0 then current_up = level end
-            if level - 1 > 0 then current_down = 1/(level) end
+        loc_vars = function(self, info_queue, card)
+            art_credit('akai', info_queue)
+            local formula_curr = card.ability.extra.formula(self:level())
             return {
                 vars = {
-                    level,
-                    formula_up, formula_down,
-                    current_up, current_down,
-                    colours = {(level==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, level)])}
-                }
+                    card.ability.extra.formula(self:next_level()).up,
+                    card.ability.extra.formula(self:next_level()).down
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level() )},
+                main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.XMult(formula_curr.up),
+                    BSUI.Modules.GameText.Format(' and ', G.C.UI.TEXT_INACTIVE),
+                    BSUI.Modules.GameText.XMult(formula_curr.down)
+                })} or {}
             }
         end,
     }
