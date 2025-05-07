@@ -3,12 +3,10 @@ function Balatrostuck.INIT.Aspects.c_aspect_piss()
         key = 'piss',
         name = "Piss",
         loc_txt = {
-            ['name'] = "Piss",
-            ['text'] = {
-                [1] = "", -- "{S:0.8}({S:0.8,V:1}lvl.#2#{S:0.8}){} Level up",
-                [2] = "When {C:attention}Blind{} is selected,",
-                [3] = "create {C:attention}#2# {C:paradox}Paradox{C:attention} Jokers",
-                [4] = "{C:inactive}(Currently {C:attention}#3#{C:inactive} Jokers)"
+            name = "Piss",
+            text = {
+                "When {C:attention}Blind{} is selected,",
+                "create {C:attention}#1# {C:paradox}Paradox{C:attention} Jokers",
             }
         },
         pos = {
@@ -25,9 +23,13 @@ function Balatrostuck.INIT.Aspects.c_aspect_piss()
         loc_vars = function(self, info_queue)
             return {
                 vars = {
-                    self:level() + 1,
-                    self:level()
-                }
+                    summation(self:level() + 2),
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
+                main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format(summation(self:level() + 1), G.C.IMPORTANT),
+                    BSUI.Modules.GameText.Format(' Jokers', G.C.UI.TEXT_INACTIVE)
+                })} or {})
             }
         end,
         use = function(self, card, area, copier)

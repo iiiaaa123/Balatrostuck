@@ -3,13 +3,11 @@ function Balatrostuck.INIT.Aspects.c_aspect_blood()
         key = 'blood',
         name = "Blood",
         loc_txt = {
-            ['name'] = "Blood",
-            ['text'] = {
-                [1] = "", -- "{S:0.8}({S:0.8,V:1}lvl.#2#{S:0.8}){} Level up",
-                [2] = 'First {C:attention}#1#{} cards discarded', 
-                [3] = "each round get a random",
-                [4] = '{C:purple}enhancement',
-                [5] = '{C:inactive}(Currently {C:attention}#2#{C:inactive} cards)'
+            name = "Blood",
+            text = {
+                'First {C:attention}#1#{} cards discarded',
+                "each round get a random",
+                '{C:purple}enhancement',
             }
         },
         pos = {
@@ -27,9 +25,13 @@ function Balatrostuck.INIT.Aspects.c_aspect_blood()
             art_credit2('akai', 'yokcos', info_queue)
             return {
                 vars = {
-                    self:level() + 1,
-                    self:level()
-                }
+                    self:level()+2
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
+                main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format(self:level()+1, G.C.IMPORTANT),
+                    BSUI.Modules.GameText.Format(' cards', G.C.UI.TEXT_INACTIVE)
+                })} or {})
             }
         end,
         use = function(self, card, area, copier)

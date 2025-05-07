@@ -34,11 +34,11 @@ function get_table_values(tab)
 end
 
 function summation(n)
-    local sum = 0
-    for i = 1, n do
-        sum = sum + i
-    end
-    return sum
+    return (n*(n + 1)) / 2
+end
+
+function get_grollars()
+    return log2(G.GAME.probabilities.normal or 1)
 end
 
 function sum_levels()

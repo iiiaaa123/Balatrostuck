@@ -3,11 +3,9 @@ function Balatrostuck.INIT.Aspects.c_aspect_time()
         key = "time",
         name = "Time",
         loc_txt = {
-            ['name'] = "Time",
-            ['text'] = {
-                [1] = "", -- "{S:0.8}({S:0.8,V:1}lvl.#2#{S:0.8}){} Level up",
-                [2] = "{C:blue}+#1#{} hand#3# each round",
-                [3] = "{C:inactive}(Currently {C:blue}+#4#{C:inactive} hands)"
+            name = "Time",
+            text = {
+                "{C:blue}+#1#{} hand#2# each round",
             }
         },
         pos = {
@@ -23,16 +21,16 @@ function Balatrostuck.INIT.Aspects.c_aspect_time()
         atlas = "HomestuckAspects",
         loc_vars = function(self, info_queue)
             art_credit2('akai', 'yokcos', info_queue)
-            local mariobros = ""
-            if self:level() ~= 0 then
-                mariobros = "s"
-            end
             return {
                 vars = {
-                    summation(self:level() + 1),
-                    self:level(),
-                    mariobros
-                }
+                    summation(self:level()+1),
+                    (self:level()+1 ~= 1 and 's' or '')
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
+                main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format('+'..self:level(), G.C.BLUE),
+                    BSUI.Modules.GameText.Format(' hand'..(self:level() ~= 1 and 's' or '')..' each round', G.C.UI.TEXT_INACTIVE)
+                })} or {})
             }
         end,
         use = function(self, context)

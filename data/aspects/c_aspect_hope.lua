@@ -3,12 +3,10 @@ function Balatrostuck.INIT.Aspects.c_aspect_hope()
         key = "hope",
         name = "Hope",
         loc_txt = {
-            ['name'] = "Hope",
-            ['text'] = {
-                [1] = "", -- "{S:0.8}({S:0.8,V:1}lvl.#2#{S:0.8}){} Level up",
-                [2] = "{C:attention}Booster Packs{} have",
-                [3] = "{C:attention}+#2#{} cards to choose from",
-                [4] = "{C:inactive}(Currently {C:attention}+#3#{C:inactive})"
+            name = "Hope",
+            text = {
+                "{C:attention}Booster Packs{} have",
+                "{C:attention}+#1#{} card#2# to choose from",
             }
         },
         pos = {
@@ -32,8 +30,14 @@ function Balatrostuck.INIT.Aspects.c_aspect_hope()
             art_credit2('akai', 'yokcos', info_queue)
             return {
                 vars = {
-                    self:level()
-                }
+                    self:level()+1,
+                    ((self:level()+1) ~= 1 and 's' or '')
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
+                main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format('+'..self:level(), G.C.IMPORTANT),
+                    BSUI.Modules.GameText.Format(' card'..(self:level() ~= 1 and 's' or ''), G.C.UI.TEXT_INACTIVE)
+                })} or {})
             }
         end
     }

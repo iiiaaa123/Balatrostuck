@@ -112,7 +112,13 @@ function Balatrostuck.INIT.Jokers.j_cueball()
                 end
     
             --card.calculate_joker({generate_ui = true})
-            return {vars = {card.ability.extra.card1, card.ability.extra.card2, card.ability.extra.card3,G.GAME.probabilities.normal}}
+            return {
+                vars = {
+                    card.ability.extra.card1, 
+                    card.ability.extra.card2, 
+                    card.ability.extra.card3,
+                    G.GAME.probabilities.normal
+                }}
         end
     }
 end

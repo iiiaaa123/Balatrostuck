@@ -3,14 +3,12 @@ function Balatrostuck.INIT.Aspects.c_aspect_life()
         key = "life",
         name = "Life",
         loc_txt = {
-            ['name'] = "Life",
-            ['text'] = {
-                [1] = "", -- "{S:0.8}({S:0.8,V:1}lvl.#2#{S:0.8}){} Level up",
-                [2] = "Add {C:attention}#2#{} random {C:paradox}Paradox{} cards",
-                [3] = "to hand when round begins,",
-                [4] = "every {C:paradox}Paradox{} card anywhere",
-                [5] = "gives {C:money}$#3#{} at end of round",
-                [6] = "{C:inactive}(Currently {C:green}+#4#{C:inactive} and {C:money}$#5#{C:inactive})"
+            name = "Life",
+            text = {
+                "Add {C:attention}#1#{} random {C:paradox}Paradox{} cards",
+                "to hand when round begins,",
+                "every {C:paradox}Paradox{} card anywhere",
+                "gives {C:money}$#2#{} at end of round",
             }
         },
         pos = {
@@ -34,8 +32,15 @@ function Balatrostuck.INIT.Aspects.c_aspect_life()
             art_credit2('akai', 'yokcos', info_queue)
             return {
                 vars = {
-                    self:level()
-                }
+                    self:level()+2,
+                    (self:level()+1)*2
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
+                main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format('+'..self:level()+1, G.C.PARADOX),
+                    BSUI.Modules.GameText.Format(' and', G.C.UI.TEXT_INACTIVE),
+                    BSUI.Modules.GameText.Format('$'..self:level()*2, G.C.MONEY)
+                })} or {})
             }
         end
     }

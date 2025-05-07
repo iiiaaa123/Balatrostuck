@@ -3,15 +3,13 @@ function Balatrostuck.INIT.Aspects.c_aspect_doom()
         key = "doom",
         name = "Doom",
         loc_txt = {
-            ['name'] = "Doom",
-            ['text'] = {
-                [1] = "", --"{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
-                [2] = 'Played cards give {X:mult,C:white}X#1#{} Mult',
-                [3] = 'when scored, each card in the',
-                [4] = '{C:attention}full deck{} has a {C:green}#2# in #3#{} chance',
-                [5] = 'to be {C:red}debuffed{} this round',
-                [6] = 'when blind is selected',
-                [7] = '{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} and {C:green}#2# in #5#{C:inactive})'
+            name = "Doom",
+            text = {
+                'When you use a {C:zodiac}Zodiac{} card',
+                'the corresponding {C:zodiac}Zodiac{} gains',
+                '#1# additional level#3# but has',
+                'a 1 in #2# chance to reset',
+                'all other Zodiacs to 0'
             }
         },
         pos = {
@@ -33,15 +31,29 @@ function Balatrostuck.INIT.Aspects.c_aspect_doom()
         end,
         loc_vars = function(self, info_queue)
             art_credit2('akai', 'yokcos', info_queue)
+            local formula = summation(self:level()+1) + get_grollars()
+            local current = summation(self:level()) + get_grollars()
             return {
                 vars = {
-                    self:level()
-                }
+                    formula,
+                    self:level()+2,
+                    (formula ~= 1 and 's' or '')
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
+                main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format(current..' ', G.C.ATTENTION),
+                    BSUI.Modules.GameText.Format(
+                    'level'..(current ~= 1 and 's' or '')..' and ', G.C.UI.TEXT_INACTIVE
+                    ),
+                    BSUI.Modules.GameText.Format('1 in'..self:level()+1, G.C.GREEN)
+                })})
             }
         end
     }
 
 
+    -- TODO: THIS IS OUTDATED ABILITY - THE NEW EFFECT IS  N O T  WHAT THE BELOW CODE IS
+    -- THIS NEEDS TO BE FIXED ASAP PLS
     Balatrostuck.Slab{
         key = 'doom',
         atlas = 'HomestuckAspectSlabs',

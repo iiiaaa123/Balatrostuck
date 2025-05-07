@@ -3,12 +3,10 @@ function Balatrostuck.INIT.Aspects.c_aspect_mind()
         key = "mind",
         name = "Mind",
         loc_txt = {
-            ['name'] = "Mind",
-            ['text'] = {
-                [1] = "", -- "{S:0.8}({S:0.8,V:1}lvl.#2#{S:0.8}){} Level up",
-                [2] = 'When a {C:attention}Tag{} is created,',
-                [3] = 'create {C:attention}#2#{} copies of it',
-                [4] = '{C:inactive}(Currently {C:attention}#3#{C:inactive} copies)'
+            name = "Mind",
+            text = {
+                'When a {C:attention}Tag{} is created,',
+                'create {C:attention}#1#{} cop#2# of it',
             }
         },
         pos = {
@@ -26,8 +24,14 @@ function Balatrostuck.INIT.Aspects.c_aspect_mind()
             art_credit2('akai', 'yokcos', info_queue)
             return {
                 vars = {
-                    (G.GAME.BALATROSTUCK.aspect_levels[self.name] or 0)
-                }
+                    self:level()+1,
+                    ((self:level()+1) ~= 1 and 'ies' or 'y')
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
+                main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format(self:level(), G.C.IMPORTANT),
+                    BSUI.Modules.GameText.Format(' cop'..(self:level() ~= 1 and 'ies' or 'y'), G.C.UI.TEXT_INACTIVE)
+                })} or {})
             }
         end,
         use = function(self, context)

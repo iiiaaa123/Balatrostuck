@@ -3,13 +3,11 @@ function Balatrostuck.INIT.Aspects.c_aspect_rage()
         key = "rage",
         name = "Rage",
         loc_txt = {
-            ['name'] = "Rage",
-            ['text'] = {
-                [1] = 'Scoring cards give',
-                [2] = '{C:white,X:mult}X#1#{} Mult times',
-                [3] = 'the {C:attention}difference{}',
-                [4] = 'between {C:attention}hands{}',
-                [5] = 'and {C:attention}discards{} left'
+            name = "Rage",
+            text = {
+                'First scoring card gives {C:white,X:mult}X#1#{} Mult',
+                'times the {C:attention}difference{} between',
+                '{C:blue}hands{} and {C:red}discards{} left',
             }
         },
         pos = {
@@ -27,8 +25,13 @@ function Balatrostuck.INIT.Aspects.c_aspect_rage()
             art_credit2('akai', 'yokcos', info_queue)
             return {
                 vars = {
-                    (G.GAME.BALATROSTUCK.aspect_levels[self.name] or 0)*0.25
-                }
+                    (self:level()+1)*0.25
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
+                main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format('X'..(self:level())*0.25, G.C.WHITE, G.C.RED),
+                    BSUI.Modules.GameText.Format(' Mult', G.C.UI.TEXT_INACTIVE)
+                })} or {})
             }
         end,
         use = function(self, context)

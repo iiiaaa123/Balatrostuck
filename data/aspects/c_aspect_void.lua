@@ -3,14 +3,12 @@ function Balatrostuck.INIT.Aspects.c_aspect_void()
         key = "void",
         name = "Void",
         loc_txt = {
-            ['name'] = "Void",
-            ['text'] = {
-                [1] = "", -- "{S:0.8}({S:0.8,V:1}lvl.#2#{S:0.8}){} Level up",
-                [2] = 'Add {C:dark_edition}Negative{} to a random',
-                [3] = '{C:attention}Joker{} at start of round',
-                [4] = 'if there are {C:attention}#2# or fewer',
-                [5] = '{C:dark_edition}Negative{} Jokers',
-                [6] = '{C:inactive}(Currently {C:attention}#3#{C:inactive} or fewer)'
+            name = "Void",
+            text = {
+                'Add {C:dark_edition}Negative{} to a random',
+                '{C:attention}Joker{} at start of round',
+                'if there are {C:attention}#1# or fewer',
+                '{C:dark_edition}Negative{} Jokers',
             }
         },
         pos = {
@@ -28,8 +26,13 @@ function Balatrostuck.INIT.Aspects.c_aspect_void()
             art_credit2('akai', 'yokcos', info_queue)
             return {
                 vars = {
-                    summation(1+(G.GAME.BALATROSTUCK.aspect_levels[self.name] or 0)),
-                }
+                    summation(self:level()+1),
+                },
+                main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
+                main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
+                    BSUI.Modules.GameText.Format(summation(self:level()), G.C.IMPORTANT),
+                    BSUI.Modules.GameText.Format(' or fewer', G.C.UI.TEXT_INACTIVE)
+                })} or {})
             }
         end,
         use = function(self, context)
