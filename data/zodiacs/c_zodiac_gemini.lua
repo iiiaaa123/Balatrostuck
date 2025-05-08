@@ -3,11 +3,6 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_gemini()
         name = "Gemini",
         key = "gemini",
         config = {
-            extra = {
-                formula = function (level)
-                    return level
-                end
-            }
         },
         pos = {
             x = 1,
@@ -37,12 +32,12 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_gemini()
             art_credit('akai', info_queue)
             return {
                 vars = {
-                    card.ability.extra.formula(self:next_level()),
+                    self:get_formula(self:next_level()),
                     (self:next_level()~=1 and 's' or ''),
                 },
                 main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level())},
                 main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
-                    BSUI.Modules.GameText.Format(card.ability.extra.formula(self:level()), G.C.IMPORTANT),
+                    BSUI.Modules.GameText.Format(self:get_formula(self:level()), G.C.IMPORTANT),
                     BSUI.Modules.GameText.Format(' time'..(self:level()~=1 and 's' or ''), G.C.UI.TEXT_INACTIVE)
                 })} or {}
             }

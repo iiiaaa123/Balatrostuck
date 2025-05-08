@@ -56,6 +56,45 @@ function Balatrostuck.Zodiac:get_level_color()
   return self:next_level()==1 and G.C.UI.TEXT_DARK or G.C.ZODIAC_LEVELS[math.min(7, self:next_level())]
 end
 
+function Balatrostuck.Zodiac:get_formula(level)
+  if self.name == 'Aries' then
+    return level * 0.5
+
+  elseif self.name == 'Taurus' then
+    return level ^ 0.95
+
+  elseif self.name == 'Gemini' or
+         self.name == 'Scorpio' or
+         self.name == 'Aquarius' or
+         self.name == 'Leo' then
+    return level
+
+  elseif self.name == 'Cancer' then
+    return level * 12
+
+  elseif self.name == 'Virgo' then
+    return level > 0 and summation(level+2) or 0
+
+  elseif self.name == 'Libra' then
+    return 1 + (level/10)
+
+  elseif self.name == 'Saggitarius' then
+    return level * 25
+
+  elseif self.name == 'Capricorn' then
+    return {up = level+1, down = 1/(level+1)}
+
+  elseif self.name == 'Pisces' then
+    return level * 2
+
+  elseif self.name == 'Ophiuchus' then
+    return level ^ 1.25
+
+  else return nil
+
+  end
+end
+
 SMODS.UndiscoveredSprite {
   key = 'Zodiac',
   atlas = 'HomestuckZodiacs',

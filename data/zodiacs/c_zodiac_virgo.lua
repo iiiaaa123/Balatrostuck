@@ -3,11 +3,6 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_virgo()
         name = "Virgo",
         key = "virgo",
         config = {
-            extra = {
-                formula = function (level)
-                    return level > 0 and summation(level+2) or 0
-                end
-            }
         },
         pos = {
             x = 4,
@@ -34,11 +29,11 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_virgo()
             art_credit('akai', info_queue)
             return {
                 vars = {
-                    card.ability.extra.formula(self:next_level()),
+                    self:get_formula(self:next_level()),
                 },
-                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level() )},
+                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level())},
                 main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
-                    BSUI.Modules.GameText.Format('+'..card.ability.extra.formula(self:level()), G.C.MULT),
+                    BSUI.Modules.GameText.Format('+'..self:get_formula(self:level()), G.C.MULT),
                     BSUI.Modules.GameText.Format(' Mult', G.C.UI.TEXT_INACTIVE)
                 })} or {}
             }

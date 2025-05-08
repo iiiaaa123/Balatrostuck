@@ -3,11 +3,6 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
         name = "Sagittarius",
         key = "sagittarius",
         config = {
-            extra = {
-                formula = function (level)
-                    return level * 25
-                end
-            }
         },
         pos = {
             x = 0,
@@ -37,11 +32,11 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
         loc_vars = function(self, info_queue, card)
             return {
                 vars = {
-                    card.ability.extra.formula(self:next_level()),
+                    self:get_formula(self:next_level()),
                 },
                 main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level() )},
                 main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
-                    BSUI.Modules.GameText.Format('+'..card.ability.extra.formula(self:level()), G.C.CHIPS),
+                    BSUI.Modules.GameText.Format('+'..self:get_formula(self:level()), G.C.CHIPS),
                     BSUI.Modules.GameText.Format(' Chips', G.C.UI.TEXT_INACTIVE)
                 })} or {}
             }

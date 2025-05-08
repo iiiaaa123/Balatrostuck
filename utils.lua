@@ -599,7 +599,7 @@ function create_UIBox_zodiac_tip(zodiac)
     end
 
 
-    local text = localize{type = 'descriptions', set = 'zodiacui', key = zodiac, vars = _zodiac_vars[zodiac], nodes = _nodes}
+    local text = localize{type = 'descriptions', set = 'Zodiac', key = 'c_bstuck_'..zodiac, vars = _zodiac_vars[zodiac], nodes = _nodes}
     
 
     for i=1,#_nodes do

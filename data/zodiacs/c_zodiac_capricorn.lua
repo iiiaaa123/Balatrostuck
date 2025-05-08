@@ -3,14 +3,6 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_capricorn()
         name = "Capricorn",
         key = "capricorn",
         config = {
-            extra = {
-                formula = function (level) 
-                    return {
-                        up = level+1,
-                        down = 1/(level+1)
-                    }
-                end
-            }
         },
         pos = {
             x = 1,
@@ -41,11 +33,11 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_capricorn()
         can_use = function() return true end,
         loc_vars = function(self, info_queue, card)
             art_credit('akai', info_queue)
-            local formula_curr = card.ability.extra.formula(self:level())
+            local formula_curr = self:get_formula(self:level())
             return {
                 vars = {
-                    card.ability.extra.formula(self:next_level()).up,
-                    card.ability.extra.formula(self:next_level()).down
+                    self:get_formula(self:next_level()).up,
+                    self:get_formula(self:next_level()).down
                 },
                 main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level() )},
                 main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({

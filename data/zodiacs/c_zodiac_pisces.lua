@@ -3,11 +3,6 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_pisces()
         name = "Pisces",
         key = "pisces",
         config = {
-            extra = {
-                formula = function (level)
-                    return level * 2
-                end
-            }
         },
         pos = {
             x = 3,
@@ -37,11 +32,11 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_pisces()
             art_credit('akai', info_queue)
             return {
                 vars = {
-                    card.ability.extra.formula(self:next_level()),
+                    self:get_formula(self:next_level()),
                 },
                 main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level())},
                 main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
-                    BSUI.Modules.GameText.Format('$'..card.ability.extra.formula(self:level()), G.C.MONEY),
+                    BSUI.Modules.GameText.Format('$'..self:get_formula(self:level()), G.C.MONEY),
                 })} or {}
 
             }

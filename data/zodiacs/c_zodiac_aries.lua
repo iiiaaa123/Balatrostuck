@@ -3,11 +3,6 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
         name = "Aries",
         key = "aries",
         config = {
-            extra = {
-                formula = function (level)
-                    return level * 0.5
-                end
-            }
         },
         loc_txt = {
             name = 'Aries',
@@ -35,14 +30,14 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
             art_credit('akai', info_queue)
             return {
                 vars = {
-                    card.ability.extra.formula(self:next_level())
+                    self:get_formula(self:next_level())
                 },
 
                 main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level() )},
 
                 main_end =  self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
                     BSUI.Modules.GameText.Format('gains ', G.C.UI.TEXT_INACTIVE),
-                    BSUI.Modules.GameText.XMult(card.ability.extra.formula(self:level()))
+                    BSUI.Modules.GameText.XMult(self:get_formula(self:level()))
                 })} or {}
             }
         end,

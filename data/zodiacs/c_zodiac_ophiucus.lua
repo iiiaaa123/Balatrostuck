@@ -3,11 +3,6 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_ophiuchus()
         name = "Ophiuchus",
         key = "ophiuchus",
         config = {
-            extra = {
-                formula = function (level)
-                    return 1.25 ^ level
-                end
-            }
         },
         pos = {
             x = 5,
@@ -38,11 +33,11 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_ophiuchus()
             art_credit('akai', info_queue)
             return {
                 vars = {
-                    card.ability.extra.formula(self:next_level()),
+                    self:get_formula(self:next_level()),
                 },
                 main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level())},
                 main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
-                    BSUI.Modules.GameText.XMult(card.ability.extra.formula(self:level())),
+                    BSUI.Modules.GameText.XMult(self:get_formula(self:level())),
                     BSUI.Modules.GameText.Format(' Mult', G.C.UI.TEXT_INACTIVE),
                 })} or {}
             }
