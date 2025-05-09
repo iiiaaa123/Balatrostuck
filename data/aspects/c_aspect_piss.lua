@@ -33,7 +33,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_piss()
         atlas = 'HomestuckAspectSlabs',
         pos = {
             x = 0,
-            y = 4
+            y = 3
         },
         config = { discards_used = 0 },
         name = 'Aspect of Piss',

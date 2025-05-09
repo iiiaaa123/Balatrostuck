@@ -56,7 +56,8 @@ function Balatrostuck.INIT.Jokers.j_questbed()
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         play_sound('bstuck_HomestuckAscend',0.7,0.1)
-
+                        G.ui_slab:juice_up()
+                        play_sound('chips1', math.random()*0.1 + 0.55, 0.42)
                         card:shatter()
                         return true
                     end

@@ -16,7 +16,9 @@ function Balatrostuck.INIT.Vouchers.v_godtier()
             end
             G.E_MANAGER:add_event(Event({
                 func = function()
+                    G.ui_slab:juice_up()
                     play_sound('bstuck_HomestuckAscend',0.7,0.1)
+                    play_sound('chips1', math.random()*0.1 + 0.55, 0.42)
                     return true
                 end
             }))

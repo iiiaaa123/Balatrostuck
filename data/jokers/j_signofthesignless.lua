@@ -30,28 +30,29 @@ function Balatrostuck.INIT.Jokers.j_signofthesignless()
             return {vars = {card.ability.extra.odds}}
         end,
         calculate = function(self,card,context)
-            local zodiacs = {'Gemini','Taurus','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces','Ophiuchus','Aries'}
             if context.individual and context.cardarea == G.play and #context.full_hand == 1 then
                 if SMODS.has_enhancement(context.other_card, 'm_wild') then
-                    local toilet = context.other_card:get_id()
-                    local key = zodiacs[toilet - 1]
-                    G.GAME.BALATROSTUCK.zodiac_levels[key] = G.GAME.BALATROSTUCK.zodiac_levels[key] + 1
-
-                    if G.GAME.BALATROSTUCK.zodiac_levels[key] == 1 then
-                      local newCaste = Caste('caste_bstuck_' .. key,G.P_CASTES['caste_bstuck_' .. key])
-                      table.insert(G.GAME.BALATROSTUCK.active_castes, newCaste)
+                    if G.consumeables.config.card_limit - #G.consumeables.cards >= 1 then
+                        return {
+                            message = '+1 Zodiac!',
+                            card = card,
+                            func = function()
+                                local haha = context.other_card
+                                G.E_MANAGER:add_event(Event({
+                                    func = function()
+                                        local _card = SMODS.add_card({set = 'Zodiac', key = 'c_bstuck_' .. string.lower(rank_to_zodiac(haha))})
+                                        return true
+                                    end
+                                }))
+                            end
+                        }
                     end
-
-                    return {
-                        message = 'Upgraded!',
-                        card = card
-                    }
                 end
             end
 
-            if context.destroying_card then
+            if context.destroying_card and #G.play.cards == 1 and (G.consumeables.config.card_limit - #G.consumeables.cards >= 1) then
                 if SMODS.has_enhancement(context.destroying_card, 'm_wild') then
-                    return true
+                    return {remove = true}
                 end
             end
 
