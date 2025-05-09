@@ -58,41 +58,70 @@ end
 
 function Balatrostuck.Zodiac:get_formula(level)
   if self.name == 'Aries' then
-    return level * 0.5
+    return {level * 0.5}
 
   elseif self.name == 'Taurus' then
-    return level ^ 0.95
+    return {0.95 ^ level}
 
   elseif self.name == 'Gemini' or
          self.name == 'Scorpio' or
-         self.name == 'Aquarius' or
-         self.name == 'Leo' then
-    return level
+         self.name == 'Aquarius' then
+    return {level, level ~= 1 and 's' or ''}
+
+  elseif self.name == 'Leo' then
+    return {G.GAME.probabilities.normal, level}
 
   elseif self.name == 'Cancer' then
-    return level * 12
+    return {level * 12}
 
   elseif self.name == 'Virgo' then
-    return level > 0 and summation(level+2) or 0
+    return {level > 0 and summation(level+2) or 0}
 
   elseif self.name == 'Libra' then
-    return 1 + (level/10)
+    return {1 + (level/10)}
 
-  elseif self.name == 'Saggitarius' then
-    return level * 25
+  elseif self.name == 'Sagittarius' then
+    return {level * 25}
 
   elseif self.name == 'Capricorn' then
-    return {up = level+1, down = 1/(level+1)}
+    return {level+1, 1/(level+1)}
 
   elseif self.name == 'Pisces' then
-    return level * 2
+    return {level * 2}
 
   elseif self.name == 'Ophiuchus' then
-    return level ^ 1.25
+    return {level ^ 1.25}
 
   else return nil
 
   end
+end
+
+function Balatrostuck.Zodiac:loc_vars(info_queue, card)
+  art_credit('akai', info_queue)
+
+  local ret = {}
+  local nodes = {}
+  
+  localize{
+      type = 'descriptions',
+      set = 'Zodiac',
+      key = "c_bstuck_"..(string.lower(self.name)).."_current",
+      vars = self:get_formula(self:level()),
+      nodes = ret
+  }
+
+  for i=1,#ret do
+      table.insert(nodes, BSUI.Row({align = "cm"}, ret[i]))
+  end
+  
+  return {
+      vars = self:get_formula(self:next_level()),
+   
+      main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level() )},
+
+      main_end = self:level() > 0 and {BSUI.Row(BSUI.Config.Basic, nodes)} or {}
+  }
 end
 
 SMODS.UndiscoveredSprite {

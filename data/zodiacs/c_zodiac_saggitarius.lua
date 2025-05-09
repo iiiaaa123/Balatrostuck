@@ -29,18 +29,6 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
             self:add_caste('Sagittarius')
         end,
         can_use = function() return true end,
-        loc_vars = function(self, info_queue, card)
-            return {
-                vars = {
-                    self:get_formula(self:next_level()),
-                },
-                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level() )},
-                main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
-                    BSUI.Modules.GameText.Chips(self:get_formula(self:level())),
-                    BSUI.Modules.GameText.Inactive(' Chips')
-                })} or {}
-            }
-        end,
         
     }
 

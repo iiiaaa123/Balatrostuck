@@ -106,6 +106,14 @@ BSUI.Col = function(config, nodes)
     }
 end
 
+BSUI.PadCol = function (width)
+    return BSUI.Col(BSUI.Config.Basic, {BSUI.Pad(width, 0)})
+end
+
+BSUI.PadRow = function (height)
+    return BSUI.Row(BSUI.Config.Basic, {BSUI.Pad(0, height)})
+end
+
 BSUI.Text = function(text, colour, scale, shadow)
     return {
         n = G.UIT.T,
@@ -122,5 +130,12 @@ BSUI.Image = function(image)
     return {
         n = G.UIT.O,
         config = { object = image }
+    }
+end
+
+BSUI.DynaText = function ()
+    return {
+        n = G.UIT.O,
+        config = { object = DynaText()}
     }
 end

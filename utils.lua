@@ -475,12 +475,6 @@ function create_UIBox_zodiacs(simple)
         create_zodiac_row('Aries', simple),
     }
   
-    -- local t = {n=G.UIT.ROOT, config={align = "cm", minw = 3, padding = 0.1, r = 0.1, colour = G.C.CLEAR}, nodes={
-    --   {n=G.UIT.R, config={align = "cm", padding = 0.04}, nodes=
-    --     hands
-    --   },
-    -- }}
-
     local t = BSUI.Root({align = "cm", minw = 3, padding = 0.1, r = 0.1, colour = G.C.CLEAR}, {
         BSUI.Row({align = "cm", padding = 0.04}, hands)
     })
@@ -542,29 +536,40 @@ function create_UIBox_zodiacs(simple)
         badges = badges or {}
     }
 
-    return (not simple and
-      {n=G.UIT.R, config={align = "cm", padding = 0.05, r = 0.1, colour = darken(G.C.JOKER_GREY, 0.1), emboss = 0.05, hover = true, force_focus = true, on_demand_tooltip = {text = nil, filler = {func = create_UIBox_zodiac_tip, args = zodiac}}}, nodes={
-        {n=G.UIT.C, config={align = "cl", padding = 0, minw = 5}, nodes={
-          {n=G.UIT.C, config={align = "cm", padding = 0.01, r = 0.1, colour = G.GAME.BALATROSTUCK.zodiac_levels[zodiac] == 1 and altColors[zodiac] or G.C.HAND_LEVELS[math.min(7, math.max(1,G.GAME.BALATROSTUCK.zodiac_levels[zodiac]))], minw = 1.5, outline = 0.8, outline_colour = G.C.WHITE}, nodes={
-            {n=G.UIT.T, config={text = localize('k_level_prefix')..G.GAME.BALATROSTUCK.zodiac_levels[zodiac], scale = 0.5, colour = textColour}}
-          }},
-          {n=G.UIT.C, config={align = "cm", minw = 4.5, maxw = 4.5}, nodes={
-            {n=G.UIT.T, config={text = ' '..localize(zodiac,'zodiac_names'), scale = 0.45, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
-          }}
-        }},
-        {n=G.UIT.C, config={align = "cm"}, nodes={
-            {n=G.UIT.T, config={text = '  #', scale = 0.45, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
-          }},
-        {n=G.UIT.C, config={align = "cm", padding = 0.05, colour = G.C.L_BLACK,r = 0.1, minw = 0.9}, nodes={
-          {n=G.UIT.T, config={text = count, scale = 0.45, colour = G.C.FILTER, shadow = true}},
-        }}
-      }}
-    or {n=G.UIT.R, config={align = "cm", padding = 0.05, r = 0.1, colour = darken(G.C.JOKER_GREY, 0.1), force_focus = true, emboss = 0.05, hover = true, on_demand_tooltip = {text = localize(zodiac, 'zodiac_names'), filler = {func = create_UIBox_zodiac_tip, args = zodiac}}, focus_args = {snap_to = (simple)}}, nodes={
-      {n=G.UIT.C, config={align = "cm", padding = 0, minw = 5}, nodes={
-          {n=G.UIT.T, config={text = localize(zodiac,'zodiac_names'), scale = 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
-      }}
-    }})
-    or nil
+    local zodiac_row_tooltip = {text = nil, filler = {func = create_UIBox_zodiac_tip, args = zodiac}}
+    local zodiac_row_tooltip_simple = {text = localize(zodiac, 'zodiac_names'), filler = {func = create_UIBox_zodiac_tip, args = zodiac}}
+    
+    local config_main_panel = BSUI.Config.Panel('cm', 0.05, darken(G.C.JOKER_GREY, 0.1), {force_focus = true, on_demand_tooltip = zodiac_row_tooltip}, 0.05, true)
+    local config_main_panel_simple = BSUI.Config.Panel('cm', 0.05, darken(G.C.JOKER_GREY, 0.1), {force_focus = true, on_demand_tooltip = zodiac_row_tooltip_simple, focus_args = {snap_to = (simple)}}, 0.05, true)
+    
+    local level_display_color = G.GAME.BALATROSTUCK.zodiac_levels[zodiac] == 1 and altColors[zodiac] or G.C.HAND_LEVELS[math.min(7, math.max(1,G.GAME.BALATROSTUCK.zodiac_levels[zodiac]))]
+    local config_level_display = BSUI.Config.PanelOutlined('cm', 0.01, level_display_color, G.C.WHITE, 0.8, {minw = 1.5})
+    
+    local zodiac_row = BSUI.Row(config_main_panel, {
+        BSUI.Col({align = "cl", padding = 0, minw = 5}, {
+            BSUI.Col(config_level_display, {
+                BSUI.Text(localize('k_level_prefix')..G.GAME.BALATROSTUCK.zodiac_levels[zodiac], textColour, 0.5)
+            }),
+            BSUI.Col({align = "cm", minw = 4.5, maxw = 4.5}, {
+                BSUI.Text(' '..localize(zodiac,'zodiac_names'), G.C.UI.TEXT_LIGHT, 0.45, true)
+            })
+        }),
+        BSUI.Col(BSUI.Config.Basic, {
+            BSUI.Text('  #', G.C.UI.TEXT_LIGHT, 0.45, true)
+        }),
+        BSUI.Col(BSUI.Config.Panel('cm', 0.05, G.C.L_BLACK, {minw = 0.9}), {
+            BSUI.Text(count, G.C.FILTER, 0.45, true)
+        })
+    })
+    
+    local zodiac_row_simple = BSUI.Row(config_main_panel_simple, {
+        BSUI.Col({align = "cm", padding = 0, minw = 5}, {
+            BSUI.Text(localize(zodiac,'zodiac_names'), G.C.UI.TEXT_LIGHT, 0.5, true)
+        })
+    })
+
+    return (not simple and zodiac_row or zodiac_row_simple or nil)
+
   end
 
 
@@ -572,41 +577,32 @@ function create_UIBox_zodiacs(simple)
 function create_UIBox_zodiac_tip(zodiac)
     local lvl = math.max(1,G.GAME.BALATROSTUCK.zodiac_levels[zodiac])
     play_sound('paper1',0.95 + math.random()*0.1, 0.3)
-    local _zodiac_vars = {
-        Aries = {lvl/2},
-        Gemini = {lvl,lvl ~= 1 and 's' or ''},
-        Taurus = {0.95^lvl},
-        Cancer = {lvl * 3},
-        Leo = {G.GAME.probabilities.normal,lvl},
-        Virgo = {summation(2+lvl)},
-        Libra = {1 + (lvl/ 10)},
-        Scorpio = {lvl, (lvl~=1 and 's' or '')},
-        Sagittarius = {lvl*25},
-        Capricorn = {math.max(lvl), 1/math.max(lvl, 1)},
-        Aquarius = {lvl, (lvl~=1 and 's' or '')},
-        Pisces = {lvl*2},
-        Ophiuchus = {1.25 ^ lvl}
-    }
+
+    local slug = 'c_bstuck_'..string.lower(zodiac)
+    local zodiac_card = G.P_CENTERS[slug]
+
     local _nodes = {}
     local _returnnodes = {}
     
     if G.GAME.BALATROSTUCK.zodiac_levels[zodiac] < 1 then
-        local inactivenodes = {}
-        local text = localize{type = 'descriptions', set = 'zodiacui', key = 'Inactive', vars = _zodiac_vars[zodiac], nodes = inactivenodes}
-        for i=1,#inactivenodes do
-            table.insert(_returnnodes,{n=G.UIT.R, config={align = "cm"}, nodes=inactivenodes[i]})
-        end
+        _returnnodes[#_returnnodes+1] = BSUI.Row({align = "cm"}, {
+            BSUI.Text('(Currently inactive)', G.C.UI.TEXT_INACTIVE, BSUI.TextScale)
+        })
     end
 
-
-    local text = localize{type = 'descriptions', set = 'Zodiac', key = 'c_bstuck_'..zodiac, vars = _zodiac_vars[zodiac], nodes = _nodes}
+    localize{
+        type = 'descriptions', 
+        set = 'Zodiac', 
+        key = slug, 
+        vars = zodiac_card:get_formula(lvl), 
+        nodes = _nodes
+    }
     
-
     for i=1,#_nodes do
-        table.insert(_returnnodes,{n=G.UIT.R, config={align = "cm"}, nodes=_nodes[i]})
+        table.insert(_returnnodes, BSUI.Row({align = "cm"}, _nodes[i]))
     end
-    
-    return{n=G.UIT.C, colour = G.C.ZODIAC[zodiac], config={align = "cm"}, nodes=_returnnodes}     -- 0    
+     
+    return BSUI.Col(BSUI.Config.Basic, _returnnodes)
 end
 
 

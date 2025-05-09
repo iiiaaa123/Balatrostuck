@@ -30,21 +30,6 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_scorpio()
             self:add_caste('Scorpio')
         end,
         can_use = function() return true end,
-        loc_vars = function(self, info_queue, card)
-            art_credit('akai', info_queue)
-            return {
-                vars = {
-                    self:get_formula(self:next_level()),
-                    (self:next_level()~=1 and 's' or ''),
-                },
-                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level())},
-                main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
-                    BSUI.Modules.GameText.Inactive('up to '),
-                    BSUI.Modules.GameText.Format(self:get_formula(self:level()), G.C.IMPORTANT),
-                    BSUI.Modules.GameText.Inactive(' time'..(self:level()~=1 and 's' or ''))
-                })} or {}
-            }
-        end,
     }
 
     Balatrostuck.Caste{

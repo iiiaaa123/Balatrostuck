@@ -26,7 +26,7 @@ function Balatrostuck.Aspect:level(default)
   return G.GAME.BALATROSTUCK.aspect_levels[self.name] or default or 0
 end
 
-function Balatrostuck.Aspect.next_level()
+function Balatrostuck.Aspect:next_level()
   return self:level()+1
 end
 
@@ -37,23 +37,24 @@ end
 function Balatrostuck.Aspect:get_formula(level)
   if self.name == 'Blood' then return level+1
   
-  elseif self.name == 'Breath' or 
+  elseif self.name == 'Breath' or
          self.name == 'Hope' or
-         self.name == 'Mind' then 
+         self.name == 'Mind' then
     return level
 
   elseif self.name == 'Doom' then return {amt = summation(level) + get_grollars(), chance = level+2}
 
-  elseif self.name == 'Heart' or 
-         self.name == 'Space' or 
-         self.name == 'Time' or 
-         self.name == 'Void' then 
+  elseif self.name == 'Heart' or
+         self.name == 'Space' or
+         self.name == 'Time' or
+         self.name == 'Void' then
     return summation(level)
 
   elseif self.name == 'Life' then return {amt = level+1, money = level*2}
   elseif self.name == 'Light' then return 1 + level/2
   elseif self.name == 'Piss' then return summation(level+1)
   elseif self.name == 'Rage' then return level*0.25
+  else return 0
   end
 end
 

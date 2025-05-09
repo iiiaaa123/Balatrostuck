@@ -72,12 +72,13 @@ BSUI.Modules.GameText.HomestuckLog = function (lines, color)
         ret[#ret+1] = BSUI.Row({align='bm', padding=0, colour=G.C.CLEAR}, {BSUI.Text(line, color, BSUI.TextScale, false)})
     end
 
-    return BSUI.Col(BSUI.Config.PanelOutlined('bm', 0.05, box_col, darken(box_col, 0.3), 1), {
-        BSUI.Row({align = "cm", colour = darken(box_col, 0.5), r = 0.05, padding = 0.08}, {
-            BSUI.Text('Open Jokerlog', G.C.UI.TEXT_LIGHT, BSUI.TextScale*0.8, true)
+    return BSUI.Col(BSUI.Config.PanelOutlined('bm', 0.1, box_col, darken(box_col, 0.1), 1, {w = 3}), {
+        BSUI.Row({align = "cm", colour = darken(box_col, 0.1), r = 0.05, padding = 0.0125}, {
+            BSUI.Text('Hide Jokerlog', G.C.UI.TEXT_DARK, BSUI.TextScale)
         }),
         BSUI.Row(BSUI.Config.Basic, {BSUI.Pad(0, 0.1)}),
-        BSUI.Row(BSUI.Config.Basic, {BSUI.Col(BSUI.Config.Basic, ret)})
+        BSUI.Row(BSUI.Config.Basic, {BSUI.Col(BSUI.Config.Basic, ret)}),
+        BSUI.Row(BSUI.Config.Basic, {BSUI.Pad(0, 0.1)}),
     })
 end
 

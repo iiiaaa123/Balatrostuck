@@ -26,21 +26,6 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
             self:add_caste('Aries')
         end,
         can_use = function() return true end,
-        loc_vars = function(self, info_queue, card)
-            art_credit('akai', info_queue)
-            return {
-                vars = {
-                    self:get_formula(self:next_level())
-                },
-
-                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level() )},
-
-                main_end =  self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
-                    BSUI.Modules.GameText.Inactive('gains '),
-                    BSUI.Modules.GameText.XMult(self:get_formula(self:level()))
-                })} or {}
-            }
-        end,
         cost = 4,
         discovered = true,
         atlas = "HomestuckZodiacs"

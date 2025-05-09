@@ -26,7 +26,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_breath()
                     self:get_formula(self:next_level()),
                     (self:get_formula(self:next_level()) ~= 1 and 's' or '')
                 },
-                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:level()+1)},
+                main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level())},
                 main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
                     BSUI.Modules.GameText.Format(self:get_formula(self:level()), G.C.IMPORTANT),
                     BSUI.Modules.GameText.Inactive(' reroll'..(self:get_formula(self:level()) ~= 1 and 's' or ''))

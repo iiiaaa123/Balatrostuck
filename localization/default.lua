@@ -18,6 +18,9 @@ return {
                     'Will {C:red}not{} appear',
                     'in {C:attention}regular play{}'
                 }
+            },
+            c_bstuck_levelup = {
+                text = {'{s:1.1,E:2,V:1}(lvl.1){} Level up'}
             }
         },
         Joker = {
@@ -57,7 +60,48 @@ return {
                     }        
             }
         },
+        Zodiac = {
+            c_bstuck_aries_current = {
+                text = {'{C:inactive}(Currently gains {C:white,X:mult}X#1#{C:inactive})'}
+            },
+            c_bstuck_gemini_current = {
+                text = {'{C:inactive}(Currently {C:attention}#1#{C:inactive} time#2#{C:inactive})'}
+            },
+            c_bstuck_taurus_current = {
+                text = {'{C:inactive}(Currently {C:white,X:mult}X#1#{C:inactive})'}
+            },
+            c_bstuck_cancer_current = {
+                text = {'{C:inactive}(Currently {C:chips}+#1#{} permament chips{C:inactive})'}
+            },
+            c_bstuck_leo_current = {
+                text = {'{C:inactive}(Currently {C:money}$#1#{C:inactive})'}
+            },
+            c_bstuck_virgo_current = {
+                text = {'{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)'}
+            },
+            c_bstuck_libra_current = {
+                text = {'{C:inactive}(Currently {C:mult}X#1#{C:inactive} Mult)'}
+            },
+            c_bstuck_scorpio_current = {
+                text = {'{C:inactive}(Currently up to {C:attention}#1# {C:inactive}time#2#)'}
+            },
+            c_bstuck_sagittarius_current = {
+                text = {'{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)'}
+            },
+            c_bstuck_capricorn_current = {
+                text = {'{C:inactive}(Currently {C:mult}X#1#{C:inactive} and {C:mult}X#2#{C:inactive})'}
+            },
+            c_bstuck_aquarius_current = {
+                text = {'{C:inactive}(Currently {C:attention}#1#{C:inactive} Tag#2#{C:inactive})'}
+            },
+            c_bstuck_pisces_current = {
+                text = {'{C:inactive}(Currently {C:money}$#1#{C:inactive})'}
+            },
+            c_bstuck_ophiuchus_current = {
+                text = {'{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)'}
+            }
 
+        },
         zodiacui = {
             Inactive = {
                 text = {'{C:inactive}(Currently inactive){}'}
