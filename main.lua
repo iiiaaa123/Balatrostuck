@@ -72,7 +72,8 @@ local joker_list = {
 -- Page 18
 "conditionalimmortality", "theplotpoint", "objectduality","joker", "questbed",
 "yourlordandmaster", "magnificent", "jokermode", "crowbarsfelt", "signofthesignless",
-"echidna", "abraxas", "yaldabaoth", "hephaestus","typheus","donotship"
+"echidna", "abraxas", "yaldabaoth", "hephaestus","typheus",
+-- "donotship"
 }
 
 local aspect_list = {
