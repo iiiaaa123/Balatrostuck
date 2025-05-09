@@ -11,8 +11,7 @@ function Balatrostuck.INIT.Jokers.j_amberfirefly()
             ['text'] = {
                 [1] = "Shuffle a random {C:paradox}Paradox",
                 [2] = "card with a {C:purple}Purple Seal{} into",
-                [3] = "deck when {C:attention}Blind{} is selected",
-                [4] = "{C:attention}-1{} hand size"
+                [3] = "deck when {C:attention}Blind{} is selected"
             },
         unlock = {'Unlocked by',
                 'finishing Act 1'}
@@ -33,12 +32,6 @@ function Balatrostuck.INIT.Jokers.j_amberfirefly()
         unlocked = false,
         discovered = false,
         atlas = 'HomestuckJokers',
-        add_to_deck = function(self,card,from_debuff)
-            G.hand:change_size(-1)
-        end,
-        remove_from_deck = function(self,card,from_debuff)
-            G.hand:change_size(1)
-        end,
         calculate = function (self, card, context)
             if context.setting_blind then
                 local firstmat = nil
