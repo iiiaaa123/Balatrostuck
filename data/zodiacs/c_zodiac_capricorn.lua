@@ -42,7 +42,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_capricorn()
                 main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level() )},
                 main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
                     BSUI.Modules.GameText.XMult(formula_curr.up),
-                    BSUI.Modules.GameText.Format(' and ', G.C.UI.TEXT_INACTIVE),
+                    BSUI.Modules.GameText.Inactive(' and '),
                     BSUI.Modules.GameText.XMult(formula_curr.down)
                 })} or {}
             }

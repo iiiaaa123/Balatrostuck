@@ -36,7 +36,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_pisces()
                 },
                 main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level())},
                 main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
-                    BSUI.Modules.GameText.Format('$'..self:get_formula(self:level()), G.C.MONEY),
+                    BSUI.Modules.GameText.Money(self:get_formula(self:level())),
                 })} or {}
 
             }

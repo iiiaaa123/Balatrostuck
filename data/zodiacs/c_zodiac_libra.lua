@@ -41,7 +41,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_libra()
                 main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level())},
                 main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
                     BSUI.Modules.GameText.XMult(self:get_formula(self:level())),
-                    BSUI.Modules.GameText.Format(' Mult', G.C.UI.TEXT_INACTIVE),
+                    BSUI.Modules.GameText.Inactive(' Mult'),
                 })} or {}
             }
         end,

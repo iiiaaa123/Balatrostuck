@@ -29,8 +29,8 @@ function Balatrostuck.INIT.Aspects.c_aspect_rage()
                 },
                 main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
                 main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
-                    BSUI.Modules.GameText.Format('X'..(self:level())*0.25, G.C.WHITE, G.C.RED),
-                    BSUI.Modules.GameText.Format(' Mult', G.C.UI.TEXT_INACTIVE)
+                    BSUI.Modules.GameText.XMult((self:level())*0.25),
+                    BSUI.Modules.GameText.Inactive(' Mult')
                 })} or {})
             }
         end,

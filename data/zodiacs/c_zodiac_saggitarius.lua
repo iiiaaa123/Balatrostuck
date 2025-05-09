@@ -36,8 +36,8 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
                 },
                 main_start = {BSUI.Modules.GameText.LevelUp(self:get_level_color(), self:next_level() )},
                 main_end = self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
-                    BSUI.Modules.GameText.Format('+'..self:get_formula(self:level()), G.C.CHIPS),
-                    BSUI.Modules.GameText.Format(' Chips', G.C.UI.TEXT_INACTIVE)
+                    BSUI.Modules.GameText.Chips(self:get_formula(self:level())),
+                    BSUI.Modules.GameText.Inactive(' Chips')
                 })} or {}
             }
         end,

@@ -91,8 +91,10 @@ SMODS.current_mod.extra_tabs = function() --Credits tab
                 BSUI.Row( BSUI.Config.Basic, {
                     BSUI.Modules.Credits.Names({'JadedDraconevix', 'conchors', 'Chloe (Teki)'}, scale*0.9),
                     BSUI.Col( BSUI.Config.Basic, {BSUI.Pad(0.2, 0.0)}),
-                    BSUI.Modules.Credits.Names({'Miser', 'SagaciousCejai', 'Victin'}, scale*0.9)
-                })
+                    BSUI.Modules.Credits.Names({'Miser', 'Snowroom', 'Victin'}, scale*0.9)
+                }),
+                BSUI.Row( BSUI.Config.Basic, {BSUI.Pad(0.0, 0.075)}),
+                BSUI.Row( BSUI.Config.Basic, {BSUI.Modules.Credits.Name('SagaciousCejai', scale*0.88)}),
             }),
         })
     end

@@ -30,7 +30,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_mind()
                 main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
                 main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
                     BSUI.Modules.GameText.Format(self:level(), G.C.IMPORTANT),
-                    BSUI.Modules.GameText.Format(' cop'..(self:level() ~= 1 and 'ies' or 'y'), G.C.UI.TEXT_INACTIVE)
+                    BSUI.Modules.GameText.Inactive(' cop'..(self:level() ~= 1 and 'ies' or 'y'))
                 })} or {})
             }
         end,

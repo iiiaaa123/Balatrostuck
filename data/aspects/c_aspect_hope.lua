@@ -36,7 +36,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_hope()
                 main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
                 main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
                     BSUI.Modules.GameText.Format('+'..self:level(), G.C.IMPORTANT),
-                    BSUI.Modules.GameText.Format(' card'..(self:level() ~= 1 and 's' or ''), G.C.UI.TEXT_INACTIVE)
+                    BSUI.Modules.GameText.Inactive(' card'..(self:level() ~= 1 and 's' or ''))
                 })} or {})
             }
         end

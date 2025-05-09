@@ -30,9 +30,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_heart()
                 main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
                 main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
                     BSUI.Modules.GameText.Format(summation(self:level())..' ', G.C.IMPORTANT),
-                    BSUI.Modules.GameText.Format(
-                    'level'..(summation(self:level()) ~= 1 and 's' or ''), G.C.UI.TEXT_INACTIVE
-                    )
+                    BSUI.Modules.GameText.Inactive('level'..(summation(self:level()) ~= 1 and 's' or ''))
                 })} or {})
             }
         end,

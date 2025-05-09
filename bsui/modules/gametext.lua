@@ -21,8 +21,28 @@ BSUI.Modules.GameText.Format = function (text, colour, background)
     })
 end
 
+BSUI.Modules.GameText.Inactive = function (text)
+    return BSUI.Modules.GameText.Format(text, G.C.UI.TEXT_INACTIVE)
+end
+
+BSUI.Modules.GameText.Chips = function (num)
+    return BSUI.Modules.GameText.Format('+'..num, G.C.BLUE)
+end
+
+BSUI.Modules.GameText.Mult = function (num)
+    return BSUI.Modules.GameText.Format('+'..num, G.C.RED)
+end
+
 BSUI.Modules.GameText.XMult = function (num)
     return BSUI.Modules.GameText.Format('X'..num, G.C.WHITE, G.C.RED)
+end
+
+BSUI.Modules.GameText.Money = function (num)
+    return BSUI.Modules.GameText.Format('$'..num, G.C.MONEY)
+end
+
+BSUI.Modules.GameText.Chance = function (num)
+    return BSUI.Modules.GameText.Format(G.C.GAME.probabilities.normal..' in '..num, G.C.GREEN)
 end
 
 BSUI.Modules.GameText.CurrentValue = function (table)

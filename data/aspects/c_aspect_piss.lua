@@ -28,7 +28,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_piss()
                 main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
                 main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
                     BSUI.Modules.GameText.Format(summation(self:level() + 1), G.C.IMPORTANT),
-                    BSUI.Modules.GameText.Format(' Jokers', G.C.UI.TEXT_INACTIVE)
+                    BSUI.Modules.GameText.Inactive(' Jokers')
                 })} or {})
             }
         end,

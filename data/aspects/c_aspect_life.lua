@@ -38,8 +38,8 @@ function Balatrostuck.INIT.Aspects.c_aspect_life()
                 main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
                 main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
                     BSUI.Modules.GameText.Format('+'..self:level()+1, G.C.PARADOX),
-                    BSUI.Modules.GameText.Format(' and ', G.C.UI.TEXT_INACTIVE),
-                    BSUI.Modules.GameText.Format('$'..self:level()*2, G.C.MONEY)
+                    BSUI.Modules.GameText.Inactive(' and '),
+                    BSUI.Modules.GameText.Money('$'..self:level()*2)
                 })} or {})
             }
         end

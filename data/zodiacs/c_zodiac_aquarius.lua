@@ -41,7 +41,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aquarius()
 
                 main_end = self:level() > 0 and {(BSUI.Modules.GameText.CurrentValue({
                     BSUI.Modules.GameText.Format(self:get_formula(self:level()), G.C.IMPORTANT),
-                    BSUI.Modules.GameText.Format(' Tag'..(self:level() ~= 1 and 's' or ''), G.C.UI.TEXT_INACTIVE)
+                    BSUI.Modules.GameText.Inactive(' Tag'..(self:level() ~= 1 and 's' or ''))
                 }))} or {}
             }
         end,

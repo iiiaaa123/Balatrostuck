@@ -41,11 +41,9 @@ function Balatrostuck.INIT.Aspects.c_aspect_doom()
                 },
                 main_start = {BSUI.Modules.GameText.LevelUp(G.C.UI.TEXT_DARK, self:level()+1)},
                 main_end = (self:level() > 0 and {BSUI.Modules.GameText.CurrentValue({
-                    BSUI.Modules.GameText.Format(current..' ', G.C.ATTENTION),
-                    BSUI.Modules.GameText.Format(
-                    'level'..(current ~= 1 and 's' or '')..' and ', G.C.UI.TEXT_INACTIVE
-                    ),
-                    BSUI.Modules.GameText.Format('1 in '..self:level()+1, G.C.GREEN)
+                    BSUI.Modules.GameText.Format(current..' ', G.C.IMPORTANT),
+                    BSUI.Modules.GameText.Inactive('level'..(current ~= 1 and 's' or '')..' and '),
+                    BSUI.Modules.GameText.Chance(self:level()+1)
                 })} or {})
             }
         end
