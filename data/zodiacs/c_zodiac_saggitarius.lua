@@ -11,8 +11,8 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
         loc_txt = {
             ['name'] = "Sagittarius",
             ['text'] = {
-                'Played cards give',
-                '{C:chips}+#1#{} Chips if played hand', --next level value
+                'Played cards give {C:chips}+#1#{} Chips',
+                'when scored if played hand', --next level value
                 'contains a {C:attention}non-scoring 9',
             }
         },

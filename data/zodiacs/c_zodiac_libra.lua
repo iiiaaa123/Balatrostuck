@@ -16,6 +16,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_libra()
                 --"{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
                 'Each played {C:attention}7{}',
                 'gives {X:mult,C:white}X#1#{} Mult', --next level value
+                'when scored',
                 --'{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)' --current level value
             }
         },
