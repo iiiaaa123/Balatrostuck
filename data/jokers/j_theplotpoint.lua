@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Jokers.j_theplotpoint()
                 'Sell this card to create',
                 'a {C:paradox}Paradox {C:dark_edition}Black Hole{},',
                 '{C:red}destroy{} all but {C:attention}leftmost{}',
-                'Joker, and {C:red}-1{} ante',
+                'Joker, and {C:attention}-1{} ante',
                 --'',
                 -- [1] = "Sell this joker: Destroy all jokers except leftmost",
                 -- [2] = "Gain a Black Hole and -1 ante. Once per game."
