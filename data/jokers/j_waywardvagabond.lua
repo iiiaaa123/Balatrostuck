@@ -8,8 +8,8 @@ function Balatrostuck.INIT.Jokers.j_waywardvagabond()
         loc_txt = {
             ['name'] = 'Wayward Vagabond',
             ['text'] = {
-                [1] = 'All {C:attention}Kings{} are debuffed',
-                [2] = 'other cards give {C:mult}+#1#{} Mult',
+                [1] = 'All {C:attention}Kings{} are debuffed,',
+                [2] = 'played cards give {C:mult}+#1#{} Mult',
                 [3] = 'when {C:attention}scored{} or {C:attention}held in hand'
             },
             unlock = {'Unlocked by',
