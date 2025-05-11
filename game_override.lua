@@ -340,6 +340,13 @@ function Card:set_cost()
     end
 end
 
+
+
+
+
+
+
+
 setbase_ref = Card.set_base
 function Card:set_base(card, initial)
     if not initial and card then

@@ -61,3 +61,5 @@ function Balatrostuck.INIT.Aspects.c_aspect_piss()
 
     --Balatrostuck.Slab{key='blood', atlas='HomestuckAspectSlabs', pos={x=2,y=2}}
 end
+
+

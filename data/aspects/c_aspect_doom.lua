@@ -30,8 +30,6 @@ function Balatrostuck.INIT.Aspects.c_aspect_doom()
             return true
         end,
     }
-
-
     -- TODO: THIS IS OUTDATED ABILITY - THE NEW EFFECT IS  N O T  WHAT THE BELOW CODE IS
     -- THIS NEEDS TO BE FIXED ASAP PLS
     Balatrostuck.Slab{
@@ -44,18 +42,30 @@ function Balatrostuck.INIT.Aspects.c_aspect_doom()
         config = {},
         name = 'Aspect of Doom',
         apply = function(self,slab,context)
-            if context.debuff_card and pseudorandom('doom') < G.GAME.probabilities.normal/(slab:level() + 1) then
+            if context.zodiac_upgrade then
+                if pseudorandom('doom') < 1/(slab:level()+1) then
+                    local skibidibiden = context.zodiac
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            play_sound('bstuck_HomestuckDoom',1,0.6)
+                            G.ui_slab:juice_up()
+                            for k,v in pairs(G.GAME.BALATROSTUCK.zodiac_levels) do
+                                if k ~= skibidibiden then
+                                    G.GAME.BALATROSTUCK.zodiac_levels[k] = 0
+                                end
+                            end
+                            return true
+                        end
+                    }))
+                end
+                
                 return {
-                    debuff = true
-                }
-            end
-
-            if context.individual and context.cardarea == G.play then
-                return {
-                        x_mult = 1 + (slab:level() / 10),
-                        card = context.other_card
+                    amount = summation(slab:level()) + get_grollars(),
+                    card = context.other_card
                 }
             end
         end
     }
 end
+
+
