@@ -38,7 +38,7 @@ function Balatrostuck.INIT.Jokers.j_jocker()
                     trigger = 'before',
                     delay = 0.0,
                     func = function()
-                        if #G.jokers.cards >= 128 * (G.SETTINGS.bstuck_jocker_limit-7) and G.SETTINGS.bstuck_jocker_limit ~= 13 then
+                        if #G.jokers.cards >= 2 ^ G.SETTINGS.bstuck_jocker_limit and G.SETTINGS.bstuck_jocker_limit ~= 13 then
                             G.E_MANAGER:clear_queue()
                             I_WARNED_YOU_ABOUT_THE_JOCKERS_BRO()
                         end

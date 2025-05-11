@@ -84,7 +84,7 @@ return {
                 text = {'{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)'}
             },
             c_bstuck_libra_current = {
-                text = {'{C:inactive}(Currently {C:mult}X#1#{C:inactive} Mult)'}
+                text = {'{C:inactive}(Currently {C:white, X:mult}X#1#{C:inactive} Mult)'}
             },
             c_bstuck_scorpio_current = {
                 text = {'{C:inactive}(Currently up to {C:attention}#1# {C:inactive}time#2#)'}
@@ -93,7 +93,7 @@ return {
                 text = {'{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)'}
             },
             c_bstuck_capricorn_current = {
-                text = {'{C:inactive}(Currently {C:mult}X#1#{C:inactive} and {C:mult}X#2#{C:inactive})'}
+                text = {'{C:inactive}(Currently {C:white, X:mult}X#1#{C:inactive} and {C:white, X:mult}X#2#{C:inactive})'}
             },
             c_bstuck_aquarius_current = {
                 text = {'{C:inactive}(Currently {C:attention}#1#{C:inactive} Tag#2#{C:inactive})'}
@@ -102,7 +102,7 @@ return {
                 text = {'{C:inactive}(Currently {C:money}$#1#{C:inactive})'}
             },
             c_bstuck_ophiuchus_current = {
-                text = {'{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)'}
+                text = {'{C:inactive}(Currently {C:white, X:mult}X#1#{C:inactive} Mult)'}
             }
         },
         Aspect = {
