@@ -9,8 +9,9 @@ function Balatrostuck.INIT.Jokers.j_vodkamutini()
         loc_txt = {
             ['name'] = 'Vodka Mutini',
             ['text'] = {
-                "Every time a {C:paradox}Paradox{} card is created",
-                "create a {C:attention}non-{C:paradox}Paradox{} copy of it",
+                "Whenever a {C:paradox}Paradox{} card",
+                "is created, create a",
+                "{C:attention}non-{C:paradox}Paradox{} copy of it",
                 "{C:inactive}(Must have room)"
             },
             unlock = {'Unlocked by',
