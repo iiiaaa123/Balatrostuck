@@ -6,8 +6,8 @@ function Balatrostuck.INIT.Jokers.j_verticlemovements()
         loc_txt = {
             ['name'] = 'VERTICLEMOVEMENTS',
             ['text'] = {
-                [1] = "Jokers in the shop are paradox",
-                [2] = "All paradox cards give 1.2x mult"
+                [1] = "{C:attention}Jokers{} in the shop are {C:paradox}Paradox{},",
+                [2] = "all {C:paradox}Paradox{} cards give {C:white,X:mult}X1.2{} Mult"
             }
         },
         pos = {
