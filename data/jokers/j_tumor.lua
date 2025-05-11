@@ -10,9 +10,11 @@ function Balatrostuck.INIT.Jokers.j_tumor()
         loc_txt = {
             name = 'The Tumor',
             ['text'] = {
-                [1] = "{C:white,X:mult}2X{} Mult if hand",
-                [2] = "is played with",
-                [3] = "{C:money}$0{} or less"
+                '{C:white,X:mult}X2{} Mult if you',
+                'have {C:money}$0{} or less'
+                -- [1] = "{C:white,X:mult}2X{} Mult if hand",
+                -- [2] = "is played with",
+                -- [3] = "{C:money}$0{} or less"
             },
                     unlock = {'Unlocked by',
                             'finishing Act 1'}
