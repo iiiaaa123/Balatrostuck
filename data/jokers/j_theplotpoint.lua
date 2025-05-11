@@ -9,8 +9,13 @@ function Balatrostuck.INIT.Jokers.j_theplotpoint()
         loc_txt = {
             ['name'] = 'The Plot Point',
             ['text'] = {
-                [1] = "Sell this joker: Destroy all jokers except leftmost",
-                [2] = "Gain a Black Hole and -1 ante. Once per game."
+                'Sell this card to create',
+                'a {C:paradox}Paradox {C:dark_edition}Black Hole{},',
+                '{C:red}destroy{} all but {C:attention}leftmost{}',
+                'Joker, and {C:red}-1{} ante',
+                --'',
+                -- [1] = "Sell this joker: Destroy all jokers except leftmost",
+                -- [2] = "Gain a Black Hole and -1 ante. Once per game."
             },
             unlock = {'Unlocked by',
             'finishing Act 6'}
