@@ -11,10 +11,10 @@ function Balatrostuck.INIT.Jokers.j_tanglebuddies()
         loc_txt = {
             ['name'] = 'Tangle Buddies',
             ['text'] = {
-                [1] = "Scoring cards",
-                [2] = "give {C:mult}Mult{} equal to",
-                [3] = "{C:attention}summation{} of times a",
-                [4] = "{C:attention}duplicate{} rank {C:attention}scored"
+                "When played cards are scored,",
+                "they give {C:mult}+Mult{} equal to",
+                "{C:attention}summation{} the amount their",
+                "{C:attention}rank{} has scored {C:attention}this hand"
             }
         },
         pos = {

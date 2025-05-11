@@ -11,9 +11,10 @@ function Balatrostuck.INIT.Jokers.j_horrorterrors()
         loc_txt = {
             ['name'] = 'Horror Terrors',
             ['text'] = {
-                [1] = "When played cards are scored, they give",
-                [2] = "{C:mult}+Mult{} equal to {C:dark_edition}factorial{} the amount",
-                [3] = "their {C:attention}rank{} has scored {C:attention}this hand"
+                "When played cards are scored,",
+                "they give {C:mult}+Mult{} equal to",
+                "{C:dark_edition}factorial{} the amount their",
+                "{C:attention}rank{} has scored {C:attention}this hand"
             }
         },
         pos = {
