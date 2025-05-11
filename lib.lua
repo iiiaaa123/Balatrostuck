@@ -99,13 +99,19 @@ G.bstuck_team = {
             "Programming"
         }
     },
-
+    cejai = {
+        name = 'SagaciousCejai',
+        color = HEX('078446'),
+        depts = {
+            'Art',
+            'Playtesting'
+        }
+    },
     cozy = {
         name = "cozyGalvinism",
         color = HEX('323232'), -- placeholder
         depts = {"Programming"}
     },
-
     miser = {
         name = "Miser",
         color = HEX('416600'),

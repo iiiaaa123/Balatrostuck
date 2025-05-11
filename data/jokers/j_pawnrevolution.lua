@@ -25,7 +25,7 @@ function Balatrostuck.INIT.Jokers.j_pawnrevolution()
         unlocked = true,
         atlas = 'HomestuckJokers',
         loc_vars = function (self, info_queue, card) 
-            art_credit('akai', info_queue)
+            art_credit('cejai', info_queue)
             info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
         end,
         calculate = function(self,card,context)
