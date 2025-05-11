@@ -11,10 +11,11 @@ function Balatrostuck.INIT.Jokers.j_whatpumpkin()
         loc_txt = {
             ['name'] = 'What Pumpkin?',
             ['text'] = {
-                [1] = 'Played cards have a',
-                [2] = '{C:green}#1# in #2#{} chance to create a',
-                [3] = '{C:paradox}Paradox{} copy of itself when scored',
-                [4] = '{C:inactive}({C:attention}#3#{C:inactive} copies remaining)'
+                'Each played card has',
+                'a {C:green}#1# in #2#{} chance to',
+                'create a {C:paradox}Paradox{} copy',
+                'of itself when scored',
+                '{C:inactive}({C:attention}#3#{C:inactive} copies remaining)'
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
