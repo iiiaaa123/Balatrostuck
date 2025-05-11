@@ -26,7 +26,7 @@ G.FUNCS.bstuck_animation_speed_change = function (args)
     G.SETTINGS.bstuck_animation_speed = args.to_key
 end
 G.FUNCS.bstuck_jocker_limit_change = function (args)
-    G.SETTINGS.bstuck_jocker_limit = args.to_key+7
+    G.SETTINGS.bstuck_jocker_limit = args.to_key+6
 end
 
 G.bstuck_team = {

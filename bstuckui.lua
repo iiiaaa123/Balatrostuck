@@ -148,7 +148,7 @@ SMODS.current_mod.extra_tabs = function()
                     })}),
                     BSUI.PadRow(0.2),
                     BSUI.Row(BSUI.Config.Basic, {create_option_cycle({
-                        current_option = G.SETTINGS.bstuck_jocker_limit-7,
+                        current_option = G.SETTINGS.bstuck_jocker_limit-6,
                         options = {'128', '256', '512', '1024', '2048', 'Unlimited'},
                         label = 'Jocker Limit',
                         opt_callback = 'bstuck_jocker_limit_change',
