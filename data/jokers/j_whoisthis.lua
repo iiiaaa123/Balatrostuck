@@ -9,9 +9,9 @@ function Balatrostuck.INIT.Jokers.j_whoisthis()
         loc_txt = {
             ['name'] = 'Who Even Is This?',
             ['text'] = {
-                [1] = 'Creates a random',
-                [2] = '{C:paradox}Paradox{} joker when',
-                [3] = 'blind is selected'
+                'When {C:attention}Blind{} is selected, create',
+                'a random {C:paradox}Paradox{} {C:attention}Joker{}',
+                
             },
             unlock = {'Unlocked by',
             'finishing Act 2'}
