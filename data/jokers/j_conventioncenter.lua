@@ -14,7 +14,7 @@ function Balatrostuck.INIT.Jokers.j_conventioncenter()
         },
         pos = {
             x = 9,
-            y = 12
+            y = 11
          },
         cost = 3,
         rarity = 1,
@@ -23,7 +23,7 @@ function Balatrostuck.INIT.Jokers.j_conventioncenter()
         unlocked = true,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
-            art_credit('akai', info_queue)
+            art_credit('delirium', info_queue)
             return {vars = {}}
         end,
         add_to_deck = function(self,card,from_debuff)
