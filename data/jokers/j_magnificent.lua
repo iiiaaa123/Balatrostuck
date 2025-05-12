@@ -5,6 +5,8 @@ function Balatrostuck.INIT.Jokers.j_magnificent()
         key = "magnificent",
         config = {
             extra = {
+                xchips = 1,
+                xchips_mod = 0.4
             }
         },
         loc_txt = {
@@ -29,7 +31,38 @@ function Balatrostuck.INIT.Jokers.j_magnificent()
             art_credit('akai', info_queue)
             return {vars = {}}
         end,
-        calculate = function (self, context)
+        calculate = function (self,card,context)
+            if context.before and context.cardarea == G.jokers then
+                local suits = {'Diamonds','Spades','Hearts','Clubs'}
+                local amount = 0
+                for k,v in pairs(G.play.cards) do
+                    if v:get_id() == 13 then
+                        -- maybe add some caliborn dialogue trigger here
+                        for i=1, #suits do
+                            if v:is_suit(suits[i]) then
+                                amount = amount + 1
+                                card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchips_mod
+                                table.remove(suits,i)
+                            end
+                        end
+                    end
+                end
+                if amount >= 1 then
+                    return {
+                        message = localize{type='variable',key='a_xmult',vars={card.ability.extra.xchips}},
+                            colour = G.C.BLUE,
+                            delay = 0.45, 
+                        card = card
+                    }
+                end
+            end
+
+            if context.joker_main then
+                return {
+                    x_chips = card.ability.extra.xchips,
+                    card = card
+                }
+            end
         end,
         in_pool = function(self)
             return Balatrostuck.peanut_gallery
