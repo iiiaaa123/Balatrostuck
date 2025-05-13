@@ -388,8 +388,10 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
     end
     local _card = create_card_ref(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
     if next(SMODS.find_card('j_bstuck_typheus')) then
-        if _type == 'joker' or _type == 'Joker' and _card.edition == nil then
-            local _edition = poll_edition('Typheus', nil, nil, true)
+        local _lower_type = string.lower(_type)
+        
+        if _lower_type ~= 'voucher' and _lower_type ~= 'booster' and _card.edition == nil then
+            local _edition = poll_edition('Typheus', nil, true, true)
             _card:set_edition(_edition)
         end
     end

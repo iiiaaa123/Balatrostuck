@@ -8,9 +8,9 @@ function Balatrostuck.INIT.Jokers.j_typheus()
         loc_txt = {
             ['name'] = 'Typheus',
             ['text'] = {
-                'All cards inside {C:attention}packs',
-                'and in the {C:attention}shop{} always',
-                'spawn with an {C:dark_edition}Edition'
+                'All cards always',
+                'spawn with',
+                'an {C:dark_edition}Edition'
             }
         },
         pos = {
@@ -30,14 +30,6 @@ function Balatrostuck.INIT.Jokers.j_typheus()
         soul_pos = {
             x = 9,
             y = 9
-        },
-        add_to_deck = function(self,card,from_debuff)
-            G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost + card.ability.extra
-            G.GAME.current_round.reroll_cost = math.max(0, G.GAME.current_round.reroll_cost + card.ability.extra)
-        end,
-        remove_from_deck = function(self,card,from_debuff)
-            G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost - card.ability.extra
-            G.GAME.current_round.reroll_cost = math.max(0, G.GAME.current_round.reroll_cost - card.ability.extra)
-        end
+        }
     }
 end
