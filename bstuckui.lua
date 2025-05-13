@@ -146,6 +146,7 @@ SMODS.current_mod.extra_tabs = function()
                     })}),
                     BSUI.PadRow(0.2),
                     BSUI.Row(BSUI.Config.Basic, {create_option_cycle({
+                        current_option = G.SETTINGS.bstuck_animation_mode,
                         options = {'Regular', 'Reduced', 'None'},
                         label = 'Animation Mode',
                         opt_callback = 'bstuck_animation_change',
@@ -155,6 +156,7 @@ SMODS.current_mod.extra_tabs = function()
                     })}),
                     BSUI.PadRow(0.2),
                     BSUI.Row(BSUI.Config.Basic, {create_option_cycle({
+                        current_option = G.SETTINGS.bstuck_animation_speed,
                         options = {'1X', '0.75X', '0.5X', '0.33X'},
                         label = 'Animation Speed',
                         opt_callback = 'bstuck_animation_speed_change',
@@ -170,7 +172,7 @@ SMODS.current_mod.extra_tabs = function()
                         opt_callback = 'bstuck_jocker_limit_change',
                         ref_table = G.SETTINGS,
                         ref_value = 'bstuck_jocker_limit',
-                        info = {'Amount of spawnable Jockers before the game forces a crash'}
+                        info = {'Amount of spawnable Jockers','before the game forces a crash'}
                     })}),
                 })
             end

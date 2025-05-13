@@ -14,20 +14,35 @@ Balatrostuck.INIT = {
 }
 Balatrostuck.peanut_gallery = false
 
-G.SETTINGS.bstuck_per_card_credits = true
-G.SETTINGS.bstuck_animation_speed = 1 -- 1 is 1x, 2 is 0.75x, 3 is 0.5x
-G.SETTINGS.bstuck_animation_mode = 2 -- 1 is normal, 2 is reduced animation, 3 is no animation
-G.SETTINGS.bstuck_jocker_limit = 8 -- power of jocker
+if not G.SETTINGS.bstuck_per_card_credits then
+    G.SETTINGS.bstuck_per_card_credits = true
+end
+
+if not G.SETTINGS.bstuck_animation_speed then
+    G.SETTINGS.bstuck_animation_speed = 1 -- 1 is 1x, 2 is 0.75x, 3 is 0.5x
+end
+
+if not G.SETTINGS.bstuck_animation_mode then
+    G.SETTINGS.bstuck_animation_mode = 2 -- 1 is normal, 2 is reduced animation, 3 is no animation
+end
+
+if not G.SETTINGS.bstuck_jocker_limit then
+    G.SETTINGS.bstuck_jocker_limit = 8 -- power of jocker
+end
 
 G.FUNCS.bstuck_animation_change = function (args)
     G.SETTINGS.bstuck_animation_mode = args.to_key
+    G:save_settings()
 end
 G.FUNCS.bstuck_animation_speed_change = function (args)
     G.SETTINGS.bstuck_animation_speed = args.to_key
+    G:save_settings()
 end
 G.FUNCS.bstuck_jocker_limit_change = function (args)
     G.SETTINGS.bstuck_jocker_limit = args.to_key+6
+    G:save_settings()
 end
+
 
 G.bstuck_team = {
     akai = {
