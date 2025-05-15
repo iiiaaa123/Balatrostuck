@@ -6,7 +6,7 @@ function Balatrostuck.INIT.Jokers.j_darkscholar()
         config = {
             extra = {
                 h_size = 0,
-                h_max = 10,
+                h_max = 5,
 
                 Xmult_up = 3,
                 Xmult_down = 0.5,
