@@ -27,15 +27,20 @@ function Balatrostuck.INIT.Jokers.j_smallerbutterflies()
         unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
-            if context.joker_main then
-                local effect = {
-                    chips = card.ability.extra.chips,
-                    card = card
-                }
-                if pseudorandom('Butterfly') < G.GAME.probabilities.normal/card.ability.extra.odds then
-                    effect.dollars = card.ability.extra.dollars
+            if context.cardarea == G.play and context.individual then
+                if context.other_card.debuff then
+                    return {
+                        message = localize('k_debuffed'),
+                        colour = G.C.RED,
+                        card = card,
+                    }
+                elseif pseudorandom('Butterfly') < G.GAME.probabilities.normal/card.ability.extra.odds then
+                    return {
+                        chips = card.ability.extra.chips,
+                        dollars = card.ability.extra.dollars,
+                        card = card
+                    }
                 end
-                return effect
             end
         end,
         check_for_unlock = function(self,args)
