@@ -4,13 +4,13 @@ function Balatrostuck.INIT.Jokers.j_yaldabaoth()
         key = "yaldabaoth",
         config = {
             extra = {
-                ante_scaling = 2            
+                levels = 4,
             }
         },
         loc_txt = {
             ['name'] = 'Yaldabaoth',
             ['text'] = {
-                '{C:attention}+5{} levels in',
+                '{C:attention}+#1#{} levels in',
                 'current {C:aspect}Aspect'
             }
         },
@@ -28,36 +28,17 @@ function Balatrostuck.INIT.Jokers.j_yaldabaoth()
             x = 5,
             y = 9
         },
-        add_to_deck = function(self,card,from_debuff)
-            G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * card.ability.extra.ante_scaling
+        in_pool = function(self,args)
+            return G.GAME.slab
         end,
-        remove_from_deck = function(self,card,from_debuff)
-            G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling / card.ability.extra.ante_scaling
+        calculate = function(self,card,context)
+            if context.aspect_level then
+                return {amount=card.ability.extra.levels}
+            end
         end,
         loc_vars = function(self, info_queue, card)
             art_credit('akai', info_queue)
-            return { vars = {card.ability.extra.xmult_mod, card.ability.extra.xmult}}
-        end,
-        calculate = function(self, card, context)
-            if context.end_of_round and G.GAME.blind.boss and G.GAME.slab and context.cardarea == G.jokers then
-                local color = G.C.WHITE
-                if G.GAME.slab then
-                    G.GAME.slab:increase_level(1)
-                    local aspect = string.gsub(G.GAME.slab.key, "slab_bstuck_", "")
-                    aspect = string.upper(aspect)
-                    color = G.C[aspect]
-                end
-                
-                return {
-                    card = card,
-                    message = '+1 Aspect Level!',
-                    colour = color,
-                    func = function()
-                        play_sound('bstuck_HomestuckAscend',0.7,0.1)
-                        return true
-                    end
-                }
-            end
+            return { vars = {card.ability.extra.levels}}
         end
     }
 end
