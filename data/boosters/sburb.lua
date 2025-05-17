@@ -7,7 +7,7 @@ SMODS.Booster{
         ['name'] = 'Sburb Pack',
         ['text'] = {
             'Choose {C:attention}#1#{} of up to',
-            '{C:attention}#2#{} Aspects to',
+            '{C:attention}#2#{} {C:aspect}Aspect{} cards to',
             'be used immediately'
         },
         group_name = 'SBURB Pack'

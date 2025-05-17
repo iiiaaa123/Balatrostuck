@@ -7,7 +7,7 @@ SMODS.Booster{
         ['name'] = 'Zodiac Pack',
         ['text'] = {
             'Choose {C:attention}#1#{} of up to',
-            '{C:attention}#2#{} Zodiac{} cards to',
+            '{C:attention}#2#{} {C:zodiac}Zodiac{} cards to',
             'be used immediately' 
         },
         group_name = 'Zodiac Pack'
