@@ -59,7 +59,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
                 end
                 
                 return {
-                    x_mult = (self:level(context.other_card) / 2) * scottthewoz,
+                    x_mult = 1 + ((self:level(context.other_card) / 2) * scottthewoz),
                     card = context.other_card
                 }
             end

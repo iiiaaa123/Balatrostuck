@@ -25,11 +25,13 @@ end
 function Balatrostuck.Aspect:level(default)
   local level = G.GAME.BALATROSTUCK.aspect_levels[self.name] or default or 0
   local hi = {}
-  SMODS.calculate_context({aspect_level = true, aspect = key},hi)
-  for i=1, #hi do
-    for k,v in pairs(hi[i]) do
-      if v and v.amount then
-        level = v.amount + level
+  if G.deck then
+    SMODS.calculate_context({aspect_level = true, aspect = key},hi)
+    for i=1, #hi do
+      for k,v in pairs(hi[i]) do
+        if v and v.amount then
+          level = v.amount + level
+        end
       end
     end
   end
@@ -303,11 +305,13 @@ function Slab:level(default)
   aspect = string.gsub(aspect, "^%l", string.upper)
   local level = G.GAME.BALATROSTUCK.aspect_levels[aspect] or default or 0
   local hi = {}
-  SMODS.calculate_context({aspect_level = true, aspect = key},hi)
-  for i=1, #hi do
-    for k,v in pairs(hi[i]) do
-      if v and v.amount then
-        level = v.amount + level
+  if G.deck then
+    SMODS.calculate_context({aspect_level = true, aspect = key},hi)
+    for i=1, #hi do
+      for k,v in pairs(hi[i]) do
+        if v and v.amount then
+          level = v.amount + level
+        end
       end
     end
   end
