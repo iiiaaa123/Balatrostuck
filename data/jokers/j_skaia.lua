@@ -11,8 +11,9 @@ function Balatrostuck.INIT.Jokers.j_skaia()
             ['name'] = 'Skaia',
             ['text'] = {
                 "Create a {C:paradox}Paradox{} copy", 
-                "of every {C:mult}discarded{} card,",
-                "{C:red}-1{} discard each round"
+                "of every {C:attention}discarded{} card,",
+                "when {C:attention}Blind{} is selected",
+                "{C:red}-1{} discard"
 
             },
             unlock = {'Unlocked by',

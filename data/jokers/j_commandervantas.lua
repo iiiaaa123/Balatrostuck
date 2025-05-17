@@ -9,8 +9,8 @@ function Balatrostuck.INIT.Jokers.j_commandervantas()
         loc_txt = {
             ['name'] = 'Commander Vantas',
             ['text'] = {
-                [1] = 'Wild cards are treated as',
-                [2] = 'having their zodiac level +1'
+                [1] = '{C:attention}Wild cards{} are treated as',
+                [2] = 'having their {C:zodiac}zodiac level{} {C:attention}+1{}'
             }
         },
         pos = {
