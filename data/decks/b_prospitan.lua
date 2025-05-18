@@ -4,9 +4,13 @@ function Balatrostuck.INIT.Decks.b_prospitan()
         loc_txt = {
             name = "Prospitian Deck",
             text = {
-                "Standard Packs are $4 cheaper",
-                "Cards in Standard Packs are Paradox",
-                "Paradox cards appear in starting hand"
+                '{C:paradox}Paradox{} cards are drawn',
+                'to hand when round begins',
+                '{s:0.12} ',
+                'Cards in {C:attention}Standard Packs',
+                'always spawn with {C:paradox}Paradox',
+                '{s:0.12} ',
+                '{C:attention}Standard Packs{} cost {C:money}$4{} less',
             }
         },
         atlas = 'HomestuckDecks',
