@@ -111,7 +111,12 @@ function Game:update(dt)
     self.C.PARADOX[3] = left_colour_paradox[3] * (1 - pdox_progress) + right_colour_paradox[3] * pdox_progress
     -- G.ARGS.LOC_COLOURS["aspect"] = G.C.SECONDARY_SET.Aspect
     -- G.ARGS.LOC_COLOURS["zodiac"] = G.C.SECONDARY_SET.Zodiac
-
+    self.C.CURRENT_ASPECT = 
+        self.GAME.BALATROSTUCK.current_aspect 
+        and self.C[string.upper(self.GAME.BALATROSTUCK.current_aspect)] 
+        or self.C.SECONDARY_SET.Aspect
+    
+    G.ARGS.LOC_COLOURS['current_aspect'] = G.C.CURRENT_ASPECT
 
 
 end
