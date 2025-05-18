@@ -6,8 +6,9 @@ function Balatrostuck.INIT.Spectrals.c_spectral_lotuscapsule()
         loc_txt = {
             name = 'Lotus Capsule',
             text = {
-                [1] = 'Add a {C:paradox}Felt Seal{} to',
-                [2] = '{C:attention}1{} selected card'
+                'Add a {C:paradox}Felt Seal{}',
+                'to {C:attention}1{} selected',
+                'card in your hand'
             }
         },
         pos = {
