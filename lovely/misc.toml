@@ -324,9 +324,7 @@ match_indent = true
 payload = '''
 if next(SMODS.find_card('v_bstuck_riseup')) then
     if v.kind ~= 'aspect' and v.kind ~= 'zodiac' then
-        v.current_weight = v.current_weight - 0.1
-    elseif v.kind == 'aspect' then
-        v.current_weight = v.current_weight + 0.1
+        v.current_weight = v.current_weight * 0.5
     end
 end
 
