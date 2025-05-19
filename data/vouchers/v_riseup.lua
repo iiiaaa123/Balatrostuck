@@ -6,7 +6,7 @@ function Balatrostuck.INIT.Vouchers.v_riseup()
             name = 'Rise Up',
             text = {
                 'Zodiac Packs and Aspect Packs',
-                'appear X#1# more frequently',
+                'appear more frequently',
                 'in the shop'
             }
         },
