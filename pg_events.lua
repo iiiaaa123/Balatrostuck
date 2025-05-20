@@ -63,8 +63,35 @@ PG.John.start_of_round_events = {
     },
     draw = {
         size = 2,
-        quip = 'john_draw_two',
+        quip = 'john_draw',
         func = function (self,_self,card,context)
+            
+        end
+    }
+}
+
+PG.John.before_scoring_events = {
+    add_playing_edition = {
+        quip = 'john_add_playing_edition',
+        func = function (_self, card, context)
+
+        end
+    },
+    level_poker_hand = {
+        quip = 'john_level_poker_hand',
+        func = function (_self, card, context)
+            
+        end
+    },
+    add_paradox_steel_hand = {
+        quip = 'john_add_paradox_steel_hand',
+        func = function (_self, card, context)
+
+        end
+    },
+    cheat_hand_type = {
+        quip = 'john_cheat_hand_type',
+        func = function (_self, card, context)
             
         end
     }
