@@ -40,29 +40,32 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_ophiuchus()
             if context.individual and self:level(context.other_card) < 1 then return end
         
             if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
-                local possible_choices = {}
-                for i=1, #G.hand.cards do 
-                    if G.hand.cards[i].edition == nil then
-                        table.insert(possible_choices,G.hand.cards[i])
+                return {
+                    x_mult = 1.25 ^ self:level(context.other_card),
+                    card = context.other_card,
+                    func = function()
+                        local possible_choices = {}
+                        for i=1, #G.hand.cards do 
+                            if not G.hand.cards[i].edition and not G.hand.cards[i].alreadyDead then
+                                table.insert(possible_choices,G.hand.cards[i])
+                            end
+                        end
+                        if #possible_choices >= 1 then
+                            local _card = pseudorandom_element(possible_choices,pseudoseed('Looking for me?  O  '))
+                            _card.alreadyDead = true
+                            G.E_MANAGER:add_event(Event({func = function()
+                                G.hand:remove_card(_card)
+                                play_sound('bstuck_HomestuckParadox',0.7)
+                                _card:juice_up()
+                                _card:set_edition('e_bstuck_paradox',true,true)
+                                G.hand:emplace(_card)
+                                _card.alreadyDead = false
+                                G.hand:sort()
+                                return true
+                            end}))
+                        end
                     end
-                end
-
-                if #possible_choices >= 1 then
-                    local _card = pseudorandom_element(possible_choices,pseudoseed('Looking for me?  O  '))
-                    G.E_MANAGER:add_event(Event({func = function()
-                        G.hand:remove_card(_card)
-                        play_sound('bstuck_HomestuckParadox',0.7)
-                        _card:juice_up()
-                        _card:set_edition('e_bstuck_paradox',true,true)
-                        G.hand:emplace(_card)
-                        G.hand:sort()
-                        return true end
-                    }))
-                    return {
-                        x_mult = 1.25 ^ self:level(context.other_card),
-                        card = context.other_card
-                    }
-                end
+                }
             end
         end
     }
