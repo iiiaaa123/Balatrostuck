@@ -51,7 +51,7 @@ function Balatrostuck.INIT.Jokers.j_strifespecibus()
                 end
                 
                 for i=1, #G.jokers.cards do
-                    if G.jokers.cards[i].ability.extra and G.jokers.cards[i].ability.extra.hand == 'Unassigned' then
+                    if type(G.jokers.cards[i].ability.extra) == 'table' and G.jokers.cards[i].ability.extra.hand == 'Unassigned' then
                         grace = true
                     end
                 end
