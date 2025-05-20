@@ -30,7 +30,7 @@ function Balatrostuck.INIT.Jokers.j_applejuice()
         end,
 
         calculate = function(self,card,context)
-            if (context.pre_discard and not context.blueprint_card) and G.GAME.current_round.discards_left <= 1 then
+            if (context.pre_discard and not context.blueprint_card and not context.hook) and G.GAME.current_round.discards_left <= 1 then
                 if card.ability.extra.d_size <= 1 then
                     ease_discard(1, nil, true)
                     card.getting_sliced = true
