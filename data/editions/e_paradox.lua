@@ -27,8 +27,9 @@ function Balatrostuck.INIT.Editions.e_paradox()
         unlocked = true,
         discovered = false,
         calculate = function(self,card,context)
-            if context.end_of_round and context.other_card == nil then
-                
+            if context.end_of_round and not context.individual and not context.repetition and not context.other_card 
+            and not card.alreadyDead then
+
                 -- Life money
                 if G.GAME.BALATROSTUCK.current_aspect == 'life' then
                     local aspectLevel = G.GAME.BALATROSTUCK.aspect_levels['Life']
@@ -39,6 +40,7 @@ function Balatrostuck.INIT.Editions.e_paradox()
                 -- deletion
                 if not next(SMODS.find_card('j_bstuck_biscuits')) and not (card.ability.consumeable and next(SMODS.find_card('j_bstuck_oldsecret'))) then
                     if context.cardarea == G.hand or (context.cardarea ~= G.deck and context.cardarea ~= G.discard) then
+                        card.alreadyDead = true
                         G.E_MANAGER:add_event(Event({
                             func = function()
                                 play_sound('tarot1')
@@ -51,13 +53,16 @@ function Balatrostuck.INIT.Editions.e_paradox()
                                             context.cardarea:remove_card(card)
                                             card:remove()
                                             card = nil
-                                    return true; end}))
+                                    return true; end
+                                }))
+                                
                                 SMODS.calculate_context({ paradox_ify = true, removed = {card}})
                             return true
                         end}))
-
                         return {
-                            message = '-Ify!'
+                            message = '-Ify!',
+                            card = card,
+                            colour = G.C.PARADOX
                         }
                     else
                         G.E_MANAGER:add_event(Event({

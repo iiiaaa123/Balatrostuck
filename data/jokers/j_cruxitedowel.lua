@@ -55,7 +55,7 @@ function Balatrostuck.INIT.Jokers.j_cruxitedowel()
                     end
     
                     if #card.ability.extra.index == 2 then 
-                        alchemy = math.max(0, math.mod( bit.bor( math.abs(card.ability.extra.index[1]-card.ability.extra.index[2]), bit.lshift(card.ability.extra.index[1]+card.ability.extra.index[2], 21)) , 22 )) 
+                        alchemy = math.max(1, math.mod( bit.bor( math.abs(card.ability.extra.index[1]-card.ability.extra.index[2]), bit.lshift(card.ability.extra.index[1]+card.ability.extra.index[2], 21)) , 22 )) 
                         new_tarot = tarot_pool[alchemy].key
                         G.E_MANAGER:add_event(Event({
                             func = function()
