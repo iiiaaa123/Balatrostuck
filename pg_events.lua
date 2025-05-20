@@ -49,6 +49,23 @@ PG.John.shop_events = {
     },
 }
 
-PG.John.round_events = {
-    
+PG.John.start_of_round_events = {
+    paradox_common = {
+        quip = 'john_paradox_common',
+        func = function (_self,card,context)
+            
+        end
+    },
+    paradox_playingcard = {
+        quip = 'john_paradox_playingcard',
+        func = function (_self,card,context)
+        end
+    },
+    draw = {
+        size = 2,
+        quip = 'john_draw_two',
+        func = function (self,_self,card,context)
+            
+        end
+    }
 }
