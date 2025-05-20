@@ -13,5 +13,36 @@ PG.John.shop_events = {
           
         end
     },
+    {
+        quip = 'john_discount_card',
+        func = function (_self,card_context)
+            
+        end
+    },
+    {
+        quip = 'john_add_pack',
+        func = function (_self,card_context)
+            
+        end
+    },
+    {
+        quip = 'john_free_reroll',
+        func = function (_self,card_context)
+            
+        end
+    },
+    {
+        quip = 'john_add_rare',
+        func = function (_self,card_context)
+            
+        end
+    },
+    {
+        quip = 'john_add_uncommon',
+        func = function (_self,card_context)
+            
+        end
+    },
 }
 
+PG.John.round_events = {}
