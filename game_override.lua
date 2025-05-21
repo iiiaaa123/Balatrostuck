@@ -404,3 +404,11 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
     return _card
 end
 
+can_use_ref = Card.can_use_consumeable
+
+function Card:can_use_consumeable(any_state, skip_check)
+    if self.config.center.key == 'j_bstuck_problemsleuth' then
+        return true
+    end
+    return can_use_ref(self,any_state,skip_check)
+end
