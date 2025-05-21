@@ -35,9 +35,10 @@ function Balatrostuck.INIT.Jokers.j_hotdogjuggler()
         end,
         calculate = function(self,card,context)
             if context.discard then
-                if not context.blueprint then card.ability.extra.discards = card.ability.extra.discards - 1 end
+                if not context.blueprint and card.ability.extra.discards > 0 then card.ability.extra.discards = card.ability.extra.discards - 1 end
                 if card.ability.extra.discards <= 0 and
                 #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                    card.ability.extra.discards = card.ability.extra.hotdog_discards
                     return {
                         message = '+ Zodiac!', 
                         func = function()
@@ -45,11 +46,10 @@ function Balatrostuck.INIT.Jokers.j_hotdogjuggler()
                                 trigger = 'before',
                                 delay = 0.0,
                                 func = (function()
-                                        local zodiac = SMODS.create_card({set = 'Zodiac'})
-                                        zodiac:add_to_deck()
-                                        G.consumeables:emplace(zodiac)
-                                        G.GAME.consumeable_buffer = 0
-                                        card.ability.extra.discards = card.ability.extra.hotdog_discards 
+                                    local zodiac = SMODS.create_card({set = 'Zodiac'})
+                                    zodiac:add_to_deck()
+                                    G.consumeables:emplace(zodiac)
+                                    G.GAME.consumeable_buffer = 0
                                     return true
                                 end)}))
                         end,
