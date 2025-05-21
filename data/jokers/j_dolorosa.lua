@@ -30,7 +30,7 @@ function Balatrostuck.INIT.Jokers.j_dolorosa()
             x = 4,
             y = 5
          },
-        cost = 6,
+        cost = 8,
         rarity = 2,
         blueprint_compat = false,
         eternal_compat = true,
