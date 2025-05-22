@@ -40,7 +40,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_blood()
         name = 'Aspect of Blood',
         apply = function(self, slab, context)
             if context.discard then
-                if G.GAME.BALATROSTUCK.blood_discards < slab:level() + 1 then
+                if G.GAME.BALATROSTUCK.blood_discards < slab:level()*2 then
                     local enhancement = pseudorandom_element(G.P_CENTER_POOLS.Enhanced, pseudoseed('slab_bstuck_blood'))
                     if enhancement.key and G.P_CENTERS[enhancement.key] then
                         sendInfoMessage("Enhancing")

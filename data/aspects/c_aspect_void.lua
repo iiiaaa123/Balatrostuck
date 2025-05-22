@@ -51,7 +51,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_void()
                     end
                 end
 
-                if #jokersToChoose > 0 and negativeCount < summation(slab:level()) then
+                if #jokersToChoose > 0 and negativeCount <= (slab:level()-1) then
                     local flintstones = pseudorandom_element(jokersToChoose, pseudoseed('void'))
                     flintstones:set_edition({negative = true}, true)
                     flintstones.temp_edition = nil

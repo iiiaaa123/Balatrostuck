@@ -43,7 +43,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_life()
         name = 'Aspect of Life',
         apply = function(self, slab, context) 
             if context.setting_blind then
-                for i=1, slab:level()+1 do
+                for i=1, slab:level()*2 do
                     G.E_MANAGER:add_event(Event({
                         func = function() 
                             G.playing_card = (G.playing_card and G.playing_card + 1) or 1

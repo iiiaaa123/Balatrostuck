@@ -48,7 +48,7 @@ end
 
 function Balatrostuck.Aspect:get_formula(level)
   if self.name == 'Blood' then 
-    return {level+1}
+    return {level*2}
   
   elseif self.name == 'Breath' or
          self.name == 'Hope' then
@@ -66,15 +66,20 @@ function Balatrostuck.Aspect:get_formula(level)
 
   elseif self.name == 'Heart' or
          self.name == 'Space' or
-         self.name == 'Time' or
-         self.name == 'Void' then
+         self.name == 'Time' then
     return {
       summation(level), 
       summation(level)~=1 and 's' or ''
     }
 
+  elseif self.name == 'Void' then
+      return {
+      level-1, 
+      level~=1 and 'or fewer' or ''
+    }  
+
   elseif self.name == 'Life' then 
-    return {level+1, level*2}
+    return {level*2, 2}
 
   elseif self.name == 'Light' then 
     return {1 + level/2}
