@@ -30,7 +30,7 @@ function Balatrostuck.INIT.Jokers.j_cruxiteapple()
             return {vars = {}}
         end,
         calculate = function(self,card,context)
-            if context.end_of_round and context.cardarea == G.jokers and G.GAME.current_round.hands_left == 0 then
+            if context.end_of_round and context.cardarea == G.jokers and G.GAME.current_round.hands_left == 0 and not context.game_over then
                 add_tag(Tag('tag_d_six'))
                 delay(0.1)
 
