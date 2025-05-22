@@ -19,6 +19,10 @@ function Balatrostuck.INIT.Aspects.c_aspect_piss()
         },
         cost = 4,
         no_collection = true,
+        hidden = true,
+        soul_set = 'Aspect',  
+        soul_rate = 0.013,
+        can_repeat_soul = false,
         atlas = "HomestuckAspects",
         use = function(self, card, area, copier)
             self:switch_slab()
@@ -61,5 +65,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_piss()
 
     --Balatrostuck.Slab{key='blood', atlas='HomestuckAspectSlabs', pos={x=2,y=2}}
 end
+
+
 
 
