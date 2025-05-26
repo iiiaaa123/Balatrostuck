@@ -5,9 +5,11 @@ function Balatrostuck.INIT.Aspects.c_aspect_rage()
         loc_txt = {
             name = "Rage",
             text = {
-                'First scoring card gives {C:white,X:mult}X#1#{} Mult',
-                'times the {C:attention}difference{} between',
-                '{C:blue}hands{} and {C:red}discards{} left',
+                'First played card gives',
+                '{C:white,X:mult}X#1#{} Mult to the power',
+                'of {C:red}discards{} left {E:2,C:red}minus{} ',
+                '{C:blue}hands{} left when scored',
+                
             }
         },
         pos = {
