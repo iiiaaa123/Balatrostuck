@@ -209,7 +209,7 @@ function Card:draw(layer)
     if self.config.center.key == 'j_bstuck_darkscholar' and (self.edition and self.edition.negative) and self.config.center.discovered then
         self.children.center:set_sprite_pos({x=7,y=12})
     elseif self.config.center.key == 'j_bstuck_darkscholar' and self.config.center.discovered then
-        self.children.center:set_sprite_pos(self.config.center.pos)
+        self.children.center:set_sprite_pos({x=8,y=12})
     end
 
 
