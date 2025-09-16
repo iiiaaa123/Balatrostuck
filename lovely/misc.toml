@@ -4,6 +4,63 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
+#Title Screen - Colors
+[[patches]]
+[patches.pattern]
+target = "globals.lua"
+pattern = '''
+RENTAL = HEX('b18f43'),
+'''
+position = "after"
+payload = '''
+BSTUCK_T1 = HEX("5B648C"),
+BSTUCK_T2 = HEX("409040"),
+'''
+match_indent = true
+times = 1
+
+#Title screen
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "replace_card:start_materialize({G.C.WHITE,G.C.WHITE}, nil, 1.2)"
+position = "after"
+payload = '''replace_card.states.visible = false'''
+match_indent = true
+overwrite = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "replace_card:start_materialize({G.C.WHITE,G.C.WHITE}, true, 2.5)"
+position = "after"
+payload = '''replace_card.states.visible = false'''
+match_indent = true
+overwrite = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = 'local SC_scale = 1.1*(G.debug_splash_size_toggle and 0.8 or 1)'
+position = "at"
+payload = '''local SC_scale = 1.1*(G.debug_splash_size_toggle and 0.8 or 1.3)'''
+match_indent = true
+overwrite = true
+
+#Splash Screen
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CARD_H/2, SC_scale*G.CARD_W, SC_scale*G.CARD_H, G.P_CARDS.empty, G.P_CENTERS['j_joker'])"
+
+position = "at"
+payload = '''
+SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CARD_H/2, SC_scale*G.CARD_W, SC_scale*G.CARD_H, G.P_CARDS.empty, G.P_CENTERS['j_bstuck_cruxiteapple'])
+'''
+match_indent = true
+overwrite = true
+
+
 #Echidna Tags
 [[patches]]
 [patches.pattern]

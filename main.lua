@@ -194,6 +194,7 @@ SMODS.Sound({key = "HomestuckGrimdark", path = 'grimdark.ogg'})
 SMODS.Sound({key = "HomestuckBloodDrop", path = 'blood.ogg'})
 SMODS.Sound({key = "HomestuckDoom", path = 'doom.ogg'})
 SMODS.Sound({key = "HomestuckAscendAll", path = 'ascendAll.ogg'})
+SMODS.Sound({key = "HomestuckIntroPad", path = 'homestuckintropad.ogg'})
 
 SMODS.Atlas({key = "HomestuckJokers", path = "hsjokers.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
 SMODS.Atlas({key = "HomestuckZodiacs", path = "zodiac.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
@@ -214,6 +215,32 @@ SMODS.Atlas({key = "bstuck_logo", path="balatrostuck.png", px=469, py=98, atlas_
 SMODS.Atlas({key = "bstuck_howhigh", path="howhigh.png", px=348, py=232, atlas_table="ASSET_ATLAS"}):register()
 SMODS.Atlas({key = "bstuck_scrollbar", path="scrollbar.png", px=11, py=232, atlas_table="ASSET_ATLAS"}):register()
 
+if not next(SMODS.find_mod("Cryptid")) then
+  SMODS.Atlas({
+    key = "balatro",
+    path = "Logo.png",
+    px = 469,
+    py = 216,
+    prefix_config = { key = false }
+  })
+end
+
+local main_menu_ref = Game.main_menu
+Game.main_menu = function(change_context)
+    local ret = main_menu_ref(change_context)
+    G.title_top.T.w = G.title_top.T.w * 1.7675 * 1.2
+    G.title_top.T.x = G.title_top.T.x - 0.8 * 1.8
+    G.SPLASH_BACK:define_draw_steps({ {
+        shader = 'splash',
+        send = {
+            { name = 'time',       ref_table = G.TIMERS, ref_value = 'REAL_SHADER' },
+            { name = 'vort_speed', val = 0.4 },
+            { name = 'colour_1',   ref_table = G.C,      ref_value = 'BSTUCK_T2' },
+            { name = 'colour_2',   ref_table = G.C,      ref_value = 'BSTUCK_T1' },
+        }
+    } }) 
+    return ret
+end
 
 local UI, load_error = SMODS.load_file("bstuckui.lua")
 if load_error then
