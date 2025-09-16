@@ -31,6 +31,16 @@ function Balatrostuck.INIT.Jokers.j_enterthemedium()
         end,
         calculate = function(self,card,context)
             if context.end_of_round and G.GAME.blind.boss and context.main_eval then
+
+            if G.GAME.pool_flags.bstuck_actprogress <= 2 then
+                for k,v in ipairs(UnlockedbyEnterTheMedium) do
+                    G.P_CENTERS["j_bstuck_"..v].unlocked = true
+                end
+                notify_bstuck_alert("j_bstuck_enterthemedium", 3)
+
+                G.GAME.pool_flags.bstuck_actprogress = 3
+            end
+
                 local pool = get_current_pool('Joker')
                 local _key = "j_joker"
                 local bstuck_pool = {}
@@ -57,10 +67,7 @@ function Balatrostuck.INIT.Jokers.j_enterthemedium()
         
 
         add_to_deck = function(self,card,from_debuff)
-            check_for_unlock({type = 'bstuck_medium'})
-            if G.GAME.pool_flags.bstuck_actprogress <= 2 then
-                G.GAME.pool_flags.bstuck_actprogress = 3
-            end
+            -- check_for_unlock({type = 'bstuck_medium'})
         end,
 
         in_pool = function(self,args)

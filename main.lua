@@ -222,6 +222,12 @@ else
   UI()
 end
 
+UnlockedByApple = {"skaia", "ectobiology", "purrfectwarrior", "vodkamutini", "lordoftime", "museofspace", "lofaf", "lowas", "lolar", "lohac", "sucker", "ascend", "mobiusdoublereacharound", "frustration", "problemsleuth", "aceDick", "pickleinspector", "whatpumpkin", "pairing_grid", "consortconcierge", "roundtwo", "tumor", "innapropriatebucket", "genejoker", "kernelsprite", "trolltrain", "misspaint", "culling", "smallerbutterflies", "hotdogjuggler", "waywardvagabond", "amberfirefly", "whitequeen", "parcelmistress", "aimlessrenegade"}
+UnlockedByAscend = {"beyondcanon", "batterwitch", "therapture", "ahabscrosshairs", "clownincar", "gristtorrent", "enterthemedium", "whoisthis"}
+UnlockedbyEnterTheMedium = {"faygo", "stump", "ringofvoid", "porkhollow", "ringoflife", "descend"}
+UnlockedByDescend = {"cascade", "wake", "complacencyofthelearned", "gamebro", "dadswallet", "darkscholar"}
+UnlockedByCascade = {"collide", "joker","theplotpoint"}
+UnlockedByCollide = { "yourlordandmaster", "conditionalimmortality", "objectduality"}
 
 mod.optional_features = { 
     cardareas = { unscored = true, deck = true, discard = true}
