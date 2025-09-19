@@ -4,6 +4,44 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
+#Act Tracking
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+G.STATE = G.STATES.GAME_OVER
+'''
+position = "after"
+payload = '''
+G.BStuck_acts_unlocked = not G.BStuck_acts_unlocked and {} or G.BStuck_acts_unlocked
+for i = 1, G.GAME.pool_flags.bstuck_actprogress do
+    G.BStuck_acts_unlocked[i] = true
+end
+'''
+match_indent = true
+times = 1
+
+#Make Act Structure Easier
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "_pool[#_pool + 1] = v.key"
+position = "before"
+payload = '''
+G.BStuck_acts_unlocked = not G.BStuck_acts_unlocked and {} or G.BStuck_acts_unlocked
+local act_joker_keys = {"j_bstuck_cruxiteapple", "j_bstuck_ascend", "j_bstuck_enterthemedium", "j_bstuck_descend", "j_bstuck_cascade", "j_bstuck_collide"}
+if ((not G.GAME.pool_flags.bstuck_actprogress) or G.GAME.pool_flags.bstuck_actprogress == 0) or G.BStuck_acts_unlocked[G.GAME.pool_flags.bstuck_actprogress] then
+    if v.key == act_joker_keys[G.GAME.pool_flags.bstuck_actprogress+1] then
+        for i=1, 4 do
+            _pool[#_pool + 1] = v.key
+            _pool_size = _pool_size + 1
+        end
+    end
+end
+'''
+match_indent = true
+
+
 #Title Screen - Colors
 [[patches]]
 [patches.pattern]
@@ -28,6 +66,16 @@ position = "after"
 payload = '''replace_card.states.visible = false'''
 match_indent = true
 overwrite = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if #viable_unlockables > 0 then"
+position = "at"
+payload = '''if false then'''
+match_indent = true
+overwrite = true
+
 
 [[patches]]
 [patches.pattern]
