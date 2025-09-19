@@ -4,16 +4,17 @@ function Balatrostuck.INIT.Jokers.j_roundtwo()
         key = "roundtwo",
         config = {
             extra = { 
-                ante_scaling = 2
+                ante_scaling = 2,
+                current_scaling  = 2
             }
         },
         loc_txt = {
             ['name'] = 'Umbral Ultimatum',
             ['text'] = {
-                '{C:red}X#1#{} base Blind size',
+                '{C:red}X#2#{} base Blind size',
                 'Create a {C:red}Rare Joker{} when',
                 '{C:attention}Boss Blind{} is defeated',
-                '{C:inactive}(Must have room)'
+                '{C:inactive}Increases by X#1# each ante'
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
@@ -30,13 +31,13 @@ function Balatrostuck.INIT.Jokers.j_roundtwo()
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
             art_credit('akai', info_queue)
-            return {vars = {card.ability.extra.ante_scaling}}
+            return {vars = {card.ability.extra.ante_scaling, card.ability.extra.current_scaling}}
         end,
         add_to_deck = function(self,card,from_debuff)
-            G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * card.ability.extra.ante_scaling
+            G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * card.ability.extra.current_scaling
         end,
         remove_from_deck = function(self,card,from_debuff)
-            G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling / card.ability.extra.ante_scaling
+            G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling / card.ability.extra.current_scaling
         end,
         calculate = function(self,card,context)
             if G.GAME.blind.boss and context.end_of_round and context.cardarea == G.jokers then
@@ -48,6 +49,11 @@ function Balatrostuck.INIT.Jokers.j_roundtwo()
                             return true
                     end}))
                     card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_joker'), colour = G.C.RED})
+                    G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
+                    func = function()
+                            G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling * card.ability.extra.ante_scaling
+                            card.ability.extra.current_scaling = card.ability.extra.current_scaling * card.ability.extra.ante_scaling
+                        return true; end})) 
                 end
             end
         end,
