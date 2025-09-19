@@ -4,6 +4,21 @@ version = "1.0.0"
 dump_lua = true
 priority = 0
 
+#Echidna Tags
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.FUNCS.unlock_all = function(e)"
+position = "after"
+payload = '''
+G.BStuck_acts_unlocked = {true, true, true, true, true, true, true}
+'''
+match_indent = true
+times = 1
+overwrite = false
+
+
+
 #Act Tracking
 [[patches]]
 [patches.pattern]
@@ -13,7 +28,7 @@ G.STATE = G.STATES.GAME_OVER
 '''
 position = "after"
 payload = '''
-G.BStuck_acts_unlocked = not G.BStuck_acts_unlocked and {} or G.BStuck_acts_unlocked
+G.BStuck_acts_unlocked =  (not G.BStuck_acts_unlocked and {}) or G.BStuck_acts_unlocked
 for i = 1, G.GAME.pool_flags.bstuck_actprogress do
     G.BStuck_acts_unlocked[i] = true
 end

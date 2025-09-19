@@ -81,8 +81,10 @@ function Balatrostuck.INIT.Tags.t_scratch()
                       delay = 0.4,
                       func = function()
                         local card = create_card("Joker", G.jokers, legendary, rarity, true, nil, nil, "IstoleThisCodeFromCryptid")
+                        card.states.visible = false
                         card:add_to_deck()
                         G.jokers:emplace(card)
+                        card:start_materialize()
                         return true
                       end,
                     }))

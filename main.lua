@@ -135,7 +135,6 @@ batch_load("seals")
 batch_load("blinds")
 batch_load("vouchers")
 batch_load("decks")
-batch_load("challenges")
 
 
 bstuck_joker_keys = {}
@@ -144,6 +143,8 @@ for _, joker in ipairs(joker_list) do
     bstuck_joker_keys[#bstuck_joker_keys+1] = 'j_bstuck_' .. joker
     Balatrostuck.INIT.Jokers["j_"..joker]()
 end
+
+batch_load("challenges")
 
 for _, aspect in ipairs(aspect_list) do
     Balatrostuck.INIT.Aspects["c_aspect_"..aspect]()
