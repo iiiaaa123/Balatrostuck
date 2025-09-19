@@ -31,28 +31,39 @@ SMODS.Challenge{
             hand_size
         } --]]
     },
-    jokers = {{ --[[
+    jokers = {
+        --[[
+    { 
         id = "",
         edition = "",
         eternal = false,
         pinned = false
+
+    }
         --]]
-    }},
-    consumeables = {{ --[[
+    },
+    consumeables = {
+        --[[
+    { 
         id = "",
         edition = "",
         eternal = false,
-    ]]
-    }},
-    vouchers  = {{ --[[
+
+    }
+        ]]
+    },
+    vouchers  = { --[[
+    { 
         id = "",
-    ]]
-    }},
+    
+    } 
+        ]]
+    },
     restrictions = { --[[
         restrictions.banned_cards = {},
         restrictions.banned_tags = {},
         restrictions.banned_other = {},
     ]]
     },
-    deck = -- i got bored im sorry look this one up on the smods wiki
+    deck = {}-- i got bored im sorry look this one up on the smods wiki
 }

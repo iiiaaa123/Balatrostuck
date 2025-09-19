@@ -135,6 +135,8 @@ batch_load("seals")
 batch_load("blinds")
 batch_load("vouchers")
 batch_load("decks")
+batch_load("challenges")
+
 
 bstuck_joker_keys = {}
 
