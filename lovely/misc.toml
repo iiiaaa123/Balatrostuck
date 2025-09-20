@@ -123,6 +123,17 @@ SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CA
 match_indent = true
 overwrite = true
 
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "card_size*G.CARD_W, card_size*G.CARD_H, pseudorandom_element(G.P_CARDS), G.P_CENTERS.c_base)"
+
+position = "at"
+payload = '''
+card_size*G.CARD_W, card_size*G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[pseudorandom_element(bstuck_joker_keys)], {bypass_discovery_center = true, bypass_discovery_ui = true})
+'''
+match_indent = true
+overwrite = true
 
 #Echidna Tags
 [[patches]]

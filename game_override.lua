@@ -244,6 +244,7 @@ end
 
 local shatter_ref = Card.shatter
 function Card:shatter()
+    if self.config.center.key == "j_8_ball" then check_for_unlock({type = 'bstuck_vriska'}) end
     if not self.being_used and self.edition and self.edition.key == 'e_bstuck_paradox' and next(SMODS.find_card('j_bstuck_biscuits')) and self.config.center.key ~= 'j_bstuck_questbed' then
         self.getting_sliced = nil
         play_sound('bstuck_HomestuckParadoxSaved',0.7,0.7)
