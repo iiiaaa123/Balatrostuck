@@ -22,7 +22,7 @@ function Balatrostuck.INIT.Jokers.j_betacopy()
         cost = 25,
         rarity = 1,
         blueprint_compat = false,
-        eternal_compat = true,
+        eternal_compat = false,
         unlocked = true,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card) 
