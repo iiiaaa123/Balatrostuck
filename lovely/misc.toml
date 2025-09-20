@@ -324,11 +324,6 @@ pattern = "function Card:use_consumeable(area, copier)"
 position = "after"
 payload = '''
 self.being_used = true
-local test_for_signless = true
-for k, v in pairs(G.P_CENTER_POOLS['Zodiac']) do
-    if not v.discovered then test_for_signless = nil end
-end
-if test_for_signless then check_for_unlock({type = 'bstuck_signless'}) end
 '''
 match_indent = true
 times = 1
