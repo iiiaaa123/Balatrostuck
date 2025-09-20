@@ -12,7 +12,8 @@ function Balatrostuck.INIT.Jokers.j_signofthesignless()
                 "create the corresponding {C:zodiac}Zodiac{} card,",
                 "{C:green}1 in #1#{} chance to {C:red,E:2}self destruct{}",
                 "and reset all {C:zodiac}Zodiac{} levels to {C:attention}0"
-            }
+            },
+            unlock = {"{C:attention}Discover{} every", "{C:zodiac}Zodiac{}"}
         },
         pos = {
             x = 1,
@@ -22,12 +23,17 @@ function Balatrostuck.INIT.Jokers.j_signofthesignless()
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = false,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
             art_credit('akai', info_queue)
             info_queue[#info_queue+1] = G.P_CENTERS['m_wild']
             return {vars = {card.ability.extra.odds}}
+        end,
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_signless' then
+                unlock_card(self)
+            end
         end,
         calculate = function(self,card,context)
             if context.individual and context.cardarea == G.play and #context.full_hand == 1 then
