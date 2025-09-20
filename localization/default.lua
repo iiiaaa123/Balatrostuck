@@ -65,7 +65,73 @@ return {
                     },
                 unlock = {'Unlocked by',
                 'finishing Act 4'}
-            }
+            },
+            j_bstuck_backseater_1 ={
+                name = '8acks8er',
+                text = {
+                    '{C:dark_edition}Quest #1#:',
+                    'Play a {C:attention}Straight Flush'
+                }
+            },
+            j_bstuck_backseater_2 ={
+                name = '8acks8er',
+                text = {
+                    '{C:dark_edition}Quest #1#:',
+                    '{C:green}#2# in #3#{} chance to',
+                    'beat this quest each round'
+                }
+            },
+            j_bstuck_backseater_3 ={
+                name = '8acks8er',
+                text = {
+                    '{C:dark_edition}Quest #1#:',
+                    'Win a round with',
+                    '#2# {C:attention}empty{} Joker slots'
+                }
+            },
+            j_bstuck_backseater_4 ={
+                name = '8acks8er',
+                text = {
+                    '{C:dark_edition}Quest #1#:',
+                    'Skip both Blinds',
+                    'in one ante, then',
+                    'beat the Boss Blind'
+                }
+            },
+            j_bstuck_backseater_5 ={
+                name = '8acks8er',
+                text = {
+                    '{C:dark_edition}Quest #1#:',
+                    'Destroy #2# playing cards',
+                    'in a single round',
+                    '{C:inactive}(Currently {C:attention}#3#{C:inactive}/#2#)'
+                }
+            },
+            j_bstuck_backseater_6 ={
+                name = '8acks8er',
+                text = {
+                    '{C:dark_edition}Quest #1#:',
+                    'Create #2# Consumable',
+                    'Cards in one round',
+                    '(Currently #3#/#2#)'
+                }
+            },
+            j_bstuck_backseater_7 ={
+                name = '8acks8er',
+                text = {
+                    '{C:dark_edition}Quest #1#:',
+                    'Trigger played cards',
+                    '#2# times in one hand'
+                }
+            },
+            j_bstuck_backseater_8 ={
+                name = '8acks8er',
+                text = {
+                    '{C:dark_edition}Quest #1#:',
+                    'Score #2# Chips',
+                    'in one hand'
+                }
+            },
         },
         Zodiac = {
             c_bstuck_aries_current = {
