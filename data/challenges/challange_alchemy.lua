@@ -59,10 +59,10 @@ SMODS.Challenge{
     } 
         ]]
     },
-    restrictions = { --[[
-        restrictions.banned_cards = {},
-        restrictions.banned_tags = {},
-        restrictions.banned_other = {},
-    ]]
+    restrictions = { 
+      banned_cards = {
+          {id = "v_overstock_norm"},
+          {id = "v_overstock_plus"}
+      }
     }
 }

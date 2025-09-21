@@ -55,10 +55,9 @@ SMODS.Challenge{
     } 
         ]]
     },
-    restrictions = { --[[
-        restrictions.banned_cards = {},
-        restrictions.banned_tags = {},
-        restrictions.banned_other = {},
-    ]]
+    restrictions = { 
+     banned_tags = {
+       {id ="tag_bstuck_scratch"}
+       }
     }
 }

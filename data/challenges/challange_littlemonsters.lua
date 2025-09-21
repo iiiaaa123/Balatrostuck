@@ -58,12 +58,10 @@ SMODS.Challenge{
         ]]
     },
     restrictions = { 
-      -- restrictions.banned_cards = {
-         --   {id = "j_merry_andy"}, 
-          --  {id = "j_drunkard"}
-      --  },
-     --   restrictions.banned_other = {
-       --     {id ="v_wasteful"}
-       -- }
+      banned_cards = {
+         {id = "j_merry_andy"}, 
+          {id = "j_drunkard"},
+          {id = "v_wasteful"}
+      }
     }
 }
