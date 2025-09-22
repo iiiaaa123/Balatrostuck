@@ -303,8 +303,12 @@ return {
             john_bought={
                 "{C:blue}JOHN: hey there!"
             },
-            john_cost={
+            john_balls={
                 "{C:blue}JOHN: do you want to see my balls",
+            },
+
+            john_cost={
+                "{C:blue}JOHN: don't worry, i got you!",
             },
             backseater_quest_1_start={
                 "AG: Ughhhhhhhh, I've seen gru8s play",

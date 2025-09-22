@@ -53,6 +53,9 @@ function Balatrostuck.INIT.Jokers.j_joker()
                 for k, v in pairs(G.shop_jokers.cards) do
                     if v.cost == G.GAME.dollars + 1 then
                         if not activated then
+                            card:add_dialogue("john_cost", "bm")
+                            card:remove_dialogue(7)
+
                             G.E_MANAGER:add_event(Event({trigger = "after", delay = 2, func = function()
                             v.cost = G.GAME.dollars
                             v:juice_up()
@@ -60,8 +63,6 @@ function Balatrostuck.INIT.Jokers.j_joker()
                             return true end}))
                             
                             G.E_MANAGER:add_event(Event({trigger = "after", delay = 2, func = function()
-                            card:add_dialogue("john_cost", "bm")
-                            card:remove_dialogue(7)
                             return true end}))
                         end
                         activated = true
