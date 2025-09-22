@@ -9,10 +9,10 @@ Why? Why not!
 
 ## Mod additions
 
-- **90 new Jokers** with objects, scenes and refereces to the comic
+- **120 new Jokers** with objects, scenes and refereces to the comic
 - **13 Zodiac cards** to level up your played ranks
 - **12 Aspect cards** with run-shaping effects
-- **10 new challanges and 4 new decks** to test your Balatro skills
+- **10 new challenges and 4 new decks** to test your Balatro skills
 - Paradox edition, spectral cards, tags and many more goodies for both Homestuck fans and Balatro diehards
 
 ## Aspect system
