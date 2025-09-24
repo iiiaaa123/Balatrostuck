@@ -4,7 +4,7 @@ function Balatrostuck.INIT.Jokers.j_backseater()
         key = "backseater",
         config = {
             extra = {
-                tier = 3,
+                tier = 1,
                 odds2 = 8,
                 money2 = 16,
                 slots3 = 2,
