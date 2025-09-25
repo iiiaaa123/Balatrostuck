@@ -34,7 +34,7 @@ function Card:add_dialogue(text_key, align, yap_amount, baba_pitch)
 end
 
 function Card:remove_dialogue(timer)
-    local timer = timer or 0
+    local timer = (timer * G.SETTINGS.GAMESPEED) or 0
     G.E_MANAGER:add_event(Event({trigger = "after", blockable = false, blocking = false, delay = timer, func = function()
         if self.children.speech_bubble then self.children.speech_bubble:remove(); self.children.speech_bubble = nil end
     return true end}))

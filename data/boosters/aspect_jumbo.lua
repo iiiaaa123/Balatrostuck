@@ -17,7 +17,9 @@ SMODS.Booster{
     weight = 0.3,
     pos = { x = 2, y = 0 },
     create_card = function(self, card,i)
-        local card = SMODS.create_card({set = "Aspect", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "gam"})
+        local aspect = string.gsub(G.GAME.slab.key, "slab_bstuck_", "")
+        aspect = 'c_bstuck_' .. aspect
+        local card = next(SMODS.find_card('v_bstuck_aspect_mastery')) and i == 1 and SMODS.create_card({key = aspect, area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "gam"}) or SMODS.create_card({set = "Aspect", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "gam"})
         return card
     end
 }

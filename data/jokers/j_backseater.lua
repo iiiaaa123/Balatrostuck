@@ -17,8 +17,7 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                 cardsdone6 = 0,
                 triggersneed7 = 20,
                 triggersdone7 = 0,
-                score8 = 1, --6777216,
-                equalizer = 4,
+                score8 = 16777216,
                 flags = {
                     start1 = true,
                     start2 = true,
@@ -89,9 +88,8 @@ function Balatrostuck.INIT.Jokers.j_backseater()
         end,
 
         add_to_deck = function(self, card)
-            card.ability.extra.equalizer = card.ability.extra.equalizer * G.SETTINGS.GAMESPEED --bandaid
             card:add_dialogue('backseater_pickup')
-            card:remove_dialogue(card.ability.extra.equalizer)
+            card:remove_dialogue(4)
         end,
 
         calculate = function(self, card, context)
@@ -99,7 +97,7 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                 if card.ability.extra.tier == 1 then --play a straight flush, create a spectral card
                     if context.setting_blind and card.ability.extra.flags.start1 then
                         card:add_dialogue('backseater_quest_1_start')
-                        card:remove_dialogue(card.ability.extra.equalizer)
+                        card:remove_dialogue(4)
                         card.ability.extra.flags.start1 = false
                     end
                     if context.before then
@@ -111,13 +109,16 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                                 func = (function()
                                         local _card = create_card('Spectral',G.consumeables, nil, nil, nil, nil, nil, 'vriska!!!!!!!!')
                                         _card:add_to_deck()
+                                        _card:set_edition('e_negative')
                                         G.consumeables:emplace(_card)
+                                        card_eval_status_text(_card, 'extra', nil, nil, nil, {message = 'Gr8!',colour = HEX('4673A0'),card = _card }) 
+                                        card:juice_up(0.5,0.5)
                                         G.GAME.consumeable_buffer = 0
                                     return true
                                 end)}))
                             card.ability.extra.tier = 2
                             card:add_dialogue('backseater_quest_1_done')
-                            card:remove_dialogue(card.ability.extra.equalizer)
+                            card:remove_dialogue(4)
                         end
                     end
 
@@ -126,12 +127,13 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                     if context.end_of_round and not context.individual and not context.repetition then
                         if pseudorandom('ch8er') < G.GAME.probabilities.normal / card.ability.extra.odds2 then
                             ease_dollars(card.ability.extra.money2)
+                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = '+$'..card.ability.extra.money2,colour = HEX('4673A0'),card = card })
                             card.ability.extra.tier = 3
                             card:add_dialogue('backseater_quest_2_done')
-                            card:remove_dialogue(card.ability.extra.equalizer)
+                            card:remove_dialogue(4)
                         elseif card.ability.extra.flags.start2 then
                             card:add_dialogue('backseater_quest_2_start')
-                            card:remove_dialogue(card.ability.extra.equalizer * 1.35)
+                            card:remove_dialogue(5)
                             card.ability.extra.flags.start2 = false
                         end
                     end
@@ -140,14 +142,17 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                 elseif card.ability.extra.tier == 3 then --beat a blind with 2 empty joker slots, get a rare joker thats not 8r8k or octect
                     if context.setting_blind and card.ability.extra.flags.start3 then
                         card:add_dialogue('backseater_quest_3_start')
-                        card:remove_dialogue(card.ability.extra.equalizer)
+                        card:remove_dialogue(4)
                         card.ability.extra.flags.start3 = false
                     elseif context.end_of_round and not context.individual and not context.repetition then
                         if G.jokers.config.card_limit - #G.jokers.cards >= card.ability.extra.slots3 then
                             card.ability.extra.tier = 4
-                            SMODS.add_card{set = 'Joker', rarity = 0.98, key_append = 'vriska!!!!!!!!'} --TODO exclude 8r8k and octect
+                            local _card = SMODS.create_card{set = 'Joker', rarity = 0.98, key_append = 'vriska!!!!!!!!'} --TODO exclude 8r8k and octect
+                            _card:add_to_deck()
+                            G.jokers:emplace(_card)
+                            card_eval_status_text(_card, 'extra', nil, nil, nil, {message = 'Gr8!',colour = HEX('4673A0'),card = _card }) 
                             card:add_dialogue('backseater_quest_3_done')
-                            card:remove_dialogue(card.ability.extra.equalizer)
+                            card:remove_dialogue(4)
                             if G.GAME.blind.boss then
                                 card.ability.extra.flags.start4a = true
                             end
@@ -158,7 +163,7 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                 elseif card.ability.extra.tier == 4 then --skip small AND big blind then beat the boss, get 2 random tags and a coupon tag
                     if context.ending_shop and card.ability.extra.flags.start4a and card.ability.extra.flags.start4b then
                         card:add_dialogue('backseater_quest_4_start')
-                        card:remove_dialogue(card.ability.extra.equalizer)
+                        card:remove_dialogue(4)
                         card.ability.extra.flags.start4b = false
                     elseif context.skip_blind then
                         card.ability.extra.skipdone4 = card.ability.extra.skipdone4 + 1
@@ -192,11 +197,11 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                                 add_tag(tag2)
 
                                 play_sound('timpani')
-                                card:juice_up(0.3, 0.5)
+                                card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Gr8!', colour = HEX('4673A0'),card = card })
                                 return true
                             end}))
                             card:add_dialogue('backseater_quest_4_done')
-                            card:remove_dialogue(card.ability.extra.equalizer)
+                            card:remove_dialogue(4)
                         else
                             card.ability.extra.skipdone4 = 0
                         end
@@ -206,7 +211,7 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                 elseif card.ability.extra.tier == 5 then --destroy 8 cards before going to the next round, get nothing
                     if context.setting_blind and card.ability.extra.flags.start5 then
                         card:add_dialogue('backseater_quest_5_start')
-                        card:remove_dialogue(card.ability.extra.equalizer * 1.35)
+                        card:remove_dialogue(5)
                         card.ability.extra.flags.start5 = false
                     elseif context.remove_playing_cards then
                         for k, v in ipairs(context.removed) do
@@ -216,7 +221,7 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                         if card.ability.extra.destroydone5 >= card.ability.extra.destroyneed5 then
                             card.ability.extra.tier = 6
                             card:add_dialogue('backseater_quest_5_done')
-                            card:remove_dialogue(card.ability.extra.equalizer)
+                            card:remove_dialogue(4)
                         else
                             card.ability.extra.destroydone5 = 0
                         end
@@ -228,7 +233,7 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                         card.ability.extra.readyyet6 = true
                         if card.ability.extra.flags.start6 then
                             card:add_dialogue('backseater_quest_6_start')
-                            card:remove_dialogue(card.ability.extra.equalizer * 1.35)
+                            card:remove_dialogue(5)
                             card.ability.extra.flags.start6 = false
                         end
                     
@@ -237,8 +242,9 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                         if card.ability.extra.cardsdone6 >= card.ability.extra.cardsneed6 then
                             G.consumeables.config.card_limit = G.consumeables.config.card_limit + 1
                             card.ability.extra.tier = 7
+                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = '+1 Consumable Slot!',colour = HEX('4673A0'),card = card })
                             card:add_dialogue('backseater_quest_6_done')
-                            card:remove_dialogue(card.ability.extra.equalizer)
+                            card:remove_dialogue(4)
                         end
                 
                     elseif context.end_of_round and not context.individual and not context.repetition then
@@ -249,7 +255,7 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                 elseif card.ability.extra.tier == 7 then --score 20 cards in a single hand, get +1 hand size permanently
                     if context.setting_blind and card.ability.extra.flags.start7 then
                         card:add_dialogue('backseater_quest_7_start')
-                        card:remove_dialogue(card.ability.extra.equalizer * 2)
+                        card:remove_dialogue(7)
                         card.ability.extra.flags.start7 = false
 
                     elseif context.before then
@@ -265,8 +271,9 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                         if card.ability.extra.triggersdone7 >= card.ability.extra.triggersneed7 then
                             card.ability.extra.tier = 8
                             G.hand:change_size(1)
+                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = '+1 Hand Size!',colour = HEX('4673A0'),card = card })
                             card:add_dialogue('backseater_quest_7_done')
-                            card:remove_dialogue(card.ability.extra.equalizer * 1.67)
+                            card:remove_dialogue(6)
                         else
                             card.ability.extra.triggersdone7 = 0
                         end
@@ -274,7 +281,7 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                 elseif card.ability.extra.tier == 8 then --get 16,777,216 points in a single hand, get 8r8k and octect
                     if context.setting_blind and card.ability.extra.flags.start8 then
                         card:add_dialogue('backseater_quest_8_start')
-                        card:remove_dialogue(card.ability.extra.equalizer * 2)
+                        card:remove_dialogue(7)
                         card.ability.extra.flags.start8 = false
                     elseif not card.ability.extra.flags.start8 and context.ace_dick then
                         local yet = false
@@ -291,7 +298,7 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                         end
                     elseif context.end_of_round and not context.individual and not context.repetition and card.ability.extra.flags.finish then
                         card:add_dialogue('backseater_quest_8_done')
-                        card:remove_dialogue(card.ability.extra.equalizer * 1.67)
+                        card:remove_dialogue(8)
 
                         G.E_MANAGER:add_event(Event({delay = 2,
                             func = function()
@@ -302,7 +309,7 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                                 card:juice_up(0.3, 0.4)
                                 card.states.drag.is = true
                                 card.children.center.pinch.x = true
-                                G.E_MANAGER:add_event(Event({trigger = 'after', delay = 8 * G.SETTINGS.GAMESPEED, blockable = false,
+                                G.E_MANAGER:add_event(Event({trigger = 'after', delay = 8, blockable = false,
                                     func = function()
                                             G.jokers:remove_card(self)
                                             card:remove()
@@ -314,7 +321,7 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                     end
                 elseif context.setting_blind and card.ability.extra.flags.invalid then
                     card:add_dialogue('backseater_invalid_tier')
-                    card:remove_dialogue(card.ability.extra.equalizer)
+                    card:remove_dialogue(4)
                     card.ability.extra.flags.invalid = false
                 end
             end
