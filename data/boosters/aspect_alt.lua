@@ -16,7 +16,7 @@ SMODS.Booster{
     cost = 4,
     weight = 0.3,
     pos = { x = 1, y = 0 },
-    --loc_vars = function(self, info_queue, card)
+    -- loc_vars = function(self, info_queue, card)
      --       art_credit('akai', info_queue)
     --        return {true}
     --    end,
