@@ -17,9 +17,13 @@ function Balatrostuck.INIT.Jokers.j_clownincar()
             'finishing Act 2'}
         },
         pos = {
-            x = 9,
-            y = 12
+            x = 3,
+            y = 11
          },
+         loc_vars = function(self, info_queue, card)
+            art_credit('garb', info_queue)
+            return {vars = {}}
+        end,
         cost = 4,
         rarity = 2,
         blueprint_compat = false,
