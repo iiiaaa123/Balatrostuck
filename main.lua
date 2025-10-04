@@ -196,6 +196,7 @@ SMODS.Sound({key = "HomestuckGrimdark", path = 'grimdark.ogg'})
 SMODS.Sound({key = "HomestuckBloodDrop", path = 'blood.ogg'})
 SMODS.Sound({key = "HomestuckDoom", path = 'doom.ogg'})
 SMODS.Sound({key = "HomestuckAscendAll", path = 'ascendAll.ogg'})
+SMODS.Sound({key = "music_HomestuckTitle", path = 'music_title.ogg', sync = false, pitch = 1, volume = 0.9, select_music_track = function() return (G.STATE == G.STATES.MENU) end})
 SMODS.Sound({key = "introPad1", path = 'homestuckintropad.ogg', prefix_config = { key = false }})
 
 SMODS.Atlas({key = "HomestuckJokers", path = "hsjokers.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
