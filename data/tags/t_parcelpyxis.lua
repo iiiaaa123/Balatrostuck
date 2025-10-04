@@ -22,6 +22,7 @@ function Balatrostuck.INIT.Tags.t_parcelpyxis()
         end,
 
         loc_vars = function(self, info_queue, card)
+            art_credit('akai', info_queue)
             -- PUT RELEVENT LOC VARS HERE WHEN YOU GET TO REWORDING THIS!!!!!!! - Delirium
             return {true}
         end,

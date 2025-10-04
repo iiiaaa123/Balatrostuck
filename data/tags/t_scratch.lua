@@ -24,6 +24,7 @@ function Balatrostuck.INIT.Tags.t_scratch()
 
         loc_vars = function(self, info_queue, card)
             -- PUT RELEVENT LOC VARS HERE WHEN YOU GET TO REWORDING THIS!!!!!!! - Delirium
+            art_credit('akai', info_queue)
             return {true}
         end,
         

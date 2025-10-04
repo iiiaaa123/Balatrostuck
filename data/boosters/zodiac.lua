@@ -16,6 +16,10 @@ SMODS.Booster{
     cost = 3,
     weight = 1,
     pos = { x = 0, y = 1 },
+   -- loc_vars = function(self, info_queue, card)
+     --       art_credit('akai', info_queue)
+      --      return {true}
+      --  end,
     create_card = function(self, card,i)
         if i == 1 or G.GAME.gamer_choices == nil then
             G.GAME.gamer_choices = {}

@@ -18,6 +18,7 @@ function Balatrostuck.INIT.Tags.t_perfectlygeneric()
         atlas = 'HomestuckTags',
         loc_vars = function(self, info_queue, card)
             info_queue[#info_queue + 1] = G.P_CENTERS['c_fool']
+            art_credit('akai', info_queue)
             -- PUT RELEVENT LOC VARS HERE WHEN YOU GET TO REWORDING THIS!!!!!!! - Delirium
             return {true}
         end,

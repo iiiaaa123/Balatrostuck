@@ -82,7 +82,7 @@ function Balatrostuck.INIT.Jokers.j_echeladder()
         unlocked = true,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
-            art_credit('miser', info_queue)
+            art_credit('penny', info_queue)
             local ret = {}
 
             local balastuck = Sprite(0,0,(1*11/232)*6, 6,G.ASSET_ATLAS["bstuck_scrollbar"], {x=0, y=0})

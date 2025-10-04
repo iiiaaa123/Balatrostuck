@@ -242,8 +242,8 @@ G.bstuck_team = {
         color = HEX('323232'), -- placeholder
         depts = {"Programming"}
     },
-    miser = {
-        name = "Miser",
+    penny = {
+        name = "Penny",
         color = HEX('416600'),
         depts = {"Art"}
     },

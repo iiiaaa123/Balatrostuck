@@ -13,6 +13,10 @@ SMODS.Booster{
         group_name = 'SBURB Pack'
     },
     pos = { x = 0, y = 2 },
+    --loc_vars = function(self, info_queue, card)
+    --        art_credit('delirium', info_queue)
+     --       return {true}
+     --   end,
     set_ability = function(self, card, initial, delay_sprites)
         local odds = G.GAME.selected_back.effect.center.key == 'b_bstuck_frog' and 1 or 4
         if pseudorandom('piss') < 1/odds and G.P_CENTERS['c_bstuck_piss'].unlocked then

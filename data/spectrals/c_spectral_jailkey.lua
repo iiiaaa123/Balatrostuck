@@ -70,6 +70,9 @@ function Balatrostuck.INIT.Spectrals.c_spectral_jailkey()
             x = 3,
             y = 0
         },
+        loc_vars = function (self, info_queue, card) 
+            art_credit('akai', info_queue)
+        end,
         atlas = 'HomestuckSpectrals',
         can_use = function(self,card)
             return #G.hand.highlighted == 1 and #G.jokers.cards < G.jokers.config.card_limit

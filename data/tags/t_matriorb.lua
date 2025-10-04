@@ -23,6 +23,12 @@ function Balatrostuck.INIT.Tags.t_matriorb()
         loc_vars = function(self, info_queue, card)
             info_queue[#info_queue + 1] = G.P_CENTERS['p_bstuck_zodiac_mega_booster']
             -- PUT RELEVENT LOC VARS HERE WHEN YOU GET TO REWORDING THIS!!!!!!! - Delirium
+            art_credit('akai', info_queue)
+            -- the eternal struggle of coders. is it late enough to remove it?
+            -- is it too early? we already reworded it, but I'm not Delirium and 
+            -- I've never heard about this. Alas.
+            -- I am just the girl that adds the art credits.
+            -- Fazzie
             return {true}
         end,
         apply = function(self, tag, context)

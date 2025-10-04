@@ -11,6 +11,10 @@ function Balatrostuck.INIT.Vouchers.v_riseup()
             }
         },
         pos = {x=0,y=0},
+        -- loc_vars = function(self, info_queue, card)
+          --  art_credit('akai', info_queue)
+          --  return {true}
+        --end,
         atlas = 'HomestuckVouchers',
         redeem = function(self,card)
           

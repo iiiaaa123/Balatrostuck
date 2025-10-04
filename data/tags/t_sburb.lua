@@ -17,6 +17,7 @@ function Balatrostuck.INIT.Tags.t_sburb()
         atlas = 'HomestuckTags',
         loc_vars = function(self, info_queue, card)
             info_queue[#info_queue + 1] = G.P_CENTERS['p_bstuck_sburb_booster']
+            art_credit('akai', info_queue)
             -- PUT RELEVENT LOC VARS HERE WHEN YOU GET TO REWORDING THIS!!!!!!! - Delirium
             return {true}
         end,

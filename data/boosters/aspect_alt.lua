@@ -16,6 +16,10 @@ SMODS.Booster{
     cost = 4,
     weight = 0.3,
     pos = { x = 1, y = 0 },
+    -- loc_vars = function(self, info_queue, card)
+     --       art_credit('akai', info_queue)
+    --        return {true}
+    --    end,
     create_card = function(self, card,i)
         local aspect = G.GAME.slab and string.gsub(G.GAME.slab.key, "slab_bstuck_", "") or "breath"
         aspect = 'c_bstuck_' .. aspect

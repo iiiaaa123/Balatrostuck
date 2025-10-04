@@ -61,7 +61,7 @@ SMODS.current_mod.extra_tabs = function()
                     BSUI.Col( BSUI.Config.Basic, {BSUI.Pad(0.2, 0.0)}),
                     BSUI.Modules.Credits.Names({'garb', 'Baqly', 'bconlon'}, scale),
                     BSUI.Col( BSUI.Config.Basic, {BSUI.Pad(0.2, 0.0)}),
-                    BSUI.Modules.Credits.Names({'Lyman', 'Miser', 'Delirium'}, scale)
+                    BSUI.Modules.Credits.Names({'Lyman', 'Penny', 'Delirium'}, scale)
                 }),
                 BSUI.Row( BSUI.Config.Basic, {BSUI.Pad(0.0, 0.075)}),
                 BSUI.Row( BSUI.Config.Basic, {BSUI.Modules.Credits.Name('SagaciousCejai', scale*0.88)}),
@@ -101,7 +101,7 @@ SMODS.current_mod.extra_tabs = function()
                 BSUI.Row( BSUI.Config.Basic, {
                     BSUI.Modules.Credits.Names({'conchors', 'Victin'}, scale*0.9),
                     BSUI.Col( BSUI.Config.Basic, {BSUI.Pad(0.2, 0.0)}),
-                    BSUI.Modules.Credits.Names({'Miser', 'Snowroom'}, scale*0.9),
+                    BSUI.Modules.Credits.Names({'Penny', 'Snowroom'}, scale*0.9),
                     BSUI.Col( BSUI.Config.Basic, {BSUI.Pad(0.2, 0.0)}),
                     BSUI.Modules.Credits.Names({'Chloe (Teki)', 'pescia'}, scale*0.9)
                 }),
