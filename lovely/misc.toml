@@ -508,4 +508,19 @@ times = 1
 
 
 
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "  if card.area and card.area.config.type == 'joker' then"
+position = "after"
+match_indent = true
+payload = '''
+    if card.config.center.key == 'j_bstuck_problemsleuth' then
+        local cost = card:activate_cost()
+        use = BSUI.Modules.Buttons.CardButton(card,'activate_joker','can_activate_joker',true,'BUY-OUT',localize('$')..cost)
+    end
+'''
+times = 1
+
+
 
