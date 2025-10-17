@@ -74,7 +74,8 @@ local joker_list = {
 "joker", "theplotpoint", "objectduality","conditionalimmortality", "questbed",
 "yourlordandmaster", "magnificent", "jokermode", "crowbarsfelt", "signofthesignless",
 "echidna", "abraxas", "yaldabaoth", "hephaestus","typheus",
--- "donotship"
+-- DO NOT SHIP AS VISIBLE
+"dave",
 }
 
 local aspect_list = {
