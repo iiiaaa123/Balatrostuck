@@ -13,7 +13,7 @@ SMODS.Booster{
         group_name = 'Aspect Pack'
     },
     kind = 'aspect',
-    cost = 4,
+    cost = 6,
     weight = 0.3,
     --loc_vars = function(self, info_queue, card)
     --        art_credit('garb', info_queue)
