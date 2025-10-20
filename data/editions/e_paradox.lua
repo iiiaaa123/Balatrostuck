@@ -33,8 +33,8 @@ function Balatrostuck.INIT.Editions.e_paradox()
                 -- Life money
                 if G.GAME.BALATROSTUCK.current_aspect == 'life' then
                     local aspectLevel = G.GAME.slab and G.GAME.slab:level()
-                    ease_dollars(2)
-                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('$')..(2),colour = G.C.MONEY, delay = 0.45})
+                    ease_dollars(1)
+                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('$')..(1),colour = G.C.MONEY, delay = 0.45})
                 end
 
                 -- deletion

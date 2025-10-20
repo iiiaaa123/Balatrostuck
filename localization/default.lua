@@ -201,7 +201,7 @@ return {
                 text = {'{C:inactive}(Currently {C:attention}+#1# {C:inactive}card#2#)'}
             },
             c_bstuck_life_current = {
-                text = {'{C:inactive}(Currently {C:paradox}#1# {C:inactive}and {C:money}$#2#{C:inactive})'}
+                text = {'{C:inactive}(Currently {C:attention}#1#{C:inactive} Paradox cards)'}
             },
             c_bstuck_light_current = {
                 text = {'{C:inactive}(Currently {C:white,X:mult}X#1# {C:inactive}Mult)'}

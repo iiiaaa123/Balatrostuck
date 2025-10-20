@@ -8,7 +8,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_life()
                 "Add {C:attention}#1#{} random {C:paradox}Paradox{} cards",
                 "to hand when round begins,",
                 "every {C:paradox}Paradox{} card anywhere",
-                "gives {C:money}$#2#{} at end of round",
+                "gives {C:money}$1{} at end of round",
             }
         },
         pos = {
@@ -30,7 +30,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_life()
         end,
     }
 
-
+   -- ASPECT MONEY GIVING IS ON e_paradox.lua - THE FILE FOR PARADOX EDITION.
 
     Balatrostuck.Slab{
         key = 'life',
