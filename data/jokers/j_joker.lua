@@ -4,6 +4,7 @@ function Balatrostuck.INIT.Jokers.j_joker()
         key = "joker",
         config = {
             extra = {
+                booster_repeat = 3
             }
         },
         loc_txt = {
@@ -66,6 +67,35 @@ function Balatrostuck.INIT.Jokers.j_joker()
                         activated = true
                     end
                 end
+
+            elseif context.cardarea == G.play and context.repetition then
+                if pseudorandom('john') < 1 / 8 then
+                    return {
+                        message = localize('k_again_ex'),
+                        repetitions = 1,
+                        card = card
+                    }
+                end
+
+            elseif context.skipping_booster and not context.open_booster then
+                if pseudorandom('john') < 1 / card.ability.extra.booster_repeat then
+                    card.ability.extra.booster_repeat = card.ability.extra.booster_repeat + 1
+                    G.E_MANAGER:add_event(Event({
+                    func = (function()
+                        add_tag(Tag(pseudorandom_element({'tag_buffoon','tag_charm','tag_meteor','tag_standard','tag_ethereal','bstuck_t_matriorb','bstuck_t_spirograph'}, pseudoseed('john'))))
+                        play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+                        play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+                        return true
+                    end)
+                    }))
+                end
+
+            elseif context.end_of_round and not context.individual and not context.repetition then
+                if G.GAME.blind.boss then
+
+                end
+
+                card.ability.extra.booster_repeat = 3
             end
         end
     }
