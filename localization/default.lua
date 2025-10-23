@@ -186,7 +186,7 @@ return {
         },
         Aspect = {
             c_bstuck_blood_current = {
-                text = {'{C:inactive}(Currently {C:attention}#1# cards)'}
+                text = {'{C:inactive}(Currently {C:attention}#1# cards'}
             },
             c_bstuck_breath_current = {
                 text = {'{C:inactive}(Currently {C:attention}#1# reroll#2#'}
@@ -316,7 +316,7 @@ return {
             },
 
             john_cost={
-                "{C:blue}JOHN: don't worry, i got you!",
+                "{C:blue}JOHN: dont worry, i got you!",
             },
             john_pack_1={
                 "{C:blue}JOHN: didnt want that one?"
@@ -326,6 +326,9 @@ return {
             },
             john_pack_3={
                 "{C:blue}JOHN: lets try a different pack instead"
+            },
+            john_charity = {
+                "{C:blue}JOHN: oh, youre down on your bucks? you can use some of mine"
             },
             backseater_pickup={
                 "{C:Scorpio}AG: heyyyyyyyy there! fancy seeing you here",
