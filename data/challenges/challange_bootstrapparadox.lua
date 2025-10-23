@@ -3,7 +3,11 @@ SMODS.Challenge{
     loc_txt = {
         name = "Bootstrap Paradox",
     },
-    rules = { --[[
+    rules = { 
+        custom = {
+            {id = 'mult_dollar_cap'},
+        },
+        --[[
         rules.custom ={ 
         all_eternal, 
         chips_dollar_cap, 

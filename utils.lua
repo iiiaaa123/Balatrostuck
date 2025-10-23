@@ -98,6 +98,14 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
     return bstuck_create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
 end
 
+local bstuck_mod_mult = mod_mult
+function mod_mult(_mult)
+    if G.GAME.modifiers.mult_dollar_cap then
+        _mult = math.min(_mult, math.max((math.ceil(G.GAME.dollars / 2)), 0))
+    end
+    return bstuck_mod_mult(_mult)
+end
+
 
 function get_innocuous(card,get_only_name)
     local hearts = {

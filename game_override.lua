@@ -190,6 +190,26 @@ function Game:start_run(args)
         self.GAME.slab = _slab
         G.ui_slab:update_atlas()
     end
+
+    if not saveTable then 
+        if args.challenge then
+            self.GAME.challenge = args.challenge.id
+            self.GAME.challenge_tab = args.challenge
+            local _ch = args.challenge
+            if _ch.rules then
+                if _ch.rules.custom then
+                    for k, v in ipairs(_ch.rules.custom) do
+                        if v.id == 'only_shop_zodiac' then 
+                            self.GAME.tarot_rate = 0
+                            self.GAME.joker_rate = 0
+                            self.GAME.planet_rate = 0
+                        end
+                    end
+                end
+            end
+        end
+    end
+
 end
     
 

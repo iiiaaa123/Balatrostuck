@@ -299,6 +299,14 @@ return {
         }
     },
     misc = {
+        v_text = {
+            ch_c_mult_dollar_cap = {
+                '{C:red}Mult{} cannot exceed {C:attention}half{} of current {C:money}$'
+            },
+            ch_c_only_shop_zodiac = {
+                '{C:attention}Jokers{}, {C:planet}Planets{}, and {C:tarot}Tarots{} don\'t appear in the shop'
+            },
+        },
         quips={
             john_bought={
                 "{C:blue}JOHN: hey there!"
@@ -309,6 +317,15 @@ return {
 
             john_cost={
                 "{C:blue}JOHN: don't worry, i got you!",
+            },
+            john_pack_1={
+                "{C:blue}JOHN: didnt want that one?"
+            },
+            john_pack_2={
+                "{C:blue}JOHN: how about another!"
+            },
+            john_pack_3={
+                "{C:blue}JOHN: lets try a different pack instead"
             },
             backseater_pickup={
                 "{C:Scorpio}AG: heyyyyyyyy there! fancy seeing you here",
