@@ -23,7 +23,7 @@ function Balatrostuck.INIT.Jokers.j_misspaint()
             x = 4,
             y = 10
          },
-        cost = 4,
+        cost = 2,
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
