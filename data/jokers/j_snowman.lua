@@ -12,14 +12,14 @@ function Balatrostuck.INIT.Jokers.j_snowman()
                 "Each {C:attention}8{} is considered",
                 "a {C:attention}face{} card, {C:attention}face{}",
                 "cards held in hand",
-                "give {C:mult}+1{} Mult"
+                "give {C:mult}+2{} Mult"
             }
         },
         pos = {
             x = 3,
             y = 5
          },
-        cost = 4,
+        cost = 3,
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
@@ -33,7 +33,7 @@ function Balatrostuck.INIT.Jokers.j_snowman()
             if context.individual and context.cardarea == G.hand and not context.end_of_round then
                 if context.other_card:is_face() and not context.other_card.debuff then
                     return {
-                        h_mult = 1,
+                        h_mult = 2,
                         card = card
                     }
                 elseif context.other_card:is_face() then
