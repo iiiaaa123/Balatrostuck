@@ -3,7 +3,11 @@ SMODS.Challenge{
     loc_txt = {
         name = "Alchemy",
     },
-    rules = { --[[
+    rules = { 
+        custom = {
+            {id = 'perfectly_generic'},
+        },
+        --[[
         rules.custom ={ 
         all_eternal, 
         chips_dollar_cap, 

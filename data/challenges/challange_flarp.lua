@@ -4,7 +4,7 @@ SMODS.Challenge{
         name = "FLARP",
     },
     rules = { 
-        custom = {{id = "no_shop_jokers"}},
+        custom = {{id = "only_shop_zodiac"}},
         modifiers = {
             {id = 'joker_slots', value = 0}
         } 

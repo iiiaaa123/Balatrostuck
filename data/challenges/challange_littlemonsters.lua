@@ -5,7 +5,7 @@ SMODS.Challenge{
     },
     rules = { 
         modifiers = {
-            {id = 'discards', value = 0}
+            {id = 'discards', value = 1}
         } 
     },
     jokers = {

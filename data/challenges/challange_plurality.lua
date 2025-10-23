@@ -5,13 +5,13 @@ SMODS.Challenge{
     },
     rules = {
                 modifiers = {
-            {id = 'hands', value = 5},
-            {id = 'hand_size', value = 1}
+            {id = 'hands', value = 1},
+            {id = 'hand_size', value = 5}
         } 
     },
     jokers = {
     { 
-        id = "j_bstuck_lordoftime",
+        id = "j_bstuck_museofspace",
         eternal = true,
         pinned = false
 
