@@ -186,7 +186,7 @@ return {
         },
         Aspect = {
             c_bstuck_blood_current = {
-                text = {'{C:inactive}(Currently {C:attention}#1# cards'}
+                text = {'{C:inactive}(Currently {C:attention}#1# cards)'}
             },
             c_bstuck_breath_current = {
                 text = {'{C:inactive}(Currently {C:attention}#1# reroll#2#'}
