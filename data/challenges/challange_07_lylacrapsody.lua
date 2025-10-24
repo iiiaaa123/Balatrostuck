@@ -1,7 +1,7 @@
 SMODS.Challenge{
     key = "lylacrapsody",
     loc_txt = {
-        name = "Ly'lac Rhapsody",
+        name = "Mail from Ly'Lac",
     },
     rules = { --[[
         rules.custom ={ 
