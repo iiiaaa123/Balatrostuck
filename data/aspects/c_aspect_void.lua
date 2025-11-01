@@ -5,10 +5,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_void()
         loc_txt = {
             name = "Void",
             text = {
-                'Add {C:dark_edition}Negative{} to a random',
-                '{C:attention}Joker{} at start of round',
-                'if there are {C:attention}#1# or fewer',
-                '{C:dark_edition}Negative{} Jokers',
+                '{C:dark_edition}+#1#{} Joker slot'
             }
         },
         pos = {

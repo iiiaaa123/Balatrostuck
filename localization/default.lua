@@ -186,10 +186,10 @@ return {
         },
         Aspect = {
             c_bstuck_blood_current = {
-                text = {'{C:inactive}(Currently {C:attention}#1# cards)'}
+                text = {'{C:inactive}(Currently {C:attention}#1# {C:inactive}cards)'}
             },
             c_bstuck_breath_current = {
-                text = {'{C:inactive}(Currently {C:attention}#1# reroll#2#'}
+                text = {'{C:inactive}(Currently {C:attention}#1# {C:inactive}reroll#2#)'}
             },
             c_bstuck_doom_current = {
                 text = {'{C:inactive}(Currently {C:green}#1# {C:inactive}level#2# and {C:green}1 in #3#{C:inactive})'}
@@ -204,7 +204,7 @@ return {
                 text = {'{C:inactive}(Currently {C:attention}#1#{C:inactive} Paradox cards)'}
             },
             c_bstuck_light_current = {
-                text = {'{C:inactive}(Currently {C:white,X:mult}X#1# {C:inactive}Mult)'}
+                text = {'{C:inactive}(Currently {C:white,X:mult}X#1# {C:inactive} Mult)'}
             },
             c_bstuck_mind_current = {
                 text = {'{C:inactive}(Currently {C:attention}#1# {C:inactive}cop#2#)'}
@@ -213,16 +213,16 @@ return {
                 text = {'{C:inactive}(Currently {C:paradox}#1# {C:inactive}Jokers)'}
             },
             c_bstuck_rage_current = {
-                text = {'{C:inactive}(Currently {C:white,X:mult}X#1# {C:inactive}Mult)'}
+                text = {'{C:inactive}(Currently {C:white,X:mult}X#1# {C:inactive} Mult)'}
             },
             c_bstuck_space_current = {
-                text = {'{C:attention}+#1# {C:inactive}hand size)'}
+                text = {'{C:inactive}(Currently {C:attention}+#1#{C:inactive})'}
             },
             c_bstuck_time_current = {
-                text = {'{C:inactive}(Currently {C:blue}+#1# {C:inactive}hand#2# each round)'}
+                text = {'{C:inactive}(Currently {C:blue}+#1#{C:inactive})'}
             },
             c_bstuck_void_current = {
-                text = {'{C:inactive}(Currently {C:dark_edition}#1# {C:inactive}or fewer)'}
+                text = {'{C:inactive}(Currently {C:dark_edition}+#1#{C:inactive})'}
             }
         },
         zodiacui = {
