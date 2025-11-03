@@ -20,7 +20,7 @@ function Balatrostuck.INIT.Jokers.j_tumor()
                             'finishing Act 1'}
         },
         pos = {x = 7, y = 7},
-        cost = 6,
+        cost = 0,
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,

@@ -17,7 +17,7 @@ function Balatrostuck.INIT.Jokers.j_bigkahuna()
             x = 3,
             y = 1
          },
-        cost = 6,
+        cost = 4,
         rarity = 1,
         blueprint_compat = false,
         eternal_compat = true,

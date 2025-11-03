@@ -4,8 +4,8 @@ function Balatrostuck.INIT.Jokers.j_hotdogjuggler()
         key = "hotdogjuggler",
         config = {
             extra = {
-                discards = 25,
-                hotdog_discards = 25
+                discards = 20,
+                hotdog_discards = 20
             }
         },
         loc_txt = {

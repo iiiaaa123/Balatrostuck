@@ -25,7 +25,7 @@ function Balatrostuck.INIT.Jokers.j_amberfirefly()
             x = 8,
             y = 1
          },
-        cost = 3,
+        cost = 4,
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,

@@ -4,7 +4,7 @@ function Balatrostuck.INIT.Jokers.j_mirthful()
         name = "Mirthful Joker",
         key = "mirthful",
         config = {
-            extra = {num_odds = 69, dom_odds = 420}
+            extra = {num_odds = 169, dom_odds = 420}
         },
         loc_txt = {
             ['name'] = 'Mirthful Joker',

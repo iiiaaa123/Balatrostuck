@@ -19,7 +19,7 @@ function Balatrostuck.INIT.Jokers.j_hegemonicbrute()
             x = 6,
             y = 5
         },
-        cost = 4,
+        cost = 3,
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,

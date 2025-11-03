@@ -18,7 +18,7 @@ function Balatrostuck.INIT.Jokers.j_pawnrevolution()
             x = 4,
             y = 11
         },
-        cost = 5,
+        cost = 4,
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,

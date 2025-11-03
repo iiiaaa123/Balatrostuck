@@ -23,7 +23,7 @@ function Balatrostuck.INIT.Jokers.j_innapropriatebucket()
             art_credit('akai', info_queue)
             return {vars = {G.GAME.BALATROSTUCK.bucket_suits[1],G.GAME.BALATROSTUCK.bucket_suits[2], colours = {G.C.SUITS[G.GAME.BALATROSTUCK.bucket_suits[1]], G.C.SUITS[G.GAME.BALATROSTUCK.bucket_suits[2]]}}}
         end,
-        cost = 4,
+        cost = 3,
         rarity = 1,
         blueprint_compat = false,
         eternal_compat = true,
