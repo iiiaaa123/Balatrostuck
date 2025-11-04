@@ -4,7 +4,7 @@ function Balatrostuck.INIT.Jokers.j_pickleinspector()
         key = "pickleinspector",
         config = {
             extra = {
-                xmult_gain = 0.1,
+                xmult_gain = 0.05,
                 xmult = 1
             }
         },
