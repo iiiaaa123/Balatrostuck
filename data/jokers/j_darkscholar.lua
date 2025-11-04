@@ -53,7 +53,7 @@ function Balatrostuck.INIT.Jokers.j_darkscholar()
                 card.ability.extra.h_size = card.ability.extra.h_size + 1
                 G.hand:change_size(1)
 
-                if card.ability.extra.h_size == 10 then 
+                if card.ability.extra.h_size == 5 then 
                     play_sound('bstuck_HomestuckGrimdark')
                     card:set_edition("e_negative")
                     card:juice_up(0.8, 0.5)
