@@ -146,7 +146,7 @@ for _, joker in ipairs(joker_list) do
     Balatrostuck.INIT.Jokers["j_"..joker]()
 end
 
-blacklist = {}
+local blacklist = {}
 bstuck_title_jokers = copy_table(bstuck_joker_keys)
 for _, joker in ipairs(bstuck_title_jokers) do
     for k, ban in ipairs(blacklist) do
