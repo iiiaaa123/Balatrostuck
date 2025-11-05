@@ -130,7 +130,7 @@ pattern = "card_size*G.CARD_W, card_size*G.CARD_H, pseudorandom_element(G.P_CARD
 
 position = "at"
 payload = '''
-card_size*G.CARD_W, card_size*G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[pseudorandom_element(bstuck_joker_keys)], {bypass_discovery_center = true, bypass_discovery_ui = true})
+card_size*G.CARD_W, card_size*G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[pseudorandom_element(bstuck_title_jokers)], {bypass_discovery_center = true, bypass_discovery_ui = true})
 '''
 match_indent = true
 overwrite = true

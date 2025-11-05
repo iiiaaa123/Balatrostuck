@@ -66,12 +66,8 @@ function Balatrostuck.INIT.Jokers.j_yourlordandmaster()
                     }
                     for penis, cock in pairs(cali_jokers) do
                         if (v.config.center.key == cock) then
-                            if next(SMODS.find_mod("GARBPACK")) then -- i am allowed one little crossmod, as a treat
-                                v:explode()
-                            else
-                                v:start_dissolve(nil, true)
-                                play_sound('timpani', 0.6, 0.8)
-                            end
+                            v:start_dissolve()
+                            play_sound('timpani', 0.6, 0.8)
                         end
                     end
                 end
@@ -82,6 +78,7 @@ function Balatrostuck.INIT.Jokers.j_yourlordandmaster()
                 card.ability.extra.banned_high_hand =
                     pseudorandom_element(card.ability.extra.high_hands,
                                          pseudoseed('Clown'))
+                print(card.ability.extra.banned_high_hand)
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         local cards = {}
@@ -153,6 +150,7 @@ function Balatrostuck.INIT.Jokers.j_yourlordandmaster()
                 context.shop_card:start_materialize({G.C.GREEN, G.C.RED}, nil,
                                                     1.3)
                 context.shop_card:juice_up()
+                play_sound('timpani', 0.9, 0.8)
             end
         end
 

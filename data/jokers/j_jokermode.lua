@@ -49,7 +49,7 @@ function Balatrostuck.INIT.Jokers.j_jokermode()
                 }
             end
           
-            if context.before and context.scoring_name == "Flush" and not context.blueprint then
+            if context.before and next(context.poker_hands['Flush']) and not context.blueprint then
                 card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
                 return {
                   message = 'UPGRADED!',
