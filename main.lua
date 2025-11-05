@@ -154,7 +154,7 @@ local blacklist = {
 bstuck_title_jokers = copy_table(bstuck_joker_keys)
 for _, joker in ipairs(bstuck_title_jokers) do
     for k, ban in ipairs(blacklist) do
-        if joker == ban then bstuck_title_jokers[k] = nil end
+        if joker == ban then bstuck_title_jokers[_] = nil end
     end
 end
 
