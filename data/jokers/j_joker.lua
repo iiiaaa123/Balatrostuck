@@ -55,7 +55,7 @@ function Balatrostuck.INIT.Jokers.j_joker()
             if not context.blueprint then
                 if context.starting_shop or context.reroll_shop then
                     local activated = false
-                    if G.shop_jokers.cards[1].config.center.rarity and G.shop_jokers.cards[1].config.center.rarity == 1 and 
+                    if G.shop_jokers.cards[1].config.center.set == 'Joker' and G.shop_jokers.cards[2].config.center.set == 'Joker' and G.shop_jokers.cards[1].config.center.rarity and G.shop_jokers.cards[1].config.center.rarity == 1 and 
                     G.shop_jokers.cards[2].config.center.rarity and G.shop_jokers.cards[2].config.center.rarity == 1 and
                         (not card.ability.UNCOMMON_ANTE) or card.ability.UNCOMMON_ANTE and (G.GAME.round_resets.ante >= card.ability.UNCOMMON_ANTE) then
                         card:add_dialogue("john_common", "bm")
