@@ -5,7 +5,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_void()
         loc_txt = {
             name = "Void",
             text = {
-                '{C:dark_edition}+#1#{} Joker slot'
+                '{C:dark_edition}+#1#{} Joker slots'
             }
         },
         pos = {
@@ -37,6 +37,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_void()
         config = {},
         name = 'Aspect of Void',
         apply = function(self, slab, context) 
+            --[[
             if context.setting_blind then
                 local negativeCount = 0
                 local jokersToChoose = {}
@@ -54,6 +55,26 @@ function Balatrostuck.INIT.Aspects.c_aspect_void()
                     flintstones.temp_edition = nil
                 end
             end
+            ]]
+            local peepee 
+            local poopoo
+            
+            if context.activated or context.deactivated then     
+                peepee = summation(slab:level())
+                poopoo = summation(slab:level() - 1)
+            end
+
+            if context.activated and context.after_level_up then
+                if context.returning then
+                    G.jokers:change_size(peepee)
+                else
+                    G.jokers:change_size(peepee-poopoo)
+                end
+            end
+            if context.deactivated and context.before_level_down then
+                G.jokers:change_size(-peepee)
+            end
+
         end
     }
 end

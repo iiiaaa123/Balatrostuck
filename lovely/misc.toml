@@ -17,7 +17,18 @@ match_indent = true
 times = 1
 overwrite = false
 
-
+#Piss is now hidden
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "if not v.demo and not v.wip then"
+position = "at"
+payload = '''
+if not v.demo and not v.wip and v.key ~= "c_bstuck_piss" then
+'''
+match_indent = true
+times = 1
+overwrite = true
 
 #Act Tracking
 [[patches]]
