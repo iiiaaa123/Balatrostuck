@@ -86,6 +86,7 @@ if G.GAME.slab ~= nil then
     eval = G.GAME.slab:calculate({level_up_hand, amount = amount},true)
     if eval then amount = eval.amount end
 end
+SMODS.calculate_context({bstuck_level_up_hand = true})
 '''
 times = 1
 
