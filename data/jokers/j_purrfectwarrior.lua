@@ -53,15 +53,19 @@ function Balatrostuck.INIT.Jokers.j_purrfectwarrior()
         end,
 
         calculate = function(self, card, context)
-            if context.level_up_hand and not context.blueprint then
-                local thunk = math.floor(math.max((sum_levels()-12)/5,0))
-                if thunk > card.ability.extra.h_plays then
-                    thunk = thunk - card.ability.extra.h_plays
-                    G.GAME.round_resets.hands = G.GAME.round_resets.hands + thunk
-                    card.ability.extra.h_plays = card.ability.extra.h_plays + thunk
-                    ease_hands_played(thunk)
-                end
+            if context.bstuck_level_up_hand and not context.blueprint then
+                G.E_MANAGER:add_event(Event({trigger = 'after', func = function()
+                    
+                    local thunk = math.floor(math.max((sum_levels()-12)/5,0))
+                    if thunk > card.ability.extra.h_plays then
+                        ease_hands_played(thunk - card.ability.extra.h_plays)
+                        G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.h_plays
+                        card.ability.extra.h_plays = thunk 
+                        G.GAME.round_resets.hands = G.GAME.round_resets.hands + thunk
+                    end
+                return true end }))
             end
+            
         end,
         check_for_unlock = function(self,args)
             if args.type == 'bstuck_apple_eaten' then
