@@ -4,9 +4,9 @@ function Balatrostuck.INIT.Decks.b_frog()
         loc_txt = {
             name = "Frog Deck",
             text = {
-                'Start with 3',
-                '{C:attention}Sburb Tags',
-                '{C:red}X2{} base Blind size'
+                'Start with 3 {C:attention}Sburb Tags',
+                'base Blind size increases by',
+                '{C:red}X0.5{} after each Boss Blind'
             }
         },
         config = {        },
@@ -17,7 +17,6 @@ function Balatrostuck.INIT.Decks.b_frog()
         pos = {x = 0,y = 0},
         unlocked = true,
         apply = function(self,back)
-            G.GAME.starting_params.ante_scaling = 2
             local i = 0
             repeat
                 G.E_MANAGER:add_event(Event({
@@ -31,6 +30,12 @@ function Balatrostuck.INIT.Decks.b_frog()
                 i = i + 1
             until i == 3
             
+        end,
+
+        calculate = function(self, back, context)
+            if context.end_of_round and not context.repetition and not context.individual and G.GAME.blind.boss then
+                G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling + 0.5
+            end
         end
     }
 end
