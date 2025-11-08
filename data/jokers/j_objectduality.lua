@@ -42,9 +42,7 @@ function Balatrostuck.INIT.Jokers.j_objectduality()
             
             if context.before and context.scoring_name == 'High Card' and G.GAME.current_round.hands_played == 0 then
                 for i=1, #context.scoring_hand do
-                    if #G.jokers.cards >= G.jokers.config.card_limit then
-                        break
-                    end
+            
                     local othercard = context.scoring_hand[i]
                 
                 
