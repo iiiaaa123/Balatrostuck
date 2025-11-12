@@ -336,9 +336,9 @@ return {
                 "{C:blue}JOHN: oh, youre down on your bucks? you can use some of mine"
             },
             backseater_pickup={
-                "{C:VRISKA}AG: heyyyyyyyy there! fancy seeing you here",
-                "{C:VRISKA}I'm hiding from some post-canon nonsense,",
-                "{C:VRISKA}mind if I hang around for a 8it? :::;)",
+                "{C:vriska}AG: heyyyyyyyy there! fancy seeing you here",
+                "{C:vriska}I'm hiding from some post-canon nonsense,",
+                "{C:vriska}mind if I hang around for a 8it? :::;)",
             },
             backseater_quest_1_start={
                 "{C:Scorpio}AG: Ughhhhhhhh, I've seen gru8s",
@@ -431,6 +431,50 @@ return {
                 "{C:Scorpio}Something meddled with my varia8les",
                 "{C:Scorpio}and I'm on an invalid quest num8er.",
                 "{C:Scorpio}Soooooooo, wanna make out?"
+            },
+            caliborn_bough1={
+                "{C:green}I WANT TO PLAY A GAME"
+            },
+            caliborn_bought2={
+                "{C:green}NO MORE CHANGING THE DECK.",
+                "{C:green}NO WEAK HANDS EITHER.",
+                "{C:green}POKER AS POKER IS.",
+                "{C:green}REAL POKER."
+            },
+            caliborn_bought3={
+                "{C:green}SHOW ME YOU CAN BE A REAL MAN.",
+                "{C:green}AND I'LL REWARD YOU. HANDSOMELY.",
+                "{C:green}WITH MY JUJUS. AKA. JOKERS."
+            },
+            caliborn_straight1={
+                "{C:red}NO STRAIGHTS TODAY.",
+                "{C:green}THEY'RE TOO EASY."
+            },
+            caliborn_straight2={
+                "{C:red}NO STRAIGHTS.",
+                "{C:green}PLAY HARDER."
+            },
+            caliborn_fullhouse1={
+                "{C:red}NO MORE FULL HOUSES.",
+                "{C:green}I GOT SICK OF THEM."
+            },
+            caliborn_fullhouse2={
+                "{C:red}FORGET FULL HOUSES.",
+                "{C:green}HOUSES ARE STUPID!"
+            },
+            caliborn_flush1={
+                "{C:red}FLUSHES ARE BAD.",
+                "{C:green}THEY'RE BORING."
+            },
+            caliborn_flush2={
+                "{C:red}I HATE FLUSHES.",
+                "{C:green}CALLIOPE LIKED THEM."
+            },
+            caliborn_gift={
+                "{C:green}BEHOLD.",
+                "{C:green}A GIFT. FROM ME!!",
+                "{C:green}ITS ONE OF MY PRIZED JUJUS.",
+                "{C:green}TAKE GOOD CARE OF IT."
             },
         },
         zodiac_names = {

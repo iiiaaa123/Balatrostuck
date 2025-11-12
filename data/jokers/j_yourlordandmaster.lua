@@ -53,6 +53,16 @@ function Balatrostuck.INIT.Jokers.j_yourlordandmaster()
         check_for_unlock = function(self, args)
             if args.type == 'bstuck_collide' then unlock_card(self) end
         end,
+        add_to_deck = function(self, card)
+            card:add_dialogue("caliborn_bought1", "bm")
+            card:remove_dialogue(2)
+            -- delay = 2
+            card:add_dialogue("caliborn_bought2", "bm")
+            card:remove_dialogue(4)
+            -- delay = 4
+            card:add_dialogue("caliborn_bought3", "bm")
+            card:remove_dialogue(2)
+        end,
         remove_from_deck = function(self, card, from_debuff)
             if not from_debuff then
                 for k, v in pairs(G.jokers.cards) do
@@ -75,6 +85,33 @@ function Balatrostuck.INIT.Jokers.j_yourlordandmaster()
                     pseudorandom_element(card.ability.extra.high_hands,
                                          pseudoseed('Clown'))
                 print(card.ability.extra.banned_high_hand)
+                if card.ability.extra.banned_high_hand == "Flush" then
+                   if pseudorandom('flush') < 1/2 then
+                    card:add_dialogue("caliborn_flush2", "bm")
+                    card:remove_dialogue(6)
+                   else
+                    card:add_dialogue("caliborn_flush1", "bm")
+                    card:remove_dialogue(6)
+                   end
+                end
+                if card.ability.extra.banned_high_hand == "Straight" then
+                   if pseudorandom('straight') < 1/2 then
+                    card:add_dialogue("caliborn_straight2", "bm")
+                    card:remove_dialogue(6)
+                   else
+                    card:add_dialogue("caliborn_straight1", "bm")
+                    card:remove_dialogue(6)
+                   end
+                end
+                if card.ability.extra.banned_high_hand == "Full House" then
+                   if pseudorandom('house') < 1/2 then
+                    card:add_dialogue("caliborn_fullhouse2", "bm")
+                    card:remove_dialogue(6)
+                   else
+                    card:add_dialogue("caliborn_fullhouse1", "bm")
+                    card:remove_dialogue(6)
+                   end
+                end
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         local cards = {}
@@ -116,7 +153,7 @@ function Balatrostuck.INIT.Jokers.j_yourlordandmaster()
                     if context.scoring_name ==
                         card.ability.extra.banned_high_hand then
                         return {
-                            debuff_text = 'I SAY YOU DO NOT PLAY THAT THIS ROUND',
+                            debuff_text = 'I SAID YOU DO NOT PLAY THAT THIS ROUND',
                             debuff = true
                         }
                     end
