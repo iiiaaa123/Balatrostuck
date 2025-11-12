@@ -95,7 +95,7 @@ function Balatrostuck.INIT.Jokers.j_conditionalimmortality()
             end
             
             if context.store_joker_replace then
-                if context.shop_card and context.shop_card.config.center.set == 'Joker' and pseudorandom('cond') < 1/100 then
+                if context.shop_card and context.shop_card.config.center.set == 'Joker' and pseudorandom('cond') < 1/2 then
                     sendInfoMessage(context.shop_card.config.center.key)
                     
                     context.shop_card.config.center = G.P_CENTERS['j_joker']
