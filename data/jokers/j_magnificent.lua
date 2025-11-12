@@ -32,7 +32,6 @@ function Balatrostuck.INIT.Jokers.j_magnificent()
         unlocked = false,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
-            info_queue[#info_queue+1] = {key='warn_bstuck_wip', set='Other'}
             art_credit('akai', info_queue)
             return {vars = {card.ability.extra.xchips}}
         end,

@@ -312,13 +312,13 @@ return {
                 "{C:blue}JOHN: hey there!"
             },
             john_balls={
-                "{C:blue}JOHN: do you want to see my balls",
+                "{C:blue}JOHN: oh shit another me!",
             },
             john_future={
-                "{C:blue}JOHN: I AM MAN FROM FUTURE THIS IS PLACING ORDER",
+                "{C:blue}JOHN: dont mind me!",
             },
             john_loop={
-                "{C:blue}JOHN: Sorry! Gotta close the loop!",
+                "{C:blue}JOHN: sorry! gotta close the loop!",
             },
             john_cost={
                 "{C:blue}JOHN: dont worry, i got you!",
@@ -336,9 +336,9 @@ return {
                 "{C:blue}JOHN: oh, youre down on your bucks? you can use some of mine"
             },
             backseater_pickup={
-                "{C:Scorpio}AG: heyyyyyyyy there! fancy seeing you here",
-                "{C:Scorpio}I'm hiding from some post-canon nonsense,",
-                "{C:Scorpio}mind if I hang around for a 8it? :::;)",
+                "{C:VRISKA}AG: heyyyyyyyy there! fancy seeing you here",
+                "{C:VRISKA}I'm hiding from some post-canon nonsense,",
+                "{C:VRISKA}mind if I hang around for a 8it? :::;)",
             },
             backseater_quest_1_start={
                 "{C:Scorpio}AG: Ughhhhhhhh, I've seen gru8s",

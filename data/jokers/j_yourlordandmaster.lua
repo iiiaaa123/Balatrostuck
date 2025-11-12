@@ -32,10 +32,6 @@ function Balatrostuck.INIT.Jokers.j_yourlordandmaster()
         atlas = 'TheCalibornJoker',
 
         loc_vars = function(self, info_queue, card)
-            info_queue[#info_queue + 1] = {
-                key = 'warn_bstuck_wip',
-                set = 'Other'
-            }
             art_credit('akai', info_queue)
             return {
                 vars = {},
