@@ -15,7 +15,9 @@ function Balatrostuck.INIT.Jokers.j_horrorterrors()
                 "they give {C:mult}+Mult{} equal to",
                 "{C:dark_edition}factorial{} the amount their",
                 "{C:attention}rank{} has scored {C:attention}this hand"
-            }
+            },
+            unlock = {'Beat Ante 12',
+                    'with no vouchers'}
         },
         pos = {
             x = 8,
@@ -25,12 +27,19 @@ function Balatrostuck.INIT.Jokers.j_horrorterrors()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
             art_credit('akai', info_queue)
             return {vars = {}}
         end,
+
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_horrorterrors' then
+                unlock_card(self)
+            end
+        end,
+
         calculate = function (self, card, context)
             if context.individual and context.cardarea == G.play and not (context.repetition) then
                 local horrorcard = context.other_card
