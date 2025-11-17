@@ -432,7 +432,7 @@ return {
                 "{C:Scorpio}and I'm on an invalid quest num8er.",
                 "{C:Scorpio}Soooooooo, wanna make out?"
             },
-            caliborn_bough1={
+            caliborn_bought1={
                 "{C:green}I WANT TO PLAY A GAME"
             },
             caliborn_bought2={

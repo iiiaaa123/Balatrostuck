@@ -7,14 +7,14 @@ function Card:dialogue_say_stuff(n, not_first, pitch)
         G.E_MANAGER:add_event(Event({trigger = "after", delay = 0.1, func = function()
             if self.children.speech_bubble then self.children.speech_bubble.states.visible = true end
             self:dialogue_say_stuff(n, true, pitch)
-        return true end}))
+        return true end}), 'other')
     else
         if n <= 0 then self.talking = false; return end
         play_sound('voice'..math.random(1, 11), pitch*(math.random()*0.2+1), 0.5)
         self:juice_up()
         G.E_MANAGER:add_event(Event({trigger = "after", blockable = false, blocking = false, delay = 0.13, func = function()
             self:dialogue_say_stuff(n-1, true, pitch)
-        return true end}))
+        return true end}), 'other')
     end
 end
 
