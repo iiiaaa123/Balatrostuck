@@ -1,5 +1,11 @@
 OR, XOR, AND = 1, 3, 4
 
+SMODS.Joker:take_ownership("j_joker", {	
+        atlas = 'HomestuckJokers',
+        pos = { x = 5, y = 11 },
+    	soul_pos = {x = 500, y = 500},
+	}, true) -- this is a john joker thing just ignore it and do not remove the joker from the spritesheet
+
 function Card:dialogue_say_stuff(n, not_first, pitch)
     self.talking = true
     local pitch = pitch or 1

@@ -80,8 +80,10 @@ if G.GAME.TIMETRAVEL_TIMER and G.GAME.TIMETRAVEL_KEY and G.GAME.TIMETRAVEL_TIMER
 
     G.E_MANAGER:add_event(Event({trigger = 'after',delay = 1,
         func = function()
-            john_2 = SMODS.create_card({key = "j_bstuck_joker"}) 
+            john_2 = SMODS.create_card({key = "j_joker"}) 
             john_2.states.visible = false
+            john_2.children.center:set_sprite_pos({ x = 6, y = 4 })
+            john_2.children.floating_sprite:set_sprite_pos({ x = 5, y = 4 })
             G.shop_jokers:emplace(john_2)
             john_2:start_materialize({G.C.BLUE, G.C.WHITE}, nil, 1.3)
             john_2:add_dialogue("john_loop", "tm")
