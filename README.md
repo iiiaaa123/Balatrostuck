@@ -41,7 +41,7 @@ Unlike planets the Zodiac cards don't directly increase their values, instead gr
 - **Artwork:** Akai, garb, Lyman, Baqly, Penny, Yokcos, bconian, Delirium, SagaciousCejai
 - **Programming:** Akai, Victin, Yokcos, garb, bcconion, Delirium, CampfireCollective, lord-ruby, cozyGalvanism, dangerbites
 - **Playtesting:** conchors, Penny, Chloe (Teki), Victin, Snowroom, pescia, SagaciousCejai, Jadedraconevix
-- **Music/SFX:** dangerbites, Delirium
+- **Music/SFX:** dangerbites, Delirium, JulianMOCs
 - **SAHCon Trailer:** shmig, sinewavey, Knightmare
 
 ### **Acknowledgements:** 
@@ -56,11 +56,12 @@ Unlike planets the Zodiac cards don't directly increase their values, instead gr
 ### Minor Art Credits
 
 These art credits could not be displayed in-game due to technical reasons.
+- Title Screen music - JulianMOCs
 - All 4 new decks - Akai
 - Felt Seal and Paradox Edition - Akai
 - Jail Key Spectral - Akai
 - Both regular Aspect packs, Zodiac pack, Zodiac Jumbo - Akai
-- Zodiac alternative art - Cejai
-- Aspect Jumbo - Garb
+- Zodiac alternative art pack - Cejai
+- Aspect Jumbo pack - Garb
 - SBURB Pack - Delirium
 
