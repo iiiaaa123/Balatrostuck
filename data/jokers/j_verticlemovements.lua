@@ -8,8 +8,15 @@ function Balatrostuck.INIT.Jokers.j_verticlemovements()
             ['text'] = {
                 [1] = "{C:attention}Jokers{} in the shop are {C:paradox}Paradox{},",
                 [2] = "all {C:paradox}Paradox{} cards give {C:white,X:mult}X1.2{} Mult"
-            }
+            },
+            unlock = {"Win with the",
+            "{C:attention}Painted Deck"}
         },
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_verticle' then
+                unlock_card(self)
+            end
+        end,
         pos = {
             x = 9,
             y = 2
@@ -22,7 +29,7 @@ function Balatrostuck.INIT.Jokers.j_verticlemovements()
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
             if context.store_joker_replace and context.shop_card.ability.set == 'Joker' and not context.blueprint then

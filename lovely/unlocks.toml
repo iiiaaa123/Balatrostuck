@@ -133,3 +133,23 @@ payload = '''
 '''
 match_indent = true
 times = 1
+
+#FANFICJOKERS
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+check_and_set_high_score('current_streak', G.PROFILES[G.SETTINGS.profile].high_scores.current_streak.amt+1)
+'''
+position = "after"
+payload = '''
+ if G.GAME.selected_back.effect.center.key == 'b_painted' then
+           check_for_unlock({type = 'bstuck_vasterror'})
+           check_for_unlock({type = 'bstuck_descendascend'})
+           check_for_unlock({type = 'bstuck_verticle'})
+           check_for_unlock({type = 'bstuck_convention'})
+           check_for_unlock({type = 'bstuck_paintseal'})
+        end
+'''
+match_indent = true
+times = 1

@@ -14,8 +14,16 @@ function Balatrostuck.INIT.Jokers.j_paintseal()
                 [3] = "corresponding {C:zodiac}Zodiac{} card",
                 [4] = "and {C:red}destroy{} this Joker",
                 [5] = "{C:inactive}(Must have room)"
-            }
+            },
+            unlock = {"Win with the",
+            "{C:attention}Painted Deck"}
         },
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_paintseal' then
+                unlock_card(self)
+            end
+        end,
+
         pos = {
             x = 7,
             y = 3
@@ -24,7 +32,7 @@ function Balatrostuck.INIT.Jokers.j_paintseal()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = false,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
             art_credit('akai', info_queue)

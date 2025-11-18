@@ -12,8 +12,15 @@ function Balatrostuck.INIT.Jokers.j_descendascend()
             ['text'] = {
                 [1] = "Gain a {C:attention}Buffoon Tag{} at end of shop,",
                 [2] = "{C:attention}Jokers{} in {C:attention}Buffoon Packs{} are {C:paradox}Paradox"
-            }
+            },
+            unlock = {"Win with the",
+            "{C:attention}Painted Deck"}
         },
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_descendascend' then
+                unlock_card(self)
+            end
+        end,
         pos = {
             x = 8,
             y = 8
@@ -22,7 +29,7 @@ function Balatrostuck.INIT.Jokers.j_descendascend()
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
         loc_vars = function (self, info_queue, card) 
             art_credit('akai', info_queue)

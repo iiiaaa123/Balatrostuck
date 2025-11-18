@@ -16,8 +16,15 @@ function Balatrostuck.INIT.Jokers.j_vasterror()
                 [2] = "{C:paradox}Paradox{} edition and a {C:blue}Blue Seal{} to",
                 [3] = "two {C:attention}random{} playing cards in {C:attention}deck",
                 [4] = "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1# rerolls)"
-            }
+            },
+            unlock = {"Win with the",
+            "{C:attention}Painted Deck"}
         },
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_vasterror' then
+                unlock_card(self)
+            end
+        end,
         pos = {
             x = 8,
             y = 2
@@ -26,7 +33,7 @@ function Balatrostuck.INIT.Jokers.j_vasterror()
         rarity = 2,
         blueprint_compat = false,
         eternal_compat = true,
-        unlocked = true,
+        unlocked = false,
         atlas = 'HomestuckJokers',
 
         loc_vars = function(self, info_queue, card)
