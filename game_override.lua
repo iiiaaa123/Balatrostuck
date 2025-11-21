@@ -299,7 +299,7 @@ function check_for_piss()
         G.P_CENTERS['c_bstuck_piss'].no_collection = false
     else 
         G.P_CENTERS['c_bstuck_piss'].no_collection = true
-        G.P_CENTERS['c_bstuck_piss'].soul_rate = G.P_CENTERS['c_bstuck_piss'].soul_rate * 10
+        G.P_CENTERS['c_bstuck_piss'].soul_rate = 0.013
     end
 
 end
