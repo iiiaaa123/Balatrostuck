@@ -22,7 +22,7 @@ function Balatrostuck.INIT.Jokers.j_note_desolation()
             x = 0,
             y = 0
         },
-        cost = 8,
+        cost = 4,
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,

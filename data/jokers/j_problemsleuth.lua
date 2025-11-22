@@ -23,7 +23,7 @@ function Balatrostuck.INIT.Jokers.j_problemsleuth()
             x = 3,
             y = 0
          },
-        cost = 5,
+        cost = 4,
         rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,

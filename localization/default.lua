@@ -304,7 +304,7 @@ return {
                 '{C:red}Mult{} cannot exceed {C:attention}half{} of current {C:money}$'
             },
             ch_c_tripleblindsize = {
-                '3x blind size bleph'
+                '{C:red}3x{} base Blind size'
             },
             ch_c_only_shop_zodiac = {
                 '{C:attention}Jokers{}, {C:planet}Planets{}, and {C:tarot}Tarots{} don\'t appear in the shop'

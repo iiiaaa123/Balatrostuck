@@ -15,6 +15,16 @@ Why? Why not!
 - **10 new challenges and 4 new decks** to test your Balatro skills
 - Paradox edition, spectral cards, tags and many more goodies for both Homestuck fans and Balatro diehards
 
+## Act Structure
+
+Balatrostuck also features an in-depth metaprogression system: Unlocking jokers are back, baby!
+
+You start the game with a reduced joker count, to acclimate to the new mechanics like Zodiacs.
+In order to unlock over 30 new jokers you must find and consume the **Cruxite Apple** joker.
+Afterwards, obtaining Ascend, Enter the Medium or the rest of the End Of Act Jokers unlocks even more jokers.
+
+In addition to obtaining those jokers and moving through the acts the game also presents 10 new challanges and over 15 unlock conditions for even more unlocking goodness.
+
 ## Aspect system
 Aspects grant powerful boons - double leveling, duplicate tags, mass enhance your cards and much more, all of this **without using a joker slot.**
 Gaining repeated aspect cards further levels them up, making your insane effects stronger. However you can only have one aspect active at once and switching aspects levels them down, so pick carefuly!
