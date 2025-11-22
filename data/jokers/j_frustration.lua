@@ -24,7 +24,7 @@ function Balatrostuck.INIT.Jokers.j_frustration()
             x = 1,
             y = 3
         },
-        cost = 5,
+        cost = 4,
         rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,

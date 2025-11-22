@@ -24,7 +24,7 @@ function Balatrostuck.INIT.Jokers.j_dead_shuffle()
             x = 1,
             y = 2
         },
-        cost = 6,
+        cost = 5,
         rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,

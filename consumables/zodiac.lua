@@ -107,7 +107,7 @@ function Balatrostuck.Zodiac:get_formula(level)
     return {level * 25}
 
   elseif self.name == 'Capricorn' then
-    return {level+1, 1/(level+1)}
+    return {level+0.5, 1/(level+1)}
 
   elseif self.name == 'Pisces' then
     return {level * 2}

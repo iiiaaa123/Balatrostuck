@@ -4,7 +4,7 @@ function Balatrostuck.INIT.Jokers.j_dadswallet()
         key = "dadswallet",
         config = {
             extra = {
-                money = 15,
+                money = 6,
                 slots_gain = 1,
                 slots_current = 0,
                 slots_max = 3
