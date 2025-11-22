@@ -28,6 +28,17 @@ function Card:generate_UIbox_ability_table()
     return full_UI_table
 end
 
+local keypressedhook = love.keypressed
+function love.keypressed(key)
+    if I_TOLD_YOU_DAWG and key == 'escape' then
+        love.event.quit()
+    end
+    if I_TOLD_YOU_DAWG and key == 'r' then
+        SMODS.restart_game()
+    end
+    return keypressedhook(key)
+end
+
 local game_updateref = Game.update
 function Game:update(dt)
     game_updateref(self, dt)
@@ -223,6 +234,28 @@ function ease_dollars(mod, instant)
     easedollars_ref(mod,instant)
 end
 
+local mod = SMODS.current_mod
+local fun = (mod.path .. "assets/fun.png")
+fun = assert(NFS.newFileData(fun))
+fun = love.graphics.newImage(fun)
+local draw_hook = love.draw
+function love.draw()
+    draw_hook()
+    local _xscale = love.graphics.getWidth() / 2560
+    local _yscale = love.graphics.getHeight() / 1600
+
+    if I_TOLD_YOU_DAWG then
+        G.FUNCS:exit_overlay_menu()
+        if G.SPLASH_LOGO then G.SPLASH_LOGO:remove() end
+        if G.SMODS_VERSION_UI then G.SMODS_VERSION_UI:remove() end
+        if G.VERSION_UI then G.VERSION_UI:remove() end
+        if G.MAIN_MENU_UI then G.MAIN_MENU_UI:remove() end
+        if G.PROFILE_BUTTON then G.PROFILE_BUTTON:remove() end
+        if G.title_top then G.title_top:remove() end
+        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.draw(fun, 0, 0, 0, _xscale, _yscale)
+    end
+end
 
 local draw_ref = Card.draw
 function Card:draw(layer)

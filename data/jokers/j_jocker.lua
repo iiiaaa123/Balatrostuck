@@ -41,6 +41,7 @@ function Balatrostuck.INIT.Jokers.j_jocker()
                         if #G.jokers.cards >= 2 ^ G.SETTINGS.bstuck_jocker_limit and G.SETTINGS.bstuck_jocker_limit ~= 12 then
                             G.E_MANAGER:clear_queue()
                             I_WARNED_YOU_ABOUT_THE_JOCKERS_BRO()
+                            return true
                         end
                         local _card = copy_card(card, nil, nil, nil, card.edition)
                         _card:start_materialize()

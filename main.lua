@@ -211,6 +211,8 @@ SMODS.Sound({key = "HomestuckBloodDrop", path = 'blood.ogg'})
 SMODS.Sound({key = "HomestuckDoom", path = 'doom.ogg'})
 SMODS.Sound({key = "HomestuckAscendAll", path = 'ascendAll.ogg'})
 SMODS.Sound({key = "music_HomestuckTitle", path = 'music_title_cut.ogg', sync = false, pitch = 1, volume = 0.9, select_music_track = function() return (G.STATE == G.STATES.MENU) end})
+SMODS.Sound({key = "music_HomestuckSbahj", path = 'music_title_cut.ogg', sync = false, pitch = 1, volume = 0, select_music_track = function() return I_TOLD_YOU_DAWG end})
+
 SMODS.Sound({key = "introPad1", path = 'homestuckintropad.ogg', pitch = 1/0.704, prefix_config = { key = false }})
 
 SMODS.Atlas({key = "HomestuckJokers", path = "hsjokers.png", px = 71, py = 95, atlas_table = "ASSET_ATLAS"}):register()
@@ -240,6 +242,17 @@ if not next(SMODS.find_mod("Cryptid")) then
     py = 216,
     prefix_config = { key = false }
   })
+end
+
+I_WARNED_YOU_ABOUT_THE_JOCKERS_BRO = function()
+   G.SETTINGS.bstuck_chamlang = true
+   G:save_settings()
+    play_sound('cancel', 0.7, 0.8)
+    if G.deck then
+        G:delete_run()
+    end
+    G.STAGE = G.STAGES.SANDBOX
+   I_TOLD_YOU_DAWG = true 
 end
 
 local main_menu_ref = Game.main_menu

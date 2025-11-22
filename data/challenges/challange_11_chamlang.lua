@@ -1,3 +1,4 @@
+if G.SETTINGS.bstuck_chamlang then
 SMODS.Challenge{
     key = "chamlang",
     loc_txt = {
@@ -61,3 +62,5 @@ SMODS.Challenge{
        }
     }
 }
+G.SETTINGS.bstuck_chamlang = false
+end
