@@ -25,6 +25,16 @@ function Balatrostuck.INIT.Jokers.j_complacencyofthelearned()
             x = 8,
             y = 11
          },
+
+        in_pool = function(self, args)
+            for _, playing_card in ipairs(G.playing_cards or {}) do
+                if SMODS.has_enhancement(playing_card, 'm_lucky') then
+                    return true
+                end
+            end
+        return false
+        end,
+
         cost = 6,
         rarity = 2,
         blueprint_compat = true,

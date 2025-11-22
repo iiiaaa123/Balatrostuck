@@ -33,6 +33,15 @@ function Balatrostuck.INIT.Jokers.j_gamebro()
         enhancement_gate = 'm_bonus',
         atlas = 'HomestuckJokers',
 
+        in_pool = function(self, args)
+            for _, playing_card in ipairs(G.playing_cards or {}) do
+                if SMODS.has_enhancement(playing_card, 'm_bonus') then
+                    return true
+                end
+            end
+        return false
+        end,
+        
         loc_vars = function (self, info_queue, card)
             art_credit('akai', info_queue)
             info_queue[#info_queue + 1 ] = G.P_CENTERS['m_bonus'] 

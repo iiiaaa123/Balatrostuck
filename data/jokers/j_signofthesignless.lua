@@ -35,6 +35,16 @@ function Balatrostuck.INIT.Jokers.j_signofthesignless()
                 unlock_card(self)
             end
         end,
+
+        in_pool = function(self, args)
+            for _, playing_card in ipairs(G.playing_cards or {}) do
+                if SMODS.has_enhancement(playing_card, 'm_wild') then
+                    return true
+                end
+            end
+        return false
+        end,   
+
         calculate = function(self,card,context)
             if context.individual and context.cardarea == G.play and #context.full_hand == 1 then
                 if SMODS.has_enhancement(context.other_card, 'm_wild') then

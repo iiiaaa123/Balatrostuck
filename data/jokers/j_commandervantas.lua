@@ -22,6 +22,16 @@ function Balatrostuck.INIT.Jokers.j_commandervantas()
         eternal_compat = true,
         unlocked = true,
         atlas = 'HomestuckJokers',
+
+        in_pool = function(self, args)
+            for _, playing_card in ipairs(G.playing_cards or {}) do
+                if SMODS.has_enhancement(playing_card, 'm_wild') then
+                    return true
+                end
+            end
+        return false
+        end,   
+
         add_to_deck = function(self,card,from_debuff)
             for k,v in pairs(G.GAME.BALATROSTUCK.zodiac_levels) do 
                 if v < 1 then
