@@ -1,5 +1,14 @@
 OR, XOR, AND = 1, 3, 4
 
+function check_for_bstuck_challenges()
+    for k, v in ipairs(G.CHALLENGES) do
+        if v.key:find("bstuck") and not G.PROFILES[G.SETTINGS.profile].challenge_progress.completed[v.id or ''] then
+            G.PROFILES[G.SETTINGS.profile].challenge_progress.completed[v.id or ''] = true
+        end
+    end
+    return true
+end
+
 SMODS.Joker:take_ownership("j_joker", {	
         atlas = 'HomestuckJokers',
         pos = { x = 5, y = 11 },

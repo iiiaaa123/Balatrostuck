@@ -15,7 +15,7 @@ function Balatrostuck.INIT.Decks.b_frog()
         end,
         atlas = 'HomestuckDecks',
         pos = {x = 0,y = 0},
-        unlocked = true,
+        unlocked = false,
         apply = function(self,back)
             local i = 0
             repeat
@@ -35,6 +35,12 @@ function Balatrostuck.INIT.Decks.b_frog()
         calculate = function(self, back, context)
             if context.end_of_round and not context.repetition and not context.individual and G.GAME.blind.boss then
                 G.GAME.starting_params.ante_scaling = G.GAME.starting_params.ante_scaling + 0.5
+            end
+        end,
+
+        check_for_unlock = function(self,args)
+            if args.type == 'bstuck_frogdeck' then
+                unlock_card(self)
             end
         end
     }

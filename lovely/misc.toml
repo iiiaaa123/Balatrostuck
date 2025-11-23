@@ -417,6 +417,19 @@ times = 1
 
 [[patches]]
 [patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.GAME.won = true"
+position = "after"
+payload = '''
+if check_for_bstuck_challenges() then
+    check_for_unlock({ type = "bstuck_frogdeck" })
+end
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
 target = "card.lua"
 pattern = "if (self.ability.set == 'Planet' or (self.ability.set == 'Booster' and self.ability.name:find('Celestial'))) and #find_joker('Astronomer') > 0 then self.cost = 0 end"
 position = "after"

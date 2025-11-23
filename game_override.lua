@@ -43,7 +43,7 @@ local game_updateref = Game.update
 function Game:update(dt)
     game_updateref(self, dt)
     
-    if G.PROFILES[G.SETTINGS.profile].challenge_progress.completed[('c_bstuck_chamlang')] and G.P_CENTERS['c_bstuck_piss'].discovered == false then
+    if G.PROFILES[G.SETTINGS.profile].challenge_progress and G.PROFILES[G.SETTINGS.profile].challenge_progress.completed[('c_bstuck_chamlang')] and G.P_CENTERS['c_bstuck_piss'].discovered == false then
         G.P_CENTERS['c_bstuck_piss'].discovered = true
     end
 
