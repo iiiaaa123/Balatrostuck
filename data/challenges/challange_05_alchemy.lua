@@ -1,11 +1,3 @@
-local not_skeleton = {}
-
-for k, v in pairs(G.P_TAGS) do
-    if v.key ~= "tag_bstuck_perfecltygeneric" then
-        table.insert(not_skeleton, {id = v.key})
-    end
-end
-
 SMODS.Challenge{
     key = "alchemy",
     loc_txt = {
@@ -76,6 +68,5 @@ SMODS.Challenge{
           {id = "v_overstock_norm"},
           {id = "v_overstock_plus"}
       },
-      banned_tags = not_skeleton
     }
 }

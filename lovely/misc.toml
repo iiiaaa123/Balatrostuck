@@ -159,6 +159,18 @@ match_indent = true
 times = 1
 overwrite = true
 
+#Alchemy Tags
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if G.FORCE_TAG then return G.FORCE_TAG end"
+position = "before"
+payload = '''
+G.FORCE_TAG = G.GAME.challenge and (G.GAME.challenge == "c_bstuck_alchemy") and "tag_bstuck_perfecltygeneric" or nil
+'''
+match_indent = true
+times = 1
+
 #Scratch tags shall not be doubled
 [[patches]]
 [patches.pattern]
