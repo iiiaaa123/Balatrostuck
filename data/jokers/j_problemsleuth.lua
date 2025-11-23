@@ -58,7 +58,7 @@ function Balatrostuck.INIT.Jokers.j_problemsleuth()
         activate = function(self,card,args)
             card:juice_up()
             ease_dollars(-card:activate_cost())
-            play_sound('bstuck_HomestuckBuyout')
+            -- play_sound('bstuck_HomestuckBuyout')
             
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',delay = 0.4,
