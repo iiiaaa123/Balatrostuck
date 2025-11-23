@@ -75,7 +75,7 @@ local joker_list = {
 "yourlordandmaster", "magnificent", "jokermode", "crowbarsfelt", "signofthesignless",
 "echidna", "abraxas", "yaldabaoth", "hephaestus","typheus",
 -- DO NOT SHIP AS VISIBLE
-"dave",
+-- "dave",
 }
 
 local aspect_list = {

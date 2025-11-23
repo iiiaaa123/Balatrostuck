@@ -73,10 +73,6 @@ SMODS.Challenge{
         ]]
     },
     restrictions = { 
-      banned_cards = {
-          {id = "v_overstock_norm"},
-          {id = "v_overstock_plus"}
-      },
       banned_tags = not_skeleton
     }
 }
