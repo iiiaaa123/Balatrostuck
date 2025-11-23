@@ -12,9 +12,9 @@ function Balatrostuck.INIT.Jokers.j_problemsleuth()
             ['name'] = 'Problem Sleuth',
             ['text'] = {
                 'If no hands were played',
-                'during a {C:attention}Boss Blind{}',
-                'allow {C:attention}buying out{} of ',
-                'the {C:attention}Boss Blind{} instead'
+                'during the {C:attention}Blind{}',
+                'allow {C:attention}buying out{}',
+                'of the {C:attention}Blind{} instead'
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
@@ -43,14 +43,14 @@ function Balatrostuck.INIT.Jokers.j_problemsleuth()
         end,
         can_activate = function(self,card,args)
             local cost = card:activate_cost()
-            if G.STATE == G.STATES.SELECTING_HAND and G.GAME.blind.boss and cost <= G.GAME.dollars + G.GAME.bankrupt_at and G.GAME.current_round.hands_played == 0 then
+            if G.STATE == G.STATES.SELECTING_HAND and cost <= G.GAME.dollars + G.GAME.bankrupt_at then
                 return true
             end
         end,
         activate_cost = function(self,card,args)
             local ante = G.GAME.round_resets.ante
             if G.GAME.round_resets.ante <= G.GAME.win_ante then
-                return ante * 15
+                return ante * 10
             else
                 return math.floor(120 * (1.2^(ante-8)))
             end
