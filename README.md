@@ -23,7 +23,7 @@ You start the game with a reduced joker count, to acclimate to the new mechanics
 In order to unlock over 30 new jokers you must find and consume the **Cruxite Apple** joker.
 Afterwards, obtaining Ascend, Enter the Medium or the rest of the End Of Act Jokers unlocks even more jokers.
 
-In addition to obtaining those jokers and moving through the acts the game also presents 10 new challanges and over 15 unlock conditions for even more unlocking goodness.
+In addition to obtaining those jokers and moving through the acts the game also presents 10 new challenges and over 15 unlock conditions for even more unlocking goodness.
 
 ## Aspect system
 Aspects grant powerful boons - double leveling, duplicate tags, mass enhance your cards and much more, all of this **without using a joker slot.**
