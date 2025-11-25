@@ -13,7 +13,9 @@ function Balatrostuck.INIT.Jokers.j_snowman()
                 "a {C:attention}face{} card, {C:attention}face{}",
                 "cards held in hand",
                 "give {C:mult}+2{} Mult"
-            }
+            },
+            unlock = {'Play an 8 with',
+                    '{C:attention}Pareidolia{}'}
         },
         pos = {
             x = 3,

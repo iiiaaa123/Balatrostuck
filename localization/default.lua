@@ -312,6 +312,12 @@ return {
             ch_c_only_shop_zodiac = {
                 '{C:attention}Jokers{}, {C:planet}Planets{}, and {C:tarot}Tarots{} don\'t appear in the shop'
             },
+            ch_c_lylac1 = {
+                'All {C:attention}Jokers{} are {C:red}destroyed{} at the end of the Ante'
+            },
+            ch_c_lylac2 = {
+                'All Jokers cost {C:money}2${} and sell for {C:money}1${}'
+            },
         },
         quips={
             john_bought={
