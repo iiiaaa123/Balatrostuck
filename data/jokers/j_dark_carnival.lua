@@ -14,7 +14,10 @@ function Balatrostuck.INIT.Jokers.j_dark_carnival()
                 [2] = "ranks corresponding",
                 [3] = "to consumable slot",
                 [4] = "{C:attention}Zodiac cards{}"
-            }
+            },
+            unlock = {'Destroy at least one',
+                    'card of each {C:attention}rank{} in',
+                     'one single run'}
         },
         pos = {
             x = 0,

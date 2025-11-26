@@ -8,7 +8,10 @@ function Balatrostuck.INIT.Decks.b_alternian()
                 '{C:blue}+#2#{} hands',
                 '{C:red}+#1#{} discard',
                 '{C:red}X#4#{} base Blind size'
-            }
+            },
+               unlock = {'Win 3 games with the',
+                    '{C:attention}Prospitian{} or {C:attention}Dersite{}',
+                'decks'}
         },
         config = {
             discards = 1,

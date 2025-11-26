@@ -14,6 +14,8 @@ function Balatrostuck.INIT.Jokers.j_objectduality()
                 [3] = "a {C:paradox}Paradox{} {E:2,C:dark_edition}innocuous double",
                 [4] = "of each scoring card"
             },
+            unlock = {'Unlocked by',
+            'finishing Act 6'},
             check_for_unlock = function(self,args)
                 if args.type == 'bstuck_collide' then
                     unlock_card(self)

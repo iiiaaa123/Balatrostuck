@@ -12,7 +12,9 @@ function Balatrostuck.INIT.Jokers.j_pawnrevolution()
                 [1] = "On {C:attention}first hand{} of round,",
                 [2] = "create a {C:paradox}Paradox{} copy of",
                 [3] = "{C:attention}lowest{} ranked card held in hand"
-            }
+            },
+            unlock = {'Destroy four {C:attention}Kings{}',
+                    'in one single run'}
         },
         pos = {
             x = 4,

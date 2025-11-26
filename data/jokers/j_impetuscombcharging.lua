@@ -7,17 +7,17 @@ function Balatrostuck.INIT.Jokers.j_impetuscombcharging()
                 d6given = false,
                 rerolls = 0
             },
-            unlock = {'Get an Aspect to',
-                    'level 5 or higher'}
         },
         loc_txt = {
             ['name'] = 'Impetus Comb Charging',
             ['text'] = {
                 [1] = "First played {C:attention}Three of a Kind{}",
                 [2] = "each ante gives a {C:attention}D6 tag{}.",
-                [3] = "{C:green}Unleash sepulcritude{} after {C:attention}20{} rerolls",
+                [3] = "{C:green}Unleash Sepulcritude{} after {C:attention}20{} rerolls",
                 [4] = "{C:inactive}(Currently {C:attention}#1#{C:inactive}/20 rerolls)"
-            }
+            },
+            unlock = {'Get an Aspect to',
+                    'level 5 or higher'}
         },
         pos = {
             x = 0,
@@ -28,7 +28,7 @@ function Balatrostuck.INIT.Jokers.j_impetuscombcharging()
         blueprint_compat = true,
         eternal_compat = false,
         unlocked = false,
-        animated = true,
+        animated = false,
         frames = 8,
         animation_speed = 20,
         photosensitive = true,
