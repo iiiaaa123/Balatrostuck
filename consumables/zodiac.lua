@@ -7,7 +7,7 @@ SMODS.ConsumableType{
   shop_rate = 4,
   loc_txt = {
     name = 'Zodiac',
-    collection = 'Zodiac',
+    collection = 'Zodiac Cards',
     label = 'Zodiac',
     undiscovered = {
       ['name'] = 'Not Discovered',
