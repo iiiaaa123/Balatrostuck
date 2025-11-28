@@ -9,9 +9,9 @@ function Balatrostuck.INIT.Jokers.j_lofaf()
         loc_txt = {
             ['name'] = 'Frost and Frogs',
             ['text'] = {
-                [1] = "{C:attention}Booster packs{} have {C:attention}+0 ",
+                [1] = "{C:attention}Booster packs{} have {C:attention}+#1# ",
                 [2] = "cards to choose from,",
-                [3] = "{C:attention}+#1#{} at end of round",
+                [3] = "{C:attention}+1{} at end of round",
                 [4] = "{C:inactive}(Up to +3){}"
             },
             unlock = {"Create {C:attention}100{}", "{C:paradox}Paradox{} cards", "{C:inactive}(#1#){}"}
