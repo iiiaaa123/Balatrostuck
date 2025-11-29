@@ -60,7 +60,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_capricorn()
 
             if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
                 return {
-                    x_mult = self:level(context.other_card) + 1,
+                    x_mult = self:level(context.other_card)*0.5+1,
                     card = context.other_card
                 }
             end
