@@ -196,7 +196,7 @@ Balatrostuck.Caste = SMODS.GameObject:extend{
   inject = function(self)
 
     -- I think it's safe to just reuse this?
-    sendInfoMessage("Caste injected: "..self.key)
+    --sendInfoMessage("Caste injected: "..self.key)
     G.P_CASTES[self.key] = self
     SMODS.insert_pool(G.P_CENTER_POOLS[self.set], self)
   end,
