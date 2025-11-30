@@ -31,7 +31,7 @@ function Balatrostuck.INIT.Jokers.j_verticlemovements()
             if context.store_joker_replace and context.shop_card.ability.set == 'Joker' and not context.blueprint then
                 local _card = nil
                 if context.shop_card == nil then
-                    sendInfoMessage(context.debugstring)
+                    --sendInfoMessage(context.debugstring)
                     return false
                 else
                     _card = context.shop_card
