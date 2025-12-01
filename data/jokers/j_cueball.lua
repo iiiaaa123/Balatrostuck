@@ -24,7 +24,7 @@ function Balatrostuck.INIT.Jokers.j_cueball()
         unlocked = true,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
-            if context.after and pseudorandom('cueball') < G.GAME.probabilities.normal/100 then
+            if context.after and pseudorandom('cueball') < G.GAME.probabilities.normal/1000 then
                 
                 G.E_MANAGER:add_event(Event({
                     func = function()

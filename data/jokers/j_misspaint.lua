@@ -3,7 +3,7 @@ function Balatrostuck.INIT.Jokers.j_misspaint()
         name = "Miss Paint",
         key = "misspaint",
         config = {
-            extra = {mult = 1, mult_gain = 0}
+            extra = {mult = 1, mult_gain = 4}
         },
         loc_txt = {
             ['name'] = 'Miss Paint',
@@ -23,7 +23,7 @@ function Balatrostuck.INIT.Jokers.j_misspaint()
             x = 4,
             y = 10
          },
-        cost = 2,
+        cost = 4,
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,

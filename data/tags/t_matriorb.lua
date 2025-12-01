@@ -4,7 +4,7 @@ function Balatrostuck.INIT.Tags.t_matriorb()
         key = "matriorb",
         config = {type = "eval"},
         loc_txt = {
-            ['name'] = 'Matriorb',
+            ['name'] = 'Matriorb Tag',
             ['text'] = {
                 [1] = 'Gives a free',
                 [2] = '{C:zodiac}Mega Zodiac Pack'                  

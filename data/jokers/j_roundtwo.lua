@@ -14,7 +14,8 @@ function Balatrostuck.INIT.Jokers.j_roundtwo()
                 '{C:red}X#2#{} base Blind size',
                 'Create a {C:red}Rare Joker{} when',
                 '{C:attention}Boss Blind{} is defeated',
-                '{C:inactive}Increases by X#1# each ante'
+                '{C:inactive}Increases by X#1# each ante',
+                '{C:inactive}Must have room'
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}

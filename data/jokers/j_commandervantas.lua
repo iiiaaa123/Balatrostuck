@@ -17,7 +17,7 @@ function Balatrostuck.INIT.Jokers.j_commandervantas()
             y = 1
         },
         cost = 3,
-        rarity = 1,
+        rarity = 2,
         blueprint_compat = false,
         eternal_compat = true,
         unlocked = true,

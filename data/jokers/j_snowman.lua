@@ -25,7 +25,7 @@ function Balatrostuck.INIT.Jokers.j_snowman()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
-        unlocked = false,
+        unlocked = true,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
             art_credit('akai', info_queue)
