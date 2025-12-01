@@ -124,7 +124,7 @@ end
 
 function get_innocuous(card,get_only_name)
     local hearts = {
-        {'applejuice', true}, {'lusty_joker', false}, {'flower_pot', false}, {'complacencyofthelearned', true},
+        {'applejuice', true}, {'lusty_joker', false}, {'flower_pot', false}, {'stump', true},
         {'oops', false}, {'cruxitedowel', true}, {'8_ball', false}, {'whatpumpkin', true},
         {'diet_cola', false}, {'hegemonicbrute', true}, {'balletslippers', true}, {'photograph',false},
         {'bloodstone',false}
@@ -143,7 +143,7 @@ function get_innocuous(card,get_only_name)
     }
     local diamonds = {
         {'credit_card', false},{'greedy_joker', false}, {'space', false},{'ticket', false},
-        {'trading', false},{'gristtorrent',true}, {'alltheirons', true},{'gift',false},
+        {'trading', false},{'ringoflife',true}, {'alltheirons', true},{'gift',false},
         {'todo_list',false},{'draconiandignitary', true}, {'midas_mask', false},{'business',false},
         {'rough_gem', false}
     }
