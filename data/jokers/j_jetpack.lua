@@ -5,8 +5,8 @@ function Balatrostuck.INIT.Jokers.j_jetpack()
         key = "jetpack",
         config = {
             extra = {
-                mult = 7,
-                denominator = 3
+                mult = 10,
+                denominator = 4
             }
         },
         loc_txt = {

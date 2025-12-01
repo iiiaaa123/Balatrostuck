@@ -20,7 +20,7 @@ function Balatrostuck.INIT.Jokers.j_stump()
         },
         pos = {x = 6, y = 8},
         cost = 6,
-        rarity = 3,
+        rarity = 2,
         blueprint_compat = false,
         eternal_compat = true,
         unlocked = false,
