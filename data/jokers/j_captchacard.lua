@@ -3,7 +3,7 @@ function Balatrostuck.INIT.Jokers.j_captchacard()
         name = "Captchalogue Card",
         key = "captchacard",
         config = {
-            extra = {mult = 6}
+            extra = {mult = 7}
         },
         loc_txt = {
             ['name'] = 'Captchalogue Card',

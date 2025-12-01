@@ -11,10 +11,11 @@ function Balatrostuck.INIT.Jokers.j_problemsleuth()
         loc_txt = {
             ['name'] = 'Problem Sleuth',
             ['text'] = {
-                'If no hands were played',
-                'during the {C:attention}Blind{}',
-                'allow {C:attention}buying out{}',
-                'of the {C:attention}Blind{} instead'
+                'Allow {C:attention}buying out{}',
+                'of the {C:attention}Blind{} by',
+                'paying {C:money}10${} muliplied',
+                'by the current ante number',
+                '{C:inactive}Scales higher on endless'
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
