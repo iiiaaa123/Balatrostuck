@@ -60,8 +60,8 @@ function Balatrostuck.INIT.Aspects.c_aspect_void()
             local poopoo
             
             if context.activated or context.deactivated then     
-                peepee = summation(slab:level())
-                poopoo = summation(slab:level() - 1)
+                peepee = slab:level()
+                poopoo = slab:level() - 1
             end
 
             if context.activated and context.after_level_up then

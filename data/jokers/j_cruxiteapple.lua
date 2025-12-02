@@ -10,7 +10,7 @@ function Balatrostuck.INIT.Jokers.j_cruxiteapple()
             ['name'] = 'Cruxite Apple',
             ['text'] = {
                 [1] = "After {C:attention}final hand{} of round,",
-                [2] = "gain {C:attention}1{} free {C:green}Reroll{} in the shop",
+                [2] = "create a free {C:attention}D6 Tag{}",
                 [3] = "and {C:attention}destroy{} this card"
             }
         },
@@ -26,6 +26,7 @@ function Balatrostuck.INIT.Jokers.j_cruxiteapple()
         discovered = true,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
+            info_queue[#info_queue + 1] = G.P_TAGS['tag_d_six']
             art_credit('akai', info_queue)
             return {vars = {}}
         end,

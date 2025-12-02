@@ -20,8 +20,8 @@ function Balatrostuck.INIT.Jokers.j_soporpie()
                 'reduces by {C:red}1{} every round',
 
             },
-            unlock = {'{C:red}Lose{} a Run',
-                    'at 0 handsize'}
+            unlock = {'{C:red}Lose{} a Run because',
+                    'you {C:attention}cannot draw cards{}'}
         },
         pos = {
             x = 2,

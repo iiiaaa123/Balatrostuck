@@ -42,7 +42,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_heart()
             if context.level_up_hand then
                 --sendInfoMessage("Intersected level up")
                 return {
-                    amount = context.amount + summation(slab:level())
+                    amount = context.amount + slab:level()
                 }
             end
         end
