@@ -450,19 +450,23 @@ end
 
 create_card_ref = create_card
 function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
+    
     if _type == 'zodiac' or _type == 'Zodiac' and forced_key == nil then
         forced_key = get_zodiac()
     end
     local _card = create_card_ref(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
     if next(SMODS.find_card('j_bstuck_typheus')) then
         local _lower_type = string.lower(_type)
-        
         if _lower_type ~= 'voucher' and _lower_type ~= 'booster' and _card.edition == nil then
             local _edition = poll_edition('Typheus', nil, true, true)
             _card:set_edition(_edition)
         end
     end
-
+    if G.GAME.selected_back.effect.center.key == 'b_bstuck_sylladeck' then
+        if _type == 'Joker' then
+            _card.pinned = true
+        end
+    end
     return _card
 end
 
