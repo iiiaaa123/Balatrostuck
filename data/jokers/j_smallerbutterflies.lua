@@ -10,8 +10,8 @@ function Balatrostuck.INIT.Jokers.j_smallerbutterflies()
             ['name'] = 'Smaller Butterflies',
             ['text'] = {
                 'Played cards have',
-                'a {C:green}1 in 3{} chance to',
-                'give {C:money}$3{} when scored'
+                'a {C:green}#1# in #2#{} chance to',
+                'give {C:money}$#3#{} when scored'
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
@@ -26,6 +26,10 @@ function Balatrostuck.INIT.Jokers.j_smallerbutterflies()
         eternal_compat = true,
         unlocked = false,
         atlas = 'HomestuckJokers',
+        loc_vars = function(self, info_queue, card)
+            art_credit('akai', info_queue)
+            return {vars = {G.GAME.probabilities.normal, card.ability.extra.odds, card.ability.extra.money}}
+        end,
         calculate = function(self,card,context)
             if context.cardarea == G.play and context.individual then
                 if context.other_card.debuff then

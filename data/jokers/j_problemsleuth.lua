@@ -14,7 +14,8 @@ function Balatrostuck.INIT.Jokers.j_problemsleuth()
                 'Allow {C:attention}buying out{}',
                 'of the {C:attention}Blind{} by',
                 'paying {C:money}10${} muliplied',
-                'by the current ante number'
+                'by the current ante number',
+                '{C:inactive}Scales higher in Endless'
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
@@ -49,7 +50,11 @@ function Balatrostuck.INIT.Jokers.j_problemsleuth()
         end,
         activate_cost = function(self,card,args)
             local ante = G.GAME.round_resets.ante
-            return ante * 10
+            if G.GAME.round_resets.ante <= G.GAME.win_ante then
+                return ante * 10
+            else
+                return math.floor(80 * (1.2^(ante-8)))
+            end
         end,
         activate = function(self,card,args)
             card:juice_up()
