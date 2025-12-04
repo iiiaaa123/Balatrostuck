@@ -28,7 +28,7 @@ function Balatrostuck.INIT.Jokers.j_smallerbutterflies()
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
             art_credit('akai', info_queue)
-            return {vars = {G.GAME.probabilities.normal, card.ability.extra.odds, card.ability.extra.money}}
+            return {vars = {G.GAME.probabilities.normal, card.ability.extra.odds, card.ability.extra.dollars}}
         end,
         calculate = function(self,card,context)
             if context.cardarea == G.play and context.individual then

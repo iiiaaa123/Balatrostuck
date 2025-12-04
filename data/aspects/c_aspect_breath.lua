@@ -48,15 +48,13 @@ function Balatrostuck.INIT.Aspects.c_aspect_breath()
             if context.activated and context.after_level_up then
                 if context.returning then
                     SMODS.change_free_rerolls(peepee)
-                    return {true}
                 else
                     SMODS.change_free_rerolls(peepee-poopoo)
-                    return {true}
                 end
             end
+            
             if context.deactivated and context.before_level_down then
                 SMODS.change_free_rerolls(-peepee)
-                return {true}
             end
         end
     }
