@@ -598,3 +598,14 @@ payload = '''
 if next(SMODS.find_card('j_bstuck_snowman')) and rank and id == 8 then return true end
 '''
 match_indent = true
+
+
+#allow swashbuckler to go negative
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.name == 'Swashbuckler' and self.ability.mult > 0 then"
+position = "at"
+match_indent = true
+payload = '''if self.ability.name == 'Swashbuckler' and self.ability.mult ~= 0 then'''
+times = 1
