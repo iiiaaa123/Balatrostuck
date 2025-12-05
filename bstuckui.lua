@@ -86,10 +86,10 @@ SMODS.current_mod.extra_tabs = function()
                 }),
                 BSUI.Row( BSUI.Config.Basic, {BSUI.Pad(0.0, 0.075)}),
                 BSUI.Row( BSUI.Config.Basic, {
-                    BSUI.Modules.Credits.Names({'CampfireCollective', 'cozyGalvinism'}, scale*0.88),
+                    BSUI.Modules.Credits.Names({'CampfireCollective', 'cozyGalvinism', 'lyra'}, scale*0.88),
                     BSUI.Col( BSUI.Config.Basic, {BSUI.Pad(0.2, 0.0)}),
                     BSUI.Modules.Credits.Names({'lord-ruby', 'dangerbites'}, scale*0.88),
-                    BSUI.Row( BSUI.Config.Basic, {BSUI.Pad(0.0, 0.1)}),
+                    BSUI.Row( BSUI.Config.Basic, {BSUI.Pad(0.0, 0.1)})
                 }),
             })
         })

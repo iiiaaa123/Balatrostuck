@@ -58,7 +58,7 @@ Unlike planets the Zodiac cards don't directly increase their values, instead gr
 
 - **Direction:** Akai, Fazzie, CampfireCollective
 - **Artwork:** Akai, garb, Lyman, Baqly, Penny, Yokcos, bconlon, Delirium, SagaciousCejai
-- **Programming:** Akai, Victin, Yokcos, garb, bconlon, Delirium, CampfireCollective, lord-ruby, cozyGalvanism, dangerbites
+- **Programming:** Akai, Victin, Yokcos, garb, bconlon, Delirium, CampfireCollective, lord-ruby, cozyGalvanism, dangerbites, lyra
 - **Playtesting:** conchors, Penny, Chloe (Teki), Victin, Snowroom, pescia, SagaciousCejai
 - **Music/SFX:** dangerbites, Delirium, JulianMOCs
 - **SAHCon Trailer:** shmig, sinewavey, Knightmare
