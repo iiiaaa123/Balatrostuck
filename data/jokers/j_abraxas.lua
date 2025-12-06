@@ -39,12 +39,12 @@ function Balatrostuck.INIT.Jokers.j_abraxas()
 
         add_to_deck = function(self, card, from_debuff)
             G.hand:change_size(card.ability.extra.h_size)
-            G.GAME.BALATROSTUCK.pack_size_bonus = G.GAME.BALATROSTUCK.pack_size_bonus + card.ability.extra.h_size
+            G.GAME.modifiers.booster_size_mod = (G.GAME.modifiers.booster_size_mod or 0) + card.ability.extra.h_size
         end,
     
         remove_from_deck = function(self, card, from_debuff)
             G.hand:change_size(-card.ability.extra.h_size)
-            G.GAME.BALATROSTUCK.pack_size_bonus = G.GAME.BALATROSTUCK.pack_size_bonus - card.ability.extra.h_size
+            G.GAME.modifiers.booster_size_mod = (G.GAME.modifiers.booster_size_mod or 0) - card.ability.extra.h_size
         end
     }
     

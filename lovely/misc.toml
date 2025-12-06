@@ -234,20 +234,7 @@ payload = '''
 match_indent = true
 
 
-# Pack Size Bonus
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = "local _size = self.ability.extra"
-position = "at"
-match_indent = true
-payload = '''
-self.ability.extra = self.ability.extra + G.GAME.BALATROSTUCK.pack_size_bonus
-local asdf = math.max(0,self.ability.extra - 5)
-self.ability.extra = math.min(self.ability.extra,5)
-local _size = self.ability.extra + asdf
-G.pack_cards.config.card_limit = self.ability.extra
-'''
+
 
 [[patches]]
 [patches.pattern]

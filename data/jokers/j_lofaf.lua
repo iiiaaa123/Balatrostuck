@@ -42,10 +42,10 @@ function Balatrostuck.INIT.Jokers.j_lofaf()
             if context.end_of_round and context.cardarea == G.jokers and card.ability.extra.pack_bonus < card.ability.extra.max then
                 if card.ability.extra.pack_bonus == 0 then
                     card.ability.extra.pack_bonus = card.ability.extra.pack_bonus + 1
-                    G.GAME.BALATROSTUCK.pack_size_bonus = G.GAME.BALATROSTUCK.pack_size_bonus + card.ability.extra.pack_bonus
+                    G.GAME.modifiers.booster_size_mod = (G.GAME.modifiers.booster_size_mod or 0) + card.ability.extra.pack_bonus
                 else
                     card.ability.extra.pack_bonus = card.ability.extra.pack_bonus + 1
-                    G.GAME.BALATROSTUCK.pack_size_bonus = G.GAME.BALATROSTUCK.pack_size_bonus + (card.ability.extra.pack_bonus - card.ability.extra.pack_bonus+1)
+                    G.GAME.modifiers.booster_size_mod = (G.GAME.modifiers.booster_size_mod or 0) + (card.ability.extra.pack_bonus - card.ability.extra.pack_bonus+1)
                 end
                 return {
                     message = '+1 Booster Card!',
@@ -54,11 +54,11 @@ function Balatrostuck.INIT.Jokers.j_lofaf()
             end
         end,
         remove_from_deck = function(self,card,from_debuff)
-            G.GAME.BALATROSTUCK.pack_size_bonus = G.GAME.BALATROSTUCK.pack_size_bonus - card.ability.extra.pack_bonus
+            G.GAME.modifiers.booster_size_mod = (G.GAME.modifiers.booster_size_mod or 0) - card.ability.extra.pack_bonus
         end,
         add_to_deck = function(self,card,from_debuff)
             if from_debuff then
-                G.GAME.BALATROSTUCK.pack_size_bonus = G.GAME.BALATROSTUCK.pack_size_bonus + card.ability.extra.pack_bonus
+                G.GAME.modifiers.booster_size_mod = (G.GAME.modifiers.booster_size_mod or 0) + card.ability.extra.pack_bonus
             end
         end
     }

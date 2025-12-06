@@ -11,7 +11,12 @@ SMODS.ConsumableType{
     label = 'Zodiac',
     undiscovered = {
       ['name'] = 'Not Discovered',
-      ['text'] = {'test'},
+      ['text'] = {
+                    "Purchase or use",
+                    "this card in an",
+                    "unseeded run to",
+                    "learn what it does",
+                },
     tooltip = {
 
     }
