@@ -171,8 +171,8 @@ function Balatrostuck.INIT.Jokers.j_joker()
                         }))
                     end
 
-                elseif context.game_over and to_big(G.GAME.chips) /
-                    to_big(G.GAME.blind.chips) > to_big(0.25) and
+                elseif context.game_over and G.GAME.chips /
+                    G.GAME.blind.chips > 0.25 and
                     not card.ability.REVIVE_ACTIVATED then
                     G.E_MANAGER:add_event(Event({
                         func = function()

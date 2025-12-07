@@ -354,6 +354,10 @@ return {
             john_charity = {
                 "{C:blue}JOHN: oh, youre down on your bucks? you can use some of mine"
             },
+            john_revive = {
+                "{C:blue}JOHN: phew! i managed to save you, but",
+                "{C:blue}i dont think i can do that again haha"
+            },
             backseater_pickup={
                 "{C:vriska}AG: heyyyyyyyy there! fancy seeing you here",
                 "{C:vriska}I'm hiding from some post-canon nonsense,",
