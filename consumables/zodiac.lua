@@ -95,7 +95,7 @@ function Balatrostuck.Zodiac:get_formula(level)
     return {G.GAME.probabilities.normal, level}
 
   elseif self.name == 'Cancer' then
-    return {level * 12}
+    return {level * 3}
 
   elseif self.name == 'Virgo' then
     return {level > 0 and summation(level+2) or 0}

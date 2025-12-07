@@ -52,7 +52,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
                         for i=1, #scoring_hand do
                             local _card = scoring_hand[i]
                             _card.ability.perma_bonus = _card.ability.perma_bonus or 0
-                            _card.ability.perma_bonus = _card.ability.perma_bonus + self:level(card) * 12
+                            _card.ability.perma_bonus = _card.ability.perma_bonus + self:level(card) * 3
                             card_eval_status_text(_card, 'extra', nil, nil, nil, {message = 'Upgraded!', delay = delay})
                             delay = delay - 0.05
                         end
