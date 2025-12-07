@@ -20,9 +20,13 @@ function Balatrostuck.INIT.Jokers.j_whatpumpkin()
                     'finishing Act 1'}
         },
         pos = {
-            x = 1,
-            y = 4
+            x = 7,
+            y = 11
          },
+        soul_pos = {
+            x = 6,
+            y = 11
+        },
         cost = 4,
         rarity = 1,
         blueprint_compat = true,
