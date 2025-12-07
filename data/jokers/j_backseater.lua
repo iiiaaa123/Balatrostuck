@@ -175,9 +175,10 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                             card.ability.extra.tier = 5
                             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
                                 add_tag(Tag('tag_coupon'))
-
+                                
                                 local tagkey = get_next_tag_key()
                                 local tag = Tag(tagkey)
+                                if tagkey == 'tag_bstuck_scratch' then tagkey = 'tag_handy' --prevent this from spawning scratch tag
                                 if tagkey == 'tag_orbital' then
                                     local _poker_hands = {}
                                     for k, v in pairs(G.GAME.hands) do
@@ -188,7 +189,9 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                                 add_tag(tag)
                                 
                                 local tagkey2 = get_next_tag_key()
+                                
                                 local tag2 = Tag(tagkey2)
+                                if tagkey2 == 'tag_bstuck_scratch' then tagkey2 = 'tag_handy' --prevent this from spawning scratch tag
                                 if tagkey2 == 'tag_orbital' then
                                     local _poker_hands = {}
                                     for k, v in pairs(G.GAME.hands) do
