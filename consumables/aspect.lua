@@ -7,7 +7,18 @@ SMODS.ConsumableType{
     name = 'Aspect',
     collection = 'Aspect Cards',
     label = 'Aspect',
-    undiscovered = {}
+    undiscovered = {
+      ['name'] = 'Not Discovered',
+      ['text'] = {
+                    "Purchase or use",
+                    "this card in an",
+                    "unseeded run to",
+                    "learn what it does",
+                },
+    tooltip = {
+
+    }
+    },
   },
 }
 
