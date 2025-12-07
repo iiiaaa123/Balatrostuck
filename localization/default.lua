@@ -254,7 +254,7 @@ return {
             },
             Cancer = {
                 text = {'Played {C:attentions}4s{} give {C:chips}+#1# {C:attention}permanent{} Chips',
-                        'to all {C:attention}other{} scoring cards when scored'}
+                        'to scoring cards when scored'}
             },
             Leo = {
                 text = {'{C:attention}Held 5s{} have a {C:green}#1# in 4{} chance',

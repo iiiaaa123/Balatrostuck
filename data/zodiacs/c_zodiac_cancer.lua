@@ -13,7 +13,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
             text = {
                 'Each played {C:attention}4{} gives', 
                 '{C:chips}+#1# {C:attention}permanent{} Chips', --next level value
-                'to all {C:attention}other{} scoring cards',
+                'to scoring cards',
                 'when scored'
             }
         },
