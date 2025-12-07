@@ -44,6 +44,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aquarius()
                             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
                                 local tagkey = get_next_tag_key()
                                 local tag = Tag(tagkey)
+                                if tagkey == 'tag_bstuck_scratch' then tagkey = 'tag_handy' end --prevent this from spawning scratch tag
                                 if tagkey == 'tag_orbital' then
                                     local _poker_hands = {}
                                     for k, v in pairs(G.GAME.hands) do

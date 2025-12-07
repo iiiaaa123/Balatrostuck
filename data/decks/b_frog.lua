@@ -8,8 +8,8 @@ function Balatrostuck.INIT.Decks.b_frog()
                 'base Blind size increases by',
                 '{C:red}X0.5{} after each Boss Blind'
             },
-                        unlock = {'Beat every single',
-                    '{C:attention}Balatrostuck{} challenge'}
+                        unlock = {'Use the ',
+                    '{C:attention}Sburb Tag{}'}
         },
         config = {        },
         loc_vars = function(self, info_queue, center)

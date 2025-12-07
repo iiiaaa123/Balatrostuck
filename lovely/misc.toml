@@ -56,14 +56,14 @@ position = "before"
 payload = '''
 G.BStuck_acts_unlocked = not G.BStuck_acts_unlocked and {} or G.BStuck_acts_unlocked
 local act_joker_keys = {"j_bstuck_cruxiteapple", "j_bstuck_ascend", "j_bstuck_enterthemedium", "j_bstuck_descend", "j_bstuck_cascade", "j_bstuck_collide"}
-if ((not G.GAME.pool_flags.bstuck_actprogress) or G.GAME.pool_flags.bstuck_actprogress == 0) or G.BStuck_acts_unlocked[G.GAME.pool_flags.bstuck_actprogress] then
+
     if v.key == act_joker_keys[G.GAME.pool_flags.bstuck_actprogress+1] then
         for i=1, 4 do
             _pool[#_pool + 1] = v.key
             _pool_size = _pool_size + 1
         end
     end
-end
+
 '''
 match_indent = true
 
@@ -357,18 +357,6 @@ function get_next_tag_key(append,Scratch)
 match_indent = true
 times = 1
 
-[[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = "return _tag"
-position = "before"
-payload = '''
-if _tag == 'tag_bstuck_scratch' and not Scratch then
-    _tag = 'tag_handy' 
-end
-'''
-match_indent = true
-times = 1
 
 [[patches]]
 [patches.pattern]
@@ -395,10 +383,6 @@ if (G.GAME.selected_back.effect.center.key == 'b_bstuck_prospitan') or (G.GAME.s
     G.PROFILES[G.SETTINGS.profile].progress.bstuck_wins = G.PROFILES[G.SETTINGS.profile].progress.bstuck_wins and (G.PROFILES[G.SETTINGS.profile].progress.bstuck_wins + 1) or 1
     if G.PROFILES[G.SETTINGS.profile].progress.bstuck_wins >= 4 then check_for_unlock({ type = "bstuck_altdeck" }) end
     G:save_progress()
-end
-
-if check_for_bstuck_challenges() then
-    check_for_unlock({ type = "bstuck_frogdeck" })
 end
 '''
 match_indent = true
@@ -585,3 +569,14 @@ payload = '''
 if next(SMODS.find_card('j_bstuck_snowman')) and rank and id == 8 then return true end
 '''
 match_indent = true
+
+
+#allow swashbuckler to go negative
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.ability.name == 'Swashbuckler' and self.ability.mult > 0 then"
+position = "at"
+match_indent = true
+payload = '''if self.ability.name == 'Swashbuckler' and self.ability.mult ~= 0 then'''
+times = 1

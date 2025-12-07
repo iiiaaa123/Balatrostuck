@@ -3,7 +3,7 @@
 
 ---
 
-Balatrostuck is a mod for the popular poker roguelike Balatro aiming to add Homestuck-related content to the game.
+Balatrostuck is a Homestuck-themed mod for the popular poker roguelike Balatro adding tons of new content to the game.
 
 It is your thirteenth birthday, and as with all twelve preceding it, something feels missing from your life. The game presently eluding you is only the latest sleight of hand in the repertoire of an unseen riddler, one to engender a sense not of mirth, but of lack. His coarse schemes are those less of a prankster than a common pickpocket. His riddle is Absence itself. It is a mystery dispersing altogether, like the moon's faint reflection, with even one pebble of inquiry dropped in its black well. It is the most diabolical riddle of all.
 
@@ -58,7 +58,7 @@ Unlike planets the Zodiac cards don't directly increase their values, instead gr
 
 - **Direction:** Akai, Fazzie, CampfireCollective
 - **Artwork:** Akai, garb, Lyman, Baqly, Penny, Yokcos, bconlon, Delirium, SagaciousCejai
-- **Programming:** Akai, Victin, Yokcos, garb, bconlon, Delirium, CampfireCollective, lord-ruby, cozyGalvanism, dangerbites
+- **Programming:** Akai, Victin, Yokcos, garb, bconlon, Delirium, CampfireCollective, lord-ruby, cozyGalvanism, dangerbites, lyra
 - **Playtesting:** conchors, Penny, Chloe (Teki), Victin, Snowroom, pescia, SagaciousCejai
 - **Music/SFX:** dangerbites, Delirium, JulianMOCs
 - **SAHCon Trailer:** shmig, sinewavey, Knightmare

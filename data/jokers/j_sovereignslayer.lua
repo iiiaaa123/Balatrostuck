@@ -62,6 +62,8 @@ function Balatrostuck.INIT.Jokers.j_sovereignslayer()
                     card_eval_status_text(context.destroying_card, 'extra', nil, nil, nil, {message = "Walk!", colour = G.C.SUITS.Spades})
                 end
                 return nil
+            elseif context.after then
+                card.ability.extra.walk_or_not = false
             end
         end
     }

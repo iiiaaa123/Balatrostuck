@@ -112,19 +112,16 @@ payload = '''
 match_indent = true
 times = 1
 
-#FL1P
+#tanglehorrorbuddiesterrors
 [[patches]]
 [patches.pattern]
 target = "functions/state_events.lua"
 pattern = '''
- if G.GAME.round_resets.ante == G.GAME.win_ante and G.GAME.blind:get_type() == 'Boss' then
-                game_won = true
-                G.GAME.won = true
-            end
+check_for_unlock({type = 'round_win'})
 '''
 position = "after"
 payload = '''
- if G.GAME.round_resets.ante == 12 then
+ if G.GAME.round_resets.ante == 12 and G.GAME.blind:get_type() == 'Boss' then
             if #G.vouchers.cards == 0 then
             check_for_unlock({type = 'bstuck_tanglebuddies'})
             check_for_unlock({type = 'bstuck_horrorterrors'})
@@ -134,7 +131,7 @@ payload = '''
 match_indent = true
 times = 1
 
-#CHALLANGESTRIPLEBLINDSIZE
+#CHALLENGESTRIPLEBLINDSIZE
 [[patches]]
 [patches.pattern]
 target = "blind.lua"

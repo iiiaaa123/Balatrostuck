@@ -173,6 +173,7 @@ function Game:init_game_object()
         Pisces = 0,
         Ophiuchus = 0
     }
+    ret.BALATROSTUCK.scratched = false
     ret.BALATROSTUCK.active_castes = {}
     ret.BALATROSTUCK.strife_assignment = {}
     ret.BALATROSTUCK.current_aspect = ''
@@ -418,7 +419,7 @@ function Card:set_cost()
     set_cost_ref(self)
     if self.config.center.key == 'j_bstuck_jocker' then
         self.cost = math.floor(-4*(100-G.GAME.discount_percent)/100)
-        self.sell_cost = math.floor(-2*(100-G.GAME.discount_percent)/100)
+        self.sell_cost = math.floor(-2*(100-G.GAME.discount_percent)/100) + (self.ability.extra_value or 0)
     end
 
     if self.ability.name:find('Standard') and G.GAME.selected_back.effect.center.key == 'b_bstuck_prospitan' then
