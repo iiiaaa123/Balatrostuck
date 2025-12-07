@@ -1,5 +1,5 @@
 SMODS.current_mod.extra_tabs = function()
-    local scale = BSUI.TextScale*1.2
+    local scale = BSUI.TextScale*1.15
     local imageScale = 2.4
     local balastuck = Sprite(0,0,(1*469/98)*imageScale,imageScale,G.ASSET_ATLAS["bstuck_logo"], {x=0, y=0})
     balastuck.states.drag.can = false
@@ -17,6 +17,7 @@ SMODS.current_mod.extra_tabs = function()
                 BSUI.Row( BSUI.Config.Basic, {BSUI.Pad(0.0, 0.1)}),
                 BSUI.Row( BSUI.Config.Basic, {BSUI.Modules.Credits.Name('CampfireCollective', scale*0.95)}),
                 BSUI.Row( BSUI.Config.Basic, {BSUI.Pad(0.0, 0.1)}),
+                BSUI.Row( BSUI.Config.Basic, {BSUI.Modules.Credits.Name('tildelta', scale)}),
             })
         })
     end
@@ -39,8 +40,16 @@ SMODS.current_mod.extra_tabs = function()
     local function dept_Trailer()
         return BSUI.Row( BSUI.Config.Panel('cm', 0.125, G.C.BLACK, nil, 0.1), {
             BSUI.Col( BSUI.Config.Basic, {
-                BSUI.Modules.Credits.Header(G.C.HEART, 'SAHCon Trailer', scale),
+                BSUI.Modules.Credits.Header(G.C.HEART, 'Social Media', scale),
                 BSUI.Row( BSUI.Config.Basic, {BSUI.Pad(0.0, 0.12)}),
+                BSUI.Row( BSUI.Config.Basic, {
+                    BSUI.Col( BSUI.Config.Basic, {BSUI.Modules.Credits.Name('tildelta', scale)}),
+                    BSUI.Col( BSUI.Config.Basic, {BSUI.Pad(0.5, 0.0)}),
+                    BSUI.Col( BSUI.Config.Basic, {BSUI.Modules.Credits.Name('Penny', scale)})
+                }),
+                BSUI.Row( BSUI.Config.Basic, {BSUI.Pad(0.0, 0.1)}),
+                BSUI.Row( BSUI.Config.Basic, {BSUI.Modules.Credits.Name('appleTurnover', scale)}),
+                BSUI.Row( BSUI.Config.Basic, {BSUI.Pad(0.0, 0.1)}),
                 BSUI.Row( BSUI.Config.Basic, {
                     BSUI.Col( BSUI.Config.Basic, {BSUI.Modules.Credits.Name('shmig', scale)}),
                     BSUI.Col( BSUI.Config.Basic, {BSUI.Pad(0.5, 0.0)}),
