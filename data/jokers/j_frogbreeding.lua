@@ -43,7 +43,7 @@ function Balatrostuck.INIT.Jokers.j_frogbreeding()
                 }
             end
 
-            if context.using_consumeable and card.ability.extra.active then
+            if context.using_consumeable and card.ability.extra.active and not (context.consumeable.ability.set == 'Aspect') then
                 card.ability.extra.active = false
                 SMODS.add_card({key = context.consumeable.config.center.key,edition = 'e_bstuck_paradox'})
                 return {
