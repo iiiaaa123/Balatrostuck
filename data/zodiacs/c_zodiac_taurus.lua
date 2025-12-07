@@ -42,12 +42,13 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_taurus()
                 return {
                     func = function()
                         play_sound('xchips',0.8,0.4)
-                        local peepee = math.floor(G.GAME.blind.chips * (0.95^self:level(context.other_card)))
-                        local amount = G.GAME.blind.chips - peepee
 
                         for i=1, 5 do
                             G.E_MANAGER:add_event(Event({
                                 func = function()
+                                    local peepee = math.floor(G.GAME.blind.chips * (0.95^self:level(context.other_card)))
+                                    local amount = G.GAME.blind.chips - peepee
+                                    
                                     G.GAME.blind.chips = G.GAME.blind.chips - (amount/5)
                                     G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
                                     return true

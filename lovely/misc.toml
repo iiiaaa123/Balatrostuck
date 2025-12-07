@@ -56,14 +56,14 @@ position = "before"
 payload = '''
 G.BStuck_acts_unlocked = not G.BStuck_acts_unlocked and {} or G.BStuck_acts_unlocked
 local act_joker_keys = {"j_bstuck_cruxiteapple", "j_bstuck_ascend", "j_bstuck_enterthemedium", "j_bstuck_descend", "j_bstuck_cascade", "j_bstuck_collide"}
-if ((not G.GAME.pool_flags.bstuck_actprogress) or G.GAME.pool_flags.bstuck_actprogress == 0) or G.BStuck_acts_unlocked[G.GAME.pool_flags.bstuck_actprogress] then
+
     if v.key == act_joker_keys[G.GAME.pool_flags.bstuck_actprogress+1] then
         for i=1, 4 do
             _pool[#_pool + 1] = v.key
             _pool_size = _pool_size + 1
         end
     end
-end
+
 '''
 match_indent = true
 
@@ -370,18 +370,6 @@ function get_next_tag_key(append,Scratch)
 match_indent = true
 times = 1
 
-[[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = "return _tag"
-position = "before"
-payload = '''
-if _tag == 'tag_bstuck_scratch' and not Scratch then
-    _tag = 'tag_handy' 
-end
-'''
-match_indent = true
-times = 1
 
 [[patches]]
 [patches.pattern]
