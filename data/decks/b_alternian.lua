@@ -2,7 +2,7 @@ function Balatrostuck.INIT.Decks.b_alternian()
     SMODS.Back {
         key = 'alternian',
         loc_txt = {
-            name = "Alternian Deck",
+            name = "Troll Deck",
             text = {
                 '{C:attention}+#3#{} Joker slot',
                 '{C:blue}+#2#{} hands',
