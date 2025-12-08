@@ -16,6 +16,22 @@ SMODS.calculate_context({ace_dick = true})
 match_indent = true
 times = 1
 
+# start_of_shop context (before shop initialization)
+# also only compatible with jokers i think -lyra
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if not shop_exists then"
+position = "after"
+payload = '''
+for i=1, #G.jokers.cards do
+    eval_card(G.jokers.cards[i], {start_of_shop = true})
+end
+'''
+match_indent = true
+times = 1
+
+
 
 # Store Joker Modify 
 # NOTE: ONLY COMPATIABLE WITH JOKERS RIGHT NOW, WILL NEED TO BE UPDATED TO NEW CALC IF WE NEED IT FOR ANYTHING ELSE
