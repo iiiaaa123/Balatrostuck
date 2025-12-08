@@ -475,3 +475,18 @@ function Card:can_use_consumeable(any_state, skip_check)
     end
     return can_use_ref(self,any_state,skip_check)
 end
+
+
+--Doesn't allow aspects or zodiacs to get showman'd
+--if you ever want something to allow zodiacs and aspects to get showman'd, change this
+local smods_showman = SMODS.showman
+
+function SMODS.showman(card_key)
+    for k, v in pairs(Balatrostuck.INIT.Aspects) do
+        if card_key == k then return false end
+    end
+    for k, v in pairs(Balatrostuck.INIT.Zodiacs) do
+        if card_key == k then return false end
+    end
+    smods_showman(card_key)
+end
