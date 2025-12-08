@@ -181,9 +181,8 @@ end
 function Caste:level(card)
   local level = G.GAME.BALATROSTUCK.zodiac_levels[self.ability.name]
   if card and SMODS.has_enhancement(card, 'm_wild') and next(SMODS.find_card('j_bstuck_commandervantas')) then
-    level = level + 1
+    level = level + (2 * #SMODS.find_card('j_bstuck_commandervantas'))
   end
-  
   return level
 end
 
