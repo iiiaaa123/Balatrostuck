@@ -102,7 +102,6 @@ function Balatrostuck.INIT.Jokers.j_yourlordandmaster()
                 card.ability.extra.banned_high_hand =
                     pseudorandom_element(card.ability.extra.high_hands,
                                          pseudoseed('Clown'))
-                print(card.ability.extra.banned_high_hand)
                 if card.ability.extra.banned_high_hand == "Flush" then
                     if pseudorandom('flush') < 1 / 2 then
                         card:add_dialogue("caliborn_flush2", "bm")

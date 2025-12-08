@@ -177,8 +177,8 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                                 add_tag(Tag('tag_coupon'))
                                 
                                 local tagkey = get_next_tag_key()
-                                local tag = Tag(tagkey)
                                 if tagkey == 'tag_bstuck_scratch' then tagkey = 'tag_handy' end --prevent this from spawning scratch tag
+                                local tag = Tag(tagkey)
                                 if tagkey == 'tag_orbital' then
                                     local _poker_hands = {}
                                     for k, v in pairs(G.GAME.hands) do

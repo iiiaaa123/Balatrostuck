@@ -131,8 +131,8 @@ function get_innocuous(card,get_only_name)
         {'bloodstone',false}
     }
     local spades = {
-        {'ice_cream',true},{'wrathful_joker', false}, {'soporpie', true},{'bull', true},
-        {'gamebro', false},{'banner', false}, {'snowman', true},{'selzer', false},
+        {'ice_cream',false},{'wrathful_joker', false}, {'soporpie', true},{'bull', false},
+        {'gamebro', true},{'banner', false}, {'snowman', true},{'selzer', false},
         {'walkie_talkie', false},{'sovereignslayer', true}, {'operation_regisurp',true},{'ahabscrosshairs', true},
         {'arrowhead', false}
     }

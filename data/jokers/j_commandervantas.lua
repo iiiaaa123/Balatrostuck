@@ -9,7 +9,7 @@ function Balatrostuck.INIT.Jokers.j_commandervantas()
         loc_txt = {
             ['name'] = 'Commander Vantas',
             ['text'] = {
-                '{C:attention}Wild Cards{} have' , '{C:attention}+1 {C:zodiac}Zodiac{} level'
+                '{C:attention}Wild Cards{} have' , '{C:attention}+2 {C:zodiac}Zodiac{} levels'
             }
         },
         pos = {
@@ -33,10 +33,12 @@ function Balatrostuck.INIT.Jokers.j_commandervantas()
         end,   
 
         add_to_deck = function(self,card,from_debuff)
-            for k,v in pairs(G.GAME.BALATROSTUCK.zodiac_levels) do 
-                if v < 1 then
-                    local newCaste = Caste('caste_bstuck_' .. k,G.P_CASTES['caste_bstuck_' .. k])
-                    table.insert(G.GAME.BALATROSTUCK.active_castes, newCaste)
+            if not next(SMODS.find_card('j_bstuck_commandervantas')) then
+                for k,v in pairs(G.GAME.BALATROSTUCK.zodiac_levels) do 
+                    if v < 1 then
+                        local newCaste = Caste('caste_bstuck_' .. k,G.P_CASTES['caste_bstuck_' .. k])
+                        table.insert(G.GAME.BALATROSTUCK.active_castes, newCaste)
+                    end
                 end
             end
         end,

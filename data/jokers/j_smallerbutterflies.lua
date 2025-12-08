@@ -9,9 +9,9 @@ function Balatrostuck.INIT.Jokers.j_smallerbutterflies()
         loc_txt = {
             ['name'] = 'Smaller Butterflies',
             ['text'] = {
-                'Played cards have',
-                'a {C:green}#1# in #2#{} chance to',
-                'give {C:money}$#3#{} when scored'
+                'Each empty {C:attention}Joker{} slot ',
+                'has a {C:green}#1# in #2#{} chance ',
+                'to give {C:money}$#3#{} '
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
@@ -31,17 +31,23 @@ function Balatrostuck.INIT.Jokers.j_smallerbutterflies()
             return {vars = {G.GAME.probabilities.normal, card.ability.extra.odds, card.ability.extra.dollars}}
         end,
         calculate = function(self,card,context)
-            if context.cardarea == G.play and context.individual then
-                if context.other_card.debuff then
+            if context.joker_main then
+                local thunk = 0
+                for i = 1, G.jokers.config.card_limit - #G.jokers.cards do
+                    if pseudorandom('Butterfly') < G.GAME.probabilities.normal/card.ability.extra.odds then
+                        thunk = thunk + card.ability.extra.dollars
+                    end
+                end
+                if thunk > 0 then
                     return {
-                        message = localize('k_debuffed'),
-                        colour = G.C.RED,
-                        card = card,
-                    }
-                elseif pseudorandom('Butterfly') < G.GAME.probabilities.normal/card.ability.extra.odds then
-                    return {
-                        dollars = card.ability.extra.dollars,
+                        dollars = thunk,
                         card = card
+                    }
+                else
+                    return {
+                        card = card,
+                        message = localize('k_nope_ex'),
+                        colour = G.C.GREEN
                     }
                 end
             end
