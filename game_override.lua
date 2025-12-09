@@ -463,7 +463,11 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
             _card:set_edition(_edition)
         end
     end
-
+    if G.GAME.selected_back.effect.center.key == 'b_bstuck_sylladeck' then
+        if _type == 'Joker' then
+            _card.pinned = true
+        end
+    end
     return _card
 end
 
