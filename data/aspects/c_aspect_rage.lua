@@ -39,7 +39,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_rage()
             x = 2,
             y = 0
         },
-        config = {hands_left_to_evaluate = 0, discards_left_to_evaluate = 0, setup = false, debug_total_xmult_given = 1,extra={repetitions=0}},
+        config = {},
         name = 'Aspect of Rage',
         apply = function(self,slab,context)
             if context.individual and context.cardarea == G.play then
