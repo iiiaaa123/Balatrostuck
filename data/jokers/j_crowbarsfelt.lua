@@ -23,7 +23,7 @@ function Balatrostuck.INIT.Jokers.j_crowbarsfelt()
             x = 9,
             y = 4
          },
-        cost = 99,
+        cost = 4,
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
