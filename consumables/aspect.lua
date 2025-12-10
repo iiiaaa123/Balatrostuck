@@ -229,14 +229,16 @@ function SlabIcon:get_uibox_table(tag_sprite)
         vars = aspect_card:get_formula(aspect_card:level()), 
         nodes = ret
     }
-    --add current value grey text to slab
-    localize{
-      type = 'descriptions',
-      set = 'Aspect',
-      key = "c_bstuck_"..(string.lower(aspect)).."_current",
-      vars = aspect_card:get_formula(aspect_card:level()),
-      nodes = ret
-    }
+    --add current value grey text to rage slab
+    if aspect == 'rage' then 
+      localize{
+        type = 'descriptions',
+        set = 'Aspect',
+        key = "c_bstuck_"..(string.lower(aspect)).."_current",
+        vars = aspect_card:get_formula(aspect_card:level()),
+        nodes = ret
+      }
+    end
 
     -- decimate the info_queue
     card_ui.info = {}
