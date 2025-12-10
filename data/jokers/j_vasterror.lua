@@ -35,7 +35,7 @@ function Balatrostuck.INIT.Jokers.j_vasterror()
         loc_vars = function(self, info_queue, card)
             info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
             info_queue[#info_queue + 1] = {key = 'blue_seal', set = 'Other'}
-            art_credit('akai', info_queue)
+            art_credit2('bea', 'akai', info_queue)
             return {vars = {card.ability.extra.rolls_needed, card.ability.extra.rolls}}
         end,
 
