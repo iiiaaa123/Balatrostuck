@@ -592,3 +592,22 @@ position = "at"
 match_indent = true
 payload = '''if self.ability.name == 'Swashbuckler' and self.ability.mult ~= 0 then'''
 times = 1
+
+#purple xmult for rage
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "elseif (eval_type == 'x_mult') or (eval_type == 'h_x_mult') then "
+position = "before"
+payload = '''
+elseif (eval_type == 'x_mult_rage') or (eval_type == 'h_x_mult_rage') then 
+    sound = 'multhit2'
+    volume = 0.7
+    amt = amt
+    text = localize{type='variable',key='a_xmult'..(amt<0 and '_minus' or ''),vars={math.abs(amt)}}
+    colour = G.C.RAGE
+    config.type = 'fade'
+    config.scale = 0.7
+'''
+match_indent = true
+times = 1

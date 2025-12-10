@@ -87,9 +87,15 @@ function Balatrostuck.Aspect:get_formula(level)
   elseif self.name == 'Life' then 
     return {level*2, 2}
 
-  elseif self.name == 'Light' or self.name == 'Rage' then 
+  elseif self.name == 'Light' then
     return {1 + (level * 0.3)}
 
+  elseif self.name == "Rage" then
+    -- positive xmult, negative xmult, netxmult
+    local max_discards = G.GAME.round_resets.discards + G.GAME.round_bonus.discards
+    local max_hands = G.GAME.round_resets.hands + G.GAME.round_bonus.next_hands
+    
+    return {1 + (level * 0.5),1 / (1 + (level / 2)),(1 + (level * 0.5))^(G.GAME.current_round.discards_left - (G.GAME.current_round.hands_left-1))}
   elseif self.name == 'Piss' then 
     return {summation(level+1)}
 
@@ -222,6 +228,14 @@ function SlabIcon:get_uibox_table(tag_sprite)
         key = 'c_bstuck_'..aspect, 
         vars = aspect_card:get_formula(aspect_card:level()), 
         nodes = ret
+    }
+    --add current value grey text to slab
+    localize{
+      type = 'descriptions',
+      set = 'Aspect',
+      key = "c_bstuck_"..(string.lower(aspect)).."_current",
+      vars = aspect_card:get_formula(aspect_card:level()),
+      nodes = ret
     }
 
     -- decimate the info_queue
