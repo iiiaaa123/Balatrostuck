@@ -6,11 +6,9 @@ function Balatrostuck.INIT.Aspects.c_aspect_rage()
             name = "Rage",
             text = {
                 'First played card gives',
-                '{C:white,X:mult}X#1#{} Mult to the power',
-                'of {C:red}discards{} left {E:2,C:red}minus{} ',
-                '{C:blue}hands{} left when scored',
-                '{C:inactive}Currently {C:white,X:mult}X#3#{C:inactive} Mult',
-                '{C:inactive}Between {C:white,X:mult}X#4#{C:inactive} and {C:white,X:mult}X#2#{C:inactive} Mult',
+                '{C:white,X:mult}X#1#{} Mult for every {C:red}discard{} left',
+                'and {C:white,X:mult}X#2#{} Mult for every {C:blue}hand{} left',
+                'when scored',
                 
             }
         },
@@ -41,47 +39,51 @@ function Balatrostuck.INIT.Aspects.c_aspect_rage()
             x = 2,
             y = 0
         },
-        config = {hands_left_to_evaluate = 0, discards_left_to_evaluate = 0, setup = false, debug_total_xmult_given = 1},
-        ability = {extra={repetitions=0}},
+        config = {hands_left_to_evaluate = 0, discards_left_to_evaluate = 0, setup = false, debug_total_xmult_given = 1,extra={repetitions=0}},
         name = 'Aspect of Rage',
         apply = function(self,slab,context)
-            if context.before then 
-                if not self.config.setup then
-                    self.config.discards_left_to_evaluate = G.GAME.current_round.discards_left
-                    self.config.hands_left_to_evaluate = G.GAME.current_round.hands_left
-                    self.config.setup = true
-                    self.ability.extra.repetitions = G.GAME.current_round.hands_left + G.GAME.current_round.discards_left - 1
-                end
-            end
             if context.individual and context.cardarea == G.play then
                 if context.other_card == context.scoring_hand[1] then
-                    print("Triggered!")
-                    if self.config.discards_left_to_evaluate > 0 then
-                        self.config.discards_left_to_evaluate = self.config.discards_left_to_evaluate - 1
-                        self.config.debug_total_xmult_given = self.config.debug_total_xmult_given * (1 + (slab:level() / 2))
-                        local xmult = 1 * (1 + (slab:level() / 2))
-                        return {
-                            message = localize{type='variable',key='a_xmult',vars={xmult}},
-                            x_mult = xmult,
-                            card = context.other_card
-                        }
+                    card_eval_status_text(context.other_card, 'extra', nil, nil, nil, {message = "RAGE MODE!", colour = G.C.RAGE, instant = true})
+                    delay(0.2)
+                    for i=1, G.GAME.current_round.discards_left do
+                        local _xmult = 1 * (1 + (slab:level() / 2))
+                        card_eval_status_text(context.other_card,'x_mult_rage',_xmult,nil,nil,{message = localize { type = 'variable', key = 'a_xmult', vars = { _xmult } }})
+                        context.other_card:juice_up(0.5,0.5)
+                        G.E_MANAGER:add_event(Event({
+                            trigger = "immediate",
+                            func = function()
+                                --this makes the fire go on and off during rage mode
+                                G.GAME.current_round.current_hand.mult = G.GAME.current_round.current_hand.mult * _xmult
+                                
+                                return true
+                            end,
+                        }))
+                        delay(0.3)
+                        
+                        
                     end
-                    if self.config.hands_left_to_evaluate > 0 then
-                        self.config.hands_left_to_evaluate = self.config.hands_left_to_evaluate - 1
-                        self.config.debug_total_xmult_given = self.config.debug_total_xmult_given / (1 + (slab:level() / 2))
-                        local xmult = 1 / (1 + (slab:level() / 2))
-                        return {
-                            message = localize{type='variable',key='a_xmult',vars={xmult}},
-                            x_mult = xmult,
-                            card = context.other_card
-                        }
+                    for i=1, G.GAME.current_round.hands_left do
+                        local _xmult = 1 / (1 + (slab:level() / 2))
+                        card_eval_status_text(context.other_card,'x_mult_rage',_xmult,nil,nil,{message = localize { type = 'variable', key = 'a_xmult', vars = { _xmult } }})
+                        context.other_card:juice_up(0.5,0.5)
+                        G.E_MANAGER:add_event(Event({
+                            trigger = "immediate",
+                            func = function()
+                                G.GAME.current_round.current_hand.mult = G.GAME.current_round.current_hand.mult * _xmult
+                                return true
+                            end,
+                        }))
+                        delay(0.3)
+
                     end
-                    return {}
+                    return {
+                        xmult = (1 + (slab:level() / 2)) ^ (G.GAME.current_round.discards_left - G.GAME.current_round.hands_left),
+                        remove_default_message = true
+
+                    }
+
                 end
-            end
-            if context.after then
-                self.config.setup = false
-                self.ability.extra.repetitions = 0
             end
         end
     }
