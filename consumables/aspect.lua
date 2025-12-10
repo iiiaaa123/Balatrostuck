@@ -229,7 +229,6 @@ function SlabIcon:get_uibox_table(tag_sprite)
         vars = aspect_card:get_formula(aspect_card:level()), 
         nodes = ret
     }
-    --add current value grey text to rage slab
 
     -- decimate the info_queue
     card_ui.info = {}
