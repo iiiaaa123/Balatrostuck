@@ -50,15 +50,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_rage()
                         local _xmult = 1 * (1 + (slab:level() / 2))
                         card_eval_status_text(context.other_card,'x_mult_rage',_xmult,nil,nil,{message = localize { type = 'variable', key = 'a_xmult', vars = { _xmult } }})
                         context.other_card:juice_up(0.5,0.5)
-                        G.E_MANAGER:add_event(Event({
-                            trigger = "immediate",
-                            func = function()
-                                --this makes the fire go on and off during rage mode
-                                G.GAME.current_round.current_hand.mult = G.GAME.current_round.current_hand.mult * _xmult
-                                
-                                return true
-                            end,
-                        }))
+                        SMODS.calculate_effect({xmult = _xmult, remove_default_message = true}, context.other_card)
                         delay(0.3)
                         
                         
@@ -67,19 +59,11 @@ function Balatrostuck.INIT.Aspects.c_aspect_rage()
                         local _xmult = 1 / (1 + (slab:level() / 2))
                         card_eval_status_text(context.other_card,'x_mult_rage',_xmult,nil,nil,{message = localize { type = 'variable', key = 'a_xmult', vars = { _xmult } }})
                         context.other_card:juice_up(0.5,0.5)
-                        G.E_MANAGER:add_event(Event({
-                            trigger = "immediate",
-                            func = function()
-                                G.GAME.current_round.current_hand.mult = G.GAME.current_round.current_hand.mult * _xmult
-                                return true
-                            end,
-                        }))
+                        SMODS.calculate_effect({xmult = _xmult, remove_default_message = true}, context.other_card)
                         delay(0.3)
 
                     end
                     return {
-                        xmult = (1 + (slab:level() / 2)) ^ (G.GAME.current_round.discards_left - G.GAME.current_round.hands_left),
-                        remove_default_message = true
 
                     }
 
