@@ -75,7 +75,7 @@ local joker_list = {
 "echidna", "abraxas", "yaldabaoth", "hephaestus","typheus",
 -- Page 19
 "template", "pranxis", "successor", "blackjack", "break", 
-"coloursmayhem", "frogsprite", "frogsprite2"
+"coloursmayhem", "frogsprite", "scalemate"
 }
 
 local aspect_list = {
@@ -106,13 +106,8 @@ local voucher_list = {
 }
 
 local tag_list = {
-    "perfectlygeneric",
-    "parcelpyxis",
-    "scratch",
-    "spirograph",
-    "matriorb",
-    "sburb",
-    "firefly"
+    "perfectlygeneric", "parcelpyxis", "scratch", "spirograph", "matriorb", "sburb",
+    "firefly", "denizen", "mutation", "splinter", "carapacian", -- add the last one
 }
 
 local spectral_list = {
