@@ -311,13 +311,11 @@ function get_zodiac(normalize_weights,pack)
         end
     end
 
-    if not next(find_joker("Showman")) then
         for i = #pool, 1, -1 do 
-            if G.GAME.used_jokers['c_bstuck_' .. pool[i].key] then
+            if G.GAME.used_jokers['c_bstuck_' .. pool[i].key] and not SMODS.showman('c_bstuck_' .. pool[i].key) then --"allow duplicates" check rather than literally checking for showman card
                 table.remove(pool, i)
             end
         end
-    end
 
 
 

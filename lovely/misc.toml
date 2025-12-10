@@ -551,7 +551,19 @@ target = "functions/state_events.lua"
 pattern = "if (not v.shattered) and (not v.destroyed) then"
 position = "at"
 match_indent = true
-payload = '''if ((not v.shattered) and (not v.destroyed)) or (v.edition and v.edition.key == 'e_bstuck_paradox' and next(SMODS.find_card('j_bstuck_biscuits'))) then'''
+payload = '''
+if next(SMODS.find_card('j_bstuck_frogsprite2')) and ((not v.shattered) and (not v.destroyed) or (v.edition and v.edition.key == 'e_bstuck_paradox' and next(SMODS.find_card('j_bstuck_biscuits')))) then
+    local frog = SMODS.find_card('j_bstuck_frogsprite2')[1]
+    if frog.ability.extra.procced then
+        draw_card(G.play,G.deck, it*100/play_count,'down', false, v)
+        it = it + 1
+        frog.ability.extra.procced = false
+    else
+        draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
+        it = it + 1
+    end
+elseif ((not v.shattered) and (not v.destroyed)) or (v.edition and v.edition.key == 'e_bstuck_paradox' and next(SMODS.find_card('j_bstuck_biscuits'))) then
+'''
 times = 1
 
 
@@ -579,4 +591,23 @@ pattern = "if self.ability.name == 'Swashbuckler' and self.ability.mult > 0 then
 position = "at"
 match_indent = true
 payload = '''if self.ability.name == 'Swashbuckler' and self.ability.mult ~= 0 then'''
+times = 1
+
+#purple xmult for rage
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "elseif (eval_type == 'x_mult') or (eval_type == 'h_x_mult') then "
+position = "before"
+payload = '''
+elseif (eval_type == 'x_mult_rage') or (eval_type == 'h_x_mult_rage') then 
+    sound = 'multhit2'
+    volume = 0.7
+    amt = amt
+    text = localize{type='variable',key='a_xmult'..(amt<0 and '_minus' or ''),vars={math.abs(amt)}}
+    colour = G.C.RAGE
+    config.type = 'fade'
+    config.scale = 0.7
+'''
+match_indent = true
 times = 1

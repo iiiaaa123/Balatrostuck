@@ -1,6 +1,6 @@
 function Balatrostuck.INIT.Jokers.j_dadswallet()
     SMODS.Joker{
-        name = "Dads Wallet",
+        name = "Dad's Wallet",
         key = "dadswallet",
         config = {
             extra = {
