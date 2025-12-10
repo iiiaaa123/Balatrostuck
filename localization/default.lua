@@ -58,7 +58,7 @@ return {
                     "{C:attention}+1{} hand size every time",
                     "a {C:tarot}Tarot{} card is used,",
                     "goes {C:dark_edition}Grimdark{} at {C:attention}+#2#",
-                    "{C:inactive}(Currently: {C:attention}+#1#{} hand size)"
+                    "{C:inactive}(Currently {C:attention}+#1#{C:inactive} hand size)"
                 },
                 unlock = {'Unlocked by',
                 'finishing Act 4'}
@@ -67,7 +67,7 @@ return {
                 name = 'Dark Scholar',
                 text = {
                     "{X:mult,C:white} X#3# {} Mult if a {C:tarot}Tarot{} card",
-                    "has been used this round",
+                    "has been used this round,",
                     "otherwise {X:mult,C:white} X#4# {} Mult"
                     },
                 unlock = {'Unlocked by',
