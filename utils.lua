@@ -754,3 +754,49 @@ G.FUNCS.activate_joker = function(e, mute, nosave)
         return true
     end}))
 end
+
+function bstuck_concat_tables(t1,t2)
+    for i=1,#t2 do
+        t1[#t1+1] = t2[i]
+    end
+    return t1
+end
+
+function bstuck_get_tag_key(append,disallowed_tags)
+    G.FORCE_TAG = G.GAME.challenge and (G.GAME.challenge == "c_bstuck_alchemy") and "tag_bstuck_perfecltygeneric" or nil
+    if G.FORCE_TAG then return G.FORCE_TAG end
+    local _pool, _pool_key = get_current_pool('Tag', nil, nil, append)
+    for k,v in pairs(_pool) do
+        for _, tag_key in ipairs(disallowed_tags) do
+            if v == tag_key then table.remove(_pool,k) end
+        end
+    end
+    local _tag = pseudorandom_element(_pool, pseudoseed(_pool_key))
+    local it = 1
+    while _tag == 'UNAVAILABLE' do
+        it = it + 1
+        _tag = pseudorandom_element(_pool, pseudoseed(_pool_key..'_resample'..it))
+    end
+
+    return _tag
+end
+
+
+function bstuck_give_random_tag(append,disallowed_tags)
+    
+    G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+        local _banned_tags = bstuck_concat_tables({"tag_bstuck_scratch","tag_bstuck_sburb"},disallowed_tags or {})
+        local tagkey = bstuck_get_tag_key(append,_banned_tags)
+        local tag = Tag(tagkey)
+        if tagkey == 'tag_orbital' then
+            local _poker_hands = {}
+            for k, v in pairs(G.GAME.hands) do
+                if v.visible then _poker_hands[#_poker_hands+1] = k end
+            end
+            tag.ability.orbital_hand = pseudorandom_element(_poker_hands, pseudoseed('orbital'))
+        end
+        play_sound('timpani')
+        add_tag(tag)
+        return true
+    end}))
+end

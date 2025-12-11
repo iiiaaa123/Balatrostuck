@@ -41,22 +41,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aquarius()
                 for i=1, #context.removed do
                     if context.removed[i]:get_id() == self.ability.rank then
                         for i=1, self:level(context.removed[i]) do
-                            G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-                                local tagkey = get_next_tag_key()
-                                if tagkey == 'tag_bstuck_scratch' then tagkey = 'tag_handy' end --prevent this from spawning scratch tag
-                                local tag = Tag(tagkey)
-                                if tagkey == 'tag_orbital' then
-                                    local _poker_hands = {}
-                                    for k, v in pairs(G.GAME.hands) do
-                                        if v.visible then _poker_hands[#_poker_hands+1] = k end
-                                    end
-                                    
-                                    tag.ability.orbital_hand = pseudorandom_element(_poker_hands, pseudoseed('orbital'))
-                                end
-                                play_sound('timpani')
-                                add_tag(tag)
-                                return true
-                            end}))
+                            bstuck_give_random_tag("aqua")
                         end
                     end
                 end
