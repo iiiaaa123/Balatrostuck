@@ -4,8 +4,8 @@ function Balatrostuck.INIT.Jokers.j_faygo()
         key = "faygo",
         config = {
             extra = {
-                mult = 16,
-                stale = 2,
+                mult = 12,
+                stale = 1,
                 sign = "+"
             }
         },
