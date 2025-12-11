@@ -27,8 +27,8 @@ function Balatrostuck.INIT.Spectrals.c_spectral_thetreasure()
             return #G.jokers.cards < G.jokers.config.card_limit
         end,
         use = function(self, card, area, copier)
-            G.jokers.config.card_limit = G.jokers.config.card_limit - 1
-
+            --G.jokers.config.card_limit = G.jokers.config.card_limit - 1
+            G.jokers:change_size(-1)
             local thisbetterfuckingwork = {'Time','Space','Heart','Hope','Rage','Light','Void','Mind','Doom','Life','Blood','Breath','Piss'}
             for k,v in pairs(thisbetterfuckingwork) do
                 G.GAME.BALATROSTUCK.aspect_levels[v] = G.GAME.BALATROSTUCK.aspect_levels[v] + 1
@@ -41,6 +41,7 @@ function Balatrostuck.INIT.Spectrals.c_spectral_thetreasure()
                     if G.GAME.slab then
                         G.ui_slab:juice_up()
                         play_sound('chips1', math.random()*0.1 + 0.55, 0.42)
+                        G.GAME.slab:calculate({ activated = true, old_slab = G.GAME.slab, after_level_up = true, returning = false},true)
                     end
 
                     play_sound('bstuck_HomestuckAscendAll',0.7,0.5)

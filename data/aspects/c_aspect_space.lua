@@ -46,7 +46,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_space()
             end
 
             if context.activated and context.after_level_up then
-                if context.returning then
+                if context.returning or context.is_new then
                     G.hand:change_size(peepee)
                 else
                     G.hand:change_size(peepee-poopoo)
