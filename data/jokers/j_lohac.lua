@@ -47,6 +47,7 @@ function Balatrostuck.INIT.Jokers.j_lohac()
             if not card.ability.extra.active and not card.ability.extra.event_fired then
                 G.E_MANAGER:add_event(Event({
                     func = function() 
+                        if card.destroyed or not card.area then return true end
                         if G.ARGS.score_intensity.earned_score <  G.ARGS.score_intensity.required_score then
                             return false
                         end
