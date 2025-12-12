@@ -6,8 +6,8 @@ function Balatrostuck.INIT.Tags.t_perfectlygeneric()
         loc_txt = {
             ['name'] = 'Perfectly Generic Tag',
             ['text'] = {
-                "Create a {C:paradox}Paradox{} copy",
-                "of the {C:attention}next{} consumable"
+                "Creates a {C:paradox}Paradox{} copy",
+                "of the {C:attention}next{} consumable used"
             }
         },
         pos = {
