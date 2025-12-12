@@ -220,7 +220,7 @@ return {
                 text = {'{C:inactive}(Currently {C:paradox}#1# {C:inactive}Jokers)'}
             },
             c_bstuck_rage_current = {
-                text = {'{C:inactive}(Currently {C:white,X:mult}X#3# {C:inactive} Mult)'}
+                text = {'{C:inactive}(Currently {C:white,X:mult}X#1# {C:inactive} Mult and {C:white,X:mult}X#2# {C:inactive} Mult)'}
             },
             c_bstuck_space_current = {
                 text = {'{C:inactive}(Currently {C:attention}+#1#{C:inactive})'}

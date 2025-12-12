@@ -36,7 +36,7 @@ function Balatrostuck.INIT.Jokers.j_crowbarsfelt()
         end,
 
         in_pool = function(self)
-            return Balatrostuck.peanut_gallery
+            if next(SMODS.find_card('j_bstuck_yourlordandmaster')) then return true else return false end
         end,
 
         calculate = function (self, card, context)

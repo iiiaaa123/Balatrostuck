@@ -12,10 +12,10 @@ function Balatrostuck.INIT.Jokers.j_sucker()
         loc_txt = {
             ['name'] = 'Sucker',
             ['text'] = {
-                '{C:green}#1# in #2#{} chance', 
-                'for {}{C:white,X:mult}X#2#{} Mult,',
-                'decreases by {C:suckers,E:2}1{}',
-                'every round'
+                '{C:green}#1# in #2#{} chance for', 
+                '{C:white,X:mult}X#2#{} Mult, decreases',
+                'by {C:suckers,E:2}1{} for each',
+                'card in played hand'
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
@@ -37,8 +37,10 @@ function Balatrostuck.INIT.Jokers.j_sucker()
         end,
 
         calculate = function(self, card, context)
-
-            if context.joker_main and context.cardarea == G.jokers then
+            if context.before and not context.blueprint then
+                card.ability.extra.base = card.ability.extra.base - #context.full_hand
+            
+            elseif context.joker_main and context.cardarea == G.jokers and card.ability.extra.base > 0 then
                 if pseudorandom('suckers') < G.GAME.probabilities.normal / card.ability.extra.base then
                     return {
                         message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.base } },
@@ -46,9 +48,10 @@ function Balatrostuck.INIT.Jokers.j_sucker()
                     }
                 end
 
-            elseif context.end_of_round and not context.individual and not context.blueprint and not context.repetition then
-                if card.ability.extra.base - card.ability.extra.decrement <= 1 then 
-
+            elseif context.after and not context.blueprint then
+                if card.ability.extra.base > 0 then 
+                    card.ability.extra.base = 6
+                else
                     card.getting_sliced = true
                     G.E_MANAGER:add_event(Event({
                         func = function()
@@ -57,38 +60,9 @@ function Balatrostuck.INIT.Jokers.j_sucker()
                         end
                     }))
 
-                    G.GAME.joker_buffer = G.GAME.joker_buffer + 1
-
-                    G.E_MANAGER:add_event(Event({
-                        trigger = 'before',
-                        delay = 0.0,
-                        func = function()
-                        local card = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_bstuck_sucker', 'suc')
-                        card:set_edition(nil, nil, true)
-                        card:add_to_deck()
-                        G.jokers:emplace(card)
-                        card:start_materialize()
-                        G.GAME.joker_buffer = 0
-                        return true
-                        end
-                    }))
-
                     return {
                         message = localize('k_eaten_ex'),
                         colour = G.C.FILTER
-                    }
-                else
-                    card.ability.extra.base = card.ability.extra.base - card.ability.extra.decrement
-                    G.E_MANAGER:add_event(Event({
-                        delay = 0.2,
-                        message = '-'..card.ability.extra.decrement,
-                        colour = G.C.GREEN,
-                    }))
-                    return {
-                        trigger = 'after',
-                        delay = 0.2,
-                        message = localize{type='variable',key='a_xmult_minus',vars={card.ability.extra.decrement}},
-                        colour = G.C.RED
                     }
                 end
             end

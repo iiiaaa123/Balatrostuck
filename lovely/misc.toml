@@ -316,7 +316,7 @@ target = "card.lua"
 pattern = "        self.area.config.type == 'joker' and"
 position = "after"
 payload = '''
-not (self.edition and self.edition.key == 'e_bstuck_paradox' and next(SMODS.find_card('j_bstuck_biscuits'))) and 
+not (self.edition and self.edition.key == 'e_bstuck_paradox' and (next(SMODS.find_card('j_bstuck_biscuits')) or next(SMODS.find_card('j_bstuck_oldsecret')))) and 
 '''
 match_indent = true
 times = 1

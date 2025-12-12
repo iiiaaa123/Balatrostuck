@@ -6,7 +6,8 @@ function Balatrostuck.INIT.Jokers.j_lohac()
         config = {
             extra = {
                 hands = 2,
-                active = false
+                active = false,
+                event_fired = false
             }
         },
         loc_txt = {
@@ -35,19 +36,30 @@ function Balatrostuck.INIT.Jokers.j_lohac()
             return {vars = {card.ability.extra.hands}}
         end,
         calculate = function (self, card, context)
-            if context.end_of_round and context.cardarea == G.jokers and G.ARGS.score_intensity.flames > 0.09 then
-                card.ability.extra.active = true
-                local eval = function() return card.ability.extra.active end
-                juice_card_until(card, eval, true)
-                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_active')})
-            end
 
             
             
             if context.setting_blind and card.ability.extra.active then
                 ease_hands_played(card.ability.extra.hands)
                 card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize{type = 'variable', key = 'a_hands', vars = {card.ability.extra.hands}}})
-                card.ability.extra.active = false
+                if not context.blueprint_card then card.ability.extra.active = false end
+            end
+            if not card.ability.extra.active and not card.ability.extra.event_fired then
+                G.E_MANAGER:add_event(Event({
+                    func = function() 
+                        if G.ARGS.score_intensity.earned_score <  G.ARGS.score_intensity.required_score then
+                            return false
+                        end
+                        card.ability.extra.active = true
+                        card.ability.extra.event_fired = false
+                        local eval = function() return card.ability.extra.active end
+                        juice_card_until(card, eval, true)
+                        card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_active')})
+                        return true
+                    end,
+                    blocking = false
+                }))
+                card.ability.extra.event_fired = true
             end
         end,
         check_for_unlock = function(self,args)

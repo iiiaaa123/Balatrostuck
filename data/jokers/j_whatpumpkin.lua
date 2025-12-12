@@ -4,16 +4,17 @@ function Balatrostuck.INIT.Jokers.j_whatpumpkin()
         key = "whatpumpkin",
         config = {
             extra = {
-                odds = 3,
-                remaining = 10
+                odds = 2,
+                remaining = 15
             }
         },
         loc_txt = {
             ['name'] = 'What Pumpkin?',
             ['text'] = {
-                'Each played card',
-                'creates a {C:paradox}Paradox{}',
-                ' copy of itself when scored',
+                'Each played card has',
+                'a {C:green}#1# in #2#{} chance to',
+                'create a {C:paradox}Paradox{} copy',
+                'of itself when scored',
                 '{C:inactive}({C:attention}#3#{C:inactive} copies remaining)'
             },
             unlock = {'Unlocked by',
@@ -42,6 +43,7 @@ function Balatrostuck.INIT.Jokers.j_whatpumpkin()
     
         calculate = function(self, card, context)
             if context.cardarea == G.play and context.individual and card.ability.extra.remaining > 0 then
+                if pseudorandom('-fiy!') < G.GAME.probabilities.normal / card.ability.extra.odds then
                     G.playing_card = (G.playing_card and G.playing_card + 1) or 1
                         local _card = copy_card(context.other_card, nil, nil, G.playing_card, true)
                         _card:set_edition("e_bstuck_paradox", false)
@@ -81,6 +83,7 @@ function Balatrostuck.INIT.Jokers.j_whatpumpkin()
                             card_eval_status_text(context.blueprint or card, 'extra', nil, nil, nil, {message = "-ify!",colour = G.C.GREEN})
                         end
                     end
+                end
             end
         end,
         check_for_unlock = function(self,args)

@@ -115,6 +115,16 @@ function Balatrostuck.INIT.Jokers.j_echeladder()
             if G.GAME.blind.boss then -- AND not alternia stake) OR (alternia stake AND alternian blind)
                 if card.ability.extra.title_index < 13 then
                     card.ability.extra.title_index = card.ability.extra.title_index + 1
+                    if card.ability.extra.title_index == 13 then
+                        G.E_MANAGER:add_event(Event({
+                        func = (function()
+                            add_tag(Tag('tag_bstuck_sburb'))
+                            play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+                            play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+                            return true
+                        end)
+                        }))
+                    end                    
                 end
                 return 10
             else

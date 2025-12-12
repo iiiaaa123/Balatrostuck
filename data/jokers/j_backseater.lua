@@ -173,36 +173,10 @@ function Balatrostuck.INIT.Jokers.j_backseater()
                         card.ability.extra.flags.start4a = true
                         if card.ability.extra.skipdone4 >= card.ability.extra.skipneed4 then
                             card.ability.extra.tier = 5
+                            bstuck_give_random_tag("backseater_first")
+                            bstuck_give_random_tag("backseater_second")
                             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
                                 add_tag(Tag('tag_coupon'))
-                                
-                                local tagkey = get_next_tag_key()
-                                if tagkey == 'tag_bstuck_scratch' then tagkey = 'tag_handy' end --prevent this from spawning scratch tag
-                                local tag = Tag(tagkey)
-                                if tagkey == 'tag_orbital' then
-                                    local _poker_hands = {}
-                                    for k, v in pairs(G.GAME.hands) do
-                                        if v.visible then _poker_hands[#_poker_hands+1] = k end
-                                    end
-                                    tag.ability.orbital_hand = pseudorandom_element(_poker_hands, pseudoseed('orbital'))
-                                end
-                                add_tag(tag)
-                                
-                                local tagkey2 = get_next_tag_key()
-                                
-                                
-                                if tagkey2 == 'tag_bstuck_scratch' then tagkey2 = 'tag_handy' end --prevent this from spawning scratch tag
-                                local tag2 = Tag(tagkey2)
-                                if tagkey2 == 'tag_orbital' then
-                                    local _poker_hands = {}
-                                    for k, v in pairs(G.GAME.hands) do
-                                        if v.visible then _poker_hands[#_poker_hands+1] = k end
-                                    end
-                                    tag2.ability.orbital_hand = pseudorandom_element(_poker_hands, pseudoseed('orbital'))
-                                end
-                                add_tag(tag2)
-
-                                play_sound('timpani')
                                 card_eval_status_text(card, 'extra', nil, nil, nil, {message = 'Gr8!', colour = HEX('4673A0'),card = card })
                                 return true
                             end}))

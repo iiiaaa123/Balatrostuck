@@ -23,12 +23,17 @@ function Balatrostuck.INIT.Jokers.j_aceDick()
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
             if context.ace_dick and not context.blueprint then 
-                hand_chips = hand_chips + card.ability.extra.chips
-                mult = mult + card.ability.extra.mult
-                update_hand_text({delay = 0}, {chips = card.ability.extra.chips and hand_chips, mult = card.ability.extra.mult and mult})
-                card_eval_status_text(card,'mult',card.ability.extra.mult,nil,nil,{message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }})
-                card_eval_status_text(card,'chips',card.ability.extra.chips,nil,nil,{message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } }})
-                return hand_chips, mult
+                
+                --hand_chips = hand_chips + card.ability.extra.chips
+                --mult = mult + card.ability.extra.mult
+                --update_hand_text({delay = 0}, {chips = card.ability.extra.chips and hand_chips, mult = card.ability.extra.mult and mult})
+                --card_eval_status_text(card,'mult',card.ability.extra.mult,nil,nil,{message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }})
+                --card_eval_status_text(card,'chips',card.ability.extra.chips,nil,nil,{message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } }})
+                --return hand_chips, mult
+                
+                --i think all of that is not necessary as we can just return an effects table like so
+                --not deleting it just in case
+                return {chips = card.ability.extra.chips, mult = card.ability.extra.mult}
             end
         end,
         check_for_unlock = function(self,args)

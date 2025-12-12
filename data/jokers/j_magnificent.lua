@@ -69,7 +69,7 @@ function Balatrostuck.INIT.Jokers.j_magnificent()
             end
         end,
         in_pool = function(self)
-            return Balatrostuck.peanut_gallery
+            if next(SMODS.find_card('j_bstuck_yourlordandmaster')) then return true else return false end
         end,
         check_for_unlock = function(self,args)
             if args.type == 'bstuck_collide' then
