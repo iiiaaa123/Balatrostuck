@@ -31,7 +31,7 @@ function Balatrostuck.INIT.Jokers.j_blackjack()
 
         atlas = 'HomestuckJokers',
         calculate = function (self, card, context)
-            if context.modify_scoring_hand then
+            if context.modify_scoring_hand and not context.blueprint_card then
                 local _total_chips = 0
                 local _ace_count = 0
                 if #context.full_hand == 0 then return end
@@ -56,13 +56,15 @@ function Balatrostuck.INIT.Jokers.j_blackjack()
             end
             if context.joker_main then 
                 if card.ability.extra.activated then 
-                    card.ability.extra.activated = false
                     return {
                         mult_mod = 21,
                         message = localize { type = 'variable', key = 'a_mult', vars = { 21 } },
                         colour = G.C.MULT
                     } 
                 end
+            end
+            if context.after then 
+                card.ability.extra.activated = false
             end
         end,
         loc_vars = function (self, info_queue, card)
