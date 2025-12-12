@@ -13,8 +13,8 @@ function Balatrostuck.INIT.Jokers.j_tanglebuddies()
             ['text'] = {
                 "When played cards are scored,",
                 "they give {C:mult}+Mult{} equal to",
-                "{C:attention}summation{} the amount their",
-                "{C:attention}rank{} has scored {C:attention}this hand"
+                "{C:attention}summation{} the amount of times",
+                "their {C:attention}rank{} has scored {C:attention}this hand"
             },
             unlock = {'Beat Ante 12',
                     'with no vouchers'}
