@@ -567,20 +567,6 @@ elseif ((not v.shattered) and (not v.destroyed)) or (v.edition and v.edition.key
 times = 1
 
 
-#snowman face cards
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = '''
-if (id > 0 and rank and rank.face) or next(find_joker("Pareidolia")) then
-    return true
-end
-'''
-position = "after"
-payload = '''
-if next(SMODS.find_card('j_bstuck_snowman')) and rank and id == 8 then return true end
-'''
-match_indent = true
 
 
 #allow swashbuckler to go negative
