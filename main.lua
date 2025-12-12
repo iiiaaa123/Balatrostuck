@@ -107,7 +107,7 @@ local voucher_list = {
 
 local tag_list = {
     "perfectlygeneric", "parcelpyxis", "scratch", "spirograph", "matriorb", "sburb",
-    "firefly", "denizen", "mutation", "splinter", "carapacian", -- add the last one
+    "firefly", "denizen", "mutation", "splinter", "carapacian", "consort"
 }
 
 local spectral_list = {
@@ -119,7 +119,7 @@ local spectral_list = {
 }
 
 local deck_list = {
-    'dersite','prospitan','alternian','frog','sylladeck', 'nymph'
+    'dersite','prospitan','alternian','frog','sylladeck', 'nymph', 'genericdeck'
 }
 
 batch_load("jokers")
