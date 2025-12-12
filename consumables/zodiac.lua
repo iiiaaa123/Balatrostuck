@@ -103,19 +103,19 @@ function Balatrostuck.Zodiac:get_formula(level)
     return {level * 3}
 
   elseif self.name == 'Virgo' then
-    return {level > 0 and summation(level+2) or 0}
+    return {level > 0 and summation(level+1) or 0}
 
   elseif self.name == 'Libra' then
     return {1 + (level/10)}
 
   elseif self.name == 'Sagittarius' then
-    return {level * 25}
+    return {level * 20}
 
   elseif self.name == 'Capricorn' then
     return {(level*0.5)+1, 1/(level+1)}
 
   elseif self.name == 'Pisces' then
-    return {level * 2}
+    return {level * 3}
 
   elseif self.name == 'Ophiuchus' then
     return {1.25 ^ level}
