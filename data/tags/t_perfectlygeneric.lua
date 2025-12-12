@@ -22,9 +22,13 @@ function Balatrostuck.INIT.Tags.t_perfectlygeneric()
         end,
         apply = function(self, tag, context)
             if context.type == 'using_consumeable' then
-                SMODS.add_card({key = context.consumeable.config.center.key,edition = 'e_bstuck_paradox'})
-                tag.triggered = true
-                return true
+                tag:yep("-Ify!",G.C.Green, 
+                function()
+                    SMODS.add_card({key = context.consumeable.config.center.key,edition = 'e_bstuck_paradox'})
+                    tag.triggered = true
+                    return true
+                end)
+            
             end
         end
     }
