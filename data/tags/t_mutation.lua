@@ -11,7 +11,7 @@ function Balatrostuck.INIT.Tags.t_mutation()
             }
         },
         pos = {
-            x = 1,
+            x = 2,
             y = 1
         },
         atlas = 'HomestuckTags',
@@ -23,7 +23,7 @@ function Balatrostuck.INIT.Tags.t_mutation()
         atlas = 'HomestuckTags',
         loc_vars = function(self, info_queue, card)
             info_queue[#info_queue + 1] = G.P_CENTERS['p_bstuck_aspect_booster']
-            art_credit('akai', info_queue)
+            art_credit('penny', info_queue)
 
             return {true}
         end,
