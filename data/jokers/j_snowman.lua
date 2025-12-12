@@ -44,7 +44,7 @@ function Balatrostuck.INIT.Jokers.j_snowman()
 
                 local _8count = 0
                 for _, scored_card in ipairs(context.scoring_hand) do
-                    if scored_card:get_id() == 8 then _8count = _8count + 1 end
+                    if scored_card:get_id() == 8 and not scored_card.debuff then _8count = _8count + 1 end
                 end
                 if _8count == 2 then
                     card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
