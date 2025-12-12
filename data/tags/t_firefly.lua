@@ -11,8 +11,8 @@ function Balatrostuck.INIT.Tags.t_firefly()
             }
         },
         pos = {
-            x = 1,
-            y = 1
+            x = 3,
+            y = 2
         },
         atlas = 'HomestuckTags',
         

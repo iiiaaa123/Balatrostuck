@@ -11,7 +11,7 @@ function Balatrostuck.INIT.Tags.t_splinter()
             }
         },
         pos = {
-            x = 1,
+            x = 3,
             y = 1
         },
         atlas = 'HomestuckTags',
