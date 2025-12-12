@@ -5,6 +5,7 @@ function Balatrostuck.INIT.Jokers.j_echeladder()
         config = {
             extra = {
                 dollars = 10,
+                given_tag = false,
                 title_cur = "Junior Japer",
                 title_list = {
                     {
@@ -114,21 +115,47 @@ function Balatrostuck.INIT.Jokers.j_echeladder()
         calc_dollar_bonus = function(self, card)
             if G.GAME.blind.boss then -- AND not alternia stake) OR (alternia stake AND alternian blind)
                 if card.ability.extra.title_index < 13 then
-                    card.ability.extra.title_index = card.ability.extra.title_index + 1
-                    if card.ability.extra.title_index == 13 then
-                        G.E_MANAGER:add_event(Event({
-                        func = (function()
-                            add_tag(Tag('tag_bstuck_sburb'))
-                            play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
-                            play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
-                            return true
-                        end)
-                        }))
-                    end                    
+                    card.ability.extra.title_index = card.ability.extra.title_index + 1                   
                 end
                 return 10
             else
                 return nil
+            end
+        end,
+
+        calculate = function(self,card,context)
+            if context.end_of_round and context.cardarea == G.jokers and not card.ability.extra.given_tag and card.ability.extra.title_index >= 13 then
+                G.E_MANAGER:add_event(Event({
+                    func = (function()
+                        add_tag(Tag('tag_bstuck_sburb'))
+                        play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+                        play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+                        return true
+                    end)
+                }))
+                --uncomment this to make it destroy itself
+--[[                 G.E_MANAGER:add_event(Event({
+                    func = function()
+                        play_sound('tarot1')
+                        card.T.r = -0.2
+                        card:juice_up(0.3, 0.4)
+                        card.states.drag.is = true
+                        card.children.center.pinch.x = true
+                        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
+                            func = function()
+                                    G.jokers:remove_card(card)
+                                    card:remove()
+                                    card = nil
+                                return true; end})) 
+                        return true
+                    end
+                }))  ]]
+                --code for 8r8k unlock goes here
+                card.ability.extra.given_tag = true
+                return {
+                    message = "-Ify!",
+                    card = card
+                }
             end
         end
     }

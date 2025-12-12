@@ -81,7 +81,7 @@ function Balatrostuck.INIT.Jokers.j_questbed()
                 
                 return {
                     message = 'Ascended!',
-                    saved = true,
+                    saved = 'God tiered!',
                     colour = color
                 }
             end

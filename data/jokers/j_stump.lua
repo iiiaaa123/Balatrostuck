@@ -36,7 +36,7 @@ function Balatrostuck.INIT.Jokers.j_stump()
             if context.game_over and pseudorandom('stump') < 1/card.ability.extra.chance and not context.blueprint then
                 return {
                     message = localize('k_saved_ex'),
-                    saved = true,
+                    saved = "Saved from the Stump",
                     colour = G.C.RED                    
                 }
             end

@@ -47,7 +47,7 @@ function Balatrostuck.INIT.Aspects.c_aspect_hope()
             end
 
             if context.activated and context.after_level_up then
-                if context.returning then
+                if context.returning or context.is_new then
                     G.GAME.modifiers.booster_size_mod = (G.GAME.modifiers.booster_size_mod or 0) + peepee
                 else
                     G.GAME.modifiers.booster_size_mod = (G.GAME.modifiers.booster_size_mod or 0) + (peepee - poopoo)
