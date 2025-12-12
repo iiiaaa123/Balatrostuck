@@ -55,7 +55,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
                 
                 if milk then
                     return {
-                        chips = 25 * self:level(context.other_card),
+                        chips = 20 * self:level(context.other_card),
                         card = context.other_card
                     }
                 end

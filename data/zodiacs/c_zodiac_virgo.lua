@@ -48,7 +48,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_virgo()
                     }
                 else
                     return {
-                        h_mult = summation(2 + self:level(context.other_card)),
+                        h_mult = summation(1 + self:level(context.other_card)),
                         card = context.other_card
                     }
                 end
