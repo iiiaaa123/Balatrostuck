@@ -36,8 +36,10 @@ function Balatrostuck.INIT.Jokers.j_blackjack()
                 local _ace_count = 0
                 if #context.full_hand == 0 then return end
                 for _, played_card in ipairs(context.full_hand) do
-                    _total_chips = _total_chips + played_card.base.nominal
-                    if played_card.base.nominal == 11 then _ace_count = _ace_count + 1 end
+                    if played_card.ability.effect ~= 'Stone Card' then 
+                        _total_chips = _total_chips + played_card.base.nominal
+                        if played_card.base.nominal == 11 then _ace_count = _ace_count + 1 end
+                    end
                 end
                 while _ace_count > 0 do
                         if _total_chips == 21 then break end
