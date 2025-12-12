@@ -6,9 +6,8 @@ function Balatrostuck.INIT.Tags.t_perfectlygeneric()
         loc_txt = {
             ['name'] = 'Perfectly Generic Tag',
             ['text'] = {
-                [1] = 'Fill empty consumable slots',
-                [2] = 'with {C:tarot}The Fool{} cards',
-                [3] = '{C:inactive} (Must have room)'         
+                "Create a {C:paradox}Paradox{} copy",
+                "of the {C:attention}next{} consumable"
             }
         },
         pos = {
@@ -17,24 +16,15 @@ function Balatrostuck.INIT.Tags.t_perfectlygeneric()
         },
         atlas = 'HomestuckTags',
         loc_vars = function(self, info_queue, card)
-            info_queue[#info_queue + 1] = G.P_CENTERS['c_fool']
             art_credit('akai', info_queue)
             -- PUT RELEVENT LOC VARS HERE WHEN YOU GET TO REWORDING THIS!!!!!!! - Delirium
             return {true}
         end,
         apply = function(self, tag, context)
-            if #G.consumeables.cards < G.consumeables.config.card_limit then
-                tag:yep("Ify!",G.C.Green,
-                function()
-                    while #G.consumeables.cards < G.consumeables.config.card_limit do
-                        local _card = SMODS.create_card({set = 'Tarot',area = G.consumeables, no_edition = true, key = 'c_fool'})
-                        _card:add_to_deck()
-                        G.consumeables:emplace(_card)
-                        G.GAME.consumeable_buffer = 0
-                    end
-                    return true
-                end)
+            if context.type == 'using_consumeable' then
+                SMODS.add_card({key = context.consumeable.config.center.key,edition = 'e_bstuck_paradox'})
                 tag.triggered = true
+                return true
             end
         end
     }

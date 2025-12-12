@@ -800,3 +800,13 @@ function bstuck_give_random_tag(append,disallowed_tags)
         return true
     end}))
 end
+
+--can trigger non-card non-jokers (like tags) in contexts using this 
+local mod = SMODS.current_mod
+mod.calculate = function(self, context)
+    if context.using_consumeable then 
+        for i=1, #G.GAME.tags do
+            G.GAME.tags[i]:apply_to_run({type = 'using_consumeable', consumeable=context.consumeable})
+        end
+    end
+end
