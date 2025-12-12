@@ -133,8 +133,8 @@ function Balatrostuck.INIT.Jokers.j_echeladder()
                         return true
                     end)
                 }))
-                
-                G.E_MANAGER:add_event(Event({
+                --uncomment this to make it destroy itself
+--[[                 G.E_MANAGER:add_event(Event({
                     func = function()
                         play_sound('tarot1')
                         card.T.r = -0.2
@@ -149,7 +149,7 @@ function Balatrostuck.INIT.Jokers.j_echeladder()
                                 return true; end})) 
                         return true
                     end
-                })) 
+                }))  ]]
                 --code for 8r8k unlock goes here
                 card.ability.extra.given_tag = true
                 return {
