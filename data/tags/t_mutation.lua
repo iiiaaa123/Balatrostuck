@@ -6,8 +6,8 @@ function Balatrostuck.INIT.Tags.t_mutation()
         loc_txt = {
             ['name'] = 'Mutation Tag',
             ['text'] = {
-                [1] = 'Gives a free',
-                [2] = '{C:aspect}Aspect Pack'            
+                [1] = 'For each joker',
+                [2] = 'Create a paradox clone'            
             }
         },
         pos = {
@@ -27,17 +27,34 @@ function Balatrostuck.INIT.Tags.t_mutation()
 
             return {true}
         end,
-        apply = function(self, tag, context)
-            if context.type == 'new_blind_choice' then
+         apply = function(self, tag, context) -- DO NOT LET THIS SHIP WITHOUT A FAILSAFE FOR DOOMQUARIUS
                 local lock = tag.ID
-                G.CONTROLLER.locks[lock] = true
-                tag:yep('+', G.C.SECONDARY_SET.Aspect,function() 
-                        
+                tag:yep("MEOW!",G.C.Green, 
+                function()
+
+                     for j = 1, #G.jokers.cards do 
+                    if G.jokers.cards[j] ~= card then
+                        G.E_MANAGER:add_event(Event({
+                        trigger = 'before',
+                        delay = 0.0,
+                        func = function()
+                            local _card = copy_card(G.jokers.cards[j], nil, nil, nil)
+                            _card:start_materialize()
+                            _card:set_edition('e_bstuck_paradox')
+                            _card:add_to_deck()
+                            G.jokers:emplace(_card)
+                            G.GAME.joker_buffer = 0
+                            play_sound('bstuck_HomestuckMeow', 1 + math.random()*0.5, 0.4)
                         return true
-                    end)
-                tag.triggered = true
+                        end
+                    }))
+                    end
+                end
+                    
+
                 return true
-            end
+                end)
+                tag.triggered = true
         end,
     }
 end

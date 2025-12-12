@@ -6,8 +6,8 @@ function Balatrostuck.INIT.Tags.t_denizen()
         loc_txt = {
             ['name'] = 'Denizen Tag',
             ['text'] = {
-                [1] = 'Gives a free',
-                [2] = '{C:aspect}Aspect Pack'            
+                [1] = 'Create a negative',
+                [2] = 'eternal rare joker'            
             }
         },
         pos = {
@@ -28,16 +28,22 @@ function Balatrostuck.INIT.Tags.t_denizen()
             return {true}
         end,
         apply = function(self, tag, context)
-            if context.type == 'new_blind_choice' then
                 local lock = tag.ID
-                G.CONTROLLER.locks[lock] = true
-                tag:yep('+', G.C.SECONDARY_SET.Aspect,function() 
-                        
-                        return true
-                    end)
-                tag.triggered = true
+                tag:yep("Choice.",G.C.Red, 
+                function()
+
+                     G.E_MANAGER:add_event(Event({
+                        func = function()
+                            local _card = SMODS.add_card({set = 'Joker', rarity = 3,edition = 'e_negative'})
+                            _card:start_materialize()
+                            _card:set_eternal(true)
+                            return true
+                    end}))
+                    
+
                 return true
-            end
+                end)
+                tag.triggered = true
         end,
     }
 end

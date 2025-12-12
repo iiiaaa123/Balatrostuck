@@ -6,8 +6,8 @@ function Balatrostuck.INIT.Tags.t_carapacian()
         loc_txt = {
             ['name'] = 'Carapacian Tag',
             ['text'] = {
-                [1] = 'Gives a free',
-                [2] = '{C:aspect}Aspect Pack'            
+                [1] = 'Create two',
+                [2] = 'random Tags'            
             }
         },
         pos = {
@@ -16,28 +16,60 @@ function Balatrostuck.INIT.Tags.t_carapacian()
         },
         atlas = 'HomestuckTags',
         
-        in_pool = function(self)
-            return (G.GAME.round_resets.ante > 1)
-        end,
 
         atlas = 'HomestuckTags',
         loc_vars = function(self, info_queue, card)
-            info_queue[#info_queue + 1] = G.P_CENTERS['p_bstuck_aspect_booster']
             art_credit('akai', info_queue)
 
             return {true}
         end,
+
         apply = function(self, tag, context)
-            if context.type == 'new_blind_choice' then
                 local lock = tag.ID
-                G.CONTROLLER.locks[lock] = true
-                tag:yep('+', G.C.SECONDARY_SET.Aspect,function() 
-                        
+                tag:yep("Tags!",G.C.Green, 
+                function()
+                    
+                     G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+                        local tagkey = get_next_tag_key()
+                        if tagkey == 'tag_bstuck_scratch' then tagkey = 'tag_handy' end --prevent this from spawning scratch tag
+                        local tag = Tag(tagkey)
+                        if tagkey == 'tag_bstuck_carapacian' then tagkey = 'tag_handy' end --prevent this from spawning itself
+                        local tag = Tag(tagkey)
+                        if tagkey == 'tag_orbital' then
+                            local _poker_hands = {}
+                            for k, v in pairs(G.GAME.hands) do
+                                if v.visible then _poker_hands[#_poker_hands+1] = k end
+                            end
+                            
+                            tag.ability.orbital_hand = pseudorandom_element(_poker_hands, pseudoseed('orbital'))
+                        end
+                        play_sound('timpani')
+                        add_tag(tag)
                         return true
-                    end)
-                tag.triggered = true
+                    end}))
+
+                     G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+                        local tagkey = get_next_tag_key()
+                        if tagkey == 'tag_bstuck_scratch' then tagkey = 'tag_handy' end --prevent this from spawning scratch tag
+                        local tag = Tag(tagkey)
+                        if tagkey == 'tag_bstuck_carapacian' then tagkey = 'tag_handy' end --prevent this from spawning itself
+                        local tag = Tag(tagkey)
+                        if tagkey == 'tag_orbital' then
+                            local _poker_hands = {}
+                            for k, v in pairs(G.GAME.hands) do
+                                if v.visible then _poker_hands[#_poker_hands+1] = k end
+                            end
+                            
+                            tag.ability.orbital_hand = pseudorandom_element(_poker_hands, pseudoseed('orbital'))
+                        end
+                        play_sound('timpani')
+                        add_tag(tag)
+                        return true
+                    end}))
+
                 return true
-            end
+                end)
+                tag.triggered = true
         end,
     }
 end
