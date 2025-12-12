@@ -43,7 +43,7 @@ function Balatrostuck.INIT.Jokers.j_whatpumpkin()
     
         calculate = function(self, card, context)
             if context.cardarea == G.play and context.individual and card.ability.extra.remaining > 0 then
-                if pseudorandom('-fiy!') < G.GAME.probabilities.normal < card.ability.extra.odds then
+                if pseudorandom('-fiy!') < G.GAME.probabilities.normal / card.ability.extra.odds then
                     G.playing_card = (G.playing_card and G.playing_card + 1) or 1
                         local _card = copy_card(context.other_card, nil, nil, G.playing_card, true)
                         _card:set_edition("e_bstuck_paradox", false)
