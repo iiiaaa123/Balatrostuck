@@ -159,8 +159,8 @@ function Balatrostuck.INIT.Jokers.j_joker()
                                             pseudorandom_element({
                                         'tag_buffoon', 'tag_charm',
                                         'tag_meteor', 'tag_standard',
-                                        'tag_ethereal', 't_bstuck_matriorb',
-                                        't_bstuck_spirograph'
+                                        'tag_ethereal', 'tag_bstuck_matriorb',
+                                        'tag_bstuck_spirograph'
                                     }, pseudoseed('john'))))
                                 play_sound('generic1',
                                            0.9 + math.random() * 0.1, 0.8)
