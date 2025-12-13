@@ -32,7 +32,7 @@ function Balatrostuck.INIT.Jokers.j_cruxitedowel()
         cost = 5,
         rarity = 1,
         blueprint_compat = false,
-        eternal_compat = true,
+        eternal_compat = false,
         unlocked = true,
         atlas = 'HomestuckJokers',
         calculate = function(self, card, context)
