@@ -3,14 +3,17 @@ function Balatrostuck.INIT.Jokers.j_break()
         name = "8R8K",
         key = "break",
         config = {
-            extra = { 
+            extra = { Xmult_mod = 1
             }
         },
+        loc_vars = function(self,info_queue,card)
+            art_credit('akai', info_queue)
+            return {vars = {math.floor(math.min(413,log2(G.GAME.probabilities.normal)+1))}}
+        end,
         loc_txt = {
             ['name'] = "8R8K",
             ['text'] = {
-                [1] = "When round begins, create {C:green}#1#",
-                [2] = "{C:attention}Lucky {C:paradox}Paradox {C:clubs}4 of Clubs{} in hand"
+                [1] = "{C:white,X:green}X#1#{} {C:green}Mult"
             }
         },
         pos = {
@@ -19,20 +22,21 @@ function Balatrostuck.INIT.Jokers.j_break()
         },
 
         
-        cost = 999,
+        cost = 8,
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,
         unlocked = true,
 
-
         atlas = 'HomestuckJokers',
         calculate = function (self, card, context)
-        
-        end,
-        loc_vars = function (self, info_queue, card)
-            art_credit('akai', info_queue)
-            return {vars = {G.GAME.probabilities.normal}}
-        end,
+            if context.cardarea == G.jokers and context.joker_main then
+                return {
+                message = localize{type='variable',key='a_xmult',vars = {math.floor(math.min(413,log2(G.GAME.probabilities.normal)+1))}},
+                Xmult_mod = math.floor(math.min(413,log2(G.GAME.probabilities.normal)+1)),
+                colour = G.C.GREEN
+                }
+            end
+        end
     }
 end 
