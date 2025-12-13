@@ -21,7 +21,7 @@ function Balatrostuck.INIT.Tags.t_perfectlygeneric()
             return {true}
         end,
         apply = function(self, tag, context)
-            if context.type == 'using_consumeable' then
+            if context.type == 'using_consumeable' and not (context.consumeable.ability.set == 'Aspect') then
                 tag:yep("-Ify!",G.C.Green, 
                 function()
                     SMODS.add_card({key = context.consumeable.config.center.key,edition = 'e_bstuck_paradox'})
