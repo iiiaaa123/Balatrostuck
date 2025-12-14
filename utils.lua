@@ -762,6 +762,171 @@ function bstuck_concat_tables(t1,t2)
     return t1
 end
 
+
+function bstuck_remove_tag_ui(_tag)
+    local HUD_tag_key = nil
+    for k, v in pairs(G.HUD_tags) do
+        if v == _tag.HUD_tag then HUD_tag_key = k end
+    end
+
+    if HUD_tag_key then 
+        if G.HUD_tags and G.HUD_tags[HUD_tag_key+1] then
+            if HUD_tag_key == 1 then
+                G.HUD_tags[HUD_tag_key+1]:set_alignment({type = 'bri',
+                offset = {x=0.7,y=0},
+                xy_bond = 'Weak',
+                major = G.ROOM_ATTACH})
+            else
+                G.HUD_tags[HUD_tag_key+1]:set_role({
+                xy_bond = 'Weak',
+                major = G.HUD_tags[HUD_tag_key-1]})
+            end
+        end
+        table.remove(G.HUD_tags, HUD_tag_key)
+    end
+
+    _tag.HUD_tag:remove()
+end
+
+--tag stuff
+function Tag:init(_tag, for_collection, _blind_type)
+    self.key = _tag
+    local proto = G.P_TAGS[_tag] or G.tag_undiscovered
+    self.config = copy_table(proto.config)
+    self.pos = proto.pos
+    self.name = proto.name
+    self.tally = G.GAME.tag_tally or 0
+    self.triggered = false
+    self.is_in_stack = false
+    G.tagid = G.tagid or 0
+    self.ID = G.tagid
+    G.tagid = G.tagid + 1
+    self.ability = {
+        orbital_hand = '['..localize('k_poker_hand')..']',
+        blind_type = _blind_type
+    }
+    G.GAME.tag_tally = G.GAME.tag_tally and (G.GAME.tag_tally + 1) or 1
+    if not for_collection then self:set_ability() end
+end
+
+function Tag:yep(message, _colour, func)
+    stop_use()
+
+
+    G.E_MANAGER:add_event(Event({
+        delay = 0.4,
+        trigger = 'after',
+        func = (function()
+            attention_text({
+                text = message,
+                colour = G.C.WHITE,
+                scale = 1, 
+                hold = 0.3/G.SETTINGS.GAMESPEED,
+                cover = self.HUD_tag,
+                cover_colour = _colour or G.C.GREEN,
+                align = 'cm',
+                })
+            play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+            play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+            return true
+        end)
+    }))
+    G.E_MANAGER:add_event(Event({
+        func = func
+    }))
+
+    if not self.is_in_stack and not (self.ability.contained_tag and self.ability.stack_count > 0) then
+        G.E_MANAGER:add_event(Event({
+            func = (function()
+                self.HUD_tag.states.visible = false
+                return true
+            end)
+        }))
+
+        
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.7,
+            func = (function()
+                self:remove()
+                return true
+            end)
+        }))
+    end
+end
+
+
+function add_tag(_tag,fromMind)
+    print("Called hooked function")
+    local _stacked_tag = nil
+    local _done = false
+    for i = 1, #G.GAME.tags do
+        local _current_tag = G.GAME.tags[i]
+        if _current_tag.key == "tag_bstuck_stack" and _current_tag.ability.contained_tag.key == _tag.key then
+            if (not _current_tag.ability.contained_tag.orbital_hand and not _tag.ability.orbital_hand) or (_tag.ability.orbital_hand == _current_tag.ability.ability.contained_tag.orbital_hand) then
+                --handle the case where we already have a stack tag of this type
+                _done = true
+                _current_tag.ability.stack_count = _current_tag.ability.stack_count + 1
+                --todo add animation 
+                print("Tag:".._current_tag.key.." count: ".._current_tag.ability.stack_count)
+                break
+            end
+        end
+
+        if _current_tag.key == _tag.key then
+            --handle the case where we are adding a tag that we already have (but its not a stack)
+            _stacked_tag = Tag("tag_bstuck_stack")
+            _tag.is_in_stack = true
+            print("stacking...")
+            print(_tag.is_in_stack)
+            _stacked_tag.ability.contained_tag = _tag
+            _stacked_tag.ability.stack_count = 2
+            _stacked_tag.loc_txt = _stacked_tag.ability.contained_tag.loc_txt
+            _stacked_tag.loc_vars = _stacked_tag.ability.contained_tag.loc_vars
+            _stacked_tag.from_load = _stacked_tag.ability.contained_tag.from_load
+            _stacked_tag.config.type = _stacked_tag.ability.contained_tag.config.type
+            --bstuck_remove_tag_ui(_current_tag)
+            _current_tag:remove()
+            _tag = _stacked_tag
+            break
+
+        end     
+    end
+    if not _done then
+        G.HUD_tags = G.HUD_tags or {}
+        local tag_sprite_ui = _tag:generate_UI()
+        G.HUD_tags[#G.HUD_tags+1] = UIBox{
+            definition = {n=G.UIT.ROOT, config={align = "cm",padding = 0.05, colour = G.C.CLEAR}, nodes={
+                tag_sprite_ui
+            }},
+            config = {
+                align = G.HUD_tags[1] and 'tm' or 'bri',
+                offset = G.HUD_tags[1] and {x=0,y=0} or {x=0.7,y=0},
+                major = G.HUD_tags[1] and G.HUD_tags[#G.HUD_tags] or G.ROOM_ATTACH}
+        }
+        
+    end
+  discover_card(G.P_TAGS[_tag.key])
+
+  for i = 1, #G.GAME.tags do
+    G.GAME.tags[i]:apply_to_run({type = 'tag_add', tag = _tag.ability.contained_tag or _tag})
+  end
+
+  if not _done then
+    G.GAME.tags[#G.GAME.tags+1] = _tag
+  end
+  
+  if not _tag.from_load then SMODS.calculate_context({tag_added = _tag.ability.contained_tag or _tag}) end
+  _tag.from_load = nil
+  if not _done then
+    _tag.HUD_tag = G.HUD_tags[#G.HUD_tags]
+  end
+  if G.GAME.slab ~= nil and not fromMind then
+      local slab_eval = nil
+      slab_eval = G.GAME.slab:calculate({tag = _tag.ability.contained_tag or _tag})
+  end
+end
+
 function bstuck_get_tag_key(append,disallowed_tags)
     G.FORCE_TAG = G.GAME.challenge and (G.GAME.challenge == "c_bstuck_alchemy") and "tag_bstuck_perfecltygeneric" or nil
     if G.FORCE_TAG then return G.FORCE_TAG end
@@ -807,6 +972,377 @@ mod.calculate = function(self, context)
     if context.using_consumeable then 
         for i=1, #G.GAME.tags do
             G.GAME.tags[i]:apply_to_run({type = 'using_consumeable', consumeable=context.consumeable})
+        end
+    end
+end
+
+--debug, do not ship
+function Tag:apply_to_run(_context)
+    if self.triggered then return end
+    local flags = SMODS.calculate_context({prevent_tag_trigger = self, other_context = _context})
+    if flags.prevent_trigger then return end
+    local obj = SMODS.Tags[self.key]
+    local res
+    print("This is what apply to run got")
+    print(self.key)
+    print("Context: "..inspect(_context))
+    if obj and obj.apply and type(obj.apply) == 'function' then
+        res = obj:apply(self, _context)
+    end
+    if res then return res end
+    if not self.triggered and self.config.type == _context.type then
+        if _context.type == 'eval' then 
+            if self.name == 'Investment Tag' and
+                G.GAME.last_blind and G.GAME.last_blind.boss then
+                    self:yep('+', G.C.GOLD,function() 
+                        return true
+                    end)
+                self.triggered = true
+                return {
+                    dollars = self.config.dollars,
+                    condition = localize('ph_defeat_the_boss'),
+                    pos = self.pos,
+                    tag = self
+                }
+            end
+        elseif _context.type == 'immediate' then 
+            local lock = self.ID
+            G.CONTROLLER.locks[lock] = true
+            if self.name == 'Top-up Tag' then
+                self:yep('+', G.C.PURPLE,function() 
+                    for i = 1, self.config.spawn_jokers do
+                        if G.jokers and #G.jokers.cards < G.jokers.config.card_limit then
+                            local card = create_card('Joker', G.jokers, nil, 0, nil, nil, nil, 'top')
+                            card:add_to_deck()
+                            G.jokers:emplace(card)
+                        end
+                    end
+                    G.CONTROLLER.locks[lock] = nil
+                    return true
+                end)
+                self.triggered = true
+                return true
+            end
+            if self.name == 'Skip Tag' then
+                self:yep('+', G.C.MONEY,function() 
+                        G.CONTROLLER.locks[lock] = nil
+                    return true
+                end)
+                ease_dollars((G.GAME.skips or 0)*self.config.skip_bonus)
+                self.triggered = true
+                return true
+            end
+            if self.name == 'Garbage Tag' then
+                self:yep('+', G.C.MONEY,function() 
+                        G.CONTROLLER.locks[lock] = nil
+                    return true
+                end)
+                ease_dollars((G.GAME.unused_discards or 0)*self.config.dollars_per_discard)
+                self.triggered = true
+                return true
+            end
+            if self.name == 'Handy Tag' then
+                self:yep('+', G.C.MONEY,function() 
+                        G.CONTROLLER.locks[lock] = nil
+                    return true
+                end)
+                ease_dollars((G.GAME.hands_played or 0)*self.config.dollars_per_hand)
+                self.triggered = true
+                return true
+            end
+            if self.name == 'Economy Tag' then
+                self:yep('+', G.C.MONEY,function() 
+                    G.CONTROLLER.locks[lock] = nil
+                    return true
+                end)
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'immediate',
+                    func = function()
+                        ease_dollars(math.min(self.config.max, math.max(0,G.GAME.dollars)), true)
+                        return true
+                    end
+                }))
+                self.triggered = true
+                return true
+            end
+            if self.name == 'Orbital Tag' then
+                update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {
+                    handname= self.ability.orbital_hand,
+                    chips = G.GAME.hands[self.ability.orbital_hand].chips,
+                    mult = G.GAME.hands[self.ability.orbital_hand].mult,
+                    level= G.GAME.hands[self.ability.orbital_hand].level})
+                level_up_hand(self, self.ability.orbital_hand, nil, self.config.levels)
+                update_hand_text({sound = 'button', volume = 0.7, pitch = 1.1, delay = 0}, {mult = 0, chips = 0, handname = '', level = ''})
+                self:yep('+', G.C.MONEY,function() 
+                    G.CONTROLLER.locks[lock] = nil
+                    return true
+                end)
+                self.triggered = true
+                return true
+            end
+        elseif _context.type == 'new_blind_choice' then 
+            local lock = self.ID
+            G.CONTROLLER.locks[lock] = true
+            if self.name == 'Charm Tag' then
+                self:yep('+', G.C.PURPLE,function() 
+                    local key = 'p_arcana_mega_'..(math.random(1,2))
+                    local card = Card(G.play.T.x + G.play.T.w/2 - G.CARD_W*1.27/2,
+                    G.play.T.y + G.play.T.h/2-G.CARD_H*1.27/2, G.CARD_W*1.27, G.CARD_H*1.27, G.P_CARDS.empty, G.P_CENTERS[key], {bypass_discovery_center = true, bypass_discovery_ui = true})
+                    card.cost = 0
+                    card.from_tag = true
+                    G.FUNCS.use_card({config = {ref_table = card}})
+                    card:start_materialize()
+                    G.CONTROLLER.locks[lock] = nil
+                    return true
+                end)
+                self.triggered = true
+                return true
+            end
+            if self.name == 'Meteor Tag' then
+                self:yep('+', G.C.SECONDARY_SET.Planet,function() 
+                    local key = 'p_celestial_mega_'..(math.random(1,2))
+                    local card = Card(G.play.T.x + G.play.T.w/2 - G.CARD_W*1.27/2,
+                    G.play.T.y + G.play.T.h/2-G.CARD_H*1.27/2, G.CARD_W*1.27, G.CARD_H*1.27, G.P_CARDS.empty, G.P_CENTERS[key], {bypass_discovery_center = true, bypass_discovery_ui = true})
+                    card.cost = 0
+                    card.from_tag = true
+                    G.FUNCS.use_card({config = {ref_table = card}})
+                    card:start_materialize()
+                    G.CONTROLLER.locks[lock] = nil
+                    return true
+                end)
+                self.triggered = true
+                return true
+            end
+            if self.name == 'Ethereal Tag' then
+                self:yep('+', G.C.SECONDARY_SET.Spectral,function() 
+                    local key = 'p_spectral_normal_1'
+                    local card = Card(G.play.T.x + G.play.T.w/2 - G.CARD_W*1.27/2,
+                    G.play.T.y + G.play.T.h/2-G.CARD_H*1.27/2, G.CARD_W*1.27, G.CARD_H*1.27, G.P_CARDS.empty, G.P_CENTERS[key], {bypass_discovery_center = true, bypass_discovery_ui = true})
+                    card.cost = 0
+                    card.from_tag = true
+                    G.FUNCS.use_card({config = {ref_table = card}})
+                    card:start_materialize()
+                    G.CONTROLLER.locks[lock] = nil
+                    return true
+                end)
+                self.triggered = true
+                return true
+            end
+            if self.name == 'Standard Tag' then
+                self:yep('+', G.C.SECONDARY_SET.Spectral,function() 
+                    local key = 'p_standard_mega_1'
+                    local card = Card(G.play.T.x + G.play.T.w/2 - G.CARD_W*1.27/2,
+                    G.play.T.y + G.play.T.h/2-G.CARD_H*1.27/2, G.CARD_W*1.27, G.CARD_H*1.27, G.P_CARDS.empty, G.P_CENTERS[key], {bypass_discovery_center = true, bypass_discovery_ui = true})
+                    card.cost = 0
+                    card.from_tag = true
+                    G.FUNCS.use_card({config = {ref_table = card}})
+                    card:start_materialize()
+                    G.CONTROLLER.locks[lock] = nil
+                    return true
+                end)
+                self.triggered = true
+                return true
+            end
+            if self.name == 'Buffoon Tag' then
+                self:yep('+', G.C.SECONDARY_SET.Spectral,function() 
+                    local key = 'p_buffoon_mega_1'
+                    local card = Card(G.play.T.x + G.play.T.w/2 - G.CARD_W*1.27/2,
+                    G.play.T.y + G.play.T.h/2-G.CARD_H*1.27/2, G.CARD_W*1.27, G.CARD_H*1.27, G.P_CARDS.empty, G.P_CENTERS[key], {bypass_discovery_center = true, bypass_discovery_ui = true})
+                    card.cost = 0
+                    card.from_tag = true
+                    G.FUNCS.use_card({config = {ref_table = card}})
+                    card:start_materialize()
+                    G.CONTROLLER.locks[lock] = nil
+                    return true
+                end)
+                self.triggered = true
+                return true
+            end
+            if self.name == 'Boss Tag' then
+                local lock = self.ID
+                G.CONTROLLER.locks[lock] = true
+                self:yep('+', G.C.GREEN,function() 
+                    G.from_boss_tag = true
+                    G.FUNCS.reroll_boss()
+                    
+                    G.E_MANAGER:add_event(Event({func = function()
+                        G.E_MANAGER:add_event(Event({func = function()
+                            G.CONTROLLER.locks[lock] = nil
+                        return true; end}))
+                    return true; end}))
+
+                    return true
+                end)
+                self.triggered = true
+                return true
+            end
+        elseif _context.type == 'voucher_add' then 
+            if self.name == 'Voucher Tag' then
+                self:yep('+', G.C.SECONDARY_SET.Voucher,function() 
+                    G.ARGS.voucher_tag = G.ARGS.voucher_tag or {}
+                    local voucher_key = get_next_voucher_key(true)
+                    G.ARGS.voucher_tag[voucher_key] = true
+                    G.shop_vouchers.config.card_limit = G.shop_vouchers.config.card_limit + 1
+                    local card = Card(G.shop_vouchers.T.x + G.shop_vouchers.T.w/2,
+                    G.shop_vouchers.T.y, G.CARD_W, G.CARD_H, G.P_CARDS.empty, G.P_CENTERS[voucher_key],{bypass_discovery_center = true, bypass_discovery_ui = true})
+                    card.from_tag = true
+                    create_shop_card_ui(card, 'Voucher', G.shop_vouchers)
+                    card:start_materialize()
+                    G.shop_vouchers:emplace(card)
+                    G.ARGS.voucher_tag = nil
+                    return true
+                end)
+                self.triggered = true
+            end
+        elseif _context.type == 'tag_add' then 
+            if self.name == 'Double Tag' and _context.tag.key ~= 'tag_double' and _context.tag.key ~= 'tag_bstuck_scratch' and  _context.tag.key ~= 'sburb' then
+                local lock = self.ID
+                G.CONTROLLER.locks[lock] = true
+                self:yep('+', G.C.BLUE,function()
+                    if _context.tag.ability and _context.tag.ability.orbital_hand then
+                        G.orbital_hand = _context.tag.ability.orbital_hand
+                    end
+                    add_tag(Tag(_context.tag.key))
+                    G.orbital_hand = nil
+                    G.CONTROLLER.locks[lock] = nil
+                    return true
+                end)
+                self.triggered = true
+            end
+        elseif _context.type == 'round_start_bonus' then 
+            if self.name == 'Juggle Tag' then
+                self:yep('+', G.C.BLUE,function() 
+                    return true
+                end)
+                G.hand:change_size(self.config.h_size)
+                G.GAME.round_resets.temp_handsize = (G.GAME.round_resets.temp_handsize or 0) + self.config.h_size
+                self.triggered = true
+                return true
+            end
+        elseif _context.type == 'store_joker_create' then 
+            local card = nil
+            if self.name == 'Rare Tag' then
+                local rares_in_posession = {0}
+                for k, v in ipairs(G.jokers.cards) do
+                    if v.config.center.rarity == 3 and not rares_in_posession[v.config.center.key] then
+                        rares_in_posession[1] = rares_in_posession[1] + 1 
+                        rares_in_posession[v.config.center.key] = true
+                    end
+                end
+
+                if #G.P_JOKER_RARITY_POOLS[3] > rares_in_posession[1] then 
+                    card = create_card('Joker', _context.area, nil, 1, nil, nil, nil, 'rta')
+                    create_shop_card_ui(card, 'Joker', _context.area)
+                    card.states.visible = false
+                    self:yep('+', G.C.RED,function() 
+                        card:start_materialize()
+                        card.ability.couponed = true
+                        card:set_cost()
+                        return true
+                    end)
+                else
+                    self:nope()
+                end
+                self.triggered = true
+            elseif self.name == 'Uncommon Tag' then
+                card = create_card('Joker', _context.area, nil, 0.9, nil, nil, nil, 'uta')
+                    create_shop_card_ui(card, 'Joker', _context.area)
+                    card.states.visible = false
+                    self:yep('+', G.C.GREEN,function() 
+                        card:start_materialize()
+                        card.ability.couponed = true
+                        card:set_cost()
+                        return true
+                    end)
+                end
+                self.triggered = true
+                return card
+        elseif _context.type == 'shop_start' then
+            if self.name == 'D6 Tag' and not G.GAME.shop_d6ed then
+                G.GAME.shop_d6ed = true
+                self:yep('+', G.C.GREEN,function() 
+                    G.GAME.round_resets.temp_reroll_cost = 0
+                    calculate_reroll_cost(true)
+                    return true
+                end)
+                self.triggered = true
+                return true
+            end
+        elseif _context.type == 'store_joker_modify' then
+            local _applied = nil
+            if not _context.card.edition and not _context.card.temp_edition and _context.card.ability.set == 'Joker' then
+                local lock = self.ID
+                G.CONTROLLER.locks[lock] = true
+                print("locking "..lock.." from "..self.key)
+                if self.name == 'Foil Tag' then
+                    _context.card.temp_edition = true
+                    self:yep('+', G.C.DARK_EDITION,function() 
+                        _context.card:set_edition({foil = true}, true)
+                        _context.card.ability.couponed = true
+                        _context.card:set_cost()
+                        _context.card.temp_edition = nil
+                        G.CONTROLLER.locks[lock] = nil
+                        return true
+                    end)
+                    _applied = true
+                elseif self.name == 'Holographic Tag' then
+                    _context.card.temp_edition = true
+                    self:yep('+', G.C.DARK_EDITION,function() 
+                        _context.card.temp_edition = nil
+                        _context.card:set_edition({holo = true}, true)
+                        _context.card.ability.couponed = true
+                        _context.card:set_cost()
+                        G.CONTROLLER.locks[lock] = nil
+                        return true
+                    end)
+                    _applied = true
+                elseif self.name == 'Polychrome Tag' then
+                    _context.card.temp_edition = true
+                    self:yep('+', G.C.DARK_EDITION,function() 
+                        _context.card.temp_edition = nil
+                        _context.card:set_edition({polychrome = true}, true)
+                        _context.card.ability.couponed = true
+                        _context.card:set_cost()
+                        print("unlocking "..lock)
+                        G.CONTROLLER.locks[lock] = nil
+                        return true
+                    end)
+                    _applied = true
+                elseif self.name == 'Negative Tag' then
+                    _context.card.temp_edition = true
+                    self:yep('+', G.C.DARK_EDITION,function() 
+                        _context.card.temp_edition = nil
+                        _context.card:set_edition({negative = true}, true)
+                        _context.card.ability.couponed = true
+                        _context.card:set_cost()
+                        G.CONTROLLER.locks[lock] = nil
+                        return true
+                    end)
+                    _applied = true
+                end
+                self.triggered = true
+            end
+
+            return _applied
+        elseif _context.type == 'shop_final_pass' then
+            if self.name == 'Coupon Tag' and (G.shop and not G.GAME.shop_free) then
+                G.GAME.shop_free = true
+                self:yep('+', G.C.GREEN,function() 
+                    if G.shop_jokers and G.shop_booster then 
+                        for k, v in pairs(G.shop_jokers.cards) do
+                            v.ability.couponed = true
+                            v:set_cost()
+                        end
+                        for k, v in pairs(G.shop_booster.cards) do
+                            v.ability.couponed = true
+                            v:set_cost()
+                        end
+                    end
+                    return true
+                end)
+                self.triggered = true
+                return true
+            end
         end
     end
 end
