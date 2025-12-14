@@ -17,8 +17,8 @@ function Balatrostuck.INIT.Jokers.j_blackjack()
             }
         },
         pos = {
-            x = 9,
-            y = 12
+            x = 10,
+            y = 0
         },
 
         
