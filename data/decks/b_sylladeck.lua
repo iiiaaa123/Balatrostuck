@@ -13,7 +13,7 @@ function Balatrostuck.INIT.Decks.b_sylladeck()
             return {vars = {}}
         end,
         atlas = 'HomestuckDecks',
-        pos = {x = 0,y = 0},
+        pos = {x = 3,y = 0},
         unlocked = true,
         apply = function(self,back)
             G.GAME.starting_params.consumable_slots = G.GAME.starting_params.consumable_slots + 3

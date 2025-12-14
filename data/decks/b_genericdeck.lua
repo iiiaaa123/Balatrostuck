@@ -4,11 +4,12 @@ function Balatrostuck.INIT.Decks.b_genericdeck()
         loc_txt = {
             name = "Perfectly Generic Deck",
             text = {
-                'THE effect',
+                'End of ante create a',
+                '{C:attention}Perfectly Generic tag'
             }
         },
         atlas = 'HomestuckDecks',
-        pos = {x = 0,y = 1},
+        pos = {x = 2,y = 0},
         unlocked = true,
         calculate = function(self,back,context)
            if context.end_of_round and not context.repetition and not context.individual and G.GAME.blind.boss then
