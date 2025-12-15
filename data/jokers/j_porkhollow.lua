@@ -28,6 +28,7 @@ function Balatrostuck.INIT.Jokers.j_porkhollow()
         rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,
+        perishable_compat = false,
         unlocked = false,
         atlas = 'HomestuckJokers',
 

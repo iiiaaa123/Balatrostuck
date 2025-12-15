@@ -28,6 +28,7 @@ function Balatrostuck.INIT.Jokers.j_nepetajoker()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
+        perishable_compat = false,
         unlocked = true,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
