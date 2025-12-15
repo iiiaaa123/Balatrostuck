@@ -107,7 +107,7 @@ local voucher_list = {
 
 local tag_list = {
     "perfectlygeneric", "parcelpyxis", "spirograph", "matriorb", "splinter", "denizen",
-    "firefly", "mutation",  "carapacian", "consort", "scratch", "sburb","stack"
+    "firefly", "mutation",  "carapacian", "consort", "scratch", "sburb"
 }
 
 local spectral_list = {
