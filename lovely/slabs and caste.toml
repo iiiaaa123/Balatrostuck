@@ -92,28 +92,7 @@ times = 1
 
 
 # MIND 
-[[patches]]
-[patches.pattern]
-target = "functions/UI_definitions.lua"
-pattern = "function add_tag(_tag)"
-position = "at"
-match_indent = true
-payload = '''
-function add_tag(_tag,fromMind)
-'''
-
-[[patches]]
-[patches.pattern]
-target = "functions/UI_definitions.lua"
-pattern = "_tag.HUD_tag = G.HUD_tags[#G.HUD_tags]"
-position = "after"
-match_indent = true
-payload = '''
-if G.GAME.slab ~= nil and not fromMind then
-    local slab_eval = nil
-    slab_eval = G.GAME.slab:calculate({tag = _tag})
-end
-'''
+#lives in our utils.lua now
 
 
 

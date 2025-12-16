@@ -838,29 +838,33 @@ mod.calculate = function(self, context)
             G.GAME.tags[i]:apply_to_run({type = 'using_consumeable', consumeable=context.consumeable})
         end
     end
+    --for tag heaven stuff
+    if context.ending_shop or context.skip_blind then
+        bstuck_clean_tags()
+    end
 end
 
 --tag heaven code
+--gonna add a bunch of maybe unecessary comments here because i feel like this whole thing is a mess
+--could be realistically done through lovely overrides but i think that may even be worse
 function add_tag(_tag,fromMind)
-    --print("Called hooked function")
     local _done = false
     local _reps = 1
     local _current_tag = nil
+    --print("adding ".._tag.key)
     for i = 1, #G.GAME.tags do
         _current_tag = G.GAME.tags[i]
-
-        if _current_tag.key == _tag.key and _current_tag.ability.orbital_hand == _tag.ability.orbital_hand then
+        if _current_tag.key == _tag.key then
             --handle the case where we are adding a tag that we already have 
             _reps = (_current_tag.ability.extra.stack_count or 1) + 1
             _current_tag.ability.extra.stack_count = _reps
-            table.insert(_current_tag.loc_txt or G.localization.descriptions.Tag[_current_tag.key].text,"{C:inactive}Triggers {C:attention}".._current_tag.ability.extra.stack_count.."{C:inactive} times")
+           
             _done = true
             break
-            --current tag is only set if we break here
         end
     end
     if not _done then
-        if not _tag.from_load then
+        if not _tag.from_load then --this line is really important, otherwise tags always load with 1 stack? somehow, not sure why
             if not _tag.ability.extra then
                 _tag.ability.extra = {}
             end
@@ -869,66 +873,53 @@ function add_tag(_tag,fromMind)
             end
         end
     end
-    local _this_hud = nil
-    if _current_tag and _done then
-        if _current_tag.HUD_tag then
-            --print(inspect(_current_tag.HUD_tag))
-            for k,v in pairs(G.HUD_tags) do
-                if v.ID == _current_tag.HUD_tag.ID then
-                    --print("removed")
-                    G.HUD_tags[k] = nil
-                end
-            end
-            _current_tag.HUD_tag:remove()
 
-        end
-    end
-        local _tag_to_check_reps_from = nil
-        if _done then _tag_to_check_reps_from = _current_tag
-        else _tag_to_check_reps_from = _tag end
+    if not _done then --we only need to create a new hud if we're adding a tag for the first time
         G.HUD_tags = G.HUD_tags or {}
         local tag_sprite_ui = _tag:generate_UI()
         G.HUD_tags[#G.HUD_tags+1] = UIBox{
             definition = {n=G.UIT.ROOT, config={align = "cm",padding = 0.05, colour = G.C.CLEAR}, nodes={
                 tag_sprite_ui,
-                {n=G.UIT.O, config={object = DynaText({string = {{suffix = "x", ref_table = _tag_to_check_reps_from.ability.extra, ref_value = 'stack_count'}}, colours = {G.C.UI.TEXT_LIGHT},shadow = true, scale = 0.25})}}
+                --next line is the "2x" text or whatever
+                --if a sprite needs to be added, it probably goes in here
+                {n=G.UIT.O, config={object = DynaText({string = {{suffix = "x", ref_table = _tag.ability.extra, ref_value = 'stack_count'}}, colours = {G.C.UI.TEXT_LIGHT},shadow = true, scale = 0.25})}}
             }},
             config = {
                 align = G.HUD_tags[1] and 'tm' or 'bri',
                 offset = G.HUD_tags[1] and {x=0,y=0} or {x=0.7,y=0},
                 major = G.HUD_tags[1] and G.HUD_tags[#G.HUD_tags] or G.ROOM_ATTACH}
         }
-        
+    end
 
         
 
   discover_card(G.P_TAGS[_tag.key])
 
+  --this is for when we just added a double tag
   for i = 1, #G.GAME.tags do
     G.GAME.tags[i]:apply_to_run({type = 'tag_add', tag = _tag})
   end
 
+  --skip actually adding the tag if we're just adding a stack
   if not _done then
     G.GAME.tags[#G.GAME.tags+1] = _tag
   end
-  
+  --this is to proc *other* double tags
   if not _tag.from_load then SMODS.calculate_context({tag_added = _tag}) end
   _tag.from_load = nil
 
-
+    --skip adding the hud if we didn't make one, this could realistically be in one of the blocks above
     if not _done then 
         _tag.HUD_tag = G.HUD_tags[#G.HUD_tags]
         --print("added hud: ".._tag.HUD_tag)
-    else
-        _current_tag.HUD_tag = G.HUD_tags[#G.HUD_tags]
     end
-
+    --mind call
   if G.GAME.slab ~= nil and not fromMind then
       local slab_eval = nil
       slab_eval = G.GAME.slab:calculate({tag = _tag})
   end
 end
-
+--this is the function that actually does the tag effect
 function Tag:yep(message, _colour, func)
     stop_use()
 
@@ -954,8 +945,11 @@ function Tag:yep(message, _colour, func)
     G.E_MANAGER:add_event(Event({
         func = func
     }))
-
-    if not self.ability.extra.stack_count or self.ability.extra.stack_count <= 1 then
+    --print(self.key.." checking removal conditions: count: "..self.ability.extra.stack_count.." triggered: "..tostring(self.triggered))
+    --the part under here removes the tag, so it should only proc if the tag is called while triggered (shouldn't really happen)
+    --or the stack count is 1 or less (last execution should be 1)
+    if not self.ability.extra.stack_count or self.ability.extra.stack_count <= 1 or self.triggered then
+        
         G.E_MANAGER:add_event(Event({
             func = (function()
                 self.HUD_tag.states.visible = false
@@ -974,26 +968,43 @@ function Tag:yep(message, _colour, func)
         }))
     end
 end
-function Tag:apply_to_run(_context)
 
+function Tag:apply_to_run(_context)
+    --self.triggered is set and un-set a bunch of times, it is only kept as "true" after evaluation if the tag is fully done (and should be destroyed)
+    --i'm also (unfortunately, due to how things are set up,) using it to check whether the current evaluation did anything (because the return value is important for other things)
     if self.triggered then return end
+    --haven't touched this block
     local flags = SMODS.calculate_context({prevent_tag_trigger = self, other_context = _context})
     if flags.prevent_trigger then return end
-    local obj = SMODS.Tags[self.key]
+    local obj = SMODS.Tags[self.key] --not sure why this references the base class instead of the instance, maybe a lua thing?
     local res
-    --print("This is what apply to run got")
-    --print(self.key)
-    --print("Context: "..inspect(_context))
 
+    --if the object is a modded tag (only modded tags have obj.apply) then loop over it.
     if obj and obj.apply and type(obj.apply) == 'function' then
-        res = obj:apply(self, _context)
-
+        local _count = self.ability.extra.stack_count
+        for i=1,_count do
+            res = obj:apply(self, _context)
+            if self.triggered and not res then --"res" is the return value for the tag, it's only used for store joker create and store joker modify contexts
+            --do NOT return anything from tag evaluation unless its in those contexts as this causes this function to return early and possibly a bunch of issues
+                self.ability.extra.stack_count = self.ability.extra.stack_count - 1
+                self.triggered = false --unset tag.triggered so that it can then trigger again if necessary
+            else
+                break --if the tag is not triggering anymore (do this when the tag doesn't have an applicable effect), exit the loop early
+            end
+        end
     end
-    if res then
-            self.triggered = not self.ability.extra.stack_count or (self.ability.extra.stack_count <= 1)
-            self.ability.extra.stack_count = self.ability.extra.stack_count - 1
+
+    --this mess of a line just makes sure we dont go on to the bottom execution (which locks actions if broken)
+    --if we are not actually processing a vanilla tag 
+    --remember to only set tag.triggered = true if the tag procced *succesfully* 
+    if res or self.triggered or (self.config.type == _context.type and obj and obj.apply and type(obj.apply) == 'function') then 
+            self.triggered = not self.ability.extra.stack_count or (self.ability.extra.stack_count <= 0)
             return res
     end
+    --print("proceeding with vanilla tag eval for "..self.key)
+    --vanilla tag evaluation
+    --some of them i unrolled the repetitions and made them do in one single loop, for both performance
+    --and gameplay reasons
     if not self.triggered and self.config.type == _context.type then
         if _context.type == 'eval' then 
             if self.name == 'Investment Tag' and
@@ -1088,6 +1099,14 @@ function Tag:apply_to_run(_context)
             end
             if self.name == 'Orbital Tag' then
                 local _count = self.ability.extra.stack_count
+                --orbital should never crash with this, even if its visually corrupted
+                if not self.ability.orbital_hand or self.ability.orbital_hand  == "[poker hand]" then 
+                    local _poker_hands = {}
+                    for k, v in pairs(G.GAME.hands) do
+                        if v.visible then _poker_hands[#_poker_hands+1] = k end
+                    end
+                    self.ability.orbital_hand = pseudorandom_element(_poker_hands,pseudoseed("orbital"))
+                end
                 self.ability.extra.stack_count = 0
                 update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {
                     handname= self.ability.orbital_hand,
@@ -1251,12 +1270,14 @@ function Tag:apply_to_run(_context)
             end
         elseif _context.type == 'round_start_bonus' then 
             if self.name == 'Juggle Tag' then
-                self.ability.extra.stack_count = 0
+                local _count = self.ability.extra.stack_count
+                self.ability.extra.stack_count = 1
                 self:yep('+', G.C.BLUE,function() 
+                    G.hand:change_size(self.config.h_size*_count)
+                    G.GAME.round_resets.temp_handsize = (G.GAME.round_resets.temp_handsize or 0) + (self.config.h_size*_count)
                     return true
                 end)
-                G.hand:change_size(self.config.h_size)
-                G.GAME.round_resets.temp_handsize = (G.GAME.round_resets.temp_handsize or 0) + self.config.h_size*self.ability.extra.stack_count
+
                 self.triggered = true
                 
                 return true
@@ -1321,7 +1342,6 @@ function Tag:apply_to_run(_context)
             if not _context.card.edition and not _context.card.temp_edition and _context.card.ability.set == 'Joker' then
                 local lock = self.ID
                 G.CONTROLLER.locks[lock] = true
-                --print("locking "..lock.." from "..self.key)
                 
                 if self.name == 'Foil Tag' then
                     _context.card.temp_edition = true
@@ -1352,7 +1372,6 @@ function Tag:apply_to_run(_context)
                         _context.card:set_edition({polychrome = true}, true)
                         _context.card.ability.couponed = true
                         _context.card:set_cost()
-                        --print("unlocking "..lock)
                         G.CONTROLLER.locks[lock] = nil
                         return true
                     end)
@@ -1397,4 +1416,37 @@ function Tag:apply_to_run(_context)
             end
         end
     end
+end
+
+--bandaid for some visual bugs i dont know why they're happening (uibox related fuckery)
+--deletes all tag uis and regenerates them, currently called when skipping a blind or at the end of the shop
+function bstuck_clean_tags()
+    for _, HUD_tag in ipairs(G.HUD_tags) do
+        HUD_tag:remove()
+    end
+    G.HUD_tags = {}
+    
+    for _, tag_object in ipairs(G.GAME.tags) do
+        if tag_object.ability.extra.stack_count <= 0 then
+            --remove any tags that have 0 stack size
+            --print("removed "..tag_object.key.." because it had 0 stack size")
+            tag_object:remove()
+        else
+            local tag_sprite_ui = tag_object:generate_UI()
+            G.HUD_tags[#G.HUD_tags+1] = UIBox{
+                definition = {n=G.UIT.ROOT, config={align = "cm",padding = 0.05, colour = G.C.CLEAR}, nodes={
+                    tag_sprite_ui,
+                    {n=G.UIT.O, config={object = DynaText({string = {{suffix = "x", ref_table = tag_object.ability.extra, ref_value = 'stack_count'}}, colours = {G.C.UI.TEXT_LIGHT},shadow = true, scale = 0.25})}}
+                }},
+                config = {
+                    align = G.HUD_tags[1] and 'tm' or 'bri',
+                    offset = G.HUD_tags[1] and {x=0,y=0} or {x=0.7,y=0},
+                    major = G.HUD_tags[1] and G.HUD_tags[#G.HUD_tags] or G.ROOM_ATTACH}
+            }
+            tag_object.HUD_tag = G.HUD_tags[#G.HUD_tags]
+        end
+    end
+    
+    
+
 end

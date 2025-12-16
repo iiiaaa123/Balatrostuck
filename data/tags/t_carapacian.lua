@@ -26,50 +26,17 @@ function Balatrostuck.INIT.Tags.t_carapacian()
 
         apply = function(self, tag, context)
                 local lock = tag.ID
-                tag:yep("Tags!",G.C.Green, 
-                function()
-                    
-                     G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-                        local tagkey = get_next_tag_key()
-                        if tagkey == 'tag_bstuck_scratch' then tagkey = 'tag_handy' end --prevent this from spawning scratch tag
-                        local tag = Tag(tagkey)
-                        if tagkey == 'tag_bstuck_carapacian' then tagkey = 'tag_handy' end --prevent this from spawning itself
-                        local tag = Tag(tagkey)
-                        if tagkey == 'tag_orbital' then
-                            local _poker_hands = {}
-                            for k, v in pairs(G.GAME.hands) do
-                                if v.visible then _poker_hands[#_poker_hands+1] = k end
-                            end
-                            
-                            tag.ability.orbital_hand = pseudorandom_element(_poker_hands, pseudoseed('orbital'))
-                        end
-                        play_sound('timpani')
-                        add_tag(tag)
-                        return true
-                    end}))
+                if context.type == self.config.type then
+                    tag:yep("Tags!",G.C.Green, 
+                    function()
+                        
+                        bstuck_give_random_tag("carapace","tag_bstuck_carapacian")
+                        bstuck_give_random_tag("carapace2","tag_bstuck_carapacian")
 
-                     G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-                        local tagkey = get_next_tag_key()
-                        if tagkey == 'tag_bstuck_scratch' then tagkey = 'tag_handy' end --prevent this from spawning scratch tag
-                        local tag = Tag(tagkey)
-                        if tagkey == 'tag_bstuck_carapacian' then tagkey = 'tag_handy' end --prevent this from spawning itself
-                        local tag = Tag(tagkey)
-                        if tagkey == 'tag_orbital' then
-                            local _poker_hands = {}
-                            for k, v in pairs(G.GAME.hands) do
-                                if v.visible then _poker_hands[#_poker_hands+1] = k end
-                            end
-                            
-                            tag.ability.orbital_hand = pseudorandom_element(_poker_hands, pseudoseed('orbital'))
-                        end
-                        play_sound('timpani')
-                        add_tag(tag)
-                        return true
-                    end}))
-
-                return true
-                end)
-                tag.triggered = true
+                    return true
+                    end)
+                    tag.triggered = true
+                end
         end,
     }
 end

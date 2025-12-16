@@ -2,7 +2,7 @@
 function Balatrostuck.INIT.Tags.t_firefly()
     SMODS.Tag{
         key = "firefly",
-        config = {type = "eval"},
+        config = {type = "immediate"},
         loc_txt = {
             ['name'] = 'Firefly Tag',
             ['text'] = {
@@ -27,26 +27,28 @@ function Balatrostuck.INIT.Tags.t_firefly()
         end,
         apply = function(self, tag, context)
                 local lock = tag.ID
-                tag:yep("Ify!",G.C.Green, 
-                function()
-                    for i=1, 7 do
-                        G.E_MANAGER:add_event(Event{
-                            delay = 0.25, trigger = 'after', func = function()
-                             local front = pseudorandom_element(G.P_CARDS, pseudoseed('cert_fr'))
-                             local _card = create_playing_card({
-                                    front = front, 
-                                    center = G.P_CENTERS.m_gold}, nil, nil, nil, {G.C.SECONDARY_SET.Enhanced})
-                                _card:set_edition('e_bstuck_paradox',true,true)
-                                G.deck:emplace(_card,pseudorandom('LOWAS',1,#G.deck.cards))
-                        return true
+                if context.type == self.config.type then
+                    tag:yep("Ify!",G.C.Green, 
+                    function()
+                        for i=1, 7 do
+                            G.E_MANAGER:add_event(Event{
+                                delay = 0.25, trigger = 'after', func = function()
+                                local front = pseudorandom_element(G.P_CARDS, pseudoseed('cert_fr'))
+                                local _card = create_playing_card({
+                                        front = front, 
+                                        center = G.P_CENTERS.m_gold}, nil, nil, nil, {G.C.SECONDARY_SET.Enhanced})
+                                    _card:set_edition('e_bstuck_paradox',true,true)
+                                    G.deck:emplace(_card,pseudorandom('LOWAS',1,#G.deck.cards))
+                            return true
+                            end
+                            })
+                            
                         end
-                        })
-                        
-                    end
 
-                return true
-                end)
-                tag.triggered = true
+                    return true
+                    end)
+                    tag.triggered = true
+                end
         end,
     }
 end

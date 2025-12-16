@@ -2,12 +2,13 @@
 function Balatrostuck.INIT.Tags.t_perfectlygeneric()
     SMODS.Tag{
         key = "perfecltygeneric",
-        config = {type = "eval"},
+        config = {type = "using_consumeable"},
         loc_txt = {
             ['name'] = 'Perfectly Generic Tag',
             ['text'] = {
                 "Creates a {C:paradox}Paradox{} copy",
-                "of the {C:attention}next{} consumable used"
+                "of the {C:attention}next{} consumable used",
+                "{C:inactive} does not copy aspects"
             }
         },
         pos = {
@@ -21,14 +22,13 @@ function Balatrostuck.INIT.Tags.t_perfectlygeneric()
             return {true}
         end,
         apply = function(self, tag, context)
-            if context.type == 'using_consumeable' and not (context.consumeable.ability.set == 'Aspect') then
+            if context.type == self.config.type and not (context.consumeable.ability.set == 'Aspect') then
                 tag:yep("-Ify!",G.C.Green, 
                 function()
                     SMODS.add_card({key = context.consumeable.config.center.key,edition = 'e_bstuck_paradox'})
                     tag.triggered = true
                     return true
                 end)
-            
             end
         end
     }

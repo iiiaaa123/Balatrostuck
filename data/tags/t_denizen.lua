@@ -22,28 +22,35 @@ function Balatrostuck.INIT.Tags.t_denizen()
 
         atlas = 'HomestuckTags',
         loc_vars = function(self, info_queue, card)
-            info_queue[#info_queue + 1] = G.P_CENTERS['p_bstuck_aspect_booster']
             art_credit('akai', info_queue)
 
             return {true}
         end,
         apply = function(self, tag, context)
+            if context.type == self.config.type then
                 local lock = tag.ID
-                tag:yep("Choice.",G.C.Red, 
-                function()
+                local _times = tag.ability.extra.stack_count
+                for i=1,_times or 1 do
+                    tag:yep("+",G.C.Red, 
+                    function()
 
-                     G.E_MANAGER:add_event(Event({
-                        func = function()
-                            local _card = SMODS.add_card({set = 'Joker', rarity = 3,edition = 'e_negative'})
-                            _card:start_materialize()
-                            _card:set_eternal(true)
-                            return true
-                    end}))
-                    
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                local _card = SMODS.add_card({set = 'Joker', rarity = 3,edition = 'e_negative'})
+                                _card:start_materialize()
+                                _card:set_eternal(true)
+                                return true
+                        end}))
+                        
 
-                return true
-                end)
-                tag.triggered = true
+                    return true
+                    end)
+                    tag.ability.extra.stack_count = tag.ability.extra.stack_count -1
+                end
+                tag.triggered = true 
+                tag.ability.extra.stack_count = 0
+            end
+            
         end,
     }
 end

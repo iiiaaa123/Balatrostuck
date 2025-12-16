@@ -28,7 +28,7 @@ function Balatrostuck.INIT.Tags.t_splinter()
             return {true}
         end,
         apply = function(self, tag, context)
-            if context.type == 'new_blind_choice' then
+            if context.type == self.config.type then
                 local lock = tag.ID
                 G.CONTROLLER.locks[lock] = true
                 tag:yep('+', G.C.SECONDARY_SET.Aspect,function() 

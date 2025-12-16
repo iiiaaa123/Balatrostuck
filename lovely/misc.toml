@@ -153,7 +153,7 @@ target = "functions/button_callbacks.lua"
 pattern = "G.GAME.round_resets.blind_tags.Big = get_next_tag_key()"
 position = "at"
 payload = '''
-G.GAME.round_resets.blind_tags.Big = next(SMODS.find_card("j_bstuck_echidna")) and 'tag_bstuck_scratch' or get_next_tag_key() 
+G.GAME.round_resets.blind_tags.Big = next(SMODS.find_card("j_bstuck_echidna")) and 'tag_bstuck_scratch' or get_next_tag_key(nil,true) 
 '''
 match_indent = true
 times = 1
@@ -172,16 +172,7 @@ match_indent = true
 times = 1
 
 #Scratch and sburb tags shall not be doubled
-[[patches]]
-[patches.pattern]
-target = "tag.lua"
-pattern = "if self.name == 'Double Tag' and _context.tag.key ~= 'tag_double' then"
-position = "at"
-payload = '''
-if self.name == 'Double Tag' and _context.tag.key ~= 'tag_double' and _context.tag.key ~= 'tag_bstuck_scratch' and  _context.tag.key ~= 'sburb' then'''
-match_indent = true
-times = 1
-overwrite = true
+#if youre looking for this, that function is in our utils.lua now
 
 #Scratch colors
 [[patches]]
@@ -334,17 +325,8 @@ times = 1
 
 
 ## Scratch Tag
-[[patches]]
-[patches.pattern]
-target = "functions/button_callbacks.lua"
-pattern = "G.GAME.round_resets.blind_tags.Big = get_next_tag_key()"
-position = "at"
-payload = '''
-G.GAME.round_resets.blind_tags.Big = get_next_tag_key(nil,true)
-'''
-match_indent = true
-times = 1
-
+#half of this is
+#handled in echidna code now because it overwrote the same line
 
 [[patches]]
 [patches.pattern]

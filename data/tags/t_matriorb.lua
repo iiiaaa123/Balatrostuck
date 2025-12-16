@@ -2,7 +2,7 @@
 function Balatrostuck.INIT.Tags.t_matriorb()
     SMODS.Tag{
         key = "matriorb",
-        config = {type = "eval"},
+        config = {type = "new_blind_choice"},
         loc_txt = {
             ['name'] = 'Matriorb Tag',
             ['text'] = {
@@ -32,7 +32,7 @@ function Balatrostuck.INIT.Tags.t_matriorb()
             return {true}
         end,
         apply = function(self, tag, context)
-            if context.type == "new_blind_choice" then
+            if context.type == self.config.type then
                 tag:yep("+", G.C.ATTENTION, function()
                     local key = "p_bstuck_zodiac_mega_booster"
                     local card = Card(

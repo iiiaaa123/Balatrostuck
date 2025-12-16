@@ -42,8 +42,12 @@ function Balatrostuck.INIT.Aspects.c_aspect_mind()
                 if context.tag.ability and context.tag.ability.orbital_hand then
                     G.orbital_hand = context.tag.ability.orbital_hand
                 end
+                local _blacklist = {"tag_bstuck_scratch","tag_boss"}
                 for i = 1, slab:level() do
-                    _new_tag = Tag(context.tag.key)
+                    for k,v in ipairs(_blacklist) do
+                        if context.tag.key == v then return nil end
+                    end
+                    local _new_tag = Tag(context.tag.key)
                     if context.tag.key == 'tag_orbital' then
                         _new_tag.ability.orbital_hand = context.tag.ability.orbital_hand
                     end

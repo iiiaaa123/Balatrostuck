@@ -2,7 +2,7 @@
 function Balatrostuck.INIT.Tags.t_sburb()
     SMODS.Tag{
         key = "sburb",
-        config = {type = "eval"},
+        config = {type = "new_blind_choice"},
         loc_txt = {
             ['name'] = 'Sburb Tag',
             ['text'] = {
@@ -22,7 +22,7 @@ function Balatrostuck.INIT.Tags.t_sburb()
             return {true}
         end,
         apply = function(self, tag, context)
-            if context.type == 'new_blind_choice' then
+            if context.type == self.config.type then
                 check_for_unlock({ type = "bstuck_frogdeck" })
                 local lock = tag.ID
                 G.CONTROLLER.locks[lock] = true

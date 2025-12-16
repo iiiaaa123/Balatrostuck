@@ -2,19 +2,20 @@
 function Balatrostuck.INIT.Tags.t_mutation()
     SMODS.Tag{
         key = "mutation",
-        config = {type = "new_blind_choice"},
+        config = {type = "new_blind_choice", extra = {round_triggered = -1}},
         loc_txt = {
             ['name'] = 'Mutation Tag',
             ['text'] = {
-                [1] = 'For each joker',
-                [2] = 'Create a paradox clone'            
+                        'For each joker',
+                        'create a paradox clone',
+                        '{C:inactive}only triggers once a round'
+                
             }
         },
         pos = {
             x = 2,
             y = 1
         },
-        atlas = 'HomestuckTags',
         
         in_pool = function(self)
             return (G.GAME.round_resets.ante > 1)
@@ -22,12 +23,12 @@ function Balatrostuck.INIT.Tags.t_mutation()
 
         atlas = 'HomestuckTags',
         loc_vars = function(self, info_queue, card)
-            info_queue[#info_queue + 1] = G.P_CENTERS['p_bstuck_aspect_booster']
             art_credit('penny', info_queue)
 
             return {true}
         end,
-         apply = function(self, tag, context) -- DO NOT LET THIS SHIP WITHOUT A FAILSAFE FOR DOOMQUARIUS
+         apply = function(self, tag, context) -- failsafe for doomquarius added o7
+            if context.type == self.config.type and G.GAME.round ~= tag.ability.extra.round_triggered then
                 local lock = tag.ID
                 tag:yep("MEOW!",G.C.Green, 
                 function()
@@ -50,11 +51,12 @@ function Balatrostuck.INIT.Tags.t_mutation()
                     }))
                     end
                 end
-                    
+                tag.ability.extra.round_triggered = G.GAME.round
 
-                return true
+                return true --only return true if we have successfully procced
                 end)
                 tag.triggered = true
+            end
         end,
     }
 end
