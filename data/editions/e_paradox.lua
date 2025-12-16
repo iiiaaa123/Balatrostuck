@@ -65,6 +65,8 @@ function Balatrostuck.INIT.Editions.e_paradox()
                             colour = G.C.PARADOX
                         }
                     else
+                        SMODS.calculate_context({ paradox_ify = true, removed = {card}})
+                        card.alreadyDead = true
                         G.E_MANAGER:add_event(Event({
                             func = function()
                                 context.cardarea:remove_card(card)
