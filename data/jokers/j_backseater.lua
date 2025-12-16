@@ -77,6 +77,7 @@ function Balatrostuck.INIT.Jokers.j_backseater()
         rarity = 2,
         blueprint_compat = false,
         eternal_compat = true,
+        perishable_compat = false,
         unlocked = false,
         atlas = 'HomestuckJokers',
         in_pool = function(self)

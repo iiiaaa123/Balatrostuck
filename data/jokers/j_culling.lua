@@ -25,6 +25,7 @@ function Balatrostuck.INIT.Jokers.j_culling()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
+        perishable_compat = false,
         unlocked = false,
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)

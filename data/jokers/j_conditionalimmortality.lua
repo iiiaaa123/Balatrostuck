@@ -29,6 +29,7 @@ function Balatrostuck.INIT.Jokers.j_conditionalimmortality()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
+        perishable_compat = false,
         unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
