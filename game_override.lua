@@ -141,6 +141,7 @@ function Game:init_game_object()
     local ret = init_game_objectref(self)
 
     ret.pool_flags.bstuck_actprogress = 0
+    ret.pool_flags.last_used_modify_joker_tag_key = nil --for tag heaven
     ret.BALATROSTUCK = {}
     ret.BALATROSTUCK.art_credit = true -- make this toggleable somehow LOL
     ret.BALATROSTUCK.aspect_levels = {

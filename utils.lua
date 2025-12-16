@@ -1291,9 +1291,15 @@ function Tag:apply_to_run(_context)
                 return true
             end
         elseif _context.type == 'store_joker_create' then 
+            local _has_another_store_joker_create_tag
+            for _,taggy in pairs(G.GAME.tags) do
+                if taggy.config.type == 'store_joker_create'  and taggy.key ~= self.key then _has_another_store_joker_create_tag = true end
+            end
+            if G.GAME.pool_flags.last_used_modify_joker_tag_key == self.key and _has_another_store_joker_create_tag
+            then return end --stagger joker tag types
             local card = nil
             if self.name == 'Rare Tag' then
-                
+                self.ability.extra.stack_count = self.ability.extra.stack_count - 1
                 local rares_in_posession = {0}
                 for k, v in ipairs(G.jokers.cards) do
                     if v.config.center.rarity == 3 and not rares_in_posession[v.config.center.key] then
@@ -1316,8 +1322,9 @@ function Tag:apply_to_run(_context)
                     self:nope()
                 end
                 self.triggered = not self.ability.extra.stack_count or (self.ability.extra.stack_count <= 1)
-                self.ability.extra.stack_count = self.ability.extra.stack_count - 1
+                
             elseif self.name == 'Uncommon Tag' then
+                self.ability.extra.stack_count = self.ability.extra.stack_count - 1
                 card = create_card('Joker', _context.area, nil, 0.9, nil, nil, nil, 'uta')
                     create_shop_card_ui(card, 'Joker', _context.area)
                     card.states.visible = false
@@ -1330,7 +1337,7 @@ function Tag:apply_to_run(_context)
                     end)
                 end
                 self.triggered = not self.ability.extra.stack_count or (self.ability.extra.stack_count <= 1)
-                self.ability.extra.stack_count = self.ability.extra.stack_count - 1
+                if card then G.GAME.pool_flags.last_used_modify_joker_tag_key = self.key end
                 return card
         elseif _context.type == 'shop_start' then
             
