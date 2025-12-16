@@ -2,7 +2,7 @@
 function Balatrostuck.INIT.Tags.t_carapacian()
     SMODS.Tag{
         key = "carapacian",
-        config = {type = "new_blind_choice"},
+        config = {type = "immediate"},
         loc_txt = {
             ['name'] = 'Carapacian Tag',
             ['text'] = {

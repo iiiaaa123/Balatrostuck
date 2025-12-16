@@ -980,9 +980,11 @@ function Tag:apply_to_run(_context)
     local res
 
     --if the object is a modded tag (only modded tags have obj.apply) then loop over it.
+    --"new_blind_choice" is specifically for packs now, and does not trigger multiple times a round (packs already handle that by themselves)
+    --use "immediate" as context.type for every tag that *doesnt* make packs but wants to proc in this context
     if obj and obj.apply and type(obj.apply) == 'function' then
         local _count = self.ability.extra.stack_count
-        for i=1,_count do
+        for i=1,(_context.type ~= "new_blind_choice") and _count or 1 do
             res = obj:apply(self, _context)
             if self.triggered and not res then --"res" is the return value for the tag, it's only used for store joker create and store joker modify contexts
             --do NOT return anything from tag evaluation unless its in those contexts as this causes this function to return early and possibly a bunch of issues

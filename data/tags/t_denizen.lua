@@ -2,7 +2,7 @@
 function Balatrostuck.INIT.Tags.t_denizen()
     SMODS.Tag{
         key = "denizen",
-        config = {type = "new_blind_choice"},
+        config = {type = "immediate"},
         loc_txt = {
             ['name'] = 'Denizen Tag',
             ['text'] = {

@@ -2,7 +2,7 @@
 function Balatrostuck.INIT.Tags.t_sburb()
     SMODS.Tag{
         key = "sburb",
-        config = {type = "immediate"},
+        config = {type = "new_blind_choice"},
         loc_txt = {
             ['name'] = 'Sburb Tag',
             ['text'] = {
