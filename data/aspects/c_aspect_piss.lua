@@ -67,5 +67,5 @@ function Balatrostuck.INIT.Aspects.c_aspect_piss()
 end
 
 
-
-
+-- PISS BLACKLIST FOR LATER
+-- j_credit_card, j_ceremonial, j_marble, j_loyalty_card,j_chaos, j_egg, j_burglar, j_madness, j_red_card, j_riff_raff, j_cloud_9, j_rocket, j_gift, j_to_the_moon, j_hallucination, j_golden, j_merry_andy, j_invisible, j_satellite, j_cartomancer, j_astronomer, j_merry_andy, j_burglar, j_runner, j_constellation, j_green_joker, j_square, j_hologram, j_obelisk, j_lucky_cat, j_glass, j_wee, 
