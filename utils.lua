@@ -882,7 +882,8 @@ function add_tag(_tag,fromMind)
                 tag_sprite_ui,
                 --next line is the "2x" text or whatever
                 --if a sprite needs to be added, it probably goes in here
-                {n=G.UIT.O, config={object = DynaText({string = {{suffix = "x", ref_table = _tag.ability.extra, ref_value = 'stack_count'}}, colours = {G.C.UI.TEXT_LIGHT},shadow = true, scale = 0.25})}}
+                {n=G.UIT.O, config={object = DynaText({string = {{suffix = "x", ref_table = _tag.ability.extra, ref_value = 'stack_count'}}, colours = {G.C.UI.TEXT_LIGHT},shadow = true, scale = 0.25})}},
+                UIBox_button({button = "delete_tag",label={"x"},minw=0.35,minh=0.35, ref_table = _tag,r=0.5,align="cl"})
             }},
             config = {
                 align = G.HUD_tags[1] and 'tm' or 'bri',
@@ -1482,4 +1483,9 @@ function get_next_tag_key_small_blind(append)
     end
 
     return _tag
+end
+
+
+G.FUNCS.delete_tag = function(e)
+    e.config.ref_table:remove()
 end
