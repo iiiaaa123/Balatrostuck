@@ -10,8 +10,9 @@ function Balatrostuck.INIT.Jokers.j_biscuits()
         loc_txt = {
             ['name'] = 'Biscuits',
             ['text'] = {
-                [1] = "{C:paradox}Paradox{} cards cannot be",
-                [2] = "{C:attention}destroyed{} or {C:paradox}dissapear{}"
+                [1] = "{C:paradox}Paradox{} cards cannot",
+                [2] = "be {C:attention}sold{}, {C:attention}destroyed{}",
+                [3] =  "or {C:paradox}dissapeared{}"
             }
         },
         loc_vars = function(self, info_queue, card) 
