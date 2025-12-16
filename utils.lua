@@ -1016,12 +1016,13 @@ function Tag:apply_to_run(_context)
         if _context.type == 'eval' then 
             if self.name == 'Investment Tag' and
                 G.GAME.last_blind and G.GAME.last_blind.boss then
+                local _count = self.ability.extra.stack_count
+                self.ability.extra.stack_count = 0
                     self:yep('+', G.C.GOLD,function() 
                         return true
                     end)
                 self.triggered = true
-                local _count = self.ability.extra.stack_count
-                self.ability.extra.stack_count = 0
+
 
                 return {
                     dollars = self.config.dollars*_count,
