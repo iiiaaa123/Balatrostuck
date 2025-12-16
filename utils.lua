@@ -839,7 +839,7 @@ mod.calculate = function(self, context)
         end
     end
     --for tag heaven stuff
-    if context.ending_shop or context.skip_blind then
+    if context.ending_shop then
         bstuck_clean_tags()
     end
 end
@@ -982,16 +982,22 @@ function Tag:apply_to_run(_context)
     --if the object is a modded tag (only modded tags have obj.apply) then loop over it.
     if obj and obj.apply and type(obj.apply) == 'function' then
         local _count = self.ability.extra.stack_count
-        --config.do_not_retrigger is used to make it so that packs dont open all at once (causes visual issues to say the least)
-        for i=1,(not self.config.do_not_retrigger) and _count or 1 do
+
+        for i=1,_count do
             res = obj:apply(self, _context)
+            
             if self.triggered and not res then --"res" is the return value for the tag, it's only used for store joker create and store joker modify contexts
             --do NOT return anything from tag evaluation unless its in those contexts as this causes this function to return early and possibly a bunch of issues
                 self.ability.extra.stack_count = self.ability.extra.stack_count - 1
                 self.triggered = false --unset tag.triggered so that it can then trigger again if necessary
+
             else
                 break --if the tag is not triggering anymore (do this when the tag doesn't have an applicable effect), exit the loop early
             end
+            if self.config.do_not_retrigger then --config.do_not_retrigger is used to make it so that packs dont open all at once
+                res = true -- i honestly dont know why this is needed, but if its not here then all packs open at once
+                break 
+                end 
         end
     end
 
