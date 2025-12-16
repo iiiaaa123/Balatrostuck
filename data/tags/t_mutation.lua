@@ -2,7 +2,7 @@
 function Balatrostuck.INIT.Tags.t_mutation()
     SMODS.Tag{
         key = "mutation",
-        config = {type = "immediate", extra = {round_triggered = -1}},
+        config = {type = "new_blind_choice", extra = {round_triggered = -1}},
         loc_txt = {
             ['name'] = 'Mutation Tag',
             ['text'] = {

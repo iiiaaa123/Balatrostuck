@@ -2,7 +2,7 @@
 function Balatrostuck.INIT.Tags.t_template()
     SMODS.Tag{
         key = "template",
-        config = {type = "new_blind_choice"},
+        config = {type = "new_blind_choice", do_not_retrigger = "true"},
         loc_txt = {
             ['name'] = 'Spirograph Tag',
             ['text'] = {

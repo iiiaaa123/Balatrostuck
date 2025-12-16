@@ -2,7 +2,7 @@
 function Balatrostuck.INIT.Tags.t_parcelpyxis()
     SMODS.Tag{
         key = "parcelpyxis",
-        config = {type = "immediate"},
+        config = {type = "new_blind_choice", do_not_retrigger = "true"},
         loc_txt = {
             ['name'] = 'Parcel Pyxis Tag',
             ['text'] = {

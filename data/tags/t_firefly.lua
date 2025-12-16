@@ -2,7 +2,7 @@
 function Balatrostuck.INIT.Tags.t_firefly()
     SMODS.Tag{
         key = "firefly",
-        config = {type = "immediate"},
+        config = {type = "new_blind_choice"},
         loc_txt = {
             ['name'] = 'Firefly Tag',
             ['text'] = {

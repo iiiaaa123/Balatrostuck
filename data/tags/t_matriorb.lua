@@ -2,7 +2,7 @@
 function Balatrostuck.INIT.Tags.t_matriorb()
     SMODS.Tag{
         key = "matriorb",
-        config = {type = "new_blind_choice"},
+        config = {type = "new_blind_choice", do_not_retrigger = "true"},
         loc_txt = {
             ['name'] = 'Matriorb Tag',
             ['text'] = {

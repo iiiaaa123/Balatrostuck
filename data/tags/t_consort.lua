@@ -2,7 +2,7 @@
 function Balatrostuck.INIT.Tags.t_consort()
     SMODS.Tag{
         key = "consort",
-        config = {type = "immediate"},
+        config = {type = "new_blind_choice"},
         loc_txt = {
             ['name'] = 'Consort Tag',
             ['text'] = {
