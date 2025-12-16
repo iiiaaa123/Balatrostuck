@@ -42,7 +42,6 @@ function Balatrostuck.INIT.Tags.t_spirograph()
                         return true
                     end)
                 tag.triggered = true
-                return true
             end
         end,
     }

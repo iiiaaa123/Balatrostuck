@@ -36,7 +36,6 @@ function Balatrostuck.INIT.Tags.t_splinter()
                         return true
                     end)
                 tag.triggered = true
-                return true
             end
         end,
     }

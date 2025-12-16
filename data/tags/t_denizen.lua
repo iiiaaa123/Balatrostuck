@@ -48,7 +48,7 @@ function Balatrostuck.INIT.Tags.t_denizen()
                     tag.ability.extra.stack_count = tag.ability.extra.stack_count -1
                 end
                 tag.triggered = true 
-                tag.ability.extra.stack_count = 0
+                tag.ability.extra.stack_count = 0 --do this if the tag handles its own stack count
             end
             
         end,

@@ -53,7 +53,6 @@ function Balatrostuck.INIT.Tags.t_mutation()
                 end
                 tag.ability.extra.round_triggered = G.GAME.round
 
-                return true --only return true if we have successfully procced
                 end)
                 tag.triggered = true
             end

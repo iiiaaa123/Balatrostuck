@@ -45,7 +45,6 @@ function Balatrostuck.INIT.Tags.t_firefly()
                             
                         end
 
-                    return true
                     end)
                     tag.triggered = true
                 end
