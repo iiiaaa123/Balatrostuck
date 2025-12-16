@@ -1263,19 +1263,22 @@ function Tag:apply_to_run(_context)
         elseif _context.type == 'tag_add' then 
             if self.name == 'Double Tag' and _context.tag.key ~= 'tag_double' and _context.tag.key ~= 'tag_bstuck_scratch' and  _context.tag.key ~= 'sburb' then
                 local lock = self.ID
-                
+                local _count = self.ability.extra.stack_count
+                self.ability.extra.stack_count = 0
                 G.CONTROLLER.locks[lock] = true
                 self:yep('+', G.C.BLUE,function()
                     if _context.tag.ability and _context.tag.ability.orbital_hand then
                         G.orbital_hand = _context.tag.ability.orbital_hand
                     end
-                    add_tag(Tag(_context.tag.key))
+                    for i=1,_count do
+                        add_tag(Tag(_context.tag.key))
+                    end
                     G.orbital_hand = nil
                     G.CONTROLLER.locks[lock] = nil
                     return true
                 end)
-                self.triggered = not self.ability.extra.stack_count or (self.ability.extra.stack_count <= 1)
-                self.ability.extra.stack_count = self.ability.extra.stack_count - 1
+                self.triggered = true
+                
             end
         elseif _context.type == 'round_start_bonus' then 
             if self.name == 'Juggle Tag' then

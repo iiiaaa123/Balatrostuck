@@ -8,7 +8,7 @@ function Balatrostuck.INIT.Tags.t_mutation()
             ['text'] = {
                         'For each joker',
                         'create a paradox clone',
-                        '{C:inactive}only triggers once a round'
+                        '{C:inactive}(only triggers once a round)'
                 
             }
         },
@@ -29,6 +29,7 @@ function Balatrostuck.INIT.Tags.t_mutation()
         end,
          apply = function(self, tag, context) -- failsafe for doomquarius added o7
             if context.type == self.config.type and G.GAME.round ~= tag.ability.extra.round_triggered then
+                tag.ability.extra.round_triggered = G.GAME.round
                 local lock = tag.ID
                 tag:yep("MEOW!",G.C.Green, 
                 function()
@@ -51,8 +52,8 @@ function Balatrostuck.INIT.Tags.t_mutation()
                     }))
                     end
                 end
-                tag.ability.extra.round_triggered = G.GAME.round
-
+                
+                return true
                 end)
                 tag.triggered = true
             end
