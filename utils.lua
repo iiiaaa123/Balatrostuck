@@ -1450,3 +1450,21 @@ function bstuck_clean_tags()
     
 
 end
+
+--this one is to make scratch tag spawn only in big blinds
+function get_next_tag_key_small_blind(append)
+    G.FORCE_TAG = G.GAME.challenge and (G.GAME.challenge == "c_bstuck_alchemy") and "tag_bstuck_perfecltygeneric" or nil
+    if G.FORCE_TAG then return G.FORCE_TAG end
+    local _pool, _pool_key = get_current_pool('Tag', nil, nil, append)
+    for k,v in pairs(_pool) do
+        if v == "tag_bstuck_scratch" then table.remove(_pool,k) end
+    end
+    local _tag = pseudorandom_element(_pool, pseudoseed(_pool_key))
+    local it = 1
+    while _tag == 'UNAVAILABLE' do
+        it = it + 1
+        _tag = pseudorandom_element(_pool, pseudoseed(_pool_key..'_resample'..it))
+    end
+
+    return _tag
+end

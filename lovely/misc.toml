@@ -153,7 +153,7 @@ target = "functions/button_callbacks.lua"
 pattern = "G.GAME.round_resets.blind_tags.Big = get_next_tag_key()"
 position = "at"
 payload = '''
-G.GAME.round_resets.blind_tags.Big = next(SMODS.find_card("j_bstuck_echidna")) and 'tag_bstuck_scratch' or get_next_tag_key(nil,true) 
+G.GAME.round_resets.blind_tags.Big = next(SMODS.find_card("j_bstuck_echidna")) and 'tag_bstuck_scratch' or get_next_tag_key() 
 '''
 match_indent = true
 times = 1
@@ -325,8 +325,18 @@ times = 1
 
 
 ## Scratch Tag
-#half of this is
-#handled in echidna code now because it overwrote the same line
+#the function that this calls is in utils.lua
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = "G.GAME.round_resets.blind_tags.Small = get_next_tag_key()"
+position = "at"
+payload = '''
+G.GAME.round_resets.blind_tags.Small = get_next_tag_key_small_blind()
+'''
+match_indent = true
+times = 1
+overwrite = true
 
 [[patches]]
 [patches.pattern]
@@ -334,7 +344,7 @@ target = "functions/common_events.lua"
 pattern = "function get_next_tag_key(append)"
 position = "at"
 payload = '''
-function get_next_tag_key(append,Scratch)
+function get_next_tag_key(append)
 '''
 match_indent = true
 times = 1
