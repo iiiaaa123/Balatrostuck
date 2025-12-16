@@ -13,8 +13,8 @@ function Balatrostuck.INIT.Jokers.j_beyondcanon()
             ['text'] = { --Gains X0.5 mult for each unique hand played this ante. Poker hands played previously this ante are not allowed. (Currently: 1x mult)
 
                 [1] = 'Gains {X:mult,C:white}X#2#{} Mult for each',
-                [2] = 'unique hand played this ante.',
-                [3] = '{C:attention}Poker hands{} played previously',
+                [2] = 'unique hand played this ante,',
+                [3] = '{C:attention}poker hands{} played previously',
                 [4] = 'this ante are {C:red}not allowed',
                 [5] = '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)'
             },
