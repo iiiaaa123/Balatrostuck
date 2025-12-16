@@ -876,17 +876,19 @@ function add_tag(_tag,fromMind)
 
     if not _done then --we only need to create a new hud if we're adding a tag for the first time
         G.HUD_tags = G.HUD_tags or {}
-        local tag_sprite_ui = _tag:generate_UI()
+        local tag_sprite_ui, tag_sprite = _tag:generate_UI()
+
         G.HUD_tags[#G.HUD_tags+1] = UIBox{
             definition = {n=G.UIT.ROOT, config={align = "cm",padding = 0.05, colour = G.C.CLEAR}, nodes={
                 tag_sprite_ui,
-                --next line is the "2x" text or whatever
                 --if a sprite needs to be added, it probably goes in here
-                {n=G.UIT.O, config={object = DynaText({string = {{suffix = "x", ref_table = _tag.ability.extra, ref_value = 'stack_count'}}, colours = {G.C.UI.TEXT_LIGHT},shadow = true, scale = 0.25})}},
-                --if you want to make it so that the main sprite is clickable without this extra ugly as sin button
+                --this makes the "2x" text, and also deletes the tag if clicked ... good luck communicating that to the player somehow
+                {n=G.UIT.O, config={button = "delete_tag",ref_table=_tag,object = DynaText({string = {{suffix = "x", ref_table = _tag.ability.extra, ref_value = 'stack_count'}}, colours = {G.C.UI.TEXT_LIGHT},shadow = true, scale = 0.25})}},
+                --if you want to make it so that the main sprite is clickable
                 --good luck! total hours spent trying: 5
                 --increase the counter after you give up :)
-                UIBox_button({colour = G.C.RED, button = "delete_tag",label={"x"},minw=0.30,minh=0.30, ref_table = _tag,r=0.5,align="cl"})
+                -- v this makes a red "x" button that deletes the tag
+                --UIBox_button({colour = G.C.RED, button = "delete_tag",label={"x"},minw=0.3,minh=0.3, ref_table = _tag,r=1,align="bm"})
             }},
             config = {
                 align = G.HUD_tags[1] and 'tm' or 'bri',
