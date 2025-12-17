@@ -25,6 +25,7 @@ function Balatrostuck.INIT.Jokers.j_aimlessrenegade()
         rarity = 1,
         blueprint_compat = true,
         eternal_compat = true,
+        perishable_compat = false,
         unlocked = false,
         discovered = false,
         atlas = 'HomestuckJokers',

@@ -31,6 +31,7 @@ function Balatrostuck.INIT.Jokers.j_therapture()
         rarity = 3,
         blueprint_compat = true,
         eternal_compat = true,
+        perishable_compat = false,
         unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)

@@ -5,7 +5,7 @@ function Balatrostuck.INIT.Jokers.j_wake()
         config = {
             extra = {
                 xmult_mod = 0.2,
-                hands = 2
+                hands = 1
             }
         },
         loc_txt = {
@@ -14,7 +14,7 @@ function Balatrostuck.INIT.Jokers.j_wake()
                 'Gives {C:white,X:mult}X#1#{} Mult',
                 'for each remaining',
                 '{C:attention}hand{}, discarded',
-                '{C:attention}Jacks{} give {C:blue}+2{} hands',
+                '{C:attention}Jacks{} give {C:blue}+1{} hands',
                 '{C:inactive}(Currently {C:white,X:mult}X#2# {C:inactive} Mult)'
 
                 -- 'Discarded Jacks',

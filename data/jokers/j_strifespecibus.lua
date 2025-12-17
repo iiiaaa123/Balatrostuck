@@ -40,7 +40,7 @@ function Balatrostuck.INIT.Jokers.j_strifespecibus()
             }            
         end,
         calculate = function (self, card, context)
-            if context.debuff_hand then
+            if context.debuff_hand and not context.blueprint then
                 local strifed = false
                 local grace = false
 
@@ -68,15 +68,22 @@ function Balatrostuck.INIT.Jokers.j_strifespecibus()
             
             
         
-            if context.modify_hand then
+            if context.modify_hand and not context.blueprint then
                 if card.ability.extra.hand == 'Unassigned' and not G.GAME.BALATROSTUCK.strife_assignment[context.scoring_name] then
                     G.GAME.BALATROSTUCK.strife_assignment[context.scoring_name] = true
                     card.ability.extra.hand = context.scoring_name
                 end
-                mult = mult + card.ability.extra.mult
-                update_hand_text({delay = 0}, {chips = card.ability.extra.chips and hand_chips, mult = card.ability.extra.mult and mult})
-                card_eval_status_text(card,'mult',card.ability.extra.mult,nil,nil,{message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }})
-                return hand_chips, mult
+                -- mult = mult + card.ability.extra.mult
+                -- update_hand_text({delay = 0}, {chips = card.ability.extra.chips and hand_chips, mult = card.ability.extra.mult and mult})
+                -- card_eval_status_text(card,'mult',card.ability.extra.mult,nil,nil,{message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }})
+                -- return hand_chips, mult
+            end
+
+            if context.initial_scoring_step then
+                return {
+                    card = card,
+                    mult = card.ability.extra.mult
+                }
             end
         end,
         remove_from_deck = function(self,card,from_debuff)

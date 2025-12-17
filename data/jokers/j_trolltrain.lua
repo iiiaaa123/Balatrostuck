@@ -3,7 +3,7 @@ function Balatrostuck.INIT.Jokers.j_trolltrain()
         name = "Troll Train",
         key = "trolltrain",
         config = {
-            extra = {mult = 4}
+            extra = {mult = 3}
         },
         loc_txt = {
             ['name'] = 'Troll Train',

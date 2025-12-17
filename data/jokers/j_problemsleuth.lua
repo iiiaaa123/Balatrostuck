@@ -44,7 +44,7 @@ function Balatrostuck.INIT.Jokers.j_problemsleuth()
         end,
         can_activate = function(self,card,args)
             local cost = card:activate_cost()
-            if G.STATE == G.STATES.SELECTING_HAND and cost <= G.GAME.dollars + G.GAME.bankrupt_at then
+            if G.STATE == G.STATES.SELECTING_HAND and cost <= G.GAME.dollars - G.GAME.bankrupt_at then
                 return true
             end
         end,
