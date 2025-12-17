@@ -43,12 +43,48 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_leo()
                 for i=1, #G.hand.cards do
                     _card = G.hand.cards[i]
 
-                    if _card:get_id() == self.rank and pseudorandom('leo') < G.GAME.probabilities.normal/self.ability.config.odds then
+                    if _card:get_id() == self.rank then
                         if _card.debuff then
                             card_eval_status_text(_card, 'debuff')
                         else
-                            card_eval_status_text(_card, 'dollars', self:level(context.other_card))
-                            ease_dollars(self:level(context.other_card))
+                            if pseudorandom('leo') < G.GAME.probabilities.normal/self.ability.config.odds then
+                                card_eval_status_text(_card, 'dollars', self:level(context.other_card))
+                                ease_dollars(self:level(context.other_card))
+                            end
+
+                            --calculate if we need to retrigger due to mime or similar
+                            local _rep_context = {}
+                            SMODS.calculate_context({repetition = true, cardarea = G.hand, card_effects = {{1,2},2,3}},_rep_context) --dummy card effect, does nothing but needs this structure
+ 
+                            
+
+                            local _repjokers = {}
+                            for _, value in pairs(_rep_context) do
+                                if value.jokers then
+                                    if value.jokers.repetitions then
+                                        for i=1, value.jokers.repetitions do
+                                            table.insert(_repjokers,value.jokers.card)
+                                        end
+                                    end
+                                elseif value.seals then
+                                    if value.seals.card == _card then
+                                        if value.seals.repetitions then
+                                            for i=1, value.seals.repetitions do
+                                                table.insert(_repjokers,_card) --"_repjokers is just which cards to say "Again!" on.
+                                            end
+                                        end
+                                    end
+                                end
+                                
+                            end
+                            for i=1, #_repjokers do
+                                if pseudorandom('leo'..i) < G.GAME.probabilities.normal/self.ability.config.odds then
+                                    card_eval_status_text(_repjokers[i], 'extra', nil, nil, nil, {message = localize('k_again_ex')})
+                                    card_eval_status_text(_card, 'dollars', self:level(context.other_card))
+                                    ease_dollars(self:level(context.other_card))
+                                    delay(0.3)
+                                end
+                            end
                         end
                     end
                 end
