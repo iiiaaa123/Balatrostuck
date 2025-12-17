@@ -87,7 +87,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_ophiuchus()
                                     if value.seals.card == _card then
                                         if value.seals.repetitions then
                                             for i=1, value.seals.repetitions do
-                                                table.insert(_repjokers,_card)
+                                                table.insert(_repjokers,_card) --"_repjokers is just which cards to say "Again!" on.
                                             end
                                         end
                                     end
