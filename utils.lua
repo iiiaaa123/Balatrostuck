@@ -840,7 +840,7 @@ mod.calculate = function(self, context)
     end
     --for tag heaven stuff
     if context.ending_shop then
-        bstuck_clean_tags()
+        --bstuck_clean_tags()
     end
 end
 
