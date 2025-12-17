@@ -11,9 +11,6 @@ It is your thirteenth birthday, and as with all twelve preceding it, something f
 
 You have a feeling it's going to be a long day.
 
-**IF YOU ARE HAVING TECHNICAL ISSUES WITH THE MOD, DOWNGRADE YOUR SMODS TO THE FOLLOWING VERSION:**
-https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-0323b
-
 ## Mod additions
 
 - **120 new Jokers** with objects, scenes and refereces to the comic
