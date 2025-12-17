@@ -25,10 +25,10 @@ function Balatrostuck.INIT.Tags.t_perfectlygeneric()
             if context.type == self.config.type and not (context.consumeable.ability.set == 'Aspect') then
                 tag:yep("-Ify!",G.C.Green, 
                 function()
-                    SMODS.add_card({key = context.consumeable.config.center.key,edition = 'e_bstuck_paradox'})
-                    tag.triggered = true
+                    local cardy = SMODS.add_card({key = context.consumeable.config.center.key,edition = 'e_bstuck_paradox'})
                     return true
                 end)
+                tag.triggered = true
             end
         end
     }
