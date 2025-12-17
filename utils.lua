@@ -854,7 +854,7 @@ function add_tag(_tag,fromMind)
     --print("adding ".._tag.key)
     for i = 1, #G.GAME.tags do
         _current_tag = G.GAME.tags[i]
-        if _current_tag.key == _tag.key then
+        if _current_tag.key == _tag.key and _current_tag.ability.orbital_hand == _tag.ability.orbital_hand  then
             --handle the case where we are adding a tag that we already have 
             _reps = (_current_tag.ability.extra.stack_count or 1) + 1
             _current_tag.ability.extra.stack_count = _reps
