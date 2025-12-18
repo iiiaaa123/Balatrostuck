@@ -41,7 +41,7 @@ function Balatrostuck.INIT.Jokers.j_theplotpoint()
             if context.selling_self then
                 ease_ante(-1)
                 for j = 2, #G.jokers.cards do 
-                    if G.jokers.cards[j] ~= card and not G.jokers.cards[j].ability.eternal then
+                    if G.jokers.cards[j] ~= card and not G.jokers.cards[j].eternal then
                         G.jokers.cards[j]:start_dissolve()
                         G.jokers.cards[j]:remove_from_deck()
                     end
