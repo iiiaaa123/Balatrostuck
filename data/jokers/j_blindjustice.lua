@@ -61,7 +61,7 @@ function Balatrostuck.INIT.Jokers.j_blindjustice()
             if context.before then
                 if not card.ability.extra.calculated then
                     for _, cardy in ipairs(G.play.cards) do
-                        if cardy.debuff or cardy.should_scale_blind_justice then self.scale_up(card,cardy) end
+                        if cardy.debuff or cardy.ability.should_scale_blind_justice then self.scale_up(card,cardy) end
                     end
                     for _, cardy in ipairs(G.hand.cards) do
                         if cardy.debuff or cardy.facing == "back" then self.scale_up(card,cardy) end
