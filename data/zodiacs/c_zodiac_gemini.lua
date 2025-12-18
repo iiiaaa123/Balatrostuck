@@ -41,6 +41,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_gemini()
             if context.repetition and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
 				return {
 					message = 'agaiin!',
+                    colour = G.C.MONEY,
 					repetitions = self:level(context.other_card),
 					card = context.other_card
 				}
