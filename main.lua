@@ -75,7 +75,7 @@ local joker_list = {
 "echidna", "abraxas", "yaldabaoth", "hephaestus","typheus",
 -- Page 19
 "template", "pranxis", "successor", "blackjack", "break", 
-"coloursmayhem", "frogsprite", "scalemate", "scourgesisters", "cherubshackles"
+"coloursmayhem", "frogsprite", "scalemate", "scourgesisters", "cherubshackles", "blindjustice"
 }
 
 local aspect_list = {
