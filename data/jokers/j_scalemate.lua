@@ -6,10 +6,12 @@ function Balatrostuck.INIT.Jokers.j_scalemate()
             extra = { mult = 7, ranks = {}, custom_name = false,
             names = {
                 "Senator Lemonsnout",
+                "Pyralspite",
                 "Professor Pucefoot",
                 "Inspector Berrybreath",
                 "Doctor Honeytongue",
                 "Duke Pinesnort",
+                "Petty Officer Applescab",
                 "Liaison Pumpkinsnuffle",
                 "Officer Cinnamonwhiff"
             }
@@ -40,7 +42,7 @@ function Balatrostuck.INIT.Jokers.j_scalemate()
         calculate = function (self, card, context)
             
 
-            if context.setting_blind then
+            if context.setting_blind and not context.blueprint_card then
                 local _ranks = card.ability.extra.ranks
                 _ranks = {}
                 for i=1,3 do
@@ -58,16 +60,19 @@ function Balatrostuck.INIT.Jokers.j_scalemate()
                     end
                 end
 
-            elseif context.modify_scoring_hand then --kinda silly but this seems to be the best context to do this..
+            elseif context.modify_scoring_hand and not context.blueprint_card then --kinda silly but this seems to be the best context to do this..
                 if context.other_card.facing == 'back' and not context.other_card.ability.scalemate_bonus then
                     context.other_card.ability.scalemate_bonus = true
                 end
+
             elseif context.individual and context.cardarea == G.play and context.other_card.ability.scalemate_bonus then
                 context.other_card.ability.scalemate_bonus = nil
                 return {
                     mult = card.ability.extra.mult,
                     card = card
                 }
+            elseif context.end_of_round and context.individual and not context.blueprint_card then
+                context.other_card.ability.scalemate_bonus = nil
             end
 
             
@@ -76,7 +81,7 @@ function Balatrostuck.INIT.Jokers.j_scalemate()
         loc_vars = function (self, info_queue, card)
             art_credit('akai', info_queue)
             if not card.ability.extra.custom_name then
-                card.ability.extra.custom_name = pseudorandom_element(card.ability.extra.names, pseudoseed("PLUSH13"..G.GAME.round_resets.ante))
+                card.ability.extra.custom_name = pseudorandom_element(self.config.extra.names, pseudoseed("PLUSH13"..G.GAME.round_resets.ante))
             end
             return {vars = {card.ability.extra.mult, card.ability.extra.custom_name}}
         end,
