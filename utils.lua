@@ -801,6 +801,29 @@ function bstuck_give_random_tag(append,disallowed_tags)
     end}))
 end
 
+function bstuck_get_random_rank(seed,blacklist)
+    local valid_cards = {}
+    for k, v in ipairs(G.playing_cards) do
+        if v.ability.effect ~= 'Stone Card' then
+            if not SMODS.has_no_rank(v) then
+                local _nope
+                for _, rank in ipairs(blacklist) do
+                    if v:get_id() == rank then
+                        _nope = true
+                    end
+                end
+                if not _nope then
+                    valid_cards[#valid_cards+1] = v
+                end
+            end
+        end
+    end
+    if valid_cards[1] then 
+        local _card, index = pseudorandom_element(valid_cards, pseudoseed(seed..G.GAME.round_resets.ante))
+        --number, name
+        return _card:get_id(), _card.base.value
+    end
+end
 --can trigger non-card non-jokers (like tags) in contexts using this 
 local mod = SMODS.current_mod
 mod.calculate = function(self, context)
