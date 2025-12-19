@@ -1002,6 +1002,7 @@ function Tag:apply_to_run(_context)
     --self.triggered is set and un-set a bunch of times, it is only kept as "true" after evaluation if the tag is fully done (and should be destroyed)
     --i'm also (unfortunately, due to how things are set up,) using it to check whether the current evaluation did anything (because the return value is important for other things)
     if self.triggered then return end
+    if not self.ability.extra.stack_count then self.ability.extra.stack_count = 1 end
     --haven't touched this block
     local flags = SMODS.calculate_context({prevent_tag_trigger = self, other_context = _context})
     if flags.prevent_trigger then return end
