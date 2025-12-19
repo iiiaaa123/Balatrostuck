@@ -60,6 +60,7 @@ G.C.ZODIAC_LEVELS = {
     HEX('caa0ef')
 }
 
+G.C.FELT = HEX("169B21")
 G.C.SPECIBUS = HEX("008c45")
 G.C.VRISKA = HEX("005682")
 G.C.VRISKA_2 = HEX("007ebd")

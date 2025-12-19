@@ -75,7 +75,7 @@ local joker_list = {
 "echidna", "abraxas", "yaldabaoth", "hephaestus","typheus",
 -- Page 19
 "template", "pranxis", "successor", "blackjack", "break", 
-"coloursmayhem", "frogsprite", "scalemate", "scourgesisters", "cherubshackles"
+"coloursmayhem", "frogsprite", "scalemate", "scourgesisters", "cherubshackles", "blindjustice", "itchy"
 }
 
 local aspect_list = {
@@ -122,6 +122,10 @@ local deck_list = {
     'dersite','prospitan','alternian','frog','sylladeck', 'nymph', 'genericdeck'
 }
 
+local rarity_list = {
+    'felt'
+}
+
 batch_load("jokers")
 batch_load("aspects")
 batch_load("zodiacs")
@@ -133,6 +137,7 @@ batch_load("seals")
 batch_load("blinds")
 batch_load("vouchers")
 batch_load("decks")
+batch_load("rarities")
 
 
 bstuck_joker_keys = {}
@@ -190,6 +195,10 @@ end
 
 for _, deck in ipairs(deck_list) do
     Balatrostuck.INIT.Decks["b_"..deck]()
+end
+
+for _, rarity in ipairs(rarity_list) do
+    Balatrostuck.INIT.Rarities["r_"..rarity]()
 end
 
 
