@@ -54,13 +54,10 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_ophiuchus()
                             local _card = pseudorandom_element(possible_choices,pseudoseed('Looking for me?  O  '))
                             _card.alreadyDead = true
                             G.E_MANAGER:add_event(Event({func = function()
-                                G.hand:remove_card(_card)
                                 play_sound('bstuck_HomestuckParadox',0.7)
                                 _card:juice_up()
                                 _card:set_edition('e_bstuck_paradox',true,true)
-                                G.hand:emplace(_card)
                                 _card.alreadyDead = false
-                                G.hand:sort()
                                 return true
                             end}))
                             SMODS.calculate_effect({xmult = 1.25 ^ self:level(_card)}, _card)
