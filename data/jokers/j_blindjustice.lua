@@ -25,7 +25,7 @@ function Balatrostuck.INIT.Jokers.j_blindjustice()
 
         
         cost = 4,
-        rarity = 1,
+        rarity = 2,
         blueprint_compat = true,
         eternal_compat = true,
         unlocked = true,
