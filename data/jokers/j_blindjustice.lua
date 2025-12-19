@@ -19,8 +19,8 @@ function Balatrostuck.INIT.Jokers.j_blindjustice()
             }
         },
         pos = {
-            x = 9,
-            y = 12
+            x = 11,
+            y = 0
         },
 
         
