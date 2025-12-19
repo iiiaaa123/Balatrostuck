@@ -6,10 +6,13 @@ function Balatrostuck.INIT.Spectrals.c_spectral_13ofstars()
         loc_txt = {
             name = '13 of Stars',
             text = {
-                [1] = 'Create {E:2,C:paradox} Biscuits',
+                [1] = 'Creates a {E:2,C:paradox}Felt{} Joker',
                 [2] = '{C:inactive}(Must have room)'
             }
         },
+        config = {
+        },
+
         pos = {
             x = 0,
             y = 1
@@ -33,7 +36,7 @@ function Balatrostuck.INIT.Spectrals.c_spectral_13ofstars()
             G.E_MANAGER:add_event(Event({
                 func = function()
                     play_sound('timpani')
-                    SMODS.add_card({set = 'Joker',no_edition = true, key = 'j_bstuck_biscuits'})
+                    SMODS.add_card({set = 'Joker',no_edition = true, rarity = "bstuck_felt"})
                     return true
             end}))
         end

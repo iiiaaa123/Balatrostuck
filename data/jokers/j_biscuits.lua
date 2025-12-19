@@ -28,13 +28,13 @@ function Balatrostuck.INIT.Jokers.j_biscuits()
             y = 11
         },
         cost = 13,
-        rarity = 3,
+        rarity = "bstuck_felt",
         blueprint_compat = false,
         eternal_compat = true,
         unlocked = true,
         atlas = 'HomestuckJokers',
         in_pool = function(self,args)
-            return false
+            return true --should be safe to do since the rarity weight is set to 0
         end
     }
 end 

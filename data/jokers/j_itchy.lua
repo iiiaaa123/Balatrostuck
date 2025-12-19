@@ -23,7 +23,7 @@ function Balatrostuck.INIT.Jokers.j_itchy()
         rarity = "bstuck_felt",
         blueprint_compat = false,
         eternal_compat = true,
-        unlocked = false,
+        unlocked = true,
 
 
         atlas = 'HomestuckJokers',
@@ -43,7 +43,7 @@ function Balatrostuck.INIT.Jokers.j_itchy()
             art_credit('akai', info_queue)
         end,
         in_pool = function(self,args)
-            return false
+            return true
         end
     }
 end 
