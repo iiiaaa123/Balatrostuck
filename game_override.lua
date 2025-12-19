@@ -493,6 +493,7 @@ function SMODS.showman(card_key)
 end
 
 --attempt to fix smods crash on load if theres an invalid cardarea (god knows where the invalid cardarea came from)
+--this fix was fine in smods beta 1016, if it has since been updated and this is causing problems, removing it is probably fine
 smods_check_looping_context = SMODS.check_looping_context
 function SMODS.check_looping_context(eval_object)
     if eval_object == "\"MANUAL_REPLACE\"" then
