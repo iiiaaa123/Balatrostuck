@@ -491,3 +491,14 @@ function SMODS.showman(card_key)
     end
     smods_showman(card_key)
 end
+
+--attempt to fix smods crash on load if theres an invalid cardarea (god knows where the invalid cardarea came from)
+smods_check_looping_context = SMODS.check_looping_context
+function SMODS.check_looping_context(eval_object)
+    if eval_object == "\"MANUAL_REPLACE\"" then
+         eval_object = nil
+         return true 
+
+    end
+    smods_check_looping_context(eval_object)
+end
