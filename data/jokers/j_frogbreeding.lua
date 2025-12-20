@@ -45,7 +45,7 @@ function Balatrostuck.INIT.Jokers.j_frogbreeding()
 
             if context.using_consumeable and card.ability.extra.active and not (context.consumeable.ability.set == 'Aspect') then
                 card.ability.extra.active = false
-                SMODS.add_card({key = context.consumeable.config.center.key,edition = 'e_bstuck_paradox'})
+                bstuck_add_paradox_card({key = context.consumeable.config.center.key})
                 return {
                     message = 'Cloned!',
                     card = card

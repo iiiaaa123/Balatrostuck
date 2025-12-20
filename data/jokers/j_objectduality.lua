@@ -52,7 +52,7 @@ function Balatrostuck.INIT.Jokers.j_objectduality()
                         func = function()
                             play_sound('timpani')
                             othercard:juice_up(0.5, 0.5)
-                            SMODS.add_card({set = 'Joker',edition = 'e_bstuck_paradox', key = get_innocuous(othercard,false)})
+                            bstuck_add_paradox_card({set = 'Joker', key = get_innocuous(othercard,false)})
                             return true
                         end
                     }))

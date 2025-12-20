@@ -27,8 +27,7 @@ function Balatrostuck.INIT.Jokers.j_bigkahuna()
             if context.end_of_round and context.cardarea == G.jokers then
                 G.E_MANAGER:add_event(Event({
                     func = function() 
-                        local _card = SMODS.add_card({set = 'Tarot', key = 'c_lovers'})
-                        _card:set_edition('e_bstuck_paradox',true,true)
+                        local _card = bstuck_add_paradox_card({set = 'Tarot', key = 'c_lovers'})
                         return true 
                     end
                 }))

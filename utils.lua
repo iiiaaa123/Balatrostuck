@@ -833,3 +833,17 @@ mod.calculate = function(self, context)
         end
     end
 end
+
+function bstuck_copy_card(card, remove_edition, new_edition)
+    local playing_card = (card.config.center.set == "Default" or card.config.center.set == "Enhanced") and G.playing_card
+    local _card = copy_card(card, nil, nil, playing_card, remove_edition)
+    if new_edition then
+        _card:set_edition(new_edition)
+    end
+    return _card
+end
+
+function bstuck_add_paradox_card(t)
+    t.edition = "e_bstuck_paradox"
+    return SMODS.add_card(t)
+end

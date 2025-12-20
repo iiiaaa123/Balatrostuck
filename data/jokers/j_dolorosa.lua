@@ -49,8 +49,7 @@ function Balatrostuck.INIT.Jokers.j_dolorosa()
                     if Balatrostuck.enhancement_cards[k] then
                         G.E_MANAGER:add_event(Event({
                             func = function()
-                                local _taort = SMODS.add_card({key = Balatrostuck.enhancement_cards[k]})
-                                _taort:set_edition('e_bstuck_paradox',false,false)
+                                local _taort = bstuck_add_paradox_card({key = Balatrostuck.enhancement_cards[k]})
                                 _card:juice_up()
                                 return true
                             end
