@@ -528,6 +528,6 @@ cardarea_removecard_ref = CardArea.remove_card
 function CardArea:remove_card(card, discarded_only)
     if not self.cards then return end
     local ret = cardarea_removecard_ref(self,card,discarded_only)
-    ret.previous_area = self
+    if ret then ret.previous_area = self end
     return ret
 end
