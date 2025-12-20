@@ -11,7 +11,7 @@ function Balatrostuck.INIT.Jokers.j_oldsecret()
             ['text'] = {
                 [1] = "A random held {C:attention}consumeable{} becomes",
                 [2] = "{C:paradox}Paradox{} at end of round, {C:paradox}Paradox",
-                [3] = "consumeables cannot be destroyed"
+                [3] = "consumables cannot be destroyed"
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
