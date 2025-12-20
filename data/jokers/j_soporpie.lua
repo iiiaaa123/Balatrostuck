@@ -64,6 +64,10 @@ function Balatrostuck.INIT.Jokers.j_soporpie()
                 card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
                 card.ability.extra.h_size = card.ability.extra.h_size + 1
                 G.hand:change_size(-1)
+                return {
+                    message = 'YuMmYy!',
+                    colour = G.C.GREEN
+                }
             end
         end
     }

@@ -68,6 +68,10 @@ function Balatrostuck.INIT.Jokers.j_pawnrevolution()
                     end
                 }))
                 playing_card_joker_effects({_card})
+                return {
+                    message = 'Rize up!',
+                    colour = G.C.GREEN
+                }
             end
         end
     }
