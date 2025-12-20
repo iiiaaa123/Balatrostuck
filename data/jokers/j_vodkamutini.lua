@@ -36,8 +36,9 @@ function Balatrostuck.INIT.Jokers.j_vodkamutini()
             art_credit('akai', info_queue)
         end,
         calculate = function(self,card,context)
-            
-            if context.card_emplaced and context.card and context.card.edition and context.card.edition.key == "e_bstuck_paradox"  --check that we placed a paradox card
+            --check that we placed a paradox card
+            if context.card_emplaced and context.card and context.card.edition and context.card.edition.key == "e_bstuck_paradox"  
+            --check that the card wasn't just being moved
             and (not context.previous_card_area or (context.previous_card_area ~= G.shop_jokers and context.previous_card_area ~= G.deck and context.previous_card_area ~= G.hand and context.previous_card_area ~= G.discard and context.previous_card_area ~= G.pack_cards))
             --check that its one of the card areas we can generate cards in
             and (context.card_area == G.jokers or context.card_area == G.deck or context.card_area == G.hand or context.card_area == G.consumeables or context.card_area == G.shop_jokers or context.card_area == G.pack_cards) 
