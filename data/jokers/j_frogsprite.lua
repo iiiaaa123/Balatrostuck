@@ -49,6 +49,7 @@ function Balatrostuck.INIT.Jokers.j_frogsprite()
                             G.deck:set_ranks()
                             G.deck:align_cards()
                             _card:add_to_deck()
+                            G.deck:emplace()
                             playing_card_joker_effects({_card})
                         end
                         if context.blueprint_card then context.blueprint_card:juice_up() else card:juice_up() end

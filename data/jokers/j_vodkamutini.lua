@@ -36,55 +36,33 @@ function Balatrostuck.INIT.Jokers.j_vodkamutini()
             art_credit('akai', info_queue)
         end,
         calculate = function(self,card,context)
-            if context.paradox_created then
-                local _card = G.GAME.BALATROSTUCK.last_paradox_created
+            --check that we placed a paradox card
+            if context.card_emplaced and context.card and context.card.edition and context.card.edition.key == "e_bstuck_paradox"  
+            --check that the card wasn't just being moved
+            and (not context.previous_card_area or (context.previous_card_area ~= G.shop_jokers and context.previous_card_area ~= G.deck and context.previous_card_area ~= G.hand and context.previous_card_area ~= G.discard and context.previous_card_area ~= G.pack_cards))
+            --check that its one of the card areas we can generate cards in
+            and (context.card_area == G.jokers or context.card_area == G.deck or context.card_area == G.hand or context.card_area == G.consumeables or context.card_area == G.shop_jokers or context.card_area == G.pack_cards) 
+            then
+                local _card = context.card
+                local _area = context.card_area
                 local pCard = {}
-
-                if _card.config.center.consumeable then 
-                    G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.05, func = function()
-                    if G.consumeables.config.card_limit - #G.consumeables.cards > 0 then
-                        pCard = copy_card(_card, nil, nil, nil, true)
-                        pCard:add_to_deck()    
-                        G.consumeables:emplace(pCard) 
-                        play_sound('bstuck_HomestuckMeow', 1 + math.random()*0.5, 0.4)
-                        card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Cloned!"})
-                        pCard:juice_up(0.3, 0.5)
-                    end
-                    return true end }))
-                elseif _card.config.center.set == "Joker" then 
-                    G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.05, func = function()
-                    if G.jokers.config.card_limit - #G.jokers.cards > 0 then
-                        if _card.config.center.key ~= "j_bstuck_vodkamutini" then
-                            pCard = copy_card(_card, nil, nil, true, true)
-                            pCard:add_to_deck()
-                            G.jokers:emplace(pCard)
-                            play_sound('bstuck_HomestuckMeow', 1 + math.random()*0.5, 0.4)
-                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Cloned!"})
-                            pCard:juice_up(0.3, 0.5)
-                        end
-                    end
-                    return true end }))
-                else 
-                    card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Cloned!"})
-                    G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.05, func = function()
-                    pCard = copy_card(_card, nil, nil, G.playing_card, true)
+                local _is_playing_card = (_card.config.center.set == "Default" or _card.config.center.set == "Enhanced") and true
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Cloned!"})
+                G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.05, func = function()
+                    pCard = bstuck_copy_card(_card, true, nil) --middle param is to remove the edition
+                    if not pCard then return end
                     pCard:add_to_deck()
-                    G.deck.config.card_limit = G.deck.config.card_limit + 1
-                    table.insert(G.playing_cards, pCard)
-                    G.hand:emplace(pCard)
-                    --[[
-                    if G.STATE == 999 then --this is stupid, if something is breaking here this is the first thing you should change
-                        G.deck:emplace(pCard)
-                    else
-                        G.hand:emplace(pCard)
+                    if _is_playing_card then
+                        G.deck.config.card_limit = G.deck.config.card_limit + 1
+                        table.insert(G.playing_cards, pCard)
                     end
-                    ]]
+                    if context.card_area == G.shop_jokers then create_shop_card_ui(pCard) end
+                    _area:emplace(pCard)
                     play_sound('bstuck_HomestuckMeow', 1 + math.random()*0.5, 0.4)
                     pCard:juice_up(0.3, 0.5)
                     return true end }))
-                end
-
             end
+
         end,
         check_for_unlock = function(self,args)
             if args.type == 'bstuck_apple_eaten' then

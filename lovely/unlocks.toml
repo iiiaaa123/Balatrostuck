@@ -83,17 +83,7 @@ match_indent = true
 times = 1
 
 #Frost and Frogs
-[[patches]]
-[patches.pattern]
-target = '=[SMODS _ "src/overrides.lua"]'
-pattern = "SMODS.calculate_context({paradox_created = true, cards = self})"
-position = "after"
-payload = '''    
-    G.paradoxCounter = G.paradoxCounter and (G.paradoxCounter + 1) or 1
-    if G.paradoxCounter >= 100 then check_for_unlock({type = 'bstuck_frostandfrogs'}) end
-'''
-match_indent = true
-times = 1
+#handled in game_override now
 
 #FL1P
 [[patches]]

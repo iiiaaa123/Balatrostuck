@@ -508,3 +508,27 @@ function SMODS.check_looping_context(eval_object)
     end
     smods_check_looping_context(eval_object)
 end
+
+--better way to get paradox_created context
+cardarea_emplace_ref = CardArea.emplace
+function CardArea:emplace(card, location, stay_flipped)
+    local _old_card_area = card.previous_area or card.area
+    local ret = cardarea_emplace_ref(self,card, location, stay_flipped)
+    if card.edition and card.edition.key == "e_bstuck_paradox" then
+        if not _old_card_area or _old_card_area == G.shop_jokers then
+            G.GAME.BALATROSTUCK.last_paradox_created = card
+            G.paradoxCounter = G.paradoxCounter and (G.paradoxCounter + 1) or 1
+            if G.paradoxCounter >= 100 then check_for_unlock({type = 'bstuck_frostandfrogs'}) end
+        end
+    end
+    SMODS.calculate_context({card_emplaced = true,card_area=self, card = card, previous_card_area=_old_card_area})
+    return ret
+end
+
+cardarea_removecard_ref = CardArea.remove_card
+function CardArea:remove_card(card, discarded_only)
+    if not self.cards then return end
+    local ret = cardarea_removecard_ref(self,card,discarded_only)
+    if ret then ret.previous_area = self end
+    return ret
+end

@@ -53,8 +53,7 @@ function Balatrostuck.INIT.Jokers.j_aimlessrenegade()
 
                 G.E_MANAGER:add_event(Event({
                     func = function() 
-                        local _card = SMODS.add_card({set = 'Tarot', key = 'c_judgement'})
-                        _card:set_edition('e_bstuck_paradox',true,true)
+                        local _card = bstuck_add_paradox_card({set = 'Tarot', key = 'c_judgement'})
                         return true 
                     end
                 }))

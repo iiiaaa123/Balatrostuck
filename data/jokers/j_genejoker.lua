@@ -30,7 +30,11 @@ function Balatrostuck.INIT.Jokers.j_genejoker()
         unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
-            if context.paradox_created then
+            if context.card_emplaced and context.card and context.card.edition and context.card.edition.key == "e_bstuck_paradox"  --check that we placed a paradox card
+            and (not context.previous_card_area or (context.previous_card_area ~= G.shop_jokers and context.previous_card_area ~= G.deck and context.previous_card_area ~= G.hand and context.previous_card_area ~= G.discard and context.previous_card_area ~= G.pack_cards))
+            --check that its one of the card areas we can generate cards in
+            and (context.card_area == G.jokers or context.card_area == G.deck or context.card_area == G.hand or context.card_area == G.consumeables or context.card_area == G.shop_jokers or context.card_area == G.pack_cards) 
+            then
                 card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
                 card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize{type = 'variable', key = 'a_chips', vars = {card.ability.extra.chips}}})
             end
