@@ -10,7 +10,7 @@ function Balatrostuck.INIT.Jokers.j_whitequeen()
             ['name'] = 'White Queen',
             ['text'] = {
                 'Played {C:attention}Queens{} of {C:diamonds}Diamonds',
-                'gain a {C:money}Gold Seal{}'
+                'gain a {C:money}Gold Seal{} when scored'
             },
             unlock = {'Unlocked by',
                     'finishing Act 1'}
