@@ -1,17 +1,21 @@
 --tag heaven code
 --gonna add a bunch of maybe unecessary comments here because i feel like this whole thing is a mess
 --could be realistically done through lovely overrides but i think that may even be worse
-function add_tag(_tag,fromMind)
+function add_tag(_tag)
     local _done = false
-    local _reps = 1
+    local _stacks = _tag.config.base_stacks or 1
+    --mind call
+    if G.GAME.slab ~= nil then
+        _stacks = G.GAME.slab:calculate({modify_tag_stacks = _tag, stacks = _stacks}) or _stacks
+    end
     local _current_tag = nil
     --print("adding ".._tag.key)
     for i = 1, #G.GAME.tags do
         _current_tag = G.GAME.tags[i]
         if _current_tag.key == _tag.key and _current_tag.ability.orbital_hand == _tag.ability.orbital_hand  then
             --handle the case where we are adding a tag that we already have 
-            _reps = (_current_tag.ability.extra.stack_count or 1) + 1
-            _current_tag.ability.extra.stack_count = _reps
+            _stacks = (_current_tag.ability.extra.stack_count or 1) + _stacks
+            _current_tag.ability.extra.stack_count = _stacks
            
             _done = true
             break
@@ -23,7 +27,7 @@ function add_tag(_tag,fromMind)
                 _tag.ability.extra = {}
             end
             if not _tag.ability.stack_count then
-                _tag.ability.extra.stack_count = 1
+                _tag.ability.extra.stack_count = _stacks
             end
         end
     end
@@ -108,11 +112,6 @@ function add_tag(_tag,fromMind)
         _tag.HUD_tag = G.HUD_tags[#G.HUD_tags]
         --print("added hud: ".._tag.HUD_tag)
     end
-    --mind call
-  if G.GAME.slab ~= nil and not fromMind then
-      local slab_eval = nil
-      slab_eval = G.GAME.slab:calculate({tag = _tag})
-  end
 end
 --this is the function that actually does the tag effect
 function Tag:yep(message, _colour, func)

@@ -38,21 +38,8 @@ function Balatrostuck.INIT.Aspects.c_aspect_mind()
         config = {},
         name = 'Aspect of Mind',
         apply = function(self, slab, context) 
-            if context.tag then
-                if context.tag.ability and context.tag.ability.orbital_hand and context.tag.ability.orbital_hand ~= "[poker hand]" then
-                    G.orbital_hand = context.tag.ability.orbital_hand
-                end
-                local _blacklist = {"tag_bstuck_scratch","tag_boss"}
-                for i = 1, slab:level() do
-                    for k,v in ipairs(_blacklist) do
-                        if context.tag.key == v then return nil end
-                    end
-                    local _new_tag = Tag(context.tag.key)
-                    if context.tag.key == 'tag_orbital' then
-                        _new_tag.ability.orbital_hand = context.tag.ability.orbital_hand
-                    end
-                    add_tag(_new_tag,true)
-                end
+            if context.modify_tag_stacks then --called from tag_heaven.lua
+                return context.stacks * (slab:level() + 1) 
             end
         end
     }
