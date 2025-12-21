@@ -51,7 +51,11 @@ function Balatrostuck.INIT.Jokers.j_beyondcanon()
             
             if context.end_of_round and context.cardarea == G.jokers and G.GAME.blind.boss then
                 card.ability.extra.banned_hands = {}
-                card.ability.extra.Xmult = card.config.extra.Xmult --reset to base
+                card.ability.extra.Xmult = self.config.extra.Xmult --reset to base
+                return {
+                        card = card,
+                        message = localize('k_reset')
+                }
             end
 
             if context.cardarea == G.jokers and context.joker_main then
