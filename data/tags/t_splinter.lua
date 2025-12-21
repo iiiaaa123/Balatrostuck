@@ -36,6 +36,7 @@ function Balatrostuck.INIT.Tags.t_splinter()
                         return true
                     end)
                 tag.triggered = true
+                G.CONTROLLER.locks[lock] = nil
             end
         end,
     }

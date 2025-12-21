@@ -4,7 +4,7 @@
 function add_tag(_tag)
     local _done = false
     local _stacks = _tag.config.base_stacks or 1
-    --mind call
+    --changed this so that mind is not recursive anymore
     if G.GAME.slab ~= nil then
         _stacks = G.GAME.slab:calculate({modify_tag_stacks = _tag, stacks = _stacks}) or _stacks
     end
