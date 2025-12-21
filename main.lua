@@ -21,6 +21,7 @@ end
 
 NFS.load(mod.path.."lib.lua")()
 NFS.load(mod.path.."utils.lua")()
+NFS.load(mod.path.."tag_heaven.lua")()
 NFS.load(mod.path.."utils/color_defs.lua")()
 NFS.load(mod.path.."bsui/core.lua")()
 NFS.load(mod.path.."bsui/modules/credits.lua")()
