@@ -30,8 +30,8 @@ function Balatrostuck.INIT.Tags.t_carapacian()
                     tag:yep("Tags!",G.C.Green, 
                     function()
                         
-                        bstuck_give_random_tag("carapace","tag_bstuck_carapacian")
-                        bstuck_give_random_tag("carapace2","tag_bstuck_carapacian")
+                        bstuck_give_random_tag("carapace",{"tag_bstuck_carapacian"})
+                        bstuck_give_random_tag("carapace2",{"tag_bstuck_carapacian"})
 
                     return true
                     end)

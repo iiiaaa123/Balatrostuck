@@ -871,5 +871,7 @@ end
 
 function bstuck_add_paradox_card(t)
     t.edition = "e_bstuck_paradox"
-    return SMODS.add_card(t)
+    local ret = SMODS.add_card(t)
+    --playing_card_joker_effects({ret})
+    return ret
 end
