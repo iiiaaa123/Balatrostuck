@@ -13,7 +13,7 @@ SMODS.Booster{
         kind = 'shop_pack'
     },
     cost = 4,
-    pos = { x = 1, y = 2 },
+    pos = { x = 2, y = 2 },
     set_ability = function(self, card, initial, delay_sprites)
         local unique_jokers = {}
         if G.jokers then
