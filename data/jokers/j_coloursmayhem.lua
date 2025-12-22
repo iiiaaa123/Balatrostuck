@@ -14,8 +14,8 @@ function Balatrostuck.INIT.Jokers.j_coloursmayhem()
             }
         },
         pos = {
-            x = 9,
-            y = 12
+            x = 0,
+            y = 4
         },
 
         
@@ -25,8 +25,11 @@ function Balatrostuck.INIT.Jokers.j_coloursmayhem()
         eternal_compat = false,
         unlocked = true,
 
+        atlas = 'HomestuckJokersAnimated',
+        animated = true,
+        frames = 8,
+        animation_speed = 20,
 
-        atlas = 'HomestuckJokers',
         calculate = function (self, card, context)
         
         end,
