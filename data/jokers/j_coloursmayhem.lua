@@ -3,19 +3,21 @@ function Balatrostuck.INIT.Jokers.j_coloursmayhem()
         name = "ColoUrs and Mayhem",
         key = "coloursmayhem",
         config = {
-            extra = { 
+            extra = { xmult = 1,xmult_loss = 0.05
             }
-        },
+        }, --1 more card can be chosen in a Booster Pack. Loses X0.05 Mult per Booster Pack opened (Currently: X1 Mult)
+
         loc_txt = {
             ['name'] = "ColoUrs and Mayhem",
             ['text'] = {
-                [1] = "When round begins, create {C:green}#1#",
-                [2] = "{C:attention}Lucky {C:paradox}Paradox {C:clubs}4 of Clubs{} in hand"
+                "1 more card can be chosen in a Booster Pack",
+                "Loses {C:white,X:mult}X#2#{} Mult per Booster Pack opened",
+                "({C:inactive}Currently:{} {C:white,X:mult}X#1#{}{C:inactive} Mult{})"
             }
         },
         pos = {
-            x = 9,
-            y = 12
+            x = 0,
+            y = 4
         },
 
         
@@ -25,14 +27,34 @@ function Balatrostuck.INIT.Jokers.j_coloursmayhem()
         eternal_compat = false,
         unlocked = true,
 
+        atlas = 'HomestuckJokersAnimated',
+        animated = true,
+        frames = 8,
+        animation_speed = 20,
 
-        atlas = 'HomestuckJokers',
         calculate = function (self, card, context)
-        
+            if context.joker_main and context.cardarea == G.jokers then
+
+                        if card.ability.extra.xmult ~= 1 then return {
+                            message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
+                            Xmult_mod = card.ability.extra.xmult
+                        } end
+            end
+            if context.open_booster and not context.blueprint then
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = "xmult",
+                        scalar_value = "xmult_loss",
+                        operation = "-",
+                        message_key = 'a_xmult_minus',
+                        colour = G.C.RED
+                    })
+            end
+
         end,
         loc_vars = function (self, info_queue, card)
             art_credit('akai', info_queue)
-            return {vars = {G.GAME.probabilities.normal}}
+            return {vars = {card.ability.extra.xmult, card.ability.extra.xmult_loss}}
         end,
     }
 end 

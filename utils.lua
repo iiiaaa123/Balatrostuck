@@ -762,6 +762,13 @@ function bstuck_concat_tables(t1,t2)
     return t1
 end
 
+function bstuck_in_table(item,table)
+    local _found = false
+    for _, other_item in pairs(table) do
+        if other_item == item then _found = true break end
+    end
+    return _found
+end
 
 
 
