@@ -10,7 +10,8 @@ function Balatrostuck.INIT.Jokers.j_itchy()
             ['name'] = 'Itchy',
             ['text'] = {
                 [1] = "Your handsize is the size of your deck",
-                [2] = "At start of blind, set your {C:blue}hands{} to 1"
+                [2] = "At start of blind, set your {C:blue}hands{} to 1",
+                [2] = "and your discards to 0. not in packs."
             }
         },
         pos = {
@@ -30,6 +31,7 @@ function Balatrostuck.INIT.Jokers.j_itchy()
         calculate = function (self, card, context)
             if context.setting_blind then
                 ease_hands_played(1-G.GAME.current_round.hands_left)
+                ease_discard(-G.GAME.current_round.discards_left, nil, true)
             end
         end,
         add_to_deck = function(self,card,from_debuff)
