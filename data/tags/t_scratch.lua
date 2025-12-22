@@ -2,7 +2,7 @@
 function Balatrostuck.INIT.Tags.t_scratch()
     SMODS.Tag{
         key = "scratch",
-        config = {type = "new_blind_choice"},
+        config = {type = "new_blind_choice", do_not_copy = true},
         loc_txt = {
             ['name'] = 'Scratch Tag',
             ['text'] = {

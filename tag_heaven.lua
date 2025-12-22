@@ -1,10 +1,19 @@
 --tag heaven code
 --gonna add a bunch of maybe unecessary comments here because i feel like this whole thing is a mess
+--tag config documentation
+
+-- config.type from smods, its kinda like a context and it lets the tag parser when to trigger the tag, unlike in base smods, this is required (i think)
+-- config.do_not_retrigger defaults to false makes it so that the tag can only trigger once in its context (used for packs to not open all at once for example)
+-- config.do_not_copy defaults to false makes it so you can never have more than one of it 
+-- config.base_stacks defaults to 1 how many stacks to add every time the tag is obtained
+
+
+
 --could be realistically done through lovely overrides but i think that may even be worse
 function add_tag(_tag)
     local _done = false
     local _stacks = _tag.config.base_stacks or 1
-    --changed this so that mind is not recursive anymore
+    --changed this so that mind is not recursive anymore TODO: do the same thing for double tag
     if G.GAME.slab ~= nil then
         _stacks = G.GAME.slab:calculate({modify_tag_stacks = _tag, stacks = _stacks}) or _stacks
     end
@@ -14,6 +23,11 @@ function add_tag(_tag)
         _current_tag = G.GAME.tags[i]
         if _current_tag.key == _tag.key and _current_tag.ability.orbital_hand == _tag.ability.orbital_hand  then
             --handle the case where we are adding a tag that we already have 
+            if _current_tag.config.do_not_copy then 
+                --TODO add animation here
+                return false 
+                end
+
             _stacks = (_current_tag.ability.extra.stack_count or 1) + _stacks
             _current_tag.ability.extra.stack_count = _stacks
            
@@ -22,11 +36,11 @@ function add_tag(_tag)
         end
     end
     if not _done then
-        if not _tag.from_load then --this line is really important, otherwise tags always load with 1 stack? somehow, not sure why
+        if not _tag.from_load then
             if not _tag.ability.extra then
                 _tag.ability.extra = {}
             end
-            if not _tag.ability.stack_count then
+            if not _tag.ability.extra.stack_count then
                 _tag.ability.extra.stack_count = _stacks
             end
         end
@@ -35,7 +49,7 @@ function add_tag(_tag)
     if not _done then --we only need to create a new hud if we're adding a tag for the first time
         G.HUD_tags = G.HUD_tags or {}
 
-        --this appends the double click to delete
+        --this appends the double click to delete text
         local ui_ref = _tag.get_uibox_table
         _tag.get_uibox_table = function(self,tag_sprite,vars_only)
             local ret = ui_ref(self,tag_sprite,vars_only)
