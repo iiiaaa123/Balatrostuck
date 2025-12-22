@@ -11,13 +11,8 @@ function Balatrostuck.INIT.Decks.b_nymph()
         pos = {x = 0,y = 1},
         unlocked = true,
         calculate = function(self,back,context)
-            if context.skip_blind_post then
-                G.E_MANAGER:add_event(Event({
-                      trigger = 'after',
-                      delay = 2.5,
-                      blocking = false,
-                      func = function()
-                        if (G.STATE ~= G.STATES.SMODS_BOOSTER_OPENED) then
+            if context.skip_blind then
+                        if (true) then
                             if G.round_eval then 
                                 G.round_eval:remove()
                                 G.round_eval = nil
@@ -55,13 +50,11 @@ function Balatrostuck.INIT.Decks.b_nymph()
                             G.GAME.shop_free = nil
                             G.GAME.shop_d6ed = nil
                             G.STATE_COMPLETE = false
+                            G:update_shop()
                             if G.STAGE == G.STAGES.RUN then  ease_round(1) end
-                            return true
                         end
-                        return false
+                        
                     end
-        }))
             end
-        end
     }
 end
