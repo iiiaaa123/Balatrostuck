@@ -2,7 +2,7 @@
 function Balatrostuck.INIT.Tags.t_splinter()
     SMODS.Tag{
         key = "splinter",
-        config = {type = "new_blind_choice"},
+        config = {type = "new_blind_choice", do_not_retrigger=true},
         loc_txt = {
             ['name'] = 'Splinter Tag',
             ['text'] = {
