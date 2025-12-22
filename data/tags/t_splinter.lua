@@ -7,7 +7,7 @@ function Balatrostuck.INIT.Tags.t_splinter()
             ['name'] = 'Splinter Tag',
             ['text'] = {
                 [1] = 'Gives a free',
-                [2] = '{C:aspect}Aspect Pack'            
+                [2] = '{C:aspect}Splinter Pack'            
             }
         },
         pos = {
@@ -22,7 +22,7 @@ function Balatrostuck.INIT.Tags.t_splinter()
 
         atlas = 'HomestuckTags',
         loc_vars = function(self, info_queue, card)
-            info_queue[#info_queue + 1] = G.P_CENTERS['p_bstuck_splinter']
+            info_queue[#info_queue + 1] = G.P_CENTERS['p_bstuck_splinter_booster']
             art_credit('akai', info_queue)
 
             return {true}
@@ -43,6 +43,7 @@ function Balatrostuck.INIT.Tags.t_splinter()
                     end)
                 tag.triggered = true
             end
+            return true
         end
     }
 end

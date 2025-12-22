@@ -4,7 +4,7 @@ SMODS.Booster{
     config = {extra = 3, choose = 1},
     discovered = false,
     loc_txt = {
-        ['name'] = 'Splinter',
+        ['name'] = 'Splinter Pack',
         ['text'] = {
             'Choose {C:attention}1{} of your',
             'existing jokers',
@@ -29,7 +29,6 @@ SMODS.Booster{
         for _, joker in ipairs(G.jokers.cards) do
             if not bstuck_in_table(joker.config.center_key,unique_jokers) then table.insert(unique_jokers,joker.config.center_key) end
         end
-        print(inspect(unique_jokers))
         if i > #unique_jokers then
             i = 1
         end
