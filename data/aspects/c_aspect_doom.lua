@@ -55,9 +55,10 @@ function Balatrostuck.INIT.Aspects.c_aspect_doom()
                             G.ui_slab:juice_up()
                             for k,v in pairs(G.GAME.BALATROSTUCK.zodiac_levels) do
                                 if k ~= skibidibiden then
-                                    G.GAME.BALATROSTUCK.zodiac_levels[k] = 0
+                                    Balatrostuck.Zodiac:remove_caste(k)
                                 end
                             end
+                            
                             return true
                         end
                     }))

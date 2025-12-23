@@ -34,11 +34,15 @@ function Balatrostuck.INIT.Jokers.j_enterthemedium()
             if context.end_of_round and G.GAME.blind.boss and context.main_eval then
 
             if G.GAME.pool_flags.bstuck_actprogress <= 2 then
+                local _all_unlocked = true
                 for k,v in ipairs(UnlockedbyEnterTheMedium) do
-                    G.P_CENTERS["j_bstuck_"..v].unlocked = true
+                    if G.P_CENTERS["j_bstuck_"..v].unlocked == false then 
+                        G.P_CENTERS["j_bstuck_"..v].unlocked = true
+                        _all_unlocked = false
+                    end
                 end
-                notify_bstuck_alert("j_bstuck_enterthemedium", 3)
-
+                if _all_unlocked == false then notify_bstuck_alert("j_bstuck_enterthemedium", 3)
+ end
                 G.GAME.pool_flags.bstuck_actprogress = 3
             end
 

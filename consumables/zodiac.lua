@@ -40,11 +40,20 @@ Balatrostuck.Zodiac = SMODS.Consumable:extend{
 }
 
 function Balatrostuck.Zodiac:add_caste(key)
-  if G.GAME.BALATROSTUCK.zodiac_levels[key] == 0 then
+  local _found = nil
+  for index, caste in ipairs(G.GAME.BALATROSTUCK.active_castes) do
+    if string.lower(caste.key) == "caste_bstuck_"..string.lower(key) then 
+      _found = true 
+    end
+  end
+  if G.GAME.BALATROSTUCK.zodiac_levels[key] == 0 and not _found then
     local newCaste = Caste('caste_bstuck_' .. key,G.P_CASTES['caste_bstuck_' .. key])
     table.insert(G.GAME.BALATROSTUCK.active_castes, newCaste)
   end
 
+function Balatrostuck.Zodiac:remove_caste(key)
+  if G.GAME.BALATROSTUCK.zodiac_levels[key] then G.GAME.BALATROSTUCK.zodiac_levels[key] = 0 end
+end
 
   G.GAME.BALATROSTUCK.zodiac_levels[key] = G.GAME.BALATROSTUCK.zodiac_levels[key] + self:get_level_increase(key)
   if G.GAME.BALATROSTUCK.zodiac_levels[key] >= 5 then
