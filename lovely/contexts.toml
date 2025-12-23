@@ -169,3 +169,15 @@ SMODS.calculate_context({bstuck_pre_shuffle_deck = true})
 '''
 match_indent = true
 times = 1
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "G.FUNCS.draw_from_hand_to_discard()"
+position = "before"
+payload = '''
+SMODS.calculate_context({after_end_of_round_effects = true, game_over = game_over, beat_boss = G.GAME.blind.boss })
+'''
+match_indent = true
+times = 1
