@@ -53,10 +53,10 @@ function Balatrostuck.INIT.Jokers.j_coloursmayhem()
 
         end,
         add_to_deck = function(self, card, from_debuff)
-            G.GAME.modifiers.booster_choice_mod = G.GAME.modifiers.booster_choice_mod + card.ability.extra.bonus_choices
+            G.GAME.modifiers.booster_choice_mod = (G.GAME.modifiers.booster_choice_mod or 0) + card.ability.extra.bonus_choices
         end,
         remove_from_deck = function(self, card, from_debuff)
-            G.GAME.modifiers.booster_choice_mod = G.GAME.modifiers.booster_choice_mod - card.ability.extra.bonus_choices
+            G.GAME.modifiers.booster_choice_mod = (G.GAME.modifiers.booster_choice_mod or 0) - card.ability.extra.bonus_choices
         end,
 
         loc_vars = function (self, info_queue, card)
