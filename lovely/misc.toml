@@ -537,26 +537,7 @@ times = 1
 
 
 
-[[patches]]
-[patches.pattern]
-target = "functions/state_events.lua"
-pattern = "if (not v.shattered) and (not v.destroyed) then"
-position = "at"
-match_indent = true
-payload = '''
-if next(SMODS.find_card('j_bstuck_frogsprite2')) and ((not v.shattered) and (not v.destroyed) or (v.edition and v.edition.key == 'e_bstuck_paradox' and next(SMODS.find_card('j_bstuck_biscuits')))) then
-    local frog = SMODS.find_card('j_bstuck_frogsprite2')[1]
-    if frog.ability.extra.procced then
-        draw_card(G.play,G.deck, it*100/play_count,'down', false, v)
-        it = it + 1
-        frog.ability.extra.procced = false
-    else
-        draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
-        it = it + 1
-    end
-elseif ((not v.shattered) and (not v.destroyed)) or (v.edition and v.edition.key == 'e_bstuck_paradox' and next(SMODS.find_card('j_bstuck_biscuits'))) then
-'''
-times = 1
+
 
 
 

@@ -3,15 +3,15 @@ function Balatrostuck.INIT.Jokers.j_coloursmayhem()
         name = "ColoUrs and Mayhem",
         key = "coloursmayhem",
         config = {
-            extra = { xmult = 1,xmult_loss = 0.05
+            extra = { xmult = 1,xmult_loss = 0.05, bonus_choices = 1
             }
         }, --1 more card can be chosen in a Booster Pack. Loses X0.05 Mult per Booster Pack opened (Currently: X1 Mult)
 
         loc_txt = {
             ['name'] = "ColoUrs and Mayhem",
             ['text'] = {
-                "1 more card can be chosen in a Booster Pack",
-                "Loses {C:white,X:mult}X#2#{} Mult per Booster Pack opened",
+                "#3# more card can be chosen in a {C:attention}Booster Pack{}",
+                "Loses {C:white,X:mult}X#2#{} Mult per {C:attention}Booster Pack{} opened",
                 "({C:inactive}Currently:{} {C:white,X:mult}X#1#{}{C:inactive} Mult{})"
             }
         },
@@ -52,9 +52,16 @@ function Balatrostuck.INIT.Jokers.j_coloursmayhem()
             end
 
         end,
+        add_to_deck = function(self, card, from_debuff)
+            G.GAME.modifiers.booster_choice_mod = (G.GAME.modifiers.booster_choice_mod or 0) + card.ability.extra.bonus_choices
+        end,
+        remove_from_deck = function(self, card, from_debuff)
+            G.GAME.modifiers.booster_choice_mod = (G.GAME.modifiers.booster_choice_mod or 0) - card.ability.extra.bonus_choices
+        end,
+
         loc_vars = function (self, info_queue, card)
             art_credit('akai', info_queue)
-            return {vars = {card.ability.extra.xmult, card.ability.extra.xmult_loss}}
+            return {vars = {card.ability.extra.xmult, card.ability.extra.xmult_loss, card.ability.extra.bonus_choices}}
         end,
     }
 end 

@@ -4,15 +4,14 @@ function Balatrostuck.INIT.Jokers.j_frogsprite()
         key = "frogsprite",
         config = {
             extra = { 
-                depth = 15
+                hands = 5
             }
         },
         loc_txt = {
             ['name'] = 'fr0gsprite',
             ['text'] = {
-                [1] = "When round begins, shuffle 2",
-                [2] = "{C:attention}Steel {C:paradox}Paradox Aces{}",
-                [3] = "in the bottom #1# cards of your deck"
+                "{C:attention}+#1#{} {C:blue}hands{} each round",
+                "reduces by {C:red}1{} every round"
             }
         },
         pos = {
@@ -30,40 +29,24 @@ function Balatrostuck.INIT.Jokers.j_frogsprite()
 
         atlas = 'HomestuckJokers',
         calculate = function (self, card, context)
-        if context.first_hand_drawn then
-                local firstmat = nil
-                    G.E_MANAGER:add_event(Event({
-                        func = function() 
-                        for i=1,2 do 
-                            local _suit = pseudorandom_element({'S','H','D','C'}, pseudoseed('fr0g'..i))
-                            local _card = create_playing_card({front = G.P_CARDS[_suit..'_A'], center = G.P_CENTERS.m_steel}, nil, nil, nil, {G.C.SECONDARY_SET.Enhanced})
-                            local _valid_positions = {}
-                            for i=1,math.min(self.config.extra.depth,G.deck.config.card_limit) do
-                                table.insert(_valid_positions,i)
-                            end
-                            local _pos = pseudorandom_element(_valid_positions, pseudoseed('fr0g'..i))
-                            _card:set_edition('e_bstuck_paradox',true,true)
-                            table.insert(G.deck.cards, _pos, _card)
-                            G.deck.config.card_limit = #G.deck.cards
-                            _card:set_card_area(G.deck)
-                            G.deck:set_ranks()
-                            G.deck:align_cards()
-                            _card:add_to_deck()
-                            G.deck:emplace()
-                            playing_card_joker_effects({_card})
-                        end
-                        if context.blueprint_card then context.blueprint_card:juice_up() else card:juice_up() end
-                            -- G.deck.config.card_limit = G.deck.config.card_limit + 1
-                        card_eval_status_text(card, 'extra', nil, nil, nil, {message = "ribbit", colour = G.C.PARADOX})
-                        delay(0.1)
-                        return true
-                    end}))
-                    
+        if context.setting_blind then
+            ease_hands_played(card.ability.extra.hands)
+            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "ribbit"})
+        end
+        if context.end_of_round and not context.blueprint and not context.repetition and not context.blueprint and not context.individual  then
+            if card.ability.extra.hands <= 1 then
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "0_0"})
+                SMODS.destroy_cards(card, nil, nil, true)
+            
+            else
+                card.ability.extra.hands = card.ability.extra.hands - 1
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "0_0"})
             end
+        end
         end,
         loc_vars = function (self, info_queue, card)
             art_credit('akai', info_queue)
-            return {vars = {self.config.extra.depth}}
+            return {vars = {card.ability.extra.hands}}
         end,
     }
 end 
