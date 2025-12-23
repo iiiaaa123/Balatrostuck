@@ -472,10 +472,15 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
     return _card
 end
 
+BSTUCK_jokers_with_button = {
+    'j_bstuck_problemsleuth',
+    'j_bstuck_potionseller' 
+}
+
 can_use_ref = Card.can_use_consumeable
 
 function Card:can_use_consumeable(any_state, skip_check)
-    if self.config.center.key == 'j_bstuck_problemsleuth' then
+    if bstuck_in_table(self.config.center.key,BSTUCK_jokers_with_button) then
         return true
     end
     return can_use_ref(self,any_state,skip_check)
