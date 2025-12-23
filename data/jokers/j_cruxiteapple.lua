@@ -56,11 +56,16 @@ function Balatrostuck.INIT.Jokers.j_cruxiteapple()
                 }))
                 --check_for_unlock({type = 'bstuck_apple_eaten'})
                 if not G.GAME.pool_flags.bstuck_actprogress or (G.GAME.pool_flags.bstuck_actprogress <= 1) then
+                    local _all_unlocked = true
                     for k,v in ipairs(UnlockedByApple) do
-                        G.P_CENTERS["j_bstuck_"..v].unlocked = true
+                        if G.P_CENTERS["j_bstuck_"..v].unlocked == false then 
+                            G.P_CENTERS["j_bstuck_"..v].unlocked = true
+                            _all_unlocked = false
+                        end
                     end
+                    
                     G.GAME.pool_flags.bstuck_actprogress = 1
-                    notify_bstuck_alert("j_bstuck_cruxiteapple", 1)
+                    if _all_unlocked == false then notify_bstuck_alert("j_bstuck_cruxiteapple", 1) end
                 end
                 return {
                     message = 'Bitten!',

@@ -27,7 +27,7 @@ function Balatrostuck.INIT.Editions.e_paradox()
         unlocked = true,
         discovered = false,
         calculate = function(self,card,context)
-            if context.end_of_round and not context.individual and not context.repetition and not context.other_card 
+            if context.after_end_of_round_effects and not context.individual and not context.repetition and not context.other_card 
             and not card.alreadyDead then
 
                 -- Life money

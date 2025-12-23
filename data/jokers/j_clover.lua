@@ -26,7 +26,7 @@ function Balatrostuck.INIT.Jokers.j_clover()
         calculate = function (self, card, context)
             if context.first_hand_drawn then
                 local firstmat = nil
-                for i=1, G.GAME.probabilities.normal do
+                for i=1, (log2(G.GAME.probabilities.normal)+1) do
                     G.E_MANAGER:add_event(Event({
                         func = function() 
                         local _card = create_playing_card({front = G.P_CARDS['C_4'], center = G.P_CENTERS.m_lucky}, nil, nil, nil, {G.C.SECONDARY_SET.Enhanced})
@@ -48,7 +48,7 @@ function Balatrostuck.INIT.Jokers.j_clover()
             info_queue[#info_queue + 1] = G.P_CENTERS['e_bstuck_paradox']
             info_queue[#info_queue + 1] = G.P_CENTERS['m_lucky']
             art_credit('akai', info_queue)
-            return {vars = {G.GAME.probabilities.normal}}
+            return {vars = {(log2(G.GAME.probabilities.normal)+1)}}
         end,
     }
 end 

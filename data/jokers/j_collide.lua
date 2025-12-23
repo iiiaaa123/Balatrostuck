@@ -54,10 +54,14 @@ function Balatrostuck.INIT.Jokers.j_collide()
         add_to_deck = function(self,card,from_debuff)
             -- check_for_unlock({type = 'bstuck_collide'})
             if G.GAME.pool_flags.bstuck_actprogress <= 5 then
+                local _all_unlocked = true
                 for k,v in ipairs(UnlockedByCollide) do
-                    G.P_CENTERS["j_bstuck_"..v].unlocked = true
+                    if G.P_CENTERS["j_bstuck_"..v].unlocked == false then 
+                        G.P_CENTERS["j_bstuck_"..v].unlocked = true
+                        _all_unlocked = false
+                    end
                 end
-                notify_bstuck_alert("j_bstuck_collide", 6, true)
+                if _all_unlocked == false then notify_bstuck_alert("j_bstuck_collide", 6, true) end
 
                 G.GAME.pool_flags.bstuck_actprogress = 6
             end

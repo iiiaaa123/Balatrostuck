@@ -82,10 +82,14 @@ function Balatrostuck.INIT.Jokers.j_ascend()
         add_to_deck = function(self,card,from_debuff)
             -- check_for_unlock({type = 'bstuck_ascend'})
             if G.GAME.pool_flags.bstuck_actprogress <= 1 then
-                for k,v in ipairs(UnlockedByAscend) do
-                    G.P_CENTERS["j_bstuck_"..v].unlocked = true
-                end
-                notify_bstuck_alert("j_bstuck_ascend", 2)
+                local _all_unlocked = true
+                    for k,v in ipairs(UnlockedByAscend) do
+                        if G.P_CENTERS["j_bstuck_"..v].unlocked == false then 
+                            G.P_CENTERS["j_bstuck_"..v].unlocked = true
+                            _all_unlocked = false
+                        end
+                    end
+                if _all_unlocked == false then notify_bstuck_alert("j_bstuck_ascend", 2) end
                 G.GAME.pool_flags.bstuck_actprogress = 2
             end
         end,
