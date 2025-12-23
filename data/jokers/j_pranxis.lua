@@ -51,7 +51,7 @@ function Balatrostuck.INIT.Jokers.j_pranxis()
                     }
 
             end
-            if context.selling_card and context.card and self ~= context.card then
+            if context.selling_card and context.card and self ~= context.card and not context.blueprint then
                 if context.card.sell_cost <= 1 then
                 card.ability.extra_value = card.ability.extra_value + card.ability.extra.amount_to_gain
                 card:set_cost()
