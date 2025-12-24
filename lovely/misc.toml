@@ -532,6 +532,10 @@ payload = '''
         local cost = card:activate_cost()
         use = BSUI.Modules.Buttons.CardButton(card,'activate_joker','can_activate_joker',true,'BUY-OUT',localize('$')..cost)
     end
+    if card.config.center.key == 'j_bstuck_potionseller' then
+        local cost = card:activate_cost()
+        use = BSUI.Modules.Buttons.CardButton(card,'activate_joker','can_activate_joker',true,'Buy',(cost and localize('$')..cost or "SOLD OUT"))
+    end
 '''
 times = 1
 

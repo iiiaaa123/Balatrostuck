@@ -3,13 +3,13 @@ function Balatrostuck.INIT.Jokers.j_ringoflife()
     SMODS.Joker{
         name = "Ring of Life",
         key = "ringoflife",
-        config = {extra = {do_not_update_pool = false}},
-        loc_txt = {
+        config = {extra = {do_not_update_pool = false, chip_gain = 8}},
+        loc_txt = { --'+8 chips for each Zodiac Level you have 
+
             ['name'] = 'Ring of Life',
             ['text'] = {
-                'Whenever a {C:attention}face{} card is {C:red}destroyed{},',
-                'add a copy of it into deck',
-                '{C:inactive}(Removes {C:paradox}Paradox{C:inactive} from copy)'
+                '{C:chips}+#2#{} Chips for each {C:attention}Zodiac{} level you have',
+                '{C:inactive}(Currently {C:chips}+#1#{}{C:inactive} Chips)'
             },
             unlock = {'Unlocked by',
             'finishing Act 3'}
@@ -26,23 +26,24 @@ function Balatrostuck.INIT.Jokers.j_ringoflife()
         atlas = 'HomestuckJokers',
         loc_vars = function(self, info_queue, card)
             art_credit('akai', info_queue)
-            info_queue[#info_queue+1] = G.P_CENTERS['e_bstuck_paradox']
-            return {vars = {}}
+            return {vars = {self:get_zodiac_chip_bonus(),card.ability.extra.chip_gain}}
         end,
         calculate = function(self, card, context)
-            if context.remove_playing_cards then
-                for i=1, #context.removed do
-                    if context.removed[i]:is_face() then
-                        local _card = copy_card(context.removed[i], nil, nil, G.playing_card)
-                        if _card.edition and _card.edition.key == 'e_bstuck_paradox' then
-                            _card:set_edition({})
-                        end
-                        _card:add_to_deck()
-                        G.deck:emplace(_card)
-                        playing_card_joker_effects({_card})
-                        table.insert(G.playing_cards, _card)
-                    end
-                end
+            
+            if context.joker_main then
+                local _bonus = self:get_zodiac_chip_bonus()
+                return {
+                  chip_mod = _bonus,
+                  message = localize { type = 'variable', key = 'a_chips', vars = { _bonus } }
+                }
+              end  
+
+            if context.using_consumeable and not context.blueprint and context.consumeable and context.consumeable.ability.set == 'Zodiac' then
+                    return {
+                        message = localize('k_upgrade_ex'),
+                        card = card,
+                        colour = G.C.CHIPS
+                    }
             end
 
             if context.selling_self then
@@ -55,6 +56,13 @@ function Balatrostuck.INIT.Jokers.j_ringoflife()
             else
                 return true
             end
+        end,
+        get_zodiac_chip_bonus = function(self)
+            local _bonus = 0
+            for _,level in pairs(G.GAME.BALATROSTUCK.zodiac_levels) do
+                _bonus = _bonus + (level*8)
+            end
+            return _bonus
         end,
         remove_from_deck = function(self,card,from_debuff)
             if not from_debuff and not card.ability.extra.do_not_update_pool then
