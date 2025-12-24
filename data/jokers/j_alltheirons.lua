@@ -8,7 +8,7 @@ function Balatrostuck.INIT.Jokers.j_alltheirons()
         },
         loc_vars = function(self,info_queue,card)
             art_credit('akai', info_queue)
-            return {vars = {math.floor(math.min(413,log2(G.GAME.probabilities.normal)+1))}}
+            return {vars = {get_grollars() + 1}}
         end,
         loc_txt = {
             ['name'] = 'All the Irons',
@@ -30,7 +30,7 @@ function Balatrostuck.INIT.Jokers.j_alltheirons()
         calculate = function(self, card, context)
             if context.individual and context.cardarea == G.play and context.other_card:get_id() == 8 then
                 return {
-                    dollars = math.floor(math.min(413,log2(G.GAME.probabilities.normal)+1)),
+                    dollars = get_grollars()+1,
                     card = context.other_card
                 }
             end

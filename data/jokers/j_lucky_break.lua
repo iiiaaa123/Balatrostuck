@@ -48,6 +48,7 @@ function Balatrostuck.INIT.Jokers.j_lucky_break()
             if context.before and context.cardarea == G.jokers and not (context.after or context.repetition or context.individual or context.blueprint) then
                 if G.GAME.current_round.hands_left == 0 then
                     card.ability.extra.broken = true
+                    G.GAME.BSTUCK_fl1p_multiplier = card.ability.extra.probability
                     G.GAME.probabilities.normal = G.GAME.probabilities.normal * card.ability.extra.probability
                     return {
                         message = "Lucky 8r8k!",
@@ -59,6 +60,7 @@ function Balatrostuck.INIT.Jokers.j_lucky_break()
                 if card.ability.extra.broken then
                     G.GAME.probabilities.normal = G.GAME.probabilities.normal / card.ability.extra.probability
                     card.ability.extra.broken = false
+                    G.GAME.BSTUCK_fl1p_active = nil
                 end
             end
         end
