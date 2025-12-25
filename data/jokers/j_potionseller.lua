@@ -51,6 +51,14 @@ function Balatrostuck.INIT.Jokers.j_potionseller()
                 card.ability.extra.stored_card = context.card
                 card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Restocked!"})
             end
+            if context.selling_card and context.card == card then --selling self for flavor
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "YoU"})
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "cAnT"})
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "hAnDlE"})
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "mY"})
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "StRoNgEsT"})
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "POTIONS!"})
+            end
         end,
         can_activate = function(self,card,args)
             local _stored_card = card.ability.extra.stored_card
