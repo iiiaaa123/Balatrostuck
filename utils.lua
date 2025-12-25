@@ -95,7 +95,19 @@ function summation(n)
 end
 
 function get_grollars()
-    return log2(G.GAME.probabilities.normal or 1)
+    local _prob = G.GAME.probabilities.normal
+    if G.GAME.BSTUCK_fl1p_multiplier then 
+        _prob = _prob / G.GAME.BSTUCK_fl1p_multiplier
+    end
+    return math.floor(log2(_prob or 1))
+end
+
+function get_grollars_exponential()
+    local _prob = G.GAME.probabilities.normal
+    if G.GAME.BSTUCK_fl1p_multiplier then 
+        _prob = _prob / G.GAME.BSTUCK_fl1p_multiplier
+    end
+    return math.floor(_prob or 1)
 end
 
 function sum_levels()
