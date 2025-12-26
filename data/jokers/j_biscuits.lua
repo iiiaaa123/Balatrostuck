@@ -27,6 +27,11 @@ function Balatrostuck.INIT.Jokers.j_biscuits()
             x = 1,
             y = 11
         },
+        calculate = function(self, card, context)
+            if context.check_eternal and context.trigger.from_sell == true and context.other_card.edition and context.other_card.edition.key == "e_bstuck_paradox" then
+                return {no_destroy = {override_compat = true}}
+            end
+        end,
         cost = 13,
         rarity = "bstuck_felt",
         blueprint_compat = false,
