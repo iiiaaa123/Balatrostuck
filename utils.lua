@@ -170,59 +170,144 @@ function get_innocuous(card,get_only_name)
     local stone = {'captchacard', true}
     local innocuous_double = nil
     
-
+    local is_playing_card = (card.config.center.set == "Default" or card.config.center.set == "Enhanced")
 
     local enhancements = SMODS.get_enhancements(card,false)
 
 
-
-    if SMODS.has_no_rank(card) then
-        innocuous_double = stone
-    elseif SMODS.has_any_suit(card) then
-        local rankPos = card:get_id() - 1
-        if rankPos > 13 then
-            innocuous_double = failsafe
-        else
-            innocuous_double = wild[card:get_id() - 1]
-        end
-    else  -- Main Cards
-        local rankPos = card:get_id() - 1
-        if rankPos > 13 then
-            innocuous_double = failsafe
-        else
-            if card.base.suit == 'Hearts' then
-                innocuous_double = hearts[rankPos]
-            elseif card.base.suit == 'Diamonds' then
-                innocuous_double = diamonds[rankPos]
-            elseif card.base.suit == 'Clubs' then
-                innocuous_double = clubs[rankPos]
-            elseif card.base.suit == 'Spades' then
-                innocuous_double = spades[rankPos]
-            else
+    if is_playing_card then
+        if SMODS.has_no_rank(card) then
+            innocuous_double = stone
+        elseif SMODS.has_any_suit(card) then
+            local rankPos = card:get_id() - 1
+            if rankPos > 13 then
                 innocuous_double = failsafe
+            else
+                innocuous_double = wild[card:get_id() - 1]
+            end
+        else  -- Main Cards
+            local rankPos = card:get_id() - 1
+            if rankPos > 13 then
+                innocuous_double = failsafe
+            else
+                if card.base.suit == 'Hearts' then
+                    innocuous_double = hearts[rankPos]
+                elseif card.base.suit == 'Diamonds' then
+                    innocuous_double = diamonds[rankPos]
+                elseif card.base.suit == 'Clubs' then
+                    innocuous_double = clubs[rankPos]
+                elseif card.base.suit == 'Spades' then
+                    innocuous_double = spades[rankPos]
+                else
+                    innocuous_double = failsafe
+                end
             end
         end
-    end
 
-    -- last saftey net if we haven't set the double yet
-    if innocuous_double == nil then
-        innocuous_double = failsafe
-    end
+        -- last saftey net if we haven't set the double yet
+        if innocuous_double == nil then
+            innocuous_double = failsafe
+        end
 
-    if get_only_name then
-        local keyprefix = 'j_'
-        if innocuous_double[2] then
-            keyprefix = keyprefix .. 'bstuck_'
+        if get_only_name then
+            local keyprefix = 'j_'
+            if innocuous_double[2] then
+                keyprefix = keyprefix .. 'bstuck_'
+            end
+            return localize{type = 'name_text', key = keyprefix .. innocuous_double[1], set = 'Joker'} or localize('k_none')
+        else
+            local keyprefix = 'j_'
+            if innocuous_double[2] then
+                keyprefix = keyprefix .. 'bstuck_'
+            end
+            return keyprefix .. innocuous_double[1]
         end
-        return localize{type = 'name_text', key = keyprefix .. innocuous_double[1], set = 'Joker'} or localize('k_none')
-    else
-        local keyprefix = 'j_'
-        if innocuous_double[2] then
-            keyprefix = keyprefix .. 'bstuck_'
+    else 
+        local jokerkey = card.config.center.key
+        if bstuck_string_starts(jokerkey, "j_bstuck_") then jokerkey = string.sub(jokerkey, 10) else jokerkey = string.sub(jokerkey, 3) end
+        local card_rank
+        local card_suit
+        if jokerkey == "captchacard" then
+            card_rank = 0
+            card_suit = "STONE"
+            goto inn_done_geting_card
         end
-        return keyprefix .. innocuous_double[1]
+        for index, v in ipairs(hearts) do
+            if v[1] == jokerkey then 
+                card_rank = index
+                card_suit = "H"
+                goto inn_done_geting_card
+            end
+            
+        end
+        for index, v in ipairs(diamonds) do
+            if v[1] == jokerkey then 
+                card_rank = index
+                card_suit = "D"
+                goto inn_done_geting_card
+            end
+            
+        end
+        for index, v in ipairs(spades) do
+            if v[1] == jokerkey then 
+                card_rank = index
+                card_suit = "S"
+                goto inn_done_geting_card
+            end
+            
+        end
+        for index, v in ipairs(clubs) do
+            if v[1] == jokerkey then 
+                card_rank = index
+                card_suit = "C"
+                goto inn_done_geting_card
+            end
+            
+        end
+        for index, v in ipairs(wild) do
+            if v[1] == jokerkey then 
+                card_rank = index
+                card_suit = "WILD"
+                goto inn_done_geting_card
+            end
+            
+        end
+
+        ::inn_done_geting_card::
+        if get_only_name then
+            if card_suit then
+                local index_to_rank = { "2","3","4","5","6","7","8","9","10","Jack","Queen","King","Ace" }
+                local suit_to_display = {["H"] = "Hearts", ["S"] = "Spades", ["C"] = "Clubs", ["D"] = "Diamonds"}
+                if card_suit == "WILD" then
+                    return "Wild " .. localize(index_to_rank[card_rank], 'ranks')
+                elseif card_suit == "STONE" then
+                    return "Stone Card"
+                else
+                    return localize(index_to_rank[card_rank], 'ranks') .. " of " .. localize(suit_to_display[card_suit], "suits_plural")
+                end
+            else return "None!"
+            end
+
+        elseif card_suit then
+            local index_to_rank = {
+                "2","3","4","5","6","7","8","9","T","J","Q","K","A"
+            }
+            if card_suit == "WILD" then
+                local _suit = pseudorandom_element({'S','H','D','C'}, pseudoseed('jailkey'))
+                return  _suit.."_"..index_to_rank[card_rank], "m_wild"
+            elseif card_suit == "STONE" then
+                local _suit = pseudorandom_element({'S','H','D','C'}, pseudoseed('jailkey_stone'))
+                local _rank = pseudorandom_element(index_to_rank, pseudoseed('jailkey_stone'))
+                return  _suit.."_".._rank, "m_stone"
+            else
+                return   card_suit.."_"..index_to_rank[card_rank], nil
+            end
+        else return nil end
+        
     end
 end
+
+
 
 function rank_to_zodiac(card)
     local id = card:get_id()
@@ -773,6 +858,11 @@ function bstuck_concat_tables(t1,t2)
     end
     return t1
 end
+
+function bstuck_string_starts(String,Start)
+   return string.sub(String,1,string.len(Start))==Start
+end
+
 
 function bstuck_in_table(item,table)
     local _found = false

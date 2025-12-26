@@ -27,6 +27,9 @@ function Balatrostuck.INIT.Jokers.j_oldsecret()
         unlocked = false,
         atlas = 'HomestuckJokers',
         calculate = function(self,card,context)
+            if context.check_eternal and context.trigger.from_sell == true and context.other_card.edition and context.other_card.edition.key == "e_bstuck_paradox" and context.other_card.ability and context.other_card.ability.consumeable then
+                return {no_destroy = {override_compat = true}}
+            end
             if context.end_of_round and context.cardarea == G.jokers then
                 local _pool = {}
                 for i=1, #G.consumeables.cards do
