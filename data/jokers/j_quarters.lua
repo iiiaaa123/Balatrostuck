@@ -36,6 +36,7 @@ function Balatrostuck.INIT.Jokers.j_quarters()
                 G.E_MANAGER:add_event(Event({func = function()
                     local _card = SMODS.add_card({set = 'Spectral', key = 'c_bstuck_jailkey'})
                     _card:set_edition("e_negative", true,true)
+                    G.consumeables:add_to_highlighted(_card)
                     return true
                 end }))
             end

@@ -119,7 +119,7 @@ function Balatrostuck.INIT.Spectrals.c_spectral_jailkey()
                             _card:start_dissolve(nil, i == #G.hand.highlighted)
                         end
                         return true 
-                end }))
+                        end }))
                 delay(0.2)
             else
                 local _card = G.jokers.highlighted[1]
