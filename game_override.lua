@@ -34,7 +34,7 @@ local CardDrawRef = Card.draw
 function Card:draw(layer)
 
     local ret = CardDrawRef(self,layer)
-    if self.playing_card and self.sprite_facing == 'front' then
+    if (self.playing_card or self.params.playing_card) and self.sprite_facing == 'front' then
         local zodiac = rank_to_zodiac(self)
         if zodiac and G.GAME.BALATROSTUCK.zodiac_levels[zodiac] > 0 then
             get_bstuck_zodiac_stamps()

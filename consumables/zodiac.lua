@@ -40,6 +40,18 @@ Balatrostuck.Zodiac = SMODS.Consumable:extend{
 }
 
 function Balatrostuck.Zodiac:add_caste(key)
+  if G.hand and G.hand.cards then
+      local sound = {sound = 'gold_seal', per = 1.2, vol = 0.4}
+      for _, _card in ipairs(G.hand.cards) do
+          
+          if _card:get_id() == zodiac_to_rank(key) then
+
+
+                      _card:juice_up(0.3, 0.3)
+                      play_sound(sound.sound, sound.per, sound.vol)
+          end
+      end
+  end
   local _found = nil
   for index, caste in ipairs(G.GAME.BALATROSTUCK.active_castes) do
     if string.lower(caste.key) == "caste_bstuck_"..string.lower(key) then 
@@ -47,6 +59,7 @@ function Balatrostuck.Zodiac:add_caste(key)
     end
   end
   if G.GAME.BALATROSTUCK.zodiac_levels[key] == 0 and not _found then
+
     local newCaste = Caste('caste_bstuck_' .. key,G.P_CASTES['caste_bstuck_' .. key])
     table.insert(G.GAME.BALATROSTUCK.active_castes, newCaste)
   end

@@ -328,6 +328,25 @@ function rank_to_zodiac(card)
     end
 end
 
+function zodiac_to_rank(id)
+    id = string.lower(id)
+    if id == "gemini" then return 2
+    elseif id == "taurus" then return 3
+    elseif id == "cancer" then return 4
+    elseif id == "leo" then return 5
+    elseif id == "virgo" then return 6
+    elseif id == "libra" then return 7
+    elseif id == "scorpio" then return 8
+    elseif id == "sagittarius" then return 9
+    elseif id == "capricorn" then return 10
+    elseif id == "aquarius" then return 11
+    elseif id == "pisces" then return 12
+    elseif id == "ophiuchus" then return 13
+    elseif id == "aries" then return 14
+    else return nil
+    end
+end
+
 
 function shuffle(t,seed)
     local tbl = {}
