@@ -954,7 +954,7 @@ end
 function bstuck_give_random_tag(append,disallowed_tags)
     
     G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-        local _banned_tags = bstuck_concat_tables({"tag_bstuck_scratch","tag_bstuck_sburb"},disallowed_tags or {})
+        local _banned_tags = bstuck_concat_tables({"tag_bstuck_scratch","tag_bstuck_sburb","tag_bstuck_denizen"},disallowed_tags or {})
         local tagkey = bstuck_get_tag_key(append,_banned_tags)
         local tag = Tag(tagkey)
         if tagkey == 'tag_orbital' then
