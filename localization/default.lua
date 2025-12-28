@@ -237,38 +237,44 @@ return {
                 text = {'{C:inactive}(Currently inactive){}'}
             },
             Aries = {
-                text = {'{C:attention}Aces{} gain {X:mult,C:white}X#1#{} Mult for', --next level value
-                    'each {C:attention}Ace discarded{} this round',
-                    'or currently in your {C:attention}deck'}
+                text = {'{X:mult,C:white}X#1#{} Mult'} --next level value
+
             },
             Gemini = {
-                text = {'{C:attention}Retrigger{} played {C:attention}2s',
-                        '{C:attention}#1#{} additional time#2#'}
+                text = {'Retrigger this card',
+                        '{C:attention}#1#{} time#2# when played'
+            }
             },
             Taurus = {
-                text = {'Discarded {C:attention}3s{} multiply the current' ,
-                        '{C:attention}Blind requirement{} by {C:white,X:mult}X#1#{}'}
+                text = {'Multiplies the current {C:attention}Blind requirement{}' ,
+                        'by {C:white,X:mult}X#1#{} when {C:attention}discarded{}'}
             },
             Virgo = {
-                text = {'{C:attention}Held 6s{} give {C:mult}+#1#{} Mult'}
+                text = {'{{C:mult}+#1#{} Mult',
+                        'while this card',
+                        'stays in hand'
+            }
             },
             Cancer = {
-                text = {'Played {C:attentions}4s{} give {C:chips}+#1# {C:attention}permanent{} Chips',
+                text = {'Gives {C:chips}+#1# {C:attention}permanent{} Chips',
                         'to scoring cards when scored'}
             },
             Leo = {
-                text = {'{C:attention}Held 5s{} have a {C:green}#1# in 4{} chance',
-                        'to give {C:money}$#2#{} when any played card is scored'}
+                text = {'{C:green}#1# in 4{} chance to give {C:money}$#2#{}',
+                        'when any played card is scored',
+                        'if this card is held in hand',
+
+                    }
             },
             Libra = {
                 name = 'Libra' ,
-                text = {'Played {C:attention}7s{} give {X:mult,C:white}X#1#{} Mult'}
+                text = {'{X:mult,C:white}X#1#{} Mult'}
             },
             Scorpio = {
-                text = {'Played {C:attention}8s{} double all {C:green,E:1,S:1.1}probabilities{}',
+                text = {'Double all {C:green,E:1,S:1.1}probabilities{}',
                     'when scored, up to ',
-                    '{C:attention}#1#{} time#2# per hand, and',
-                    'resets when next hand is played'}
+                    '{C:attention}#1#{} time#2# per hand,',
+                    }
             },
             Sagittarius = {
                 text = {
@@ -279,26 +285,25 @@ return {
             },
             Capricorn = {
                 text = {
-                    "Played {C:attention}10s{} give {X:mult,C:white}X#1#{} Mult", --X2 should be the next level's value
-                    "when scored, held {C:attention}10s",
-                    "give {X:mult,C:white}X#2#{} Mult"
+                    "{X:mult,C:white}X#1#{} Mult when scored,", --X2 should be the next level's value
+                    "{X:mult,C:white}X#2#{} Mult when held in hand"
                 }
             },
             Aquarius = {
                 text = {
-                    '{C:attention}Jacks{} create {C:attention}#1#{} random',
+                    'Create {C:attention}#1#{} random',
                     '{C:attention}Tag#2#{} when {C:attention}destroyed' --next level value + dynamic plural
                 }
             },
             Pisces = {
                 text = {
-                    'Played{C:attention} Queens{} give {C:money}$#1# {C:red,E:2}minus{} the', --next level value
-                    'amount of {C:attention}remaining hands{} when scored'
+                    'Earn {C:money}$#1#{} when this', --next level value
+                    'card is played and scores'
                 }
             },
             Ophiuchus = {
                 text = {
-                    "When played {C:attention}Kings{} are scored, a",
+                    "When played and scored, a",
                     "random card held in hand becomes",
                     "{C:paradox}Paradox{} and gives {X:mult,C:white}X#1#{} Mult", --next level value
                 }

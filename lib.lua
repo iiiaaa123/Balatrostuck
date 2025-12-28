@@ -277,9 +277,28 @@ Balatrostuck.enhancement_cards = {
     m_lucky = 'c_magician',
     m_mult = 'c_empress'
 }
-
-
-
-
 -- this should techncially create a new uibox
 -- that's gonna be above tags
+
+function get_bstuck_zodiac_stamps()
+    if not Balatrostuck.shared_zodiac_stamps then
+        Balatrostuck.shared_zodiac_stamps = {
+                ["Gemini"] = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["bstuck_zodiac_stamps"], { x = 1, y = 0 }),
+                ["Taurus"] = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["bstuck_zodiac_stamps"], { x = 0, y = 0 }),
+                ["Virgo"] = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["bstuck_zodiac_stamps"], { x = 4, y = 0 }),
+                ["Cancer"] = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["bstuck_zodiac_stamps"], { x = 2, y = 0 }),
+                ["Leo"] = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["bstuck_zodiac_stamps"], { x = 3, y = 0 }),
+                ["Libra"] = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["bstuck_zodiac_stamps"], { x = 5, y = 0 }),
+                ["Scorpio"] = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["bstuck_zodiac_stamps"], { x = 0, y = 1 }),
+                ["Aries"] = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["bstuck_zodiac_stamps"], { x = 5, y = 1 }),
+                ["Sagittarius"] = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["bstuck_zodiac_stamps"], { x = 1, y = 1 }),
+                ["Capricorn"] = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["bstuck_zodiac_stamps"], { x = 2, y = 1 }),
+                ["Aquarius"] = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["bstuck_zodiac_stamps"], { x = 3, y = 1 }),
+                ["Pisces"] = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["bstuck_zodiac_stamps"], { x = 4, y = 1 }),
+                ["Ophiuchus"] = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["bstuck_zodiac_stamps"], { x = 6, y = 0 }),
+        }
+    end
+end
+
+
+

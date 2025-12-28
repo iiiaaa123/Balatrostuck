@@ -328,6 +328,25 @@ function rank_to_zodiac(card)
     end
 end
 
+function zodiac_to_rank(id)
+    id = string.lower(id)
+    if id == "gemini" then return 2
+    elseif id == "taurus" then return 3
+    elseif id == "cancer" then return 4
+    elseif id == "leo" then return 5
+    elseif id == "virgo" then return 6
+    elseif id == "libra" then return 7
+    elseif id == "scorpio" then return 8
+    elseif id == "sagittarius" then return 9
+    elseif id == "capricorn" then return 10
+    elseif id == "aquarius" then return 11
+    elseif id == "pisces" then return 12
+    elseif id == "ophiuchus" then return 13
+    elseif id == "aries" then return 14
+    else return nil
+    end
+end
+
 
 function shuffle(t,seed)
     local tbl = {}
@@ -699,7 +718,44 @@ function create_UIBox_zodiac_tip(zodiac)
     return BSUI.Col(BSUI.Config.Basic, _returnnodes)
 end
 
+function get_zodiac_uibox_vars(zodiac)
+    local slug = 'c_bstuck_'..string.lower(zodiac)
+    local zodiac_card = G.P_CENTERS[slug]
+    local _formula = zodiac_card:get_formula(G.GAME.BALATROSTUCK.zodiac_levels[zodiac])
+    if zodiac == "Aries" then
+        local aces = 0
 
+
+        for k,v in pairs(G.deck.cards) do
+            if v:get_id() == 14 then aces = aces + 1 end
+        end
+
+        for k,v in pairs(G.discard.cards) do
+            if v:get_id() == 14 and not v.ignore_aries then aces = aces + 1 end
+        end
+                    
+
+            _formula[1] = 1 + (_formula[1] * aces)
+        
+    elseif zodiac == "Gemini" then
+
+    elseif zodiac == "Taurus" then
+
+    elseif zodiac == "Virgo" then
+    elseif zodiac == "Cancer" then
+    elseif zodiac == "Leo" then
+    elseif zodiac == "Libra" then
+    elseif zodiac == "Scorpio" then
+    elseif zodiac == "Sagittarius" then
+    elseif zodiac == "Capricorn" then
+    elseif zodiac == "Aquarius" then
+    elseif zodiac == "Pisces" then
+        _formula[1] = _formula[1] - (G.GAME.current_round.hands_left or 0)
+    elseif zodiac == "Ophiuchus" then
+
+    end
+    return _formula
+end
 
 
 

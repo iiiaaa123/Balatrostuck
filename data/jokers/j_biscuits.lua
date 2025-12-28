@@ -32,7 +32,7 @@ function Balatrostuck.INIT.Jokers.j_biscuits()
                 return {no_destroy = {override_compat = true}}
             end
         end,
-        cost = 13,
+        cost = 26,
         rarity = "bstuck_felt",
         blueprint_compat = false,
         eternal_compat = true,
