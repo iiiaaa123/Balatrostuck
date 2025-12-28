@@ -74,8 +74,9 @@ local joker_list = {
 "yourlordandmaster", "magnificent", "jokermode", "crowbarsfelt", "signofthesignless",
 "echidna", "abraxas", "yaldabaoth", "hephaestus","typheus",
 -- Page 19
-"template", "pranxis", "successor", "blackjack", "break", 
-"coloursmayhem", "frogsprite", "scalemate", "scourgesisters", "cherubshackles", "blindjustice", "itchy", "potionseller", "quarters"
+"pranxis", "successor", "blackjack", "break", "coloursmayhem", 
+"frogsprite", "scalemate", "scourgesisters", "cherubshackles", 
+"blindjustice", "itchy", "potionseller", "quarters", "trace", "eggs"
 }
 
 local aspect_list = {

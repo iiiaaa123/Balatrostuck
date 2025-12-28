@@ -11,8 +11,8 @@ function Balatrostuck.INIT.Tags.t_denizen()
             }
         },
         pos = {
-            x = 1,
-            y = 1
+            x = 2,
+            y = 2
         },
         atlas = 'HomestuckTags',
         

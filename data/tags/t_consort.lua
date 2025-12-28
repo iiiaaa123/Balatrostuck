@@ -12,8 +12,8 @@ function Balatrostuck.INIT.Tags.t_consort()
             }
         },
         pos = {
-            x = 2,
-            y = 1
+            x = 1,
+            y = 2
         },
         atlas = 'HomestuckTags',
         

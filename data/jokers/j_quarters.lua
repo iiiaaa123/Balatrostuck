@@ -18,12 +18,15 @@ function Balatrostuck.INIT.Jokers.j_quarters()
             }
         },
         pos = {
-            x = 9,
-            y = 12
+            x = 13,
+            y = 3
         },
-
+        soul_pos = {
+            x = 13,
+            y = 6
+        },
         
-        cost = 4,
+        cost = 28,
         rarity = "bstuck_felt",
         blueprint_compat = false,
         eternal_compat = true,

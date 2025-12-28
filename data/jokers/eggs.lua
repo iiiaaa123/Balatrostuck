@@ -1,13 +1,13 @@
-function Balatrostuck.INIT.Jokers.j_itchy()
+function Balatrostuck.INIT.Jokers.j_eggs()
     SMODS.Joker{
-        name = "Itchy",
-        key = "itchy",
+        name = "Eggs",
+        key = "eggs",
         config = {
             extra = { 
             }
         },
         loc_txt = {
-            ['name'] = 'Itchy',
+            ['name'] = 'Eggs',
             ['text'] = {
                 [1] = "Your handsize is the size of your deck",
                 [2] = "At start of blind, set your {C:blue}hands{} to 1",
@@ -15,15 +15,15 @@ function Balatrostuck.INIT.Jokers.j_itchy()
             }
         },
         pos = {
-            x = 10,
-            y = 1
+            x = 11,
+            y = 3
         },
         soul_pos = {
-            x = 10,
-            y = 4
+            x = 11,
+            y = 6
         },
         
-        cost = 2,
+        cost = 6,
         rarity = "bstuck_felt",
         blueprint_compat = false,
         eternal_compat = true,
