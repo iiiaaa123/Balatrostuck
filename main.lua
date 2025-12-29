@@ -101,7 +101,11 @@ local seal_list = {
 }
 
 local blind_list = {
-    "bettycrocker","demoness","disciple","dolorosa","executioner","helmsman","legislacerator","manipulator","orphaner","subjuggulator","sufferer","summoner"
+    "bettycrocker","demoness","disciple","dolorosa","executioner",
+    "helmsman","legislacerator","manipulator","orphaner","subjuggulator",
+    "sufferer","summoner",'legacydamara', 'legacyrufioh', 'legacymituna',
+    'legacykankri', 'legacymeulin', 'legacyporrim', 'legacylatula', 'legacyaranea',
+    'legacyhoruss', 'legacykurloz', 'legacycronus', 'legacymeenah'
 }
 
 local voucher_list = {

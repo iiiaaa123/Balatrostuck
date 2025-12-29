@@ -1,10 +1,10 @@
-function Balatrostuck.INIT.Blinds.bl_bettycrocker()
+function Balatrostuck.INIT.Blinds.bl_legacymituna()
     SMODS.Blind({
-        key = 'bettycrocker',
+        key = 'legacymituna',
         loc_txt = {
-            name = 'Betty Crocker',
-            text = {'Ludicrously large blind',
-                '-1 Hand Size per hand played'}
+            name = "Mituna's Legacy,"
+            text = {'items in the next shop are',
+                '1$ more expensive per discard used'}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},
@@ -31,7 +31,7 @@ function Balatrostuck.INIT.Blinds.bl_bettycrocker()
             return false
         end,
         should_spawn = function(self,as_legacy)
-            if not as_legacy and G.GAME.round_resets.ante >= 5 then return true end
+            if as_legacy and G.GAME.round_resets.ante >= 5 then return true end
             return false
         end
     })
