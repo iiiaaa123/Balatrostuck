@@ -582,6 +582,7 @@ end
 --need to override this so boss rerolls work
 local vanilla_get_new_boss = get_new_boss
 function get_new_boss()
+    if not G.deck then return vanilla_get_new_boss() end
     context = {blind_replace = true, blind_type = "boss", new_boss = ""}
     SMODS.calculate_context(context)
     if context.new_boss ~= "" then
