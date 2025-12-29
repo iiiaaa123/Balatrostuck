@@ -25,7 +25,13 @@ function Balatrostuck.INIT.Blinds.bl_summoner()
         defeat = function(self)
             G.hand:change_size(G.GAME.blind.hands_sub)
         end,
+
+        
         in_pool = function(self)
+            return false
+        end,
+        should_spawn = function(self,as_legacy)
+            if not as_legacy and G.GAME.round_resets.ante >= 5 then return true end
             return false
         end
     })

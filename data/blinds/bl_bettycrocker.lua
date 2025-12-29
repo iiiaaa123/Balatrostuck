@@ -25,6 +25,8 @@ function Balatrostuck.INIT.Blinds.bl_bettycrocker()
         defeat = function(self)
             G.hand:change_size(G.GAME.blind.hands_sub)
         end,
+
+        
         in_pool = function(self)
             return false
         end,
