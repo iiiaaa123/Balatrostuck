@@ -31,7 +31,7 @@ NFS.load(mod.path.."consumables/main.lua")()
 NFS.load(mod.path.."consumables/aspect.lua")()
 NFS.load(mod.path.."consumables/zodiac.lua")()
 NFS.load(mod.path.."game_override.lua")()
-
+NFS.load(mod.path.."gamemode.lua")()
 
 local joker_list = {
 
@@ -101,6 +101,7 @@ local seal_list = {
 }
 
 local blind_list = {
+    "bettycrocker","demoness","disciple","dolorosa","executioner","helmsman","legislacerator","manipulator","orphaner","subjuggulator","sufferer","summoner"
 }
 
 local voucher_list = {
@@ -127,6 +128,9 @@ local deck_list = {
 local rarity_list = {
     'felt'
 }
+local gamemode_list = {
+    'alternian'
+}
 
 batch_load("jokers")
 batch_load("aspects")
@@ -140,6 +144,7 @@ batch_load("blinds")
 batch_load("vouchers")
 batch_load("decks")
 batch_load("rarities")
+batch_load("gamemodes")
 
 
 bstuck_joker_keys = {}
@@ -169,6 +174,10 @@ end
 
 for _, aspect in ipairs(zodiac_list) do
     Balatrostuck.INIT.Zodiacs["c_zodiac_"..aspect]()
+end
+
+for _, mode in ipairs(gamemode_list) do
+    Balatrostuck.INIT.Gamemodes["gamemode_"..mode]()
 end
 
 for _, edition in ipairs(edition_list) do

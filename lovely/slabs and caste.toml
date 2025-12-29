@@ -29,7 +29,7 @@ self.P_SLABS = {}
 self.P_CASTES = {}
 '''
 
-# Slabs and Castes Calculation
+# Slabs and Castes and gamemode Calculation
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/utils.lua"]'
@@ -48,6 +48,10 @@ if G.GAME.BALATROSTUCK.active_castes and #G.GAME.BALATROSTUCK.active_castes > 0 
     for c = 1, #G.GAME.BALATROSTUCK.active_castes do
         t[#t+1] = {object = G.GAME.BALATROSTUCK.active_castes[c]}
     end
+end
+
+if G.GAME.GAMEMODE then
+    t[#t+1] = {object = G.GAME.GAMEMODE}
 end
 '''
 

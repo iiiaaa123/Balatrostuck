@@ -556,3 +556,37 @@ function CardArea:remove_card(card, discarded_only)
     if ret then ret.previous_area = self end
     return ret
 end
+
+
+function reset_blinds()
+    G.GAME.round_resets.blind_states = G.GAME.round_resets.blind_states or {Small = 'Select', Big = 'Upcoming', Boss = 'Upcoming'}
+    if G.GAME.round_resets.blind_states.Boss == 'Defeated' then
+        local ret = {}
+        SMODS.calculate_context({blind_replace = true, blind_type = "small"},ret)
+        local new_boss
+        for _,v in pairs(ret) do
+            if v.individual and v.individual.new_boss then new_boss = v.individual.new_boss end
+        end
+        if new_boss then G.GAME.round_resets.blind_choices.Small = new_boss end
+        G.GAME.round_resets.blind_states.Small ='Upcoming'
+
+        ret = {}
+        SMODS.calculate_context({blind_replace = true, blind_type = "big"},ret)
+        new_boss = nil
+        for _,v in pairs(ret) do
+            if v.individual and v.individual.new_boss then new_boss = v.individual.new_boss end
+        end
+        if new_boss then G.GAME.round_resets.blind_choices.Big = new_boss end
+        G.GAME.round_resets.blind_states.Big = 'Upcoming'
+        G.GAME.round_resets.blind_states.Boss = 'Upcoming'
+        G.GAME.blind_on_deck = 'Small'
+        ret = {}
+        SMODS.calculate_context({blind_replace = true, blind_type = "boss"},ret)
+        new_boss = nil
+        for _,v in pairs(ret) do
+            if v.individual and v.individual.new_boss then new_boss = v.individual.new_boss end
+        end
+        G.GAME.round_resets.blind_choices.Boss = new_boss or get_new_boss()
+        G.GAME.round_resets.boss_rerolled = false
+    end
+end

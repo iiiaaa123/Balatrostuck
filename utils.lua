@@ -1005,6 +1005,7 @@ mod.calculate = function(self, context)
     if context.ending_shop then
         --bstuck_clean_tags()
     end
+    
 end
 
 --this one is to make scratch tag spawn only in big blinds

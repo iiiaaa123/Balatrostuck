@@ -10,6 +10,7 @@ Balatrostuck.INIT = {
     Blinds = {},
     Vouchers = {},
     Rarities = {},
+    Gamemodes = {},
     Decks = {}
 
 }
