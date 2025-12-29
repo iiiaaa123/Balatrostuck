@@ -10,8 +10,8 @@ function Balatrostuck.INIT.Blinds.bl_dolorosa()
         boss = { min = 1, max = 10},
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=5},
-        mult = 99,
-        dollars = 15,
+        mult = 2,
+        dollars = 5,
         boss_colour = HEX('F2BD43'),
         press_play = function(self)
             G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
