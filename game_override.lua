@@ -561,32 +561,38 @@ end
 function reset_blinds()
     G.GAME.round_resets.blind_states = G.GAME.round_resets.blind_states or {Small = 'Select', Big = 'Upcoming', Boss = 'Upcoming'}
     if G.GAME.round_resets.blind_states.Boss == 'Defeated' then
-        local ret = {}
-        SMODS.calculate_context({blind_replace = true, blind_type = "small"},ret)
-        local new_boss
-        for _,v in pairs(ret) do
-            if v.individual and v.individual.new_boss then new_boss = v.individual.new_boss end
-        end
-        if new_boss then G.GAME.round_resets.blind_choices.Small = new_boss end
-        G.GAME.round_resets.blind_states.Small ='Upcoming'
 
-        ret = {}
-        SMODS.calculate_context({blind_replace = true, blind_type = "big"},ret)
-        new_boss = nil
-        for _,v in pairs(ret) do
-            if v.individual and v.individual.new_boss then new_boss = v.individual.new_boss end
-        end
-        if new_boss then G.GAME.round_resets.blind_choices.Big = new_boss end
-        G.GAME.round_resets.blind_states.Big = 'Upcoming'
+        local context = {blind_replace = true, blind_type = "small", new_boss = ""}
+        SMODS.calculate_context(context)
+        if context.new_boss ~= "" then G.GAME.round_resets.blind_choices.Small = context.new_boss;print("Small replaced") end
+
+        G.GAME.round_resets.blind_states.Small = G.GAME.modifiers.bstuck_LORDENGLISHMODE and 'Hide' or 'Upcoming'
+        context = {blind_replace = true, blind_type = "big", new_boss = ""}
+        SMODS.calculate_context(context)
+        if context.new_boss ~= "" then G.GAME.round_resets.blind_choices.Big = context.new_boss end
+
+        G.GAME.round_resets.blind_choices.Boss = get_new_boss()
+        G.GAME.round_resets.blind_states.Big = G.GAME.modifiers.bstuck_LORDENGLISHMODE and 'Hide' or 'Upcoming'
         G.GAME.round_resets.blind_states.Boss = 'Upcoming'
-        G.GAME.blind_on_deck = 'Small'
-        ret = {}
-        SMODS.calculate_context({blind_replace = true, blind_type = "boss"},ret)
-        new_boss = nil
-        for _,v in pairs(ret) do
-            if v.individual and v.individual.new_boss then new_boss = v.individual.new_boss end
-        end
-        G.GAME.round_resets.blind_choices.Boss = new_boss or get_new_boss()
+        G.GAME.blind_on_deck = G.GAME.modifiers.bstuck_LORDENGLISHMODE and 'Boss' or 'Small'
         G.GAME.round_resets.boss_rerolled = false
     end
+end
+
+--need to override this so boss rerolls work
+local vanilla_get_new_boss = get_new_boss
+function get_new_boss()
+    context = {blind_replace = true, blind_type = "boss", new_boss = ""}
+    SMODS.calculate_context(context)
+    if context.new_boss ~= "" then
+        return context.new_boss
+    else
+        return vanilla_get_new_boss()
+    end
+end
+
+local blind_get_type = Blind.get_type
+function Blind:get_type()
+    if self.legacy then return 'Big'
+    else return blind_get_type(self) end
 end

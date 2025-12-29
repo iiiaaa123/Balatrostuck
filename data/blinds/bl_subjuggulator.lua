@@ -32,7 +32,7 @@ function Balatrostuck.INIT.Blinds.bl_subjuggulator()
             return false
         end,
         should_spawn = function(self,as_legacy)
-            if not as_legacy and G.GAME.round_resets.ante >= 5 then return true end
+            if (not as_legacy) and G.GAME.round_resets.ante >= 5 then return true end
             return false
         end
     })

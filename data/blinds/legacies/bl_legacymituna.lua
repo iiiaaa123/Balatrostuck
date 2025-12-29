@@ -2,16 +2,16 @@ function Balatrostuck.INIT.Blinds.bl_legacymituna()
     SMODS.Blind({
         key = 'legacymituna',
         loc_txt = {
-            name = "Mituna's Legacy,"
+            name = "Mituna's Legacy",
             text = {'items in the next shop are',
                 '1$ more expensive per discard used'}
         },
         hands_sub = 0,
-        boss = { min = 1, max = 10},
+        legacy=true,
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=11},
-        mult = 99,
-        dollars = 15,
+        mult = 1.5,
+        dollars = 4,
         boss_colour = HEX('F2BD43'),
         press_play = function(self)
             G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1

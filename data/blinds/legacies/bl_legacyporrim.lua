@@ -2,16 +2,16 @@ function Balatrostuck.INIT.Blinds.bl_legacyporrim()
     SMODS.Blind({
         key = 'legacyporrim',
         loc_txt = {
-            name = "Porrim's Legacy,"
+            name = "Porrim's Legacy",
             text = {'all non-queen played cards',
                 'give 0.9x mult when scored'}
         },
         hands_sub = 0,
-        boss = { min = 1, max = 10},
+        legacy=true,
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=11},
-        mult = 99,
-        dollars = 15,
+        mult = 1.5,
+        dollars = 4,
         boss_colour = HEX('F2BD43'),
         press_play = function(self)
             G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1

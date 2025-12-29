@@ -105,7 +105,8 @@ local blind_list = {
     "helmsman","legislacerator","manipulator","orphaner","subjuggulator",
     "sufferer","summoner",'legacydamara', 'legacyrufioh', 'legacymituna',
     'legacykankri', 'legacymeulin', 'legacyporrim', 'legacylatula', 'legacyaranea',
-    'legacyhoruss', 'legacykurloz', 'legacycronus', 'legacymeenah'
+    'legacyhoruss', 'legacykurloz', 'legacycronus', 'legacymeenah','cherub','host',
+    'clown','shades','muscle','juju','lordenglish'
 }
 
 local voucher_list = {
@@ -145,6 +146,8 @@ batch_load("tags")
 batch_load("spectrals")
 batch_load("seals")
 batch_load("blinds")
+batch_load("blinds/legacies")
+batch_load("blinds/superbosses")
 batch_load("vouchers")
 batch_load("decks")
 batch_load("rarities")

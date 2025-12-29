@@ -2,16 +2,16 @@ function Balatrostuck.INIT.Blinds.bl_legacydamara()
     SMODS.Blind({
         key = 'legacydamara',
         loc_txt = {
-            name = "Damara's Legacy,"
+            name = "Damara's Legacy",
             text = {'playing a hand',
                 'costs 2 hands, not 1'}
         },
         hands_sub = 0,
-        boss = { min = 1, max = 10},
+        legacy=true,
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=11},
-        mult = 99,
-        dollars = 15,
+        mult = 1.5,
+        dollars = 4,
         boss_colour = HEX('F2BD43'),
         press_play = function(self)
             G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1

@@ -1,17 +1,17 @@
-function Balatrostuck.INIT.Blinds.bl_legacycronus()
+function Balatrostuck.INIT.Blinds.bl_cherub()
     SMODS.Blind({
-        key = 'legacycronus',
+        key = 'cherub',
         loc_txt = {
-            name = "Cronus's Legacy",
-            text = {'cards held debuffed',
-                'after hand is played'}
+            name = 'The Cherub',
+            text = {'0.5x blind req',
+                'all jokers debuffed'}
         },
         hands_sub = 0,
-        legacy=true,
+        boss = { min = 1, max = 10, showdown=true},
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=11},
-        mult = 1.5,
-        dollars = 4,
+        mult = 99,
+        dollars = 15,
         boss_colour = HEX('F2BD43'),
         press_play = function(self)
             G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
@@ -31,7 +31,7 @@ function Balatrostuck.INIT.Blinds.bl_legacycronus()
             return false
         end,
         should_spawn = function(self,as_legacy)
-            if as_legacy and G.GAME.round_resets.ante >= 2 then return true end
+            if (not as_legacy) and G.GAME.round_resets.ante % 4 == 0 then return true end
             return false
         end
     })

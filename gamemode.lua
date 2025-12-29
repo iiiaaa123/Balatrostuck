@@ -58,5 +58,6 @@ end
 
 function Balatrostuck.set_gamemode(key)
   G.GAME.GAMEMODE = Gamemode(key)
+  G.GAME.GAMEMODE:apply() --for debug, do not ship!!
 end
 --eval Balatrostuck.set_gamemode("gamemode_bstuck_alternian")

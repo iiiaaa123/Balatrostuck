@@ -2,16 +2,16 @@ function Balatrostuck.INIT.Blinds.bl_legacyaranea()
     SMODS.Blind({
         key = 'legacyaranea',
         loc_txt = {
-            name = "Aranea's Legacy,"
+            name = "Aranea's Legacy",
             text = {'eternal to',
                 'random joker end of round'}
         },
         hands_sub = 0,
-        boss = { min = 1, max = 10},
+        legacy=true,
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=11},
-        mult = 99,
-        dollars = 15,
+        mult = 1.5,
+        dollars = 4,
         boss_colour = HEX('F2BD43'),
         press_play = function(self)
             G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
@@ -23,7 +23,6 @@ function Balatrostuck.INIT.Blinds.bl_legacyaranea()
             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
         end,
         defeat = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
         end,
 
         

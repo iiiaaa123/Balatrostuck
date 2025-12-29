@@ -617,3 +617,16 @@ pattern = "self.GAME.selected_back:apply_to_run()"
 position = "after"
 payload = "if self.GAME.GAMEMODE then self.GAME.GAMEMODE:apply() end"
 match_indent = true
+
+#fixes a non-nil checked call to blind.boss
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if v.boss.showdown then "
+position = "at"
+payload = "if v.boss and v.boss.showdown then"
+match_indent = true
+
+
+
+
