@@ -14,8 +14,12 @@ function Balatrostuck.INIT.Jokers.j_potionseller()
             }
         },
         pos = {
-            x = 9,
-            y = 12
+            x = 12,
+            y = 0
+        },
+        soul_pos = {
+            x = 13,
+            y = 0
         },
 
         
