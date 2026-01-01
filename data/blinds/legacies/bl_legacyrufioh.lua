@@ -8,7 +8,7 @@ function Balatrostuck.INIT.Blinds.bl_legacyrufioh()
         },
         hands_sub = 0,
         legacy=true,
-        atlas = 'blind_chips',
+        atlas = 'HomestuckBlinds',
         pos = {x=0,y=1},
         mult = 2.25,
         dollars = 4,
