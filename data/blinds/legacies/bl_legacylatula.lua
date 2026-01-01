@@ -15,7 +15,7 @@ function Balatrostuck.INIT.Blinds.bl_legacylatula()
         mult = 1.5,
         dollars = 4,
         boss_colour = HEX('F2BD43'),
-        calculate = function(self,context)
+        calculate = function(self,instance,context)
             if context.before then 
                 if G.GAME.GAMEMODE and G.GAME.GAMEMODE.ability then
                     G.GAME.GAMEMODE.ability.latula_hands = G.GAME.GAMEMODE.ability.latula_hands + 1 --rest is in the gamemode code

@@ -3,7 +3,7 @@ Gamemode = Object:extend()
 function Gamemode:init(key,loadtable)
   self.key = loadtable and loadtable.key or key
 
-  local proto = Balatrostuck.Gamemodes[loadtable.key or key]
+  local proto = Balatrostuck.Gamemodes[loadtable and loadtable.key or key]
   self.config = copy_table(proto.config)
   self.name = proto.name
   if loadtable and loadtable.ability then self.ability = loadtable.ability 
@@ -67,4 +67,15 @@ function Balatrostuck.set_gamemode(key)
   G.GAME.GAMEMODE = Gamemode(key)
   G.GAME.GAMEMODE:apply() --for debug, do not ship!!
 end
+
+
+function Blind:calculate(_context)
+    local obj = G.P_BLINDS[self.config.blind.key]
+    local res
+    if obj and obj.calculate and type(obj.calculate) == 'function' then
+      res = obj.calculate(obj,self, _context)
+    end
+    return res
+end
+
 --eval Balatrostuck.set_gamemode("gamemode_bstuck_alternian")

@@ -53,6 +53,10 @@ end
 if G.GAME.GAMEMODE then
     t[#t+1] = {object = G.GAME.GAMEMODE}
 end
+
+if G.blind and type(G.blind.calculate) == 'function' then
+    t[#t+1] = {object = G.blind}
+end
 '''
 
 

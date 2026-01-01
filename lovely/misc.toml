@@ -646,3 +646,13 @@ match_indent = true
 
 
 
+#forces the gamemode to alternian, remove when ui gets added!!!
+
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "self.deck:shuffle()"
+position = "before"
+payload = "Balatrostuck.set_gamemode('gamemode_bstuck_alternian')"
+match_indent = true

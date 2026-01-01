@@ -11,7 +11,9 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
         apply = function(self,instance,context) --at the start of the run or when applied to the run
             if instance.ability.applied then return end --only do things once in case this is somehow called again!
             G.GAME.win_ante = 12
+            reset_blinds()
             instance.ability.applied = true
+
         end,
         calculate = function(self,instance,context) --instance refers to the Gamemode object, while self refers to the template Balatrostuck.Gamemode object.
             
@@ -25,10 +27,12 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
 
             if context.setting_blind and instance.ability.latula_hands > 0 and G.GAME.blind.boss then
                 G.GAME.blind.chips = G.GAME.blind.chips * (1.1^instance.ability.latula_hands) --no clean way to un-hardcode this, im afraid
+                instance.ability.latula_hands = 0
             end
 
             if context.end_of_shop and instance.ability.mituna_cost > 0 then
                 G.GAME.G.GAME.inflation = G.GAME.G.GAME.inflation - instance.ability.mituna_cost
+                instance.ability.mituna_cost = 0
             end
 
         end,

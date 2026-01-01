@@ -13,7 +13,7 @@ function Balatrostuck.INIT.Blinds.bl_legacydamara()
         mult = 1.5,
         dollars = 4,
         boss_colour = HEX('F2BD43'),
-        calculate = function(self,context)
+        calculate = function(self,instance,context)
             if context.before then
                  ease_hands_played(-1)
             end

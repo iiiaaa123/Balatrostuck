@@ -21,13 +21,13 @@ function Balatrostuck.INIT.Blinds.bl_legacyaranea()
         end,
         defeat = function(self)
         end,
-        calculate = function(self,context)
+        calculate = function(self,instance,context)
             if context.end_of_round and not context.individual and not context.repetition then
-                local your_jokers = G.joker.cards
+                local your_jokers = G.jokers.cards
                 pseudoshuffle(your_jokers, pseudoseed('spider'))
                 for _,joker in pairs(your_jokers) do
                     if not joker.ability.eternal then 
-                        joker:set_eternal()
+                        joker:set_eternal(true)
                         break
                     end
                 end

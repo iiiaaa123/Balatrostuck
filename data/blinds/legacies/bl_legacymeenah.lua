@@ -13,7 +13,7 @@ function Balatrostuck.INIT.Blinds.bl_legacymeenah()
         mult = 1.5,
         dollars = 4,
         boss_colour = HEX('F2BD43'),
-        calculate = function(self,context)
+        calculate = function(self,instance,context)
             if context.after then
                 for _, joker in ipairs(G.jokers.cards) do
                     joker.ability.extra_value = (joker.ability.extra_value or 0) - 1

@@ -13,7 +13,7 @@ function Balatrostuck.INIT.Blinds.bl_legacymituna()
         mult = 1.5,
         dollars = 4,
         boss_colour = HEX('F2BD43'),
-        calculate = function(self,context)
+        calculate = function(self,instance,context)
             if context.pre_discard then
                 if G.GAME.GAMEMODE and G.GAME.GAMEMODE.ability then
                     G.GAME.GAMEMODE.ability.mituna_cost = G.GAME.GAMEMODE.ability.mituna_cost + 1 --rest is in the gamemode code

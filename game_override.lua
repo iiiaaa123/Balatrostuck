@@ -560,7 +560,7 @@ end
 
 function reset_blinds()
     G.GAME.round_resets.blind_states = G.GAME.round_resets.blind_states or {Small = 'Select', Big = 'Upcoming', Boss = 'Upcoming'}
-    if G.GAME.round_resets.blind_states.Boss == 'Defeated' then
+    if G.GAME.round_resets.blind_states.Boss == 'Defeated' or G.GAME.GAMEMODE and not G.GAME.GAMEMODE.ability.applied then
 
         local context = {blind_replace = true, blind_type = "small", new_boss = ""}
         SMODS.calculate_context(context)
