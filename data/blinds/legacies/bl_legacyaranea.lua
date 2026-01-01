@@ -14,18 +14,24 @@ function Balatrostuck.INIT.Blinds.bl_legacyaranea()
         dollars = 4,
         boss_colour = HEX('F2BD43'),
         press_play = function(self)
-            G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
-            G.hand:change_size(-1)
+
         end,
         disable = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-            G.GAME.blind.chips = G.GAME.blind.chips / 89
-            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+
         end,
         defeat = function(self)
         end,
+        calculate = function(self,context)
+            if context.end_of_round and not context.individual and not context.repetition then
+                for _,joker in pairs(G.jokers.cards) do
+                    if not joker.ability.eternal then
+                        joker:set_eternal(true)
+                        break
+                    end
+                end
+            end
+        end,
 
-        
         in_pool = function(self)
             return false
         end,
