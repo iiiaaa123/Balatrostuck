@@ -1,11 +1,13 @@
 
 Gamemode = Object:extend()
-function Gamemode:init(key,config)
-  self.key = key
-  local proto = Balatrostuck.Gamemodes[key]
+function Gamemode:init(key,loadtable)
+  self.key = loadtable and loadtable.key or key
+
+  local proto = Balatrostuck.Gamemodes[loadtable.key or key]
   self.config = copy_table(proto.config)
   self.name = proto.name
-  self.ability = copy_table(self.config)
+  if loadtable and loadtable.ability then self.ability = loadtable.ability 
+  else self.ability = copy_table(self.config) end
 end
 
 
@@ -25,6 +27,11 @@ function Gamemode:apply(_context)
     end
     return res
 end
+function Gamemode:save()
+  return {key = self.key, ability = self.ability}
+end
+
+
 
 Balatrostuck.Gamemodes = {}
 Balatrostuck.Gamemode = SMODS.GameObject:extend{

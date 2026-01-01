@@ -628,5 +628,21 @@ payload = "if v.boss and v.boss.showdown then"
 match_indent = true
 
 
+#save and load gamemode data
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = "SCORING_CALC = G.GAME.current_scoring_calculation:save(),"
+position = "after"
+payload = "GAMEMODE = G.GAME.GAMEMODE and G.GAME.GAMEMODE:save(),"
+match_indent = true
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "G.GAME.blind:load(saveTable.BLIND)"
+position = "after"
+payload = "if saveTable.GAMEMODE then G.GAME.GAMEMODE = Gamemode(nil,saveTable.GAMEMODE) end"
+match_indent = true
+
 
 

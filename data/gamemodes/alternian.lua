@@ -3,9 +3,6 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
         key = 'alternian',
         config = {
             used_bosses = {},
-            LE_mode = false,
-            boss = nil,
-            legacy = nil,
             applied = false,
         },
         name = 'Alternian',
