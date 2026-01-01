@@ -6,6 +6,9 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
             applied = false,
             latula_hands = 0,
             mituna_cost = 0,
+            dolorosa_active = false,
+            summoner_duration = 0,
+            hands_played_this_ante = {},
         },
         name = 'Alternian',
         apply = function(self,instance,context) --at the start of the run or when applied to the run
@@ -27,7 +30,21 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
 
             if context.setting_blind and instance.ability.latula_hands > 0 and G.GAME.blind.boss then
                 G.GAME.blind.chips = G.GAME.blind.chips * (1.1^instance.ability.latula_hands) --no clean way to un-hardcode this, im afraid
+                G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
                 instance.ability.latula_hands = 0
+            end
+
+            --for legislacerator
+            if context.joker_main then
+                instance.ability.hands_played_this_ante[#instance.ability.hands_played_this_ante+1] = context.scoring_name
+            end
+
+            if context.end_of_round and not context.individual and not context.repetition and G.GAME.blind.boss then --every ante effects
+                if instance.ability.summoner_duration > 0 then
+                    instance.ability.summoner_duration = instance.ability.summoner_duration - 1
+                    if instance.ability.summoner_duration == 0 then G.GAME.effect.config.reroll_discount = G.GAME.effect.config.reroll_discount + 1 end
+                end
+                instance.ability.hands_played_this_ante = {}
             end
 
             if context.end_of_shop and instance.ability.mituna_cost > 0 then

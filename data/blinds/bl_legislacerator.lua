@@ -3,8 +3,8 @@ function Balatrostuck.INIT.Blinds.bl_legislacerator()
         key = 'legislacerator',
         loc_txt = {
             name = 'The Legislacerator',
-            text = {'Ludicrously large blind',
-                '-1 Hand Size per hand played'}
+            text = {'If played hand was played this ante',
+                'debuff all played cards'}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},
@@ -13,17 +13,15 @@ function Balatrostuck.INIT.Blinds.bl_legislacerator()
         mult = 2,
         dollars = 5,
         boss_colour = HEX('F2BD43'),
-        press_play = function(self)
-            G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
-            G.hand:change_size(-1)
-        end,
-        disable = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-            G.GAME.blind.chips = G.GAME.blind.chips / 89
-            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-        end,
-        defeat = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
+        calculate = function(self,instance,context)
+            if context.before and context.scoring_name then
+                if bstuck_in_table(context.scoring_name,G.GAME.GAMEMODE.ability.hands_played_this_ante) then
+                    for _,card in ipairs(G.play.cards) do
+                        card:set_debuff(true)
+                        if card.debuff then card.debuffed_by_blind = true end
+                    end
+                end
+            end
         end,
 
 

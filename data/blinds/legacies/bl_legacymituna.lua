@@ -20,7 +20,7 @@ function Balatrostuck.INIT.Blinds.bl_legacymituna()
                 end
             end
             if context.end_of_round and not context.individual and not context.repetition then
-                G.GAME.G.GAME.inflation = G.GAME.inflation + G.GAME.GAMEMODE.ability.mituna_cost --hehe
+                G.GAME.inflation = G.GAME.inflation + G.GAME.GAMEMODE.ability.mituna_cost --hehe
             end
         end,
 

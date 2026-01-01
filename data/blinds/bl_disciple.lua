@@ -3,8 +3,7 @@ function Balatrostuck.INIT.Blinds.bl_disciple()
         key = 'disciple',
         loc_txt = {
             name = 'The Disciple',
-            text = {'Ludicrously large blind',
-                '-1 Hand Size per hand played'}
+            text = {'Pay 5$ whenever you use a discard',}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},
@@ -13,17 +12,10 @@ function Balatrostuck.INIT.Blinds.bl_disciple()
         mult = 2,
         dollars = 5,
         boss_colour = HEX('F2BD43'),
-        press_play = function(self)
-            G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
-            G.hand:change_size(-1)
-        end,
-        disable = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-            G.GAME.blind.chips = G.GAME.blind.chips / 89
-            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-        end,
-        defeat = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
+        calculate = function(self,instance,context)
+            if context.pre_discard then
+                ease_dollars(-5)
+            end
         end,
 
 

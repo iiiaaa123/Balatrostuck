@@ -3,8 +3,7 @@ function Balatrostuck.INIT.Blinds.bl_orphaner()
         key = 'orphaner',
         loc_txt = {
             name = 'The Orphaner',
-            text = {'Ludicrously large blind',
-                '-1 Hand Size per hand played'}
+            text = {'reset first triggered zodiac to lvl 0'}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},

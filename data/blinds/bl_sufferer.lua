@@ -3,27 +3,20 @@ function Balatrostuck.INIT.Blinds.bl_sufferer()
         key = 'sufferer',
         loc_txt = {
             name = 'The Sufferer',
-            text = {'Ludicrously large blind',
-                '-1 Hand Size per hand played'}
+            text = {'Rerolls cost 1$ more next ante'}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=3},
-        mult = 4,
+        mult = 6,
         dollars = 5,
         boss_colour = HEX('F2BD43'),
-        press_play = function(self)
-            G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
-            G.hand:change_size(-1)
-        end,
-        disable = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-            G.GAME.blind.chips = G.GAME.blind.chips / 89
-            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-        end,
-        defeat = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
+        calculate = function(self,instance,context)
+            if context.end_of_round and not context.individual and not context.repetition then
+                G.GAME.effect.config.reroll_discount = G.GAME.effect.config.reroll_discount - 1
+                G.GAME.GAMEMODE.summoner_duration = 2 --needs to be 2 because we're about to end an ante
+            end
         end,
 
 

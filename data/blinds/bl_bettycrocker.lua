@@ -3,8 +3,8 @@ function Balatrostuck.INIT.Blinds.bl_bettycrocker()
         key = 'bettycrocker',
         loc_txt = {
             name = 'Betty Crocker',
-            text = {'Ludicrously large blind',
-                '-1 Hand Size per hand played'}
+            text = {'all your jokers',
+                'become rental'}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},
@@ -13,17 +13,14 @@ function Balatrostuck.INIT.Blinds.bl_bettycrocker()
         mult = 2,
         dollars = 5,
         boss_colour = HEX('F2BD43'),
-        press_play = function(self)
-            G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
-            G.hand:change_size(-1)
-        end,
-        disable = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-            G.GAME.blind.chips = G.GAME.blind.chips / 89
-            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-        end,
-        defeat = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
+        calculate = function(self,instance,context)
+            if context.setting_blind and not context.individual and not context.repetition then
+                for _,joker in pairs(G.jokers.cards) do
+                    if not joker.ability or not joker.ability.rental then
+                        joker:set_rental(true)
+                    end
+                end
+            end
         end,
 
         

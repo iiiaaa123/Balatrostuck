@@ -15,7 +15,7 @@ function Balatrostuck.INIT.Blinds.bl_legacyhoruss()
         boss_colour = HEX('F2BD43'),
         calculate = function(self,card,context)
             if context.stay_flipped and context.to_area == G.hand and
-                card.ability.played_this_ante then
+                context.other_card.ability.played_this_ante then
                 return {
                     stay_flipped = true --might need to be changed
                 }

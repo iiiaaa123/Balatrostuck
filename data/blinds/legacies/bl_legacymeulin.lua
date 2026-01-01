@@ -15,7 +15,8 @@ function Balatrostuck.INIT.Blinds.bl_legacymeulin()
         boss_colour = HEX('F2BD43'),
         calculate = function(self,instance,context)
             if context.stay_flipped and context.to_area == G.hand then
-                    if context.other_card:is_suit(self:get_suit())  then
+                    local _suit = self:get_suit()
+                    if context.other_card:is_suit(_suit)  then
                         return {
                             stay_flipped = true
                         }
