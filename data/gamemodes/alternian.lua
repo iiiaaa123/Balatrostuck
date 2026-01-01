@@ -4,6 +4,8 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
         config = {
             used_bosses = {},
             applied = false,
+            latula_hands = 0,
+            mituna_cost = 0,
         },
         name = 'Alternian',
         apply = function(self,instance,context) --at the start of the run or when applied to the run
@@ -20,6 +22,15 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
             if context.blind_replace and context.blind_type == "boss" then
                 context.new_boss = self.get_next_boss(instance,false)
             end
+
+            if context.setting_blind and instance.ability.latula_hands > 0 and G.GAME.blind.boss then
+                G.GAME.blind.chips = G.GAME.blind.chips * (1.1^instance.ability.latula_hands) --no clean way to un-hardcode this, im afraid
+            end
+
+            if context.end_of_shop and instance.ability.mituna_cost > 0 then
+                G.GAME.G.GAME.inflation = G.GAME.G.GAME.inflation - instance.ability.mituna_cost
+            end
+
         end,
         get_next_boss = function(instance,is_legacy)
             if G.GAME.round_resets.ante >= 13 and not is_legacy then return "bl_bstuck_lordenglish" end --lord english mode.

@@ -13,17 +13,15 @@ function Balatrostuck.INIT.Blinds.bl_legacymituna()
         mult = 1.5,
         dollars = 4,
         boss_colour = HEX('F2BD43'),
-        press_play = function(self)
-            G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
-            G.hand:change_size(-1)
-        end,
-        disable = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-            G.GAME.blind.chips = G.GAME.blind.chips / 89
-            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-        end,
-        defeat = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
+        calculate = function(self,context)
+            if context.pre_discard then
+                if G.GAME.GAMEMODE and G.GAME.GAMEMODE.ability then
+                    G.GAME.GAMEMODE.ability.mituna_cost = G.GAME.GAMEMODE.ability.mituna_cost + 1 --rest is in the gamemode code
+                end
+            end
+            if context.end_of_round and not context.individual and not context.repetition then
+                G.GAME.G.GAME.inflation = G.GAME.inflation + G.GAME.GAMEMODE.ability.mituna_cost --hehe
+            end
         end,
 
         

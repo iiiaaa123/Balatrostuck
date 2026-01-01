@@ -13,22 +13,25 @@ function Balatrostuck.INIT.Blinds.bl_legacymeulin()
         mult = 1.5,
         dollars = 4,
         boss_colour = HEX('F2BD43'),
-        press_play = function(self)
-            G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
-            G.hand:change_size(-1)
-        end,
-        disable = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-            G.GAME.blind.chips = G.GAME.blind.chips / 89
-            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-        end,
-        defeat = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
+        calculate = function(self,context)
+            if context.stay_flipped and context.to_area == G.hand then
+                    if context.other_card:is_suit(self:get_suit())  then
+                        return {
+                            stay_flipped = true
+                        }
+                    end
+            end
         end,
 
-        
+        get_suit = function(self)
+                local suits = {'Spades','Hearts','Diamonds','Clubs'}
+                return pseudorandom_element(suits,pseudoseed(':33> hiii'))
+        end,
         in_pool = function(self)
             return false
+        end,
+        loc_vars = function(self)
+            return {vars = {self:get_suit()}}
         end,
         should_spawn = function(self,as_legacy)
             if as_legacy and G.GAME.round_resets.ante >= 2 then return true end

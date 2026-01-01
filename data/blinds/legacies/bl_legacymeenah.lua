@@ -13,20 +13,14 @@ function Balatrostuck.INIT.Blinds.bl_legacymeenah()
         mult = 1.5,
         dollars = 4,
         boss_colour = HEX('F2BD43'),
-        press_play = function(self)
-            G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
-            G.hand:change_size(-1)
+        calculate = function(self,context)
+            if context.after then
+                for _, joker in ipairs(G.jokers.cards) do
+                    joker.ability.extra_value = (joker.ability.extra_value or 0) - 1
+                    joker:set_cost()
+                end
+            end
         end,
-        disable = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-            G.GAME.blind.chips = G.GAME.blind.chips / 89
-            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-        end,
-        defeat = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-        end,
-
-        
         in_pool = function(self)
             return false
         end,

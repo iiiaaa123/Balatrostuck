@@ -21,6 +21,9 @@ function Balatrostuck.INIT.Blinds.bl_legacycronus()
                 end
             end
         end,
+        disable = function(self)
+            --TODO
+        end,
         
         in_pool = function(self)
             return false

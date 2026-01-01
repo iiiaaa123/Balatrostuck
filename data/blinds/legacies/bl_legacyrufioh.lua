@@ -13,17 +13,14 @@ function Balatrostuck.INIT.Blinds.bl_legacyrufioh()
         mult = 2.25,
         dollars = 4,
         boss_colour = HEX('F2BD43'),
-        press_play = function(self)
-            G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
-            G.hand:change_size(-1)
-        end,
-        disable = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-            G.GAME.blind.chips = G.GAME.blind.chips / 89
-            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-        end,
-        defeat = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
+        calculate = function(self,context)
+            if context.repetition and (context.other_card == context.scoring_hand[1] or context.other_card == context.scoring_hand[2]) then
+                return {
+                    message = localize('k_again_ex'),
+                    repetitions = 1,
+                    card = context.other_card
+                }
+            end
         end,
 
         
