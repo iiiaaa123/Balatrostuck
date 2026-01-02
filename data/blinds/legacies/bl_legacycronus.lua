@@ -22,7 +22,7 @@ function Balatrostuck.INIT.Blinds.bl_legacycronus()
             end
         end,
         disable = function(self)
-            --TODO
+            bstuck_undebuff_and_unflip_from_boss()
         end,
         
         in_pool = function(self)

@@ -23,7 +23,9 @@ function Balatrostuck.INIT.Blinds.bl_legacymituna()
                 G.GAME.inflation = G.GAME.inflation + G.GAME.GAMEMODE.ability.mituna_cost --hehe
             end
         end,
-
+        disable = function(self)
+            G.GAME.GAMEMODE.ability.mituna_cost = 0
+        end,
         
         in_pool = function(self)
             return false

@@ -21,7 +21,10 @@ function Balatrostuck.INIT.Blinds.bl_summoner()
                 }
             end
         end,
-
+        disable = function(self)
+            G.GAME.blind.chips = G.GAME.blind.chips / 3
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+        end,
         
         in_pool = function(self)
             return false

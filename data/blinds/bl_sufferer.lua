@@ -9,7 +9,7 @@ function Balatrostuck.INIT.Blinds.bl_sufferer()
         boss = { min = 1, max = 10},
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=3},
-        mult = 6,
+        mult = 4,
         dollars = 5,
         boss_colour = HEX('F2BD43'),
         calculate = function(self,instance,context)
@@ -18,7 +18,10 @@ function Balatrostuck.INIT.Blinds.bl_sufferer()
                 G.GAME.GAMEMODE.summoner_duration = 2 --needs to be 2 because we're about to end an ante
             end
         end,
-
+        disable = function(self)
+            G.GAME.blind.chips = G.GAME.blind.chips / 2
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+        end,
 
         in_pool = function(self)
             return false

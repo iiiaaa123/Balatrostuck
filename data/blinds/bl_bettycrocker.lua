@@ -18,11 +18,19 @@ function Balatrostuck.INIT.Blinds.bl_bettycrocker()
                 for _,joker in pairs(G.jokers.cards) do
                     if not joker.ability or not joker.ability.rental then
                         joker:set_rental(true)
+                        joker.set_rental_from_crocker = true
                     end
                 end
             end
         end,
-
+        disable = function(self)
+            for _,joker in pairs(G.jokers.cards) do
+                if joker.ability and joker.ability.rental and joker.set_rental_from_crocker then
+                    joker:set_rental(false)
+                    joker.set_rental_from_crocker = nil
+                end
+            end
+        end,
         
         in_pool = function(self)
             return false

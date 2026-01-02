@@ -17,6 +17,7 @@ function Balatrostuck.INIT.Blinds.bl_legacymeulin()
             if context.stay_flipped and context.to_area == G.hand then
                     local _suit = self:get_suit()
                     if context.other_card:is_suit(_suit)  then
+                        context.other_card.flipped_by_meulin = true
                         return {
                             stay_flipped = true
                         }
@@ -27,6 +28,9 @@ function Balatrostuck.INIT.Blinds.bl_legacymeulin()
         get_suit = function(self)
                 local suits = {'Spades','Hearts','Diamonds','Clubs'}
                 return pseudorandom_element(suits,pseudoseed(':33> hiii'))
+        end,
+        disable = function(self)
+            bstuck_undebuff_and_unflip_from_boss()
         end,
         in_pool = function(self)
             return false

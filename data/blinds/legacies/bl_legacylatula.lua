@@ -22,6 +22,9 @@ function Balatrostuck.INIT.Blinds.bl_legacylatula()
                 end
             end
         end,
+        disable = function(self)
+            G.GAME.GAMEMODE.ability.latula_hands = 0
+        end,
 
         
         in_pool = function(self)

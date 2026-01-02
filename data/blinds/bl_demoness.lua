@@ -26,7 +26,9 @@ function Balatrostuck.INIT.Blinds.bl_demoness()
             end
         end,
 
-        
+        disable = function(self)
+            bstuck_undebuff_and_unflip_from_boss()
+        end,
         in_pool = function(self)
             return false
         end,

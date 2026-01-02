@@ -1041,3 +1041,23 @@ function bstuck_add_paradox_card(t)
     --playing_card_joker_effects({ret})
     return ret
 end
+
+function bstuck_undebuff_and_unflip_from_boss()
+    for _,card in G.deck.cards do
+        if card.debuffed_by_blind then
+            card.debuffed_by_blind = nil
+            card:set_debuff(false)
+        end
+    end
+    for _,card in G.hand.cards do
+        if card.debuffed_by_blind then
+            card.debuffed_by_blind = nil
+            card:set_debuff(false)
+        end
+        if card.flipped_by_blind then
+            card.flipped_by_blind = nil
+            if card.facing == 'back' then card:flip() end
+        end
+            
+    end
+end

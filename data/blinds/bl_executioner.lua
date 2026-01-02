@@ -16,14 +16,16 @@ function Balatrostuck.INIT.Blinds.bl_executioner()
         calculate = function(self,instance,context)
             if context.stay_flipped and context.to_area == G.hand and
             pseudorandom('e%ecute') < G.GAME.probabilities.normal / 3 then
-
+                context.other_card.flipped_by_blind = true
                 return {
                     stay_flipped = true --might need to be changed
                 }
                 
             end
         end,
-
+        disable = function(self)
+            bstuck_undebuff_and_unflip_from_boss()
+        end,
 
 
         in_pool = function(self)
