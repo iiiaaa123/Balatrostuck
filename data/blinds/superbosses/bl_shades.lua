@@ -10,22 +10,27 @@ function Balatrostuck.INIT.Blinds.bl_shades()
         boss = { min = 1, max = 10, showdown=true},
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=11},
-        mult = 99,
-        dollars = 15,
+        mult = 2,
+        dollars = 8,
         boss_colour = HEX('F2BD43'),
-        press_play = function(self)
-            G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
-            G.hand:change_size(-1)
+        calculate = function(self,instance,context)
+            if context.debuff_hand then
+                local most_played_key
+                for key, hand in pairs(G.GAME.hands) do
+                    print(key)
+                    if not most_played_key then most_played_key = key 
+                    elseif hand.played > G.GAME.hands[most_played_key].played then
+                       most_played_key = key 
+                    end
+                end
+                if most_played_key and context.scoring_name == most_played_key then
+                    return {
+                        debuff_text = 'You cannot play your most played hand',
+                        debuff = true
+                    }
+                end
+            end
         end,
-        disable = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-            G.GAME.blind.chips = G.GAME.blind.chips / 89
-            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-        end,
-        defeat = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-        end,
-
         
         in_pool = function(self)
             return false

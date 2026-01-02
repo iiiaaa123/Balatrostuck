@@ -10,13 +10,15 @@ function Balatrostuck.INIT.Blinds.bl_lordenglish()
         boss = { min = 1, max = 10, showdown=true},
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=11},
-        mult = 99,
-        dollars = 15,
+        mult = 2,
+        dollars = 8,
         boss_colour = HEX('F2BD43'),
         press_play = function(self)
             G.GAME.modifiers.bstuck_LORDENGLISHMODE = true
+            G.GAME.modifiers.bstuck_LORDENGLISHMODE_remove_blinds = true
         end,
         disable = function(self)
+            G.GAME.modifiers.bstuck_LORDENGLISHMODE_remove_blinds = nil
         end,
         defeat = function(self)
         end,

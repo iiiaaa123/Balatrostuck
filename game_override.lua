@@ -566,15 +566,15 @@ function reset_blinds()
         SMODS.calculate_context(context)
         if context.new_boss ~= "" then G.GAME.round_resets.blind_choices.Small = context.new_boss;print("Small replaced") end
 
-        G.GAME.round_resets.blind_states.Small = G.GAME.modifiers.bstuck_LORDENGLISHMODE and 'Hide' or 'Upcoming'
+        G.GAME.round_resets.blind_states.Small = G.GAME.modifiers.bstuck_LORDENGLISHMODE_remove_blinds and 'Hide' or 'Upcoming'
         context = {blind_replace = true, blind_type = "big", new_boss = ""}
         SMODS.calculate_context(context)
         if context.new_boss ~= "" then G.GAME.round_resets.blind_choices.Big = context.new_boss end
 
         G.GAME.round_resets.blind_choices.Boss = get_new_boss()
-        G.GAME.round_resets.blind_states.Big = G.GAME.modifiers.bstuck_LORDENGLISHMODE and 'Hide' or 'Upcoming'
+        G.GAME.round_resets.blind_states.Big = G.GAME.modifiers.bstuck_LORDENGLISHMODE_remove_blinds and 'Hide' or 'Upcoming'
         G.GAME.round_resets.blind_states.Boss = 'Upcoming'
-        G.GAME.blind_on_deck = G.GAME.modifiers.bstuck_LORDENGLISHMODE and 'Boss' or 'Small'
+        G.GAME.blind_on_deck = G.GAME.modifiers.bstuck_LORDENGLISHMODE_remove_blinds and 'Boss' or 'Small'
         G.GAME.round_resets.boss_rerolled = false
     end
 end
