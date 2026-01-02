@@ -23,11 +23,16 @@ function Balatrostuck.INIT.Blinds.bl_legacymeulin()
                         }
                     end
             end
+            if context.round_eval then
+                G.GAME.GAMEMODE.meulin_suit = nil
+            end
         end,
 
         get_suit = function(self)
+                if G.GAME.GAMEMODE.meulin_suit then return G.GAME.GAMEMODE.meulin_suit end
                 local suits = {'Spades','Hearts','Diamonds','Clubs'}
-                return pseudorandom_element(suits,pseudoseed(':33> hiii'))
+                G.GAME.GAMEMODE.meulin_suit = pseudorandom_element(suits,pseudoseed(':33> hiii'))
+                return G.GAME.GAMEMODE.meulin_suit
         end,
         disable = function(self)
             bstuck_undebuff_and_unflip_from_boss()

@@ -5,10 +5,11 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
             used_bosses = {},
             applied = false,
             latula_hands = 0,
-            mituna_cost = 0,
+            mituna_discards = 0,
             dolorosa_active = false,
             summoner_duration = 0,
             hands_played_this_ante = {},
+            meulin_suit = nil,
         },
         name = 'Alternian',
         apply = function(self,instance,context) --at the start of the run or when applied to the run
@@ -35,7 +36,7 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
             end
 
             --for legislacerator
-            if context.joker_main then
+            if context.before and context.scoring_name then
                 instance.ability.hands_played_this_ante[#instance.ability.hands_played_this_ante+1] = context.scoring_name
             end
 
@@ -47,9 +48,9 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
                 instance.ability.hands_played_this_ante = {}
             end
 
-            if context.end_of_shop and instance.ability.mituna_cost > 0 then
-                G.GAME.G.GAME.inflation = G.GAME.G.GAME.inflation - instance.ability.mituna_cost
-                instance.ability.mituna_cost = 0
+            if context.end_of_shop and instance.ability.mituna_discards > 0 then
+                G.GAME.G.GAME.inflation = G.GAME.G.GAME.inflation - instance.ability.mituna_discards
+                instance.ability.mituna_discards = 0
             end
 
         end,

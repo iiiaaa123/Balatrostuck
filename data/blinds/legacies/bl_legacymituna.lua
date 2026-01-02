@@ -16,15 +16,15 @@ function Balatrostuck.INIT.Blinds.bl_legacymituna()
         calculate = function(self,instance,context)
             if context.pre_discard then
                 if G.GAME.GAMEMODE and G.GAME.GAMEMODE.ability then
-                    G.GAME.GAMEMODE.ability.mituna_cost = G.GAME.GAMEMODE.ability.mituna_cost + 1 --rest is in the gamemode code
+                    G.GAME.GAMEMODE.ability.mituna_discards = G.GAME.GAMEMODE.ability.mituna_discards + 1 --rest is in the gamemode code
                 end
             end
             if context.end_of_round and not context.individual and not context.repetition then
-                G.GAME.inflation = G.GAME.inflation + G.GAME.GAMEMODE.ability.mituna_cost --hehe
+                G.GAME.inflation = G.GAME.inflation + G.GAME.GAMEMODE.ability.mituna_discards --hehe
             end
         end,
         disable = function(self)
-            G.GAME.GAMEMODE.ability.mituna_cost = 0
+            G.GAME.GAMEMODE.ability.mituna_discards = 0
         end,
         
         in_pool = function(self)
