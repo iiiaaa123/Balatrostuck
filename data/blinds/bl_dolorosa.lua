@@ -27,7 +27,7 @@ function Balatrostuck.INIT.Blinds.bl_dolorosa()
             end
 
             if context.selling_card then
-                if context.card.confiig.center.set == 'Joker' then
+                if context.card.config.center.set == 'Joker' then
                     G.GAME.GAMEMODE.ability.dolorosa_active = false
                 end
             end

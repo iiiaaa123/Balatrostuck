@@ -15,7 +15,7 @@ function Balatrostuck.INIT.Blinds.bl_cherub()
         boss_colour = HEX('F2BD43'),
         calculate = function(self,instance,context)
             if context.setting_blind then
-                    for _,card in G.jokers.cards do
+                    for _,card in ipairs(G.jokers.cards) do
                         if not card.debuff then
                             card.debuffed_by_blind = true
                             card:set_debuff(true)
