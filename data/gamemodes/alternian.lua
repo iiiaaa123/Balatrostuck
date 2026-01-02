@@ -10,6 +10,7 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
             summoner_duration = 0,
             hands_played_this_ante = {},
             meulin_suit = nil,
+            orphaner_triggered = false,
             juju_hands = 0,
         },
         name = 'Alternian',
@@ -46,6 +47,7 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
                     instance.ability.summoner_duration = instance.ability.summoner_duration - 1
                     if instance.ability.summoner_duration == 0 then G.GAME.effect.config.reroll_discount = G.GAME.effect.config.reroll_discount + 1 end
                 end
+                instance.ability.orphaner_triggered = false
                 instance.ability.hands_played_this_ante = {}
             end
 

@@ -13,10 +13,11 @@ function Balatrostuck.INIT.Blinds.bl_orphaner()
         dollars = 5,
         boss_colour = HEX('F2BD43'),
         calculate = function(self,instance,context)
-            if context.zodiac_triggered then
+            if context.zodiac_triggered and not G.GAME.GAMEMODE.ability.orphaner_triggered then
                 
                 local key = string.sub(context.zodiac.key,14):lower():gsub("^%l", string.upper) --i will never forgive you for making me do this
                 Balatrostuck.Zodiac:remove_caste(key)
+                G.GAME.GAMEMODE.ability.orphaner_triggered = true
             end
         end,
 
