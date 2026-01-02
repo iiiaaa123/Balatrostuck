@@ -14,7 +14,7 @@ function Balatrostuck.INIT.Blinds.bl_sufferer()
         boss_colour = HEX('F2BD43'),
         calculate = function(self,instance,context)
             if context.end_of_round and not context.individual and not context.repetition then
-                G.GAME.effect.config.reroll_discount = G.GAME.effect.config.reroll_discount - 1
+                G.GAME.effect.config.reroll_discount = (G.GAME.effect.config.reroll_discount or 0) - 1
                 G.GAME.GAMEMODE.summoner_duration = 2 --needs to be 2 because we're about to end an ante
             end
         end,

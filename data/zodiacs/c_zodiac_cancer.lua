@@ -45,7 +45,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_cancer()
             if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
                 local card = context.other_card
                 local scoring_hand = context.scoring_hand
-
+                SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
                 return {
                     func = function()
                         local delay = 0.5

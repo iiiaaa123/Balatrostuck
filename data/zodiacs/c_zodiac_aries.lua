@@ -57,7 +57,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aries()
                 for k,v in pairs(G.discard.cards) do
                     if v:get_id() == self.ability.rank and not v.ignore_aries then scottthewoz = scottthewoz + 1 end
                 end
-                
+                SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
                 return {
                     x_mult = 1 + ((self:level(context.other_card) / 2) * scottthewoz),
                     card = context.other_card

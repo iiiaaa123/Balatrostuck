@@ -64,9 +64,6 @@ function Balatrostuck.Zodiac:add_caste(key)
     table.insert(G.GAME.BALATROSTUCK.active_castes, newCaste)
   end
 
-function Balatrostuck.Zodiac:remove_caste(key)
-  if G.GAME.BALATROSTUCK.zodiac_levels[key] then G.GAME.BALATROSTUCK.zodiac_levels[key] = 0 end
-end
 
   G.GAME.BALATROSTUCK.zodiac_levels[key] = G.GAME.BALATROSTUCK.zodiac_levels[key] + self:get_level_increase(key)
   if G.GAME.BALATROSTUCK.zodiac_levels[key] >= 5 then
@@ -76,7 +73,30 @@ end
   check_for_unlock({type = 'bstuck_backseater'})
   end
 end
+function Balatrostuck.Zodiac:remove_caste(key)
+  if G.GAME.BALATROSTUCK.zodiac_levels[key] then
+     G.GAME.BALATROSTUCK.zodiac_levels[key] = 0 
+    if G.hand and G.hand.cards then
+      local sound = {sound = 'gold_seal', per = 1.2, vol = 0.4}
+        for _, _card in ipairs(G.hand.cards) do
+            if _card:get_id() == zodiac_to_rank(key) then
+              _card:juice_up(0.3, 0.3)
+              play_sound(sound.sound, sound.per, sound.vol)
+            end
+        end
+    end
+    if G.play and G.play.cards then
+      local sound = {sound = 'gold_seal', per = 1.2, vol = 0.4}
+        for _, _card in ipairs(G.play.cards) do
+            if _card:get_id() == zodiac_to_rank(key) then
+              _card:juice_up(0.3, 0.3)
+              play_sound(sound.sound, sound.per, sound.vol)
+            end
+        end
+    end
 
+  end
+end
 function Balatrostuck.Zodiac:get_level_increase(key)
   local amount = 1
   local hi = {}

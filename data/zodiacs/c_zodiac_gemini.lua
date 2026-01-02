@@ -39,6 +39,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_gemini()
             if context.repetition and self:level(context.other_card) < 1 then return end
 
             if context.repetition and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
+                SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
 				return {
 					message = 'agaiin!',
                     colour = G.C.MONEY,

@@ -59,6 +59,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_ophiuchus()
                                 _card.alreadyDead = false
                                 return true
                             end}))
+                            SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
                             SMODS.calculate_effect({xmult = 1.25 ^ self:level(_card)}, _card)
 
 
@@ -93,6 +94,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_ophiuchus()
                             end
                             for i=1, #_repjokers do
                                 card_eval_status_text(_repjokers[i], 'extra', nil, nil, nil, {message = localize('k_again_ex')})
+                                SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
                                 SMODS.calculate_effect({xmult = 1.25 ^ self:level(_card)}, _card)
                                 delay(0.3)
                             end

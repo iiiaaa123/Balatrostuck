@@ -39,6 +39,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_taurus()
             if context.discard and self:level(context.other_card) < 1 then return end
 
             if context.discard and context.other_card:get_id() == self.ability.rank then
+                SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
                 return {
                     func = function()
                         play_sound('xchips',0.8,0.4)

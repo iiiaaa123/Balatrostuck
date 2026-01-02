@@ -14,7 +14,7 @@ function Balatrostuck.INIT.Blinds.bl_legacyrufioh()
         dollars = 4,
         boss_colour = HEX('F2BD43'),
         calculate = function(self,instance,context)
-            if context.repetition and (context.other_card == context.scoring_hand[1] or context.other_card == context.scoring_hand[2]) then
+            if context.repetition and context.scoring_hand and (context.other_card == context.scoring_hand[1] or context.other_card == context.scoring_hand[2]) then
                 return {
                     message = localize('k_again_ex'),
                     repetitions = 1,

@@ -54,6 +54,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_sagittarius()
                 end
                 
                 if milk then
+                    SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
                     return {
                         chips = 20 * self:level(context.other_card),
                         card = context.other_card

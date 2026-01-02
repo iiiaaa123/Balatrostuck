@@ -47,6 +47,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_virgo()
                         card = context.other_card,
                     }
                 else
+                    SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
                     return {
                         h_mult = summation(1 + self:level(context.other_card)),
                         card = context.other_card

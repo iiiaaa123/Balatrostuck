@@ -13,7 +13,7 @@ function Balatrostuck.INIT.Blinds.bl_summoner()
         dollars = 5,
         boss_colour = HEX('F2BD43'),
         calculate = function(self,instance,context)
-            if context.repetition and context.cardarea == G.hand then
+            if context.repetition and context.cardarea == G.play then
                 return {
                     message = localize('k_again_ex'),
                     repetitions = 1,

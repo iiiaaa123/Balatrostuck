@@ -48,6 +48,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_leo()
                             card_eval_status_text(_card, 'debuff')
                         else
                             if pseudorandom('leo') < G.GAME.probabilities.normal/self.ability.config.odds then
+                                SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
                                 card_eval_status_text(_card, 'dollars', self:level(context.other_card))
                                 ease_dollars(self:level(context.other_card))
                             end
@@ -79,6 +80,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_leo()
                             end
                             for i=1, #_repjokers do
                                 if pseudorandom('leo'..i) < G.GAME.probabilities.normal/self.ability.config.odds then
+                                    SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
                                     card_eval_status_text(_repjokers[i], 'extra', nil, nil, nil, {message = localize('k_again_ex')})
                                     card_eval_status_text(_card, 'dollars', self:level(context.other_card))
                                     ease_dollars(self:level(context.other_card))

@@ -43,6 +43,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_libra()
             if context.individual and self:level(context.other_card) < 1 then return end
 
             if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
+                SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
                 return {
                     x_mult = 1 + (self:level(context.other_card) / 10),
                     card = context.other_card

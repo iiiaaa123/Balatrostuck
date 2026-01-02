@@ -42,6 +42,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_aquarius()
                     if context.removed[i]:get_id() == self.ability.rank then
                         for i=1, self:level(context.removed[i]) do
                             bstuck_give_random_tag("aqua")
+                            SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
                         end
                     end
                 end

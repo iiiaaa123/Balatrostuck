@@ -39,6 +39,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_pisces()
             if context.individual and self:level(context.other_card) < 1 then return end
             
             if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
+                SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
                 return {
                     dollars = (3 * self:level(context.other_card)) - G.GAME.current_round.hands_left,
                     card = context.other_card

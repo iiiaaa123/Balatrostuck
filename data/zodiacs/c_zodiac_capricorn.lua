@@ -50,6 +50,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_capricorn()
                         card = context.other_card,
                     }
                 else
+                    SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
                     return {
                         x_mult = 1 / (self:level(context.other_card) + 1),
                         card = context.other_card
@@ -59,6 +60,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_capricorn()
         
 
             if context.individual and context.cardarea == G.play and context.other_card:get_id() == self.ability.rank then
+                SMODS.calculate_context({zodiac_triggered = true, zodiac = self})
                 return {
                     x_mult = self:level(context.other_card)*0.5+1,
                     card = context.other_card
