@@ -15,11 +15,19 @@ function Balatrostuck.INIT.Blinds.bl_helmsman()
         calculate = function(self,instance,context)
             if context.setting_blind then
                 for i=1, #G.deck.cards/2 do
+                    local card = G.deck.cards[#G.deck.cards-i]
+                    card.discarded_by_blind = true
                     draw_card(G.deck,G.discard, i*100/(#G.deck.cards/2),'down', nil, nil, 0.07)
                 end
             end
         end,
-
+        disable = function(self)
+            for _,v in pairs(G.discard.cards) do
+                if v.discarded_by_blind then 
+                    draw_card(G.disacrd,G.deck, 100/(#G.deck.cards/2),'up', nil, v, 0.07)
+                end
+            end
+        end,
         
         in_pool = function(self)
             return false
