@@ -11,8 +11,8 @@ function Balatrostuck.INIT.Tags.t_carapacian()
             }
         },
         pos = {
-            x = 1,
-            y = 1
+            x = 0,
+            y = 2
         },
         atlas = 'HomestuckTags',
         
