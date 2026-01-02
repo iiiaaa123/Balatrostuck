@@ -27,6 +27,7 @@ function Balatrostuck.INIT.Blinds.bl_legacyaranea()
                 pseudoshuffle(your_jokers, pseudoseed('spider'))
                 for _,joker in pairs(your_jokers) do
                     if not joker.ability.eternal then 
+                        joker:juice_up()
                         joker:set_eternal(true)
                         break
                     end

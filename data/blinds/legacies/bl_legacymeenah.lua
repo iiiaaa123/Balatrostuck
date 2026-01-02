@@ -17,6 +17,7 @@ function Balatrostuck.INIT.Blinds.bl_legacymeenah()
             if context.after then
                 for _, joker in ipairs(G.jokers.cards) do
                     joker.ability.extra_value = (joker.ability.extra_value or 0) - 1
+                    card_eval_status_text(joker, 'extra', nil, nil, nil, {message = "m$ney bitch", colour = G.C.MONEY})
                     joker:set_cost()
                 end
             end

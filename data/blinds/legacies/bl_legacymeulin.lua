@@ -3,7 +3,7 @@ function Balatrostuck.INIT.Blinds.bl_legacymeulin()
         key = 'legacymeulin',
         loc_txt = {
             name = "Meulin's Legacy",
-            text = {'[suit] is drawn',
+            text = {'#1# are drawn',
                 'face-down'}
         },
         hands_sub = 0,
@@ -42,6 +42,11 @@ function Balatrostuck.INIT.Blinds.bl_legacymeulin()
         end,
         loc_vars = function(self)
             return {vars = {self:get_suit()}}
+        end,
+        collection_loc_vars = function(self)
+            local suits = {'Spades','Hearts','Diamonds','Clubs'}
+            local suit = pseudorandom_element(suits,pseudoseed(':33> hiii'))
+            return {vars = {suit}}
         end,
         should_spawn = function(self,as_legacy)
             if as_legacy and G.GAME.round_resets.ante >= 2 then return true end

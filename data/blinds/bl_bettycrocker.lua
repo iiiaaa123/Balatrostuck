@@ -17,6 +17,7 @@ function Balatrostuck.INIT.Blinds.bl_bettycrocker()
             if context.setting_blind and not context.individual and not context.repetition then
                 for _,joker in pairs(G.jokers.cards) do
                     if not joker.ability or not joker.ability.rental then
+                        joker:juice_up()
                         joker:set_rental(true)
                         joker.set_rental_from_crocker = true
                     end
@@ -26,6 +27,7 @@ function Balatrostuck.INIT.Blinds.bl_bettycrocker()
         disable = function(self)
             for _,joker in pairs(G.jokers.cards) do
                 if joker.ability and joker.ability.rental and joker.set_rental_from_crocker then
+                    joker:juice_up()
                     joker:set_rental(false)
                     joker.set_rental_from_crocker = nil
                 end
