@@ -17,8 +17,10 @@ function Balatrostuck.INIT.Blinds.bl_legislacerator()
             if context.before and context.scoring_name then
                 if bstuck_in_table(context.scoring_name,G.GAME.GAMEMODE.ability.hands_played_this_ante) then
                     for _,card in ipairs(G.play.cards) do
-                        card:set_debuff(true)
-                        if card.debuff then card.debuffed_by_blind = true end
+                        if not card.debuff then
+                            card:set_debuff(true)
+                            if card.debuff then card.debuffed_by_blind = true end
+                        end
                     end
                 end
             end

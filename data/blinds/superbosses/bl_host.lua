@@ -10,20 +10,20 @@ function Balatrostuck.INIT.Blinds.bl_host()
         boss = { min = 1, max = 10, showdown=true},
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=11},
-        mult = 99,
-        dollars = 15,
+        mult = 6,
+        dollars = 8,
         boss_colour = HEX('F2BD43'),
-        press_play = function(self)
-            G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
-            G.hand:change_size(-1)
+        calculate = function(self,instance,context)
+            if context.final_scoring_step then
+                if G.GAME.chips < G.GAME.blind.chips then
+                    G.GAME.chips = 0
+                end
+            end
         end,
+
         disable = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-            G.GAME.blind.chips = G.GAME.blind.chips / 89
+            G.GAME.blind.chips = G.GAME.blind.chips / 3
             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-        end,
-        defeat = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
         end,
 
         

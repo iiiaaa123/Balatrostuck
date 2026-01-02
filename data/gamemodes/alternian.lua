@@ -10,6 +10,7 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
             summoner_duration = 0,
             hands_played_this_ante = {},
             meulin_suit = nil,
+            juju_hands = 0,
         },
         name = 'Alternian',
         apply = function(self,instance,context) --at the start of the run or when applied to the run

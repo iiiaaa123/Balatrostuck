@@ -10,21 +10,23 @@ function Balatrostuck.INIT.Blinds.bl_clown()
         boss = { min = 1, max = 10, showdown=true},
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=11},
-        mult = 99,
-        dollars = 15,
+        mult = 2,
+        dollars = 8,
         boss_colour = HEX('F2BD43'),
-        press_play = function(self)
-            G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
-            G.hand:change_size(-1)
+        calculate = function(self,instance,context)
+            if context.after then
+                if G.jokers.cards[1] then
+                    G.E_MANAGER:add_event(Event{
+                        func = function()
+                            G.jokers.cards[1]:splatter()
+                            return true 
+                        end
+                    })
+                end
+            end
         end,
-        disable = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-            G.GAME.blind.chips = G.GAME.blind.chips / 89
-            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-        end,
-        defeat = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-        end,
+
+
 
         
         in_pool = function(self)

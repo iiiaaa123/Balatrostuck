@@ -14,16 +14,24 @@ function Balatrostuck.INIT.Blinds.bl_legacykurloz()
         dollars = 4,
         boss_colour = HEX('F2BD43'),
         calculate = function(self,instance,context)
-            if context.end_of_round and not context.individual and not context.repetition then
+            if context.setting_blind and not context.individual and not context.repetition then
                 for _,joker in pairs(G.jokers.cards) do
                     if not joker.edition or joker.edition.key ~= 'e_bstuck_paradox' then
                         joker:set_edition('e_bstuck_paradox',true,true)
+                        joker.paradoxed_by_blind = true
                         break
                     end
                 end
             end
         end,
-
+        disable = function(self)
+            for _,joker in pairs(G.jokers.cards) do
+                if joker.edition.key == 'e_bstuck_paradox' and joker.paradoxed_by_blind == true then
+                    joker:set_edition() --should work
+                    joker.paradoxed_by_blind = nil
+                end
+            end
+        end,
         
         in_pool = function(self)
             return false

@@ -16,12 +16,16 @@ function Balatrostuck.INIT.Blinds.bl_demoness()
         calculate = function(self,instance,context)
             if context.final_scoring_step then
                 for _, card in pairs(G.hand.cards) do
-                        card:set_debuff(true)
-                        if card.debuff then card.debuffed_by_blind = true end
+                        if not card.debuff then
+                            card:set_debuff(true)
+                            if card.debuff then card.debuffed_by_blind = true end
+                        end
                 end
                 for _, card in pairs(G.deck.cards) do
+                    if not card.debuff then
                         card:set_debuff(true)
-                    if card.debuff then card.debuffed_by_blind = true end
+                        if card.debuff then card.debuffed_by_blind = true end
+                    end
                 end
             end
         end,

@@ -16,7 +16,7 @@ function Balatrostuck.INIT.Blinds.bl_manipulator()
         calculate = function(self,instance,context)
             if context.hand_drawn and not context.first_hand_drawn then
                 for _,card in pairs(G.hand.cards) do
-                    if card.made_by_manipulator then return end
+                    if card.made_by_manipulator then return end --this gets called twice, so im making sure not to add 2 8s
                 end
                 local _card = SMODS.create_card({rank = "8",set = 'Base'})
                 G.E_MANAGER:add_event(Event({

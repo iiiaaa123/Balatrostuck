@@ -10,20 +10,23 @@ function Balatrostuck.INIT.Blinds.bl_juju()
         boss = { min = 1, max = 10, showdown=true},
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=11},
-        mult = 99,
-        dollars = 15,
+        mult = 0.5,
+        dollars = 8,
         boss_colour = HEX('F2BD43'),
-        press_play = function(self)
-            G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
-            G.hand:change_size(-1)
+        calculate = function(self,instance,context)
+            if context.after then
+                G.GAME.GAMEMODE.ability.juju_hands = G.GAME.GAMEMODE.ability.juju_hands + 1
+            end
+            if context.end_of_round and not context.individual and not context.repetition then
+                G.GAME.round_resets.hands = G.GAME.round_resets.hands - G.GAME.GAMEMODE.ability.juju_hands
+                G.GAME.GAMEMODE.ability.juju_hands = 0
+            end
         end,
+
         disable = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-            G.GAME.blind.chips = G.GAME.blind.chips / 89
+            G.GAME.GAMEMODE.ability.juju_hands = 0
+            G.GAME.blind.chips = G.GAME.blind.chips * 4
             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-        end,
-        defeat = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
         end,
 
         

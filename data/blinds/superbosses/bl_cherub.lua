@@ -10,22 +10,25 @@ function Balatrostuck.INIT.Blinds.bl_cherub()
         boss = { min = 1, max = 10, showdown=true},
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=11},
-        mult = 99,
-        dollars = 15,
+        mult = 0.5,
+        dollars = 8,
         boss_colour = HEX('F2BD43'),
-        press_play = function(self)
-            G.GAME.blind.hands_sub = (G.GAME.blind.hands_sub or 0) + 1
-            G.hand:change_size(-1)
-        end,
-        disable = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
-            G.GAME.blind.chips = G.GAME.blind.chips / 89
-            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-        end,
-        defeat = function(self)
-            G.hand:change_size(G.GAME.blind.hands_sub)
+        calculate = function(self,instance,context)
+            if context.setting_blind then
+                    for _,card in G.jokers.cards do
+                        if not card.debuff then
+                            card.debuffed_by_blind = true
+                            card:set_debuff(true)
+                        end
+                    end
+            end
         end,
 
+        disable = function(self)
+            G.GAME.blind.chips = G.GAME.blind.chips * 4
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            bstuck_undebuff_and_unflip_from_boss()
+        end,
         
         in_pool = function(self)
             return false
