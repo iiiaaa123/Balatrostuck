@@ -97,7 +97,7 @@ local edition_list = {
 }
 
 local seal_list = {
-    "felt"
+    "felt", "lusus"
 }
 
 local blind_list = {
@@ -117,7 +117,8 @@ local spectral_list = {
     'lotuscapsule',
     "scratchconstruct",
     "thetreasure",
-    '13ofstars'
+    '13ofstars',
+    "glbgolyb"
 }
 
 local deck_list = {
