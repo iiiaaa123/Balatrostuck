@@ -9,7 +9,7 @@ function Balatrostuck.INIT.Blinds.bl_shades()
         hands_sub = 0,
         boss = { min = 1, max = 10, showdown=true},
         atlas = 'HomestuckBlinds',
-        pos = {x=0,y=11},
+        pos = {x=0,y=12},
         mult = 2,
         dollars = 8,
         boss_colour = HEX('f2a400'),
