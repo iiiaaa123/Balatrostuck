@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_clown()
         pos = {x=0,y=11},
         mult = 2,
         dollars = 8,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('2b0057'),
         calculate = function(self,instance,context)
             if context.after then
                 if G.jokers.cards[1] then

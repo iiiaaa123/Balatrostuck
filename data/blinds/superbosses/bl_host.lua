@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_host()
         pos = {x=0,y=11},
         mult = 6,
         dollars = 8,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('ffffff'),
         calculate = function(self,instance,context)
             if context.final_scoring_step then
                 if G.GAME.chips < G.GAME.blind.chips then

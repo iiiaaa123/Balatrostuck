@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_cherub()
         pos = {x=0,y=11},
         mult = 0.5,
         dollars = 8,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('2ed73a'),
         calculate = function(self,instance,context)
             if context.setting_blind then
                     for _,card in ipairs(G.jokers.cards) do

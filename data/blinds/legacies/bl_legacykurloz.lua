@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_legacykurloz()
         pos = {x=0,y=1},
         mult = 1.5,
         dollars = 4,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('6c00da'),
         calculate = function(self,instance,context)
             if context.setting_blind and not context.individual and not context.repetition then
                 for _,joker in pairs(G.jokers.cards) do

@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_legacyrufioh()
         pos = {x=0,y=1},
         mult = 2.25,
         dollars = 4,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('a15000'),
         calculate = function(self,instance,context)
             if context.repetition and context.scoring_hand and (context.other_card == context.scoring_hand[1] or context.other_card == context.scoring_hand[2]) then
                 return {

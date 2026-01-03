@@ -2,7 +2,7 @@ function Balatrostuck.INIT.Blinds.bl_manipulator()
     SMODS.Blind({
         key = 'manipulator',
         loc_txt = {
-            name = 'The Manipulator',
+            name = 'The Marquise',
             text = {'On play or discard create a paradox 8.',
                 "It's always selected."}
         },
@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_manipulator()
         pos = {x=0,y=7},
         mult = 2,
         dollars = 5,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('005682'),
         calculate = function(self,instance,context)
             if context.hand_drawn and not context.first_hand_drawn then
                 for _,card in pairs(G.hand.cards) do

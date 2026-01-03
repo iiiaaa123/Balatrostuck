@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_legacyporrim()
         pos = {x=0,y=1},
         mult = 1.5,
         dollars = 4,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('008141'),
         calculate = function(self,instance,context)
             if context.individual and context.cardarea == G.play and context.other_card:get_id() ~= 12 then
                 return {

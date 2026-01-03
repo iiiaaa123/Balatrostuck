@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_legacydamara()
         pos = {x=0,y=1},
         mult = 1.5,
         dollars = 4,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('a10000'),
         calculate = function(self,instance,context)
             if context.before then
                  ease_hands_played(-1)

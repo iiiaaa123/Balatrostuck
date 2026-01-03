@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_legacymeulin()
         pos = {x=0,y=1},
         mult = 1.5,
         dollars = 4,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('416600'),
         calculate = function(self,instance,context)
             if context.stay_flipped and context.to_area == G.hand then
                     local _suit = self:get_suit()

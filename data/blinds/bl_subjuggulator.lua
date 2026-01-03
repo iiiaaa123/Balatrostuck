@@ -11,7 +11,7 @@ function Balatrostuck.INIT.Blinds.bl_subjuggulator()
         pos = {x=0,y=9},
         mult = 2,
         dollars = 5,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('6c00da'),
         calculate = function(self,instance,context)
             if context.destroying_card and (context.cardarea == G.play or context.cardarea == 'unscored') then
                 return {remove = true}

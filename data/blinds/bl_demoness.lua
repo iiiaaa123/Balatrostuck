@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_demoness()
         pos = {x=0,y=0},
         mult = 2,
         dollars = 5,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('a10000'),
         calculate = function(self,instance,context)
             if context.final_scoring_step then
                 for _, card in pairs(G.hand.cards) do

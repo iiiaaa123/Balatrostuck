@@ -11,7 +11,7 @@ function Balatrostuck.INIT.Blinds.bl_summoner()
         pos = {x=0,y=1},
         mult = 6,
         dollars = 5,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('a15000'),
         calculate = function(self,instance,context)
             if context.repetition and context.cardarea == G.play then
                 return {

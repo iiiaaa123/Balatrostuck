@@ -2,7 +2,7 @@ function Balatrostuck.INIT.Blinds.bl_legislacerator()
     SMODS.Blind({
         key = 'legislacerator',
         loc_txt = {
-            name = 'The Legislacerator',
+            name = 'The Neophyte',
             text = {'If played hand was played this ante',
                 'debuff all played cards'}
         },
@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_legislacerator()
         pos = {x=0,y=6},
         mult = 2,
         dollars = 5,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('008282'),
         calculate = function(self,instance,context)
             if context.before and context.scoring_name then
                 if bstuck_in_table(context.scoring_name,G.GAME.GAMEMODE.ability.hands_played_this_ante) then

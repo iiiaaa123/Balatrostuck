@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_muscle()
         pos = {x=0,y=11},
         mult = 2,
         dollars = 8,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('000056'),
         calculate = function(self,instance,context)
             if context.stay_flipped and context.to_area == G.hand then
                 context.other_card.flipped_by_blind = true

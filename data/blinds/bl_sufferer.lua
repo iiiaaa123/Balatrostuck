@@ -11,7 +11,7 @@ function Balatrostuck.INIT.Blinds.bl_sufferer()
         pos = {x=0,y=3},
         mult = 4,
         dollars = 5,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('626262'),
         calculate = function(self,instance,context)
             if context.end_of_round and not context.individual and not context.repetition then
                 G.GAME.effect.config.reroll_discount = (G.GAME.effect.config.reroll_discount or 0) - 1

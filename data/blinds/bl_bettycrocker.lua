@@ -2,7 +2,7 @@ function Balatrostuck.INIT.Blinds.bl_bettycrocker()
     SMODS.Blind({
         key = 'bettycrocker',
         loc_txt = {
-            name = 'Betty Crocker',
+            name = 'The Condesce',
             text = {'all your jokers',
                 'become rental'}
         },
@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_bettycrocker()
         pos = {x=0,y=11},
         mult = 2,
         dollars = 5,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('77003c'),
         calculate = function(self,instance,context)
             if context.setting_blind and not context.individual and not context.repetition then
                 for _,joker in pairs(G.jokers.cards) do

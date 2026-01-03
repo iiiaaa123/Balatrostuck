@@ -11,7 +11,7 @@ function Balatrostuck.INIT.Blinds.bl_orphaner()
         pos = {x=0,y=10},
         mult = 2,
         dollars = 5,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('6a006a'),
         calculate = function(self,instance,context)
             if context.zodiac_triggered and not G.GAME.GAMEMODE.ability.orphaner_triggered then
                 

@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_juju()
         pos = {x=0,y=11},
         mult = 0.5,
         dollars = 8,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('ffe6d1'),
         calculate = function(self,instance,context)
             if context.after then
                 G.GAME.GAMEMODE.ability.juju_hands = G.GAME.GAMEMODE.ability.juju_hands + 1

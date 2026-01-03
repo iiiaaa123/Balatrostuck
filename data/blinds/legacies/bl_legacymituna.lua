@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_legacymituna()
         pos = {x=0,y=1},
         mult = 1.5,
         dollars = 4,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('a1a100'),
         calculate = function(self,instance,context)
             if context.pre_discard then
                 if G.GAME.GAMEMODE and G.GAME.GAMEMODE.ability then

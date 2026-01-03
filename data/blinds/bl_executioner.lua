@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_executioner()
         pos = {x=0,y=8},
         mult = 2,
         dollars = 5,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('0022cb'),
         calculate = function(self,instance,context)
             if context.stay_flipped and context.to_area == G.hand and
             pseudorandom('e%ecute') < G.GAME.probabilities.normal / 3 then

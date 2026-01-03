@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_shades()
         pos = {x=0,y=11},
         mult = 2,
         dollars = 8,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('f2a400'),
         calculate = function(self,instance,context)
             if context.debuff_hand then
                 local most_played_key

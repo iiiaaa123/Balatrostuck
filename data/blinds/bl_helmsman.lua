@@ -11,7 +11,7 @@ function Balatrostuck.INIT.Blinds.bl_helmsman()
         pos = {x=0,y=2},
         mult = 2,
         dollars = 5,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('a1a100'),
         calculate = function(self,instance,context)
             if context.setting_blind then
                 for i=1, #G.deck.cards/2 do

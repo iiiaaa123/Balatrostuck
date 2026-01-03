@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_lordenglish()
         pos = {x=0,y=11},
         mult = 2,
         dollars = 8,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('2ed73a'),
         press_play = function(self)
             G.GAME.modifiers.bstuck_LORDENGLISHMODE = true
             G.GAME.modifiers.bstuck_LORDENGLISHMODE_remove_blinds = true

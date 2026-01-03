@@ -11,7 +11,7 @@ function Balatrostuck.INIT.Blinds.bl_dolorosa()
         pos = {x=0,y=5},
         mult = 2,
         dollars = 5,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('008141'),
         calculate = function(self,instance,context)
             if context.setting_blind then
                 G.GAME.GAMEMODE.ability.dolorosa_active = true

@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_legacyhoruss()
         pos = {x=0,y=1},
         mult = 1.5,
         dollars = 4,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('0022cb'),
         calculate = function(self,card,context)
             if context.stay_flipped and context.to_area == G.hand and
                 context.other_card.ability.played_this_ante then

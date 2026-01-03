@@ -11,7 +11,7 @@ function Balatrostuck.INIT.Blinds.bl_disciple()
         pos = {x=0,y=4},
         mult = 2,
         dollars = 5,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('416600'),
         calculate = function(self,instance,context)
             if context.pre_discard then
                 ease_dollars(-5)

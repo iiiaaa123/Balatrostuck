@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_legacyaranea()
         pos = {x=0,y=1},
         mult = 1.5,
         dollars = 4,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('005682'),
         press_play = function(self)
 
         end,

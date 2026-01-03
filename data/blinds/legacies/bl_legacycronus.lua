@@ -12,7 +12,7 @@ function Balatrostuck.INIT.Blinds.bl_legacycronus()
         pos = {x=0,y=1},
         mult = 1.5,
         dollars = 4,
-        boss_colour = HEX('F2BD43'),
+        boss_colour = HEX('6a006a'),
         calculate = function(self,instance,context)
             if context.final_scoring_step then
                 for _, card in pairs(G.hand.cards) do
