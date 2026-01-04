@@ -54,7 +54,7 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
             end
 
             if context.end_of_shop and instance.ability.mituna_discards > 0 then
-                G.GAME.G.GAME.inflation = G.GAME.G.GAME.inflation - instance.ability.mituna_discards
+                G.GAME.inflation = G.GAME.inflation - instance.ability.mituna_discards
                 instance.ability.mituna_discards = 0
             end
 

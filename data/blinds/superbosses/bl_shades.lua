@@ -17,7 +17,7 @@ function Balatrostuck.INIT.Blinds.bl_shades()
             if context.debuff_hand then
                 local most_played_key
                 for key, hand in pairs(G.GAME.hands) do
-                    print(key)
+                    --print(key)
                     if not most_played_key then most_played_key = key 
                     elseif hand.played > G.GAME.hands[most_played_key].played then
                        most_played_key = key 
