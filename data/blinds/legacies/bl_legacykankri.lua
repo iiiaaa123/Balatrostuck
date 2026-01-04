@@ -15,8 +15,8 @@ function Balatrostuck.INIT.Blinds.bl_legacykankri()
         boss_colour = HEX('ff0000'),
         calculate = function(self,instance,context)
             if context.discard then
-                if context.other_card.config.center.set == "Enhanced" and pseudorandom('kankri') < G.GAME.probabilities.normal/2 then
-                    context.other_card:set_ability(G.P_CENTERS["Default"])
+                if context.cardarea == G.discard and context.other_card.config.center.set == "Enhanced"and pseudorandom('kankri') < G.GAME.probabilities.normal/2 then
+                    context.other_card:set_ability(G.P_CENTERS.c_base, nil, true)
                 end
             end
         end,

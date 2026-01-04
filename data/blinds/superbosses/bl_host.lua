@@ -3,7 +3,7 @@ function Balatrostuck.INIT.Blinds.bl_host()
         key = 'host',
         loc_txt = {
             name = 'The Host',
-            text = {'3x blind',
+            text = {'3lind',
                 'after playing, reset score if didnt win'}
         },
         hands_sub = 0,
@@ -22,7 +22,7 @@ function Balatrostuck.INIT.Blinds.bl_host()
         end,
 
         disable = function(self)
-            G.GAME.blind.chips = G.GAME.blind.chips / 3
+            G.GAME.blind.chips = G.GAME.blind.chips / 1.5
             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
         end,
 

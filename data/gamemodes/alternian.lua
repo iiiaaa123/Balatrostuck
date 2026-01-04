@@ -45,7 +45,7 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
             if context.end_of_round and not context.individual and not context.repetition and G.GAME.blind.boss then --every ante effects
                 if instance.ability.summoner_duration > 0 then
                     instance.ability.summoner_duration = instance.ability.summoner_duration - 1
-                    if instance.ability.summoner_duration == 0 then G.GAME.effect.config.reroll_discount = G.GAME.effect.config.reroll_discount + 1 end
+                    if instance.ability.summoner_duration == 0 then G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost - 1 end
                 end
                 instance.ability.orphaner_triggered = false
                 instance.ability.hands_played_this_ante = {}
