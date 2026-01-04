@@ -16,7 +16,9 @@ function Balatrostuck.INIT.Blinds.bl_legacykankri()
         calculate = function(self,instance,context)
             if context.discard then
                 if context.cardarea == G.discard and context.other_card.config.center.set == "Enhanced"and pseudorandom('kankri') < G.GAME.probabilities.normal/2 then
+                    card_eval_status_text(context.other_card, 'extra', nil, nil, nil, {message = "Drained!", colour = G.C.SET.Enhanced, instant = false})
                     context.other_card:set_ability(G.P_CENTERS.c_base, nil, true)
+
                 end
             end
         end,

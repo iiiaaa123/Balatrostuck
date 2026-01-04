@@ -17,6 +17,7 @@ function Balatrostuck.INIT.Blinds.bl_legacykurloz()
             if context.setting_blind and not context.individual and not context.repetition then
                 for _,joker in pairs(G.jokers.cards) do
                     if not joker.edition or joker.edition.key ~= 'e_bstuck_paradox' then
+                        card_eval_status_text(joker, 'extra', nil, nil, nil, {message = 'Paradox-ify!',colour = G.C.GREEN})
                         joker:set_edition('e_bstuck_paradox',true,true)
                         joker.paradoxed_by_blind = true
                         break

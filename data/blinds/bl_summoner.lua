@@ -17,7 +17,7 @@ function Balatrostuck.INIT.Blinds.bl_summoner()
                 return {
                     message = localize('k_again_ex'),
                     repetitions = 1,
-                    card = context.scoring_card
+                    card = context.other_card
                 }
             end
         end,

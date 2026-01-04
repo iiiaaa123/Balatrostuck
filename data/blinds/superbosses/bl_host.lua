@@ -16,7 +16,7 @@ function Balatrostuck.INIT.Blinds.bl_host()
         calculate = function(self,instance,context)
             if context.final_scoring_step then
                 if G.GAME.chips < G.GAME.blind.chips then
-                    G.GAME.chips = 0
+                    ease_chips(0)
                 end
             end
         end,
