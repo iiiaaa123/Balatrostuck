@@ -10,7 +10,7 @@ function Balatrostuck.INIT.Blinds.bl_host()
         boss = { min = 1, max = 10, showdown=true},
         atlas = 'HomestuckBlinds',
         pos = {x=0,y=14},
-        mult = 6,
+        mult = 3,
         dollars = 8,
         boss_colour = HEX('ffffff'),
         calculate = function(self,instance,context)
