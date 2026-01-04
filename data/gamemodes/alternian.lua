@@ -5,6 +5,7 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
             used_bosses = {},
             applied = false,
             latula_hands = 0,
+            latula_ui_spent = false,
             mituna_discards = 0,
             dolorosa_active = false,
             summoner_duration = 0,
@@ -31,9 +32,9 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
                 context.new_boss = self.get_next_boss(instance,false)
             end
 
-            if context.setting_blind and instance.ability.latula_hands > 0 and G.GAME.blind.boss then
-                G.GAME.blind.chips = G.GAME.blind.chips * (1.1^instance.ability.latula_hands) --no clean way to un-hardcode this, im afraid
-                G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            if context.setting_blind and instance.ability.latula_hands > 0 then
+                --G.GAME.blind.chips = G.GAME.blind.chips * (1.1^instance.ability.latula_hands) --no clean way to un-hardcode this, im afraid
+                --G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
                 instance.ability.latula_hands = 0
             end
 
@@ -43,6 +44,7 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
             end
 
             if context.end_of_round and not context.individual and not context.repetition and G.GAME.blind.boss then --every ante effects
+                instance.ability.latula_ui_spent = false
                 if instance.ability.summoner_duration > 0 then
                     instance.ability.summoner_duration = instance.ability.summoner_duration - 1
                     if instance.ability.summoner_duration == 0 then G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost - 1 end
@@ -56,6 +58,13 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
                 instance.ability.mituna_discards = 0
             end
 
+        end,
+        latula_ui_can_use = function(instance)
+            if not instance.ability.latula_ui_spent and instance.ability.latula_hands > 0 then
+                instance.ability.latula_ui_spent = true
+                return true
+            end
+            return false
         end,
         get_next_boss = function(instance,is_legacy)
             if G.GAME.round_resets.ante >= 13 and not is_legacy then return "bl_bstuck_lordenglish" end --lord english mode.

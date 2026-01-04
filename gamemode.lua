@@ -3,9 +3,9 @@ Gamemode = Object:extend()
 function Gamemode:init(key,loadtable)
   self.key = loadtable and loadtable.key or key
 
-  local proto = Balatrostuck.Gamemodes[loadtable and loadtable.key or key]
-  self.config = copy_table(proto.config)
-  self.name = proto.name
+  self.proto = Balatrostuck.Gamemodes[loadtable and loadtable.key or key]
+  self.config = copy_table(self.proto.config)
+  self.name = self.proto.name
   if loadtable and loadtable.ability then self.ability = loadtable.ability 
   else self.ability = copy_table(self.config) end
 end

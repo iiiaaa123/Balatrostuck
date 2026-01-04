@@ -644,10 +644,27 @@ position = "after"
 payload = "if saveTable.GAMEMODE then G.GAME.GAMEMODE = Gamemode(nil,saveTable.GAMEMODE) end"
 match_indent = true
 
+#for latula
+
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = "self.mult = blind and blind.mult or 0"
+position = "after"
+payload = "if self.mult and G.GAME.GAMEMODE and G.GAME.GAMEMODE.ability.latula_hands > 0 then self.mult = self.mult*(1.1^G.GAME.GAMEMODE.ability.latula_hands) end"
+match_indent = true
+
+#i hate my chungus life
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "local blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*blind_choice.config.mult*G.GAME.starting_params.ante_scaling"
+position = "after"
+payload = "if blind_amt > 0 then blind_amt = G.GAME.GAMEMODE and G.GAME.GAMEMODE.proto.latula_ui_can_use(G.GAME.GAMEMODE) and G.GAME.GAMEMODE.ability.latula_hands > 0 and blind_amt*(1.1^G.GAME.GAMEMODE.ability.latula_hands) or blind_amt end"
+match_indent = true
 
 
 #forces the gamemode to alternian, remove when ui gets added!!!
-
 
 [[patches]]
 [patches.pattern]
