@@ -89,8 +89,8 @@ function Balatrostuck.INIT.Gamemodes.gamemode_alternian()
                 end
             end
             
-            print("Valid bosses: (legacy?) "..tostring(is_legacy))
-            print(valid_boss_pool)
+            --print("Valid bosses: (legacy?) "..tostring(is_legacy))
+            --print(valid_boss_pool)
             local picked_boss = pseudorandom_element(valid_boss_pool,pseudoseed('alternian_boss'..tostring(is_legacy)..G.GAME.round_resets.ante))
             if not picked_boss then picked_boss = "bl_bstuck_legacydamara" end --fallback
             instance.ability.used_bosses[#instance.ability.used_bosses+1] = picked_boss
