@@ -3,7 +3,8 @@ function Balatrostuck.INIT.Blinds.bl_disciple()
         key = 'disciple',
         loc_txt = {
             name = 'The Disciple',
-            text = {'Pay 5$ whenever you use a discard',}
+            text = {'Lose 5$ per',
+             'discard used',}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},

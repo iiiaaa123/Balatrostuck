@@ -3,7 +3,8 @@ function Balatrostuck.INIT.Blinds.bl_dolorosa()
         key = 'dolorosa',
         loc_txt = {
             name = 'The Dolorosa',
-            text = {'Hands cannot be played until a joker is sold',}
+            text = {'Cannot play hands',
+                    'until 1 Joker sold'}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},

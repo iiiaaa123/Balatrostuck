@@ -3,8 +3,8 @@ function Balatrostuck.INIT.Blinds.bl_bettycrocker()
         key = 'bettycrocker',
         loc_txt = {
             name = 'The Condesce',
-            text = {'all your jokers',
-                'become rental'}
+            text = {'All Jokers',
+                'become Rental'}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},

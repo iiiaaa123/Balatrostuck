@@ -3,8 +3,9 @@ function Balatrostuck.INIT.Blinds.bl_manipulator()
         key = 'manipulator',
         loc_txt = {
             name = 'The Marquise',
-            text = {'On play or discard create a paradox 8.',
-                "It's always selected."}
+            text = {'On play or discard',
+                    'create a Paradox 8.',
+                    "It's always selected."}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},

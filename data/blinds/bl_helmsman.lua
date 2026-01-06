@@ -3,7 +3,8 @@ function Balatrostuck.INIT.Blinds.bl_helmsman()
         key = 'helmsman',
         loc_txt = {
             name = 'The Helmsman',
-            text = {'Discards half your deck',}
+            text = {'Discards half',
+             'your deck',}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},

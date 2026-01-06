@@ -3,8 +3,8 @@ function Balatrostuck.INIT.Blinds.bl_executioner()
         key = 'executioner',
         loc_txt = {
             name = 'The E%ecutioner',
-            text = {'1 in 3 cards are drawn',
-                'face-down throughout the round'}
+            text = {'1 in 3 cards get',
+                'drawn face-down'}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},

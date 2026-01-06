@@ -3,7 +3,8 @@ function Balatrostuck.INIT.Blinds.bl_summoner()
         key = 'summoner',
         loc_txt = {
             name = 'The Summoner',
-            text = {'Retrigger all played cards'}
+            text = {'Very large blind',
+            'Retrigger all played cards'}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},

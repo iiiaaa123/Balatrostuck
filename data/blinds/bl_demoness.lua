@@ -3,8 +3,9 @@ function Balatrostuck.INIT.Blinds.bl_demoness()
         key = 'demoness',
         loc_txt = {
             name = 'The Demoness',
-            text = {'All playing cards are debuffed',
-                'after first hand is played'}
+            text = {'All cards debuffed',
+                'after the first', 
+                'hand is played'}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},

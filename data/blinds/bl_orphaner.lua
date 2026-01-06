@@ -3,7 +3,9 @@ function Balatrostuck.INIT.Blinds.bl_orphaner()
         key = 'orphaner',
         loc_txt = {
             name = 'The Orphaner',
-            text = {'reset first triggered zodiac to lvl 0'}
+            text = {'First Zodiac effect',
+            'triggered is reset',
+            'to level 0'}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},

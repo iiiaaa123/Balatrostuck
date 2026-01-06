@@ -3,8 +3,8 @@ function Balatrostuck.INIT.Blinds.bl_legislacerator()
         key = 'legislacerator',
         loc_txt = {
             name = 'The Neophyte',
-            text = {'If played hand was played this ante',
-                'debuff all played cards'}
+            text = {'Hands played previously',
+                'this Ante are debuffed'}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},

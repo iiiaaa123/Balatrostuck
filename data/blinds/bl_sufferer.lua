@@ -3,7 +3,9 @@ function Balatrostuck.INIT.Blinds.bl_sufferer()
         key = 'sufferer',
         loc_txt = {
             name = 'The Sufferer',
-            text = {'Rerolls cost 1$ more next ante'}
+            text = {'Extra large blind',
+            'Rerolls cost 1$', 
+            'more next ante'}
         },
         hands_sub = 0,
         boss = { min = 1, max = 10},
