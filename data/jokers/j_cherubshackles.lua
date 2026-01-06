@@ -9,8 +9,9 @@ function Balatrostuck.INIT.Jokers.j_cherubshackles()
         loc_txt = {
             ['name'] = 'Cherub Shackles',
             ['text'] = {
-                [1] = "If played hand includes a pair, whenever a",
-                [2] = "played Stone scores it gives 1.5x mult"
+                [1] = "If played hand contains a",
+                [2] = "{C:attention}Pair{}, played {C:attention}Stone{} cards",
+                [3] = "give {X:red,C:white}X1.5{} Mult when scored"
             }
         },
         pos = {

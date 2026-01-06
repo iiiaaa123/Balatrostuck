@@ -26,8 +26,8 @@ function Balatrostuck.INIT.Jokers.j_scalemate()
             }
         },
         pos = {
-            x = 9,
-            y = 12
+            x = 15,
+            y = 0
         },
 
         

@@ -11,15 +11,16 @@ function Balatrostuck.INIT.Jokers.j_pranxis()
         loc_txt = {
             ['name'] = 'Pranxis',
             ['text'] = {
-                "{C:Attention}Steals{} {C:money}$#1#{} of sell value from ",
-                "other {C:attention}Jokers{} at end of round.",
-                "When a card is sold for {C:money}$1{} or less",
+                "{C:Attention}Steals{} {C:money}$#1#{} of sell value",
+                "from other {C:attention}Jokers{} at",
+                "end of round. When a card",
+                "is sold for {C:money}$1{} or less",
                 "this gains {C:money}$#2#{} in sell value"
             }
         },
         pos = {
-            x = 9,
-            y = 12
+            x = 14,
+            y = 0
         },
 
         

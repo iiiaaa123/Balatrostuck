@@ -20,8 +20,9 @@ function Balatrostuck.INIT.Jokers.j_coloursmayhem()
         loc_txt = {
             ['name'] = "ColoUrs and Mayhem",
             ['text'] = {
-                "{C:attention}#3#{} more card can be chosen in a {C:attention}Booster Pack{}",
-                "Loses {C:white,X:mult}X#2#{} Mult per {C:attention}Booster Pack{} opened",
+                "{C:attention}#3#{} more card can be chosen in a",
+                "{C:attention}Booster Pack{}, loses {C:white,X:mult}X#2#{} Mult",
+                "per {C:attention}Booster Pack{} opened",
                 "{C:inactive}(Currently:{} {C:white,X:mult}X#1#{}{C:inactive} Mult){}"
             }
         },
