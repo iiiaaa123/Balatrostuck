@@ -8,7 +8,7 @@ function Balatrostuck.INIT.Decks.b_nymph()
             }
         },
         atlas = 'HomestuckDecks',
-        pos = {x = 0,y = 1},
+        pos = {x = 2,y = 1},
         unlocked = true,
         calculate = function(self,back,context)
             if context.skip_blind then
