@@ -9,9 +9,8 @@ function Balatrostuck.INIT.Jokers.j_eggs()
         loc_txt = {
             ['name'] = 'Eggs',
             ['text'] = {
-                [1] = "Your handsize is the size of your deck",
-                [2] = "At start of blind, set your {C:blue}hands{} to 1",
-                [2] = "and your discards to 0. not in packs."
+                [1] = "Enables",
+                [2] = "savestating"
             }
         },
         pos = {

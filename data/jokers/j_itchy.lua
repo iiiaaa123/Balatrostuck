@@ -9,9 +9,9 @@ function Balatrostuck.INIT.Jokers.j_itchy()
         loc_txt = {
             ['name'] = 'Itchy',
             ['text'] = {
-                [1] = "Your handsize is the size of your deck",
+                [1] = "Draw your entire deck",
                 [2] = "At start of blind, set your {C:blue}hands{} to 1",
-                [2] = "and your discards to 0. not in packs."
+                [3] = "and your discards to 0. not in packs."
             }
         },
         pos = {
