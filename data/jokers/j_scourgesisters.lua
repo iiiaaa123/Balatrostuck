@@ -13,8 +13,8 @@ function Balatrostuck.INIT.Jokers.j_scourgesisters()
             }
         },
         pos = {
-            x = 9,
-            y = 12
+            x = 16,
+            y = 0
         },
 
         
