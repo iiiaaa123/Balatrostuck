@@ -83,7 +83,7 @@ local joker_list = {
 local aspect_list = {
     "time", "light", "heart", "doom", "rage", "blood",
     "space","void", "mind", "life", "hope", "breath", 
-    "piss"
+    "piss", "candy"
 }
 
 local zodiac_list = {

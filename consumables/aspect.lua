@@ -64,6 +64,7 @@ function Balatrostuck.Aspect:get_formula(level)
   elseif self.name == 'Breath' or
          self.name == 'Void' or
          self.name == 'Heart' or
+         self.name == 'Candy' or
          self.name == 'Hope' then
     return {level, level~=1 and 's' or ''}
 

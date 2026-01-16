@@ -92,7 +92,7 @@ function Game:update(dt)
         G.C.DOOM,
         G.C.LIFE,
         G.C.HOPE,
-        G.C.RAGE
+        G.C.RAGE,
     }
 
     local paradox_list = {
@@ -176,7 +176,8 @@ function Game:init_game_object()
         Life = 0,
         Blood = 0,
         Breath = 0,
-        Piss = 0
+        Piss = 0,
+        Candy = 0
     }
     ret.BALATROSTUCK.zodiac_levels = {
         Aries = 0,

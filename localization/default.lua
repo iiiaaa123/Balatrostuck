@@ -230,6 +230,9 @@ return {
             },
             c_bstuck_void_current = {
                 text = {'{C:inactive}(Currently {C:dark_edition}+#1#{C:inactive})'}
+            },
+            c_bstuck_candy_current = {
+                text = {'{C:inactive}(Currently guagua #1#)'}
             }
         },
         zodiacui = {
