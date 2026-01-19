@@ -361,6 +361,16 @@ function check_for_piss()
 
 end
 
+local blindload_ref = Blind.load
+function Blind:load(blindTable)
+    blindload_ref(self, blindTable)
+    if self.config.blind.key == "bl_bstuck_lordenglish" then
+        self.children.animatedSprite.scale = {x = 128, y = 128}
+        self.children.animatedSprite.scale_mag = 128/1.5
+        self.children.animatedSprite:reset()
+    end
+end
+
 SMODS.Booster:take_ownership_by_kind('Buffoon', {
     create_card = function(self, card, i)
         local _edition = nil

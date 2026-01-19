@@ -13,6 +13,11 @@ function Balatrostuck.INIT.Blinds.bl_lordenglish()
         mult = 2,
         dollars = 8,
         boss_colour = HEX('2ed73a'),
+        set_blind = function ()
+            G.GAME.blind.children.animatedSprite.scale = {x = 128, y = 128}
+            G.GAME.blind.children.animatedSprite.scale_mag = 128/1.5
+            G.GAME.blind.children.animatedSprite:reset()
+        end,
         press_play = function(self)
             G.GAME.modifiers.bstuck_LORDENGLISHMODE = true
             G.GAME.modifiers.bstuck_LORDENGLISHMODE_remove_blinds = true
@@ -21,6 +26,9 @@ function Balatrostuck.INIT.Blinds.bl_lordenglish()
             G.GAME.modifiers.bstuck_LORDENGLISHMODE_remove_blinds = nil
         end,
         defeat = function(self)
+            G.GAME.blind.children.animatedSprite.scale = {x = 34, y = 34}
+            G.GAME.blind.children.animatedSprite.scale_mag = 34/1.5
+            G.GAME.blind.children.animatedSprite:reset()
         end,
 
         
