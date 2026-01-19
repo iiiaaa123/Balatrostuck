@@ -257,6 +257,8 @@ SMODS.Atlas({key = "bstuck_logo", path="balatrostuck.png", px=469, py=98, atlas_
 SMODS.Atlas({key = "bstuck_howhigh", path="howhigh.png", px=348, py=232, atlas_table="ASSET_ATLAS"}):register()
 SMODS.Atlas({key = "bstuck_scrollbar", path="scrollbar.png", px=11, py=232, atlas_table="ASSET_ATLAS"}):register()
 SMODS.Atlas({key = "zodiac_stamps", path="zodiac_stamps.png", px=71, py=95, atlas_table="ASSET_ATLAS"}):register()
+SMODS.Atlas{key = "EnglishBlind", path = {['default'] = 'LEblind.png'}, frames=15, px=128, py=128, atlas_table="ANIMATION_ATLAS"}
+
 
 if not next(SMODS.find_mod("Cryptid")) then
   SMODS.Atlas({
