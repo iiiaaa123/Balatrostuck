@@ -39,6 +39,13 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_taurus()
             if context.discard and self:level(context.other_card) < 1 then return end
 
             if context.discard and context.other_card:get_id() == self.ability.rank then
+            if context.other_card.debuff then
+                    return {
+                        message = localize('k_debuffed'),
+                        colour = G.C.RED,
+                        card = context.other_card,
+                    }
+            else
                 return {
                     func = function()
                         play_sound('xchips',0.8,0.4)
@@ -59,6 +66,7 @@ function Balatrostuck.INIT.Zodiacs.c_zodiac_taurus()
                         G.GAME.blind.chips = math.floor( G.GAME.blind.chips)
                     end
                 }
+            end
             end
         end
     }
