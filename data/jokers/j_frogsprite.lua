@@ -15,8 +15,8 @@ function Balatrostuck.INIT.Jokers.j_frogsprite()
             }
         },
         pos = {
-            x = 9,
-            y = 12
+            x = 18,
+            y = 0
         },
 
         

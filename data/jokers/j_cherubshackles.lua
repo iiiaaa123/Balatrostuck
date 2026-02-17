@@ -15,8 +15,8 @@ function Balatrostuck.INIT.Jokers.j_cherubshackles()
             }
         },
         pos = {
-            x = 9,
-            y = 12
+            x = 17,
+            y = 0
         },
 
         
@@ -49,7 +49,7 @@ function Balatrostuck.INIT.Jokers.j_cherubshackles()
         end,
         
         loc_vars = function (self, info_queue, card)
-            art_credit('akai', info_queue)
+            art_credit('cejai', info_queue)
             return {vars = {G.GAME.probabilities.normal}}
         end
     }
