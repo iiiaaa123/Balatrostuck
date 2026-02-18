@@ -1,21 +1,20 @@
-function Balatrostuck.INIT.Jokers.j_successor()
+function Balatrostuck.INIT.Jokers.j_hopesplosion()
     SMODS.Joker{
-        name = "Successor",
-        key = "successor",
+        name = "Hopesplosion",
+        key = "hopesplosion",
         config = {
             extra = { 
             }
         },
         loc_txt = {
-            ['name'] = "Successor",
+            ['name'] = "Hopesplosion",
             ['text'] = {
-                [1] = "When round begins, create {C:green}#1#",
-                [2] = "{C:attention}Lucky {C:paradox}Paradox {C:clubs}4 of Clubs{} in hand"
+                [1] = "may god have mercy on us, campfire"
             }
         },
         pos = {
-            x = 9,
-            y = 12
+            x = 19,
+            y = 0
         },
 
         

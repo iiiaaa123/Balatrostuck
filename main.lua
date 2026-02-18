@@ -75,7 +75,7 @@ local joker_list = {
 "yourlordandmaster", "magnificent", "jokermode", "crowbarsfelt", "signofthesignless",
 "echidna", "abraxas", "yaldabaoth", "hephaestus","typheus",
 -- Page 19
-"pranxis", "successor", "blackjack", "break", "coloursmayhem", 
+"pranxis", "hopesplosion", "blackjack", "break", "coloursmayhem", 
 "frogsprite", "scalemate", "scourgesisters", "cherubshackles", 
 "blindjustice", "itchy", "potionseller", "quarters", "trace", "eggs"
 }
@@ -150,10 +150,12 @@ for _, joker in ipairs(joker_list) do
     Balatrostuck.INIT.Jokers["j_"..joker]()
 end
 
+-- blacklist for title screen
 local blacklist = {
 "j_bstuck_echidna","j_bstuck_abraxas","j_bstuck_yaldabaoth","j_bstuck_hephaestus","j_bstuck_typheus",
 "j_bstuck_yourlordandmaster", "j_bstuck_magnificent", "j_bstuck_jokermode", "j_bstuck_crowbarsfelt",
-"j_bstuck_joker", "j_bstuck_backseater", 'j_bstuck_biscuits', "vodkamutini"
+"j_bstuck_joker", "j_bstuck_backseater", 'j_bstuck_biscuits', "vodkamutini", "itchy", "eggs", "trace",
+"quarters", "potionseller",
 }
 bstuck_title_jokers = copy_table(bstuck_joker_keys)
 for _, joker in ipairs(bstuck_title_jokers) do
