@@ -9,7 +9,7 @@ function Balatrostuck.INIT.Jokers.j_blackjack()
         loc_txt = {
             ['name'] = "Blackjack Rules Card",
             ['text'] = {
-                "+{C:mult}21{} mult if the {C:attention}sum{} of the",
+                "{C:mult}+21{} mult if the {C:attention}sum{} of the",
                 "played cards' {C:attention}ranks{} is 21",
                 "and all played cards {C:attention}score{}",
                 "{C:inactive} (Faces are 10, Aces are 1 or 11)"

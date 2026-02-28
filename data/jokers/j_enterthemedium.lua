@@ -31,7 +31,8 @@ function Balatrostuck.INIT.Jokers.j_enterthemedium()
             return {vars = {}}
         end,
         calculate = function(self,card,context)
-            if context.end_of_round and G.GAME.blind.boss and context.main_eval then
+            if context.end_of_round and G.GAME.blind.boss 
+            and context.main_eval and G.GAME.round_resets.ante ~= G.GAME.win_ante then
 
             if G.GAME.pool_flags.bstuck_actprogress <= 2 then
                 local _all_unlocked = true

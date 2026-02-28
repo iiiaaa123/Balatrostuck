@@ -8,8 +8,9 @@ function Balatrostuck.INIT.Jokers.j_scourgesisters()
         loc_txt = {
             ['name'] = 'Scourge Sisters',
             ['text'] = {
-                [1] = "7s and 8s are drawn face-down",
-                [2] = "Played cards have a #1# in #2# chance of creating a random tag when scored"
+                [1] = "{C:attention}7s{} and {C:attention}8s{} are drawn {C:attention}face-down{}",
+                [2] = "Played cards have a {C:green}#1# in #2#{} chance",
+                [3] = "of creating a random {C:attention}tag{} when scored"
             }
         },
         pos = {
